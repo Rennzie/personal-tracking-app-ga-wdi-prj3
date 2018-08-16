@@ -23,7 +23,7 @@ const eventSchema = mongoose.Schema({
   },
   reviews: {    // sub-document to hold simple reviews
     addedBy: { type: ObjectId },
-    rating: { type: Number, required: true },
+    rating: { type: Number },
     comment: String
   }
 }, { timestamps: true });

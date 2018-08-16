@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const { dbURI } = require('../config/environment');
 
-const User = require('../modles/user');
-const Event = require('../modles/event');
-const Goal = require('../modles/goal');
+const User = require('../models/user');
+const Event = require('../models/event');
+const Goal = require('../models/goal');
 
 mongoose.connect(dbURI);
 User.collection.drop();
@@ -107,7 +107,7 @@ const eventData = [
     duration: 45,
     description: 'Start your coding journey by kick starting your skill set with HTML5 and CSS basics. This General Assembly short course will give you a taste for what front end develoers could be tackling on a daily basis',
     eventTitle: 'HTML5 and CSS3 Bootcamp',
-    eventDate: 1536966000000, 
+    eventDate: 1536966000000,
     guests: [],
     imageUrl: 'https://generalassemb.ly/blog/wp-content/uploads/2014/08/dash1.png',
     isIndoors: true,
@@ -195,12 +195,12 @@ User
     return Event.create(eventData);
   })
   .then(events => {
-    console.log(`Create ${events.length}`);
+    console.log(`Create ${events.length} events`);
 
     return Goal.create(goalData);
 
   })
-  .then(goals => console.log(`Create ${goals.length}`))
+  .then(goals => console.log(`Create ${goals.length} events`))
   .catch(err => console.log('Seeding error is', err))
   .finally(() => mongoose.connection.close());
 
