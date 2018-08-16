@@ -7,7 +7,7 @@ const eventSchema = mongoose.Schema({
   category: { type: String, required: true },
   capacity: Number,
   concluded: Boolean,
-  duration: { type: String, required: true },
+  duration: { type: String, required: true },  // NOTE: might be best ot convert to millisecondss
   description: String,
   eventTitle: { type: String, required: true },
   eventDate: { type: Date, required: true },
@@ -30,7 +30,13 @@ const eventSchema = mongoose.Schema({
 
 
 //VIRTUALS
-//  --> geocode the location to a latlon
+//  --> geocode the postcode to a latlon // IDEA: we can use postcode.io to do this
+
+//  --> convert the duration to milliseconds
+
+//  --> convert the input event date to milliseconds
+
+//  --> drop all postcodes to lowercase and remove spaces
 
 
 
