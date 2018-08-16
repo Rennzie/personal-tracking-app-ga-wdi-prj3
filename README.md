@@ -1,4 +1,4 @@
 # wdi-project-three-resolut
-GA Immersive
+A line written by sophie
 
-A line written by sophie 
+GA Immersive Project Three with Sophie Cornish
