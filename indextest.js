@@ -2,4 +2,14 @@ function doesNothingAtAll(nothing){
   //does nothing
 }
 
-export defaults doesNothingAtAll;
+
+
+function parsonB(){
+  // nothing
+}
+
+export defaults ={
+
+  doesNothingAtAll,
+  personB
+}
