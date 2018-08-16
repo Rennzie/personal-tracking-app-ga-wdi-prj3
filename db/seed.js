@@ -39,11 +39,11 @@ const userData = [
   },{
     email: 'sophie.cornish@gmail.com',
     firstName: 'Sophie',
-    homeLocation: { // NOTE: need address coordinates
-      lat: ,
-      lon:
+    homeLocation: {
+      lat: 51.502972,
+      lon: -0.191837
     },
-    isHost: false,
+    isHost: true,
     password: 'pass',
     passwordConfirmation: 'pass',
     surname: 'Cornish',
@@ -51,9 +51,9 @@ const userData = [
   },{
     email: 'trimhall@gmail.com',
     firstName: 'Tristan',
-    homeLocation: { // NOTE: need address coordinates
-      lat: ,
-      lon:
+    homeLocation: {
+      lat: 51.371835,
+      lon: -0.100976
     },
     isHost: false,
     password: 'pass',
@@ -71,9 +71,9 @@ const eventData = [
     duration: 60,
     description: 'Small group Calisthenics training focussed on intermediate athletes looking to get better at handstands and muscle ups',
     eventTitle: 'Calisthenics in the Park',
-    eventDate: { type: Date, required: true }, // NOTE: need to convert a date to milliseconds
+    eventDate: 1534978800000,
     guests: [],
-    imageUrl: String, // NOTE: get a picture for seed
+    imageUrl: 'http://www.bjj-usa.com/wp-content/uploads/2017/08/calisthenics-benefits-6.jpg',
     isIndoors: false,
     location: {     //sub document to hold event location
       streetNumber: 9,
@@ -89,9 +89,9 @@ const eventData = [
     duration: 45,
     description: 'Home hosted hatha yoga training',
     eventTitle: 'Hatha at Home',
-    eventDate: { type: Date, required: true }, // NOTE: need to convert a date to milliseconds
+    eventDate: 1535065200000,
     guests: [],
-    imageUrl: String, // NOTE: get a picture for seed
+    imageUrl: 'http://s3.amazonaws.com/images-s3.yogainternational.com/assets/content/articles/How_To_Get_Better_at_Yoga.jpg',
     isIndoors: true,
     location: {     //sub document to hold event location
       streetNumber: 9,
@@ -107,16 +107,16 @@ const eventData = [
     duration: 45,
     description: 'Start your coding journey by kick starting your skill set with HTML5 and CSS basics. This General Assembly short course will give you a taste for what front end develoers could be tackling on a daily basis',
     eventTitle: 'HTML5 and CSS3 Bootcamp',
-    eventDate: { type: Date, required: true }, // NOTE: need to convert a date to milliseconds
+    eventDate: 1536966000000, 
     guests: [],
-    imageUrl: String, // NOTE: get a picture for seed
+    imageUrl: 'https://generalassemb.ly/blog/wp-content/uploads/2014/08/dash1.png',
     isIndoors: true,
-    location: {     // NOTE: get the address for GA london
-      streetNumber: ,
-      streetName: '',
-      postcode: '',
-      lat: ,
-      lon:           // should seed this initially
+    location: {
+      streetNumber: 114,
+      streetName: 'White Chapel High St',
+      postcode: 'E1 7PT',
+      lat: -0.072513,
+      lon: 51.515379          // should seed this initially
     }
   }
 ];
@@ -166,10 +166,43 @@ const goalData = [
     goalMonth: 'august',
     targetHrs: 20
   }
-]
+];
 
 
+User
+  .create(userData)
+  .then(users => {
+    console.log(`Created ${users.length} users`);
+    //add a user id to Event created by
+    eventData[0].createdBy = users[0].id;
+    eventData[1].createdBy = users[1].id;
+    eventData[2].createdBy = users[2].id;
 
+    // push many users into the attending event array
+    users.forEach(user => eventData[0].guests.push(user.id));
+    users.forEach(user => eventData[1].guests.push(user.id));
+    users.forEach(user => eventData[2].guests.push(user.id));
+
+    //add a user to each of the created goals
+
+    goalData.forEach(goal => {
+      const randomIndex = Math.floor(Math.random() * users.length);
+      goal.createdBy = users[randomIndex];
+    });
+
+    //add a user to any reviews inthe event reviews
+
+    return Event.create(eventData);
+  })
+  .then(events => {
+    console.log(`Create ${events.length}`);
+
+    return Goal.create(goalData);
+
+  })
+  .then(goals => console.log(`Create ${goals.length}`))
+  .catch(err => console.log('Seeding error is', err))
+  .finally(() => mongoose.connection.close());
 
 
 
