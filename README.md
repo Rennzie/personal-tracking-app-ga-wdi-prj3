@@ -1,2 +1,2 @@
 # wdi-project-three-resolut
-GA Immersive
+GA Immersive Project Three with Sophie Cornish
