@@ -10,7 +10,7 @@ const eventSchema = mongoose.Schema({
   eventDate: { type: Date, required: true },
   duration: { type: String, required: true },
   description: String,
-  location: {
+  location: {     //sub document to hold event location
     streetNumber: Number,
     streetName: String,
     postcode: String,
@@ -21,13 +21,17 @@ const eventSchema = mongoose.Schema({
   concluded: Boolean,
   guests: [ { type: ObjectId } ], //to hold all users attending the event
   isIndoors: Boolean,
-  reviews: {
+  reviews: {    // sub-document to hold simple reviews
     addedBy: { type: ObjectId },
     rating: { type: Number, required: true },
     comment: String
-
   }
-
 });
+
+
+//VIRTUALS
+//  --> geocode the location to a latlon
+
+
 
 module.exports = mongoose.model('Event', eventSchema);
