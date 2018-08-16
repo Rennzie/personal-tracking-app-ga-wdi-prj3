@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "boat-api",
   "version": "1.0.0",
   "main": "index.js",
@@ -33,5 +34,39 @@
     "url-loader": "^0.6.2",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"
+=======
+  "name": "nice-rocks",
+  "version": "1.0.0",
+  "description": "Geo-tourism review site",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "refresh": "node db/seeds",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rennzie/wdi-project-two.git"
+  },
+  "author": "Rennzie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rennzie/wdi-project-two/issues"
+  },
+  "homepage": "https://github.com/Rennzie/wdi-project-two#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.3",
+    "bulma": "^0.7.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-ejs-layouts": "^2.4.0",
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.6",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.2.5",
+    "morgan": "^1.9.0"
+>>>>>>> e6478b13f4eb66bf1e3e8165aae5ecddf102e9f6
   }
 }
