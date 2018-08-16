@@ -4,12 +4,16 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const eventSchema = mongoose.Schema({
   createdBy: {type: ObjectId, ref: 'User'}, //hosting user
-  eventTitle: { type: String, required: true },
   category: { type: String, required: true },
-  imageUrl: String,
-  eventDate: { type: Date, required: true },
+  capacity: Number,
+  concluded: Boolean,
   duration: { type: String, required: true },
   description: String,
+  eventTitle: { type: String, required: true },
+  eventDate: { type: Date, required: true },
+  guests: [ { type: ObjectId } ], //to hold all users attending the event
+  imageUrl: String,
+  isIndoors: Boolean,
   location: {     //sub document to hold event location
     streetNumber: Number,
     streetName: String,
@@ -17,16 +21,12 @@ const eventSchema = mongoose.Schema({
     lat: Number,          //we will need to geocode the lat & lon
     lon: Number           // should seed this initially
   },
-  capacity: Number,
-  concluded: Boolean,
-  guests: [ { type: ObjectId } ], //to hold all users attending the event
-  isIndoors: Boolean,
   reviews: {    // sub-document to hold simple reviews
     addedBy: { type: ObjectId },
     rating: { type: Number, required: true },
     comment: String
   }
-});
+}, { timestamps: true });
 
 
 //VIRTUALS
