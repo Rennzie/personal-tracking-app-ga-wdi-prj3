@@ -1,8 +1,2 @@
-# wdi-project-three-resolut
-A line written by sophie
-
-GA Immersive Project Three with Sophie Cornish
-
-Sean has made an additional change
-
-whats good Sean?
+# wdi-project-two
+This site is a geo-tourism review site, aimed at geologist and those interested in the best geological site the world has to offer. It is the 2nd of four projects completed towards the Web Development Immersive at General Assembly. 

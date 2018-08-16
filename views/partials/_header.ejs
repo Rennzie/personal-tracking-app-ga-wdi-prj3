@@ -1,0 +1,40 @@
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="/noun_Fog mountain_1659670.png" alt="">
+      </a>
+      <a class='navbar-item' href="/about" >About Us</a>
+      <a class='navbar-item' href="/geoSites" >Geo Sites</a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+
+    </div>
+    <div id="menu-toggle" class="navbar-menu">
+      <div class="navbar-start">
+        <% if(locals.isLoggedIn){%>
+          <a class='navbar-item' href="/geoSites/new" >Add New Site</a>
+        <%}%>
+      </div>
+      <div class="navbar-end">
+        <% if(!locals.isLoggedIn){%>
+          <a class='navbar-item' href="/session/new" >Login/Sign Up</a>
+        <%} else{%>
+          <a class="is-hidden-touch" href="/userprofile/<%=locals.user.id%>">
+            <figure class="avatar-container image is-48x48">
+              <img class="avatar" src="<%=locals.user.profilePic %>">
+            </figure>
+          </a>
+          <a class="navbar-item is-hidden-desktop" href="/userprofile/<%=locals.user.id%>">
+            Profile
+          </a>
+          <a class="navbar-item" href="/session/delete">Logout</a>
+        <%}%>
+      </div>
+    </div>
+  </div>
+</nav>

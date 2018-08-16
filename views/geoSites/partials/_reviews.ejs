@@ -1,0 +1,26 @@
+<div class="level">
+  <div class="level-left">
+    <div class="level-item">
+      <h1 class="title is-1">Reviews</h1>
+    </div>
+  </div>
+  <div class="level-right">
+    <div class="level-item">
+      <%if(!locals.isLoggedIn){%>
+        <a class="button is-medium is-link" href="/session/new"> Login to review</a>
+      <%}else{%>
+        <a class="button is-medium is-link" href="/geoSites/<%=geoSite.id%>/review/new"> Add a review</a>
+      <%}%>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<%if(!geoSite.reviews[0]){ %>
+  <p class="header has-text-centered">There are no reviews for this site yet!</p>
+  <hr>
+<%}else{%>
+  <%include ../../reviews/index%>
+
+<%}%>

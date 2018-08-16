@@ -1,0 +1,43 @@
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Login</p>
+    </header>
+    <section class="modal-card-body">
+      <form action="/session" method="POST">
+
+        <div class="field">
+          <label class="label" for="userName">User Name<span class="has-text-danger">*</span> </label>
+          <div class="control">
+            <input class="input" name="userName" type="text" placeholder="JohnnyRocks01">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="password">Password <span class="has-text-danger">*</span> </label>
+          <div class="control">
+            <input class="input" name="password" type="password">
+          </div>
+        </div>
+
+      </section>
+      <footer class="modal-card-foot">
+        <div class="field is-grouped">
+          <div class="control">
+            <input type="hidden" name="prevPage" value="<%=prevPage%>">
+            <button class="button is-link">Login</button>
+          </div>
+          <div class="control">
+            <a href="/" class="button is-text">Cancel</a>
+          </div>
+          <div class="control">
+            <a href="/registration/new" class="button is-text">Sign Up</a>
+          </div>
+        </div>
+
+
+      </form>
+    </footer>
+  </div>
+</div>

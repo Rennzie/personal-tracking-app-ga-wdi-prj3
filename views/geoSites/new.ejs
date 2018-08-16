@@ -1,0 +1,148 @@
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Create a New Site</p>
+    </header>
+    <section class="modal-card-body">
+
+      <form action="/geoSites" method="POST">
+        <input type="hidden" name="prevPage" value="<%=prevPage%>">
+
+        <div class="field">
+          <label class="label" for="name">Name<span class="has-text-danger">*</span> </label>
+          <div class="control">
+            <input class="input" name="name" type="text" placeholder="Grand Canyon">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="coverPic">Cover Image (url)<span class="has-text-danger">*</span> </label>
+          <div class="control">
+            <input class="input" name="coverPic" type="text">
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="field">
+          <label class="label" for="country">Country<span class="has-text-danger">*</span> </label>
+          <div class="control">
+            <input class="input" name="country" type="text" placeholder="USA">
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label class="label" for="region">Region</label>
+          <div class="control">
+            <input class="input" name="region" type="text" placeholder="Nevada">
+          </div>
+        </div>
+
+        <div class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <div class="field">
+                <label class="label" for="age">Age (Number)</label>
+                <div class="control">
+                  <input class="input" name="age" type="number" placeholder="6000000 (for 6 million)">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <div class="field">
+                <label class="label" for="period">Period</label>
+                <div class="control">
+                  <div class="select">
+                    <select name="period">
+                      <option value="Quarternary - 1.8Ma">Quarternary - 1.8Ma</option>
+                      <option value="Tertiary - 65Ma">Tertiary - 65Ma</option>
+                      <option value="Creataceous - 144Ma">Creataceous - 144Ma</option>
+                      <option value="Jurassic - 206Ma">Jurassic - 206Ma</option>
+                      <option value="Triassic - 248Ma">Triassic - 248Ma</option>
+                      <option value="Permain - 248Ma">Permain - 248Ma</option>
+                      <option value="Pennsylvanian - 323Ma">Pennsylvanian - 323Ma</option>
+                      <option value="Mississippian - 254Ma">Mississippian - 254Ma</option>
+                      <option value="Devonian - 417Ma">Devonian - 417Ma</option>
+                      <option value="Silurian - 443Ma">Silurian - 443Ma</option>
+                      <option value="Ordovician - 443Ma">Ordovician - 443Ma</option>
+                      <option value="Cambrian - 540Ma">Cambrian - 540Ma</option>
+                      <option value="Precambrian - 4.56Ga">Precambrian - 4.56Ga</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="field">
+          <label class="label" for="description">Description</label>
+          <div class="control">
+            <textarea class="textarea" name="description" rows="8" cols="80" placeholder="Short description of the geological site"></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="rockTypes">Rock Types (comma seperated)</label>
+          <div class="control">
+            <input class="input" name="rockTypes" type="text" placeholder="sedimentary, sandstone, shale">
+          </div>
+        </div>
+
+
+        <hr>
+        <label class="label">Coordinates in Decimal Degrees (use negative number for W and S)</label>
+        <div class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <div class="field">
+                <label class="label" for="lat">Latitude</label>
+                <div class="control">
+                  <input class="input" name="lat" type="number" placeholder="-24.67 (for 24.67 West)">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <div class="field">
+                <label class="label" for="long">Longitude</label>
+                <div class="control">
+                  <input class="input" name="long" type="number" placeholder="40.003 (for 40.003 North)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+      <div class="field">
+        <label class="label" for="images">Additional Images (urls comma seperated)</label>
+        <div class="control">
+          <input class="input" name="images" type="text">
+        </div>
+      </div>
+
+      </section>
+      <footer class="modal-card-foot">
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link">Submit</button>
+          </div>
+          <div class="control">
+            <a href="<%=prevPage%>" class="button is-text">Cancel</a>
+          </div>
+        </div>
+
+      </form>
+
+    </footer>
+  </div>
+</div>

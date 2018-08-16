@@ -1,0 +1,138 @@
+<div class="container">
+  <%# title and rating (header) %>
+  <div class="level"> </div>
+  <div class="level">
+    <div class="level-item"> <h1 class="title is-1"><%=geoSite.name%></h1> </div>
+    <div class="level-item">
+      <p class="sub-title is-1">Volcano Rating: <%=geoSite.averageRating.symbol%></p>
+    </div>
+
+  </div>
+
+  <%# Cover photo and google map level %>
+  <div class="level columns">
+    <div class="column is-half">
+      <img class="image show-image" src="<%=geoSite.coverPic%>">
+    </div>
+
+    <div class="column is-half">
+      <%# <a href="#">Google Map Link</a> %>
+      <div id="map" > </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <%# all other site information %>
+  <div class="level columns">
+
+    <%# info and desctiption %>
+    <div class="column is-half">
+      <%# Country and region %>
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <p class="header"><strong>Country:</strong> <%=geoSite.country%></p>
+          </div>
+          <div class="level-item">
+            <p class="header"><strong>Region:</strong> <%=geoSite.region%></p>
+          </div>
+        </div>
+      </div>
+
+      <%# Age and Period %>
+      <div class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <p class="header"><strong>Age:</strong> <%=geoSite.formattedAge%></p>
+          </div>
+          <div class="level-item">
+            <p class="header"><strong>Period:</strong> <%=geoSite.period%></p>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <%# description %>
+      <p class="header"><strong> Description </strong></p>
+      <div class="level"> </div>
+      <p><%=geoSite.description%></p>
+      <hr>
+
+      <!-- rocktype tags -->
+      <div class="columns">
+        <div class="column is-multiline">
+          <% geoSite.rockTypes.forEach(rockType => {%>
+            <span class="tag is-large is-light"><%=rockType%></span>
+            <%})%>
+
+          </div>
+        </div>
+
+      </div>
+
+      <%# additional photos %>
+      <div class="column is-half">
+        <button class=" button is-hidden-desktop is-primary "disabled name="button">View More Photos</button>
+        <%# do a forEach() here %>
+        <div class="columns is-hidden-mobile is-centered">
+          <div class="column is-start is-multiline">
+
+            <% geoSite.images.forEach(image => {%>
+              <img class="image other-images" src="<%=image%>">
+              <%})%>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <hr>
+
+      <%# REVIEWS HERE %>
+      <% include ./partials/_reviews %>
+
+      <div class="level">
+        <div class="level-left"> </div> <div class="level-right">
+          <div class="level-item">
+            <%if( locals.isLoggedIn && (locals.user.id === geoSite.createdBy.id || locals.user.isGeologist) ){%>
+              <a class="button is-text"href="/geoSites/<%=geoSite.id%>/edit"> Edit Site</a>
+              <%}%>
+            </div>
+            <div class="level-item">
+              <% if(locals.isLoggedIn && locals.user.id === geoSite.createdBy.id){%>
+                <form action="/geoSites/<%=geoSite.id%>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button  class="button is-danger"> Delete Site</button>
+                </form>
+                <%}%>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <script>
+        // Initialize and add the map
+        function initMap() {
+          // The location of Uluru
+          const geoStie = {lat: <%=geoSite.lat%>, lng: <%=geoSite.long%>};
+          // The map, centered at Uluru
+          const map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 9, center: geoStie});
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({position: geoStie, map: map});
+          }
+
+
+          </script>
+          <!--Load the API from the specified URL
+          * The async attribute allows the browser to render the page while the API loads
+          * The key parameter will contain your own API key (which is not needed for this tutorial)
+          * The callback parameter executes the initMap() function
+        -->
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZ_QH7WUOknfpY-UmWGxq19xO7kqysh0o&callback=initMap">
+        </script>

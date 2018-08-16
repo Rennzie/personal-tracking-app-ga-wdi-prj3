@@ -1,0 +1,45 @@
+<%if(locals.isLoggedIn){%>
+  <% include ../pages/home %>
+  <hr>
+<%}%>
+
+<div class="container is-touch">
+  <div class="level"> </div>
+  <div class="columns ">
+    <div class="column">
+
+      <div class="level">
+
+      </div>
+
+      <% geoSites.forEach( geoSite => { %>
+        <div class="level columns">
+          <div class="column is-4">
+            <a href="/geoSites/<%=geoSite.id%>">
+              <div class="level-item">
+                  <img class="image index-image" src="<%=geoSite.coverPic%>">
+              </div>
+            </a>
+          </div>
+
+          <div class="column is-6">
+            <a href="/geoSites/<%=geoSite.id%>" class="title is-3"><%= geoSite.name %></a>
+            <p class="heading"><span class="has-text-weight-bold">Country:</span> <%= geoSite.country %></p>
+            <br>
+            <p><%= geoSite.description%></p>
+          </div>
+
+          <div class="column is-2">
+            <div >
+              <p class="sub-title">Rating: <%=geoSite.averageRating.symbol%></p>
+
+              <a target="_blank" class=" is-text is-link" href="<%=geoSite.mapLink%>">Google Maps</a>
+            </div>
+          </div>
+        </div>
+        <hr>
+      <% }) %>
+
+    </div>
+  </div>
+</div>

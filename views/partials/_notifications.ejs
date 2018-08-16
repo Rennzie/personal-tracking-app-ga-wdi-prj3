@@ -1,0 +1,7 @@
+
+<% for(const type in messages){ %>
+  <div id="noti-message" class="notification is-<%=type %> is-marginless">
+    <button class="delete"></button>
+    <%=messages[type] %>
+  </div>
+<% } %>

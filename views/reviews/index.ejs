@@ -1,0 +1,54 @@
+<%# recieves geoSite as an object which includes geoSite.reviews %>
+
+<% geoSite.reviews.forEach(review => {%>
+  <article class="media">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <img src="<%=review.reviewedBy.profilePic%>">
+      </p>
+    </figure>
+
+    <div class="media-content columns">
+      <div class="content column is-2">
+        <p class="sub-title">
+          <strong><%=review.reviewedBy.firstName%> <%= review.reviewedBy.surname%></strong>
+          <a class="small is-text" href="/userprofile/<%=review.reviewedBy.id%>">
+            <%=review.reviewedBy.userName%>
+          </a>
+        </p>
+        <p class="small">Reviewed <%=review.daysAgoCreated%> </p>
+      </div>
+
+      <div class="column is-8">
+        <p class="title is-5"> <%= review.title %></p>
+        <p>  <%= review.content%> </p>
+      </div>
+
+      <div class="column is-2">
+        <p class="sub-title"><%=review.ratingSymbol%></p>
+            <p class="sub-title">Volcano Rating</p>
+
+        <%if(locals.isLoggedIn && locals.user.id === review.reviewedBy.id){%>
+          <div class="level"> </div>
+          <div class="level">
+            <div class="level-item">
+              <a class="button is-text"href="/geoSites/<%=geoSite.id%>/review/<%=review.id%>/edit"> Edit</a>
+            </div>
+            <div class="level-item">
+              <form action="/geoSites/<%=geoSite.id%>/review/<%=review.id%>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button  class="delete"></button>
+              </form>
+            </div>
+          </div>
+          <%}%>
+      </div>
+      <!-- <div class="media-right">
+    </div> -->
+
+    </div>
+  </article>
+
+  <hr>
+
+<%})%>

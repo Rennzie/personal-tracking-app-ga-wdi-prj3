@@ -1,0 +1,54 @@
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">New Review</p>
+    </header>
+    <section class="modal-card-body">
+      <form action="/geoSites/<%=geoSite.id%>/review" method="POST">
+
+        <div class="field">
+          <label class="label" for="title">Title<span class="has-text-danger">*</span> </label>
+          <div class="control">
+            <input class="input" name="title" type="text" placeholder='This was the greatest'>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="rating">Volcano Rating</label>
+          <div class="control">
+            <div class="select is-primary">
+              <select name="rating">
+                <option name='rating' value="0">😨</option>
+                <option name='rating' value="1">⚒</option>
+                <option name='rating' value="2">⚒ ⚒</option>
+                <option name='rating' value="3">⚒ ⚒ ⚒</option>
+                <option name='rating' value="4">⚒ ⚒ ⚒ ⚒</option>
+                <option name='rating' value="5">⚒ ⚒ ⚒ ⚒ ⚒</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="content">Review<span class="has-text-danger">*</span> </label>
+          <div class="control">
+            <textarea class="textarea" name="content" placeholder="This was was fantastic, cannot recommend it enough" rows="8" cols="80"></textarea>
+          </div>
+        </div>
+
+      </section>
+      <footer class="modal-card-foot">
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link">Review</button>
+          </div>
+          <div class="control">
+            <a href="/geoSites/<%=geoSite.id%>" class="button is-text">Cancel</a>
+          </div>
+        </div>
+
+      </form>
+    </footer>
+  </div>
+</div>

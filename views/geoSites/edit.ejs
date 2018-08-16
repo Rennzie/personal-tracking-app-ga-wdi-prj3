@@ -1,0 +1,150 @@
+
+
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Update the Site</p>
+    </header>
+    <section class="modal-card-body">
+
+      <form action="/geoSites/<%=geoSite.id%>" method="POST">
+
+
+        <div class="field">
+          <label class="label" for="name">Name (req)</label>
+          <div class="control">
+            <input class="input" name="name" type="text" value="<%=geoSite.name%>">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="coverPic">Cover Image (url req)</label>
+          <div class="control">
+            <input class="input" name="coverPic" type="text" value="<%=geoSite.coverPic%>">
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="field">
+          <label class="label" for="country">Country (req)</label>
+          <div class="control">
+            <input class="input" name="country" type="text" value="<%=geoSite.country%>">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="region">Region</label>
+          <div class="control">
+            <input class="input" name="region" type="text" value="<%=geoSite.region%>">
+          </div>
+        </div>
+
+        <div class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <div class="field">
+                <label class="label" for="age">Age (Number)</label>
+                <div class="control">
+                  <input class="input" name="age" type="number" value="<%=geoSite.age%>">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <div class="field">
+                <label class="label" for="period">Period</label>
+                <div class="control">
+                  <div class="select">
+                    <select name="period" value="<%=geoSite.period%>">
+                      <option value="Quarternary - 1.8Ma">Quarternary - 1.8Ma</option>
+                      <option value="Tertiary - 65Ma">Tertiary - 65Ma</option>
+                      <option value="Creataceous - 144Ma">Creataceous - 144Ma</option>
+                      <option value="Jurassic - 206Ma">Jurassic - 206Ma</option>
+                      <option value="Triassic - 248Ma">Triassic - 248Ma</option>
+                      <option value="Permain - 248Ma">Permain - 248Ma</option>
+                      <option value="Pennsylvanian - 323Ma">Pennsylvanian - 323Ma</option>
+                      <option value="Mississippian - 254Ma">Mississippian - 254Ma</option>
+                      <option value="Devonian - 417Ma">Devonian - 417Ma</option>
+                      <option value="Silurian - 443Ma">Silurian - 443Ma</option>
+                      <option value="Ordovician - 443Ma">Ordovician - 443Ma</option>
+                      <option value="Cambrian - 540Ma">Cambrian - 540Ma</option>
+                      <option value="Precambrian - 4.56Ga">Precambrian - 4.56Ga</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="field">
+          <label class="label" for="description">Description</label>
+          <div class="control">
+            <textarea class="textarea" name="description" rows="8" cols="80" ><%=geoSite.description%></textarea>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="rockTypes">Rock Types (comma seperated)</label>
+          <div class="control">
+            <input class="input" name="rockTypes" type="text" value="<%=geoSite.rockTypes%>">
+          </div>
+        </div>
+
+        <hr>
+
+        <label class="label">Coordinates in Decimal Degrees (use negative number for W and S)</label>
+        <div class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <div class="field">
+                <label class="label" for="lat">Latitude</label>
+                <div class="control">
+                  <input class="input" name="lat" type="number" value="<%=geoSite.lat%>">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <div class="field">
+                <label class="label" for="long">Longitude</label>
+                <div class="control">
+                  <input class="input" name="long" type="number" value="<%=geoSite.long%>">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="field">
+          <label class="label" for="images">Additional Images (urls comma seperated)</label>
+          <div class="control">
+            <input class="input" name="images" type="text" value="<%=geoSite.images%>">
+          </div>
+        </div>
+
+      </section>
+      <footer class="modal-card-foot">
+        <input type="hidden" name="_method" value="PUT">
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link">Update</button>
+          </div>
+          <div class="control">
+            <a href="<%=prevPage%>" class="button is-text">Cancel</a>
+          </div>
+        </div>
+
+      </form>
+    </footer>
+  </div>
+</div>
