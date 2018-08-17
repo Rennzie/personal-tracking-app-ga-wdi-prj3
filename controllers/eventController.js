@@ -1,6 +1,13 @@
 //BACK END eventController
 const Event = require('../models/event');
 
+function eventShow(req, res, next ){
+  Event
+    .findById(req.params.id)
+    .then( event => res.json(event))
+    .catch(next);
+}
+
 
 function eventIndex( req, res, next ){
   console.log('Event index fired in controller');
@@ -11,5 +18,6 @@ function eventIndex( req, res, next ){
 }
 
 module.exports = {
+  show: eventShow,
   index: eventIndex
 };

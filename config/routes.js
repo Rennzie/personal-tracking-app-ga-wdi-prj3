@@ -20,6 +20,9 @@ console.log('Im in the router');
 Router.route('/events')
   .get(eventController.index);
 
+Router.route('/events/:id')
+  .get(eventController.show);
+
 // GOAL ROUTES
 
 
