@@ -84,6 +84,7 @@ describe('DELETE /events/:id', () => {
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .then(() => Event.find())
       .then(events => {
+        console.log('the events after deletion is ', events);
         expect(events.length).to.eq(0);
         done();
       });

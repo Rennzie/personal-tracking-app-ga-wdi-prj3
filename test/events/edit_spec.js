@@ -1,4 +1,4 @@
-/* globals describe, it, api, xit expect, beforeEach */
+/* globals describe, it, api, xit, expect, beforeEach */
 
 const User = require('../../models/user');
 const Event = require('../../models/event');
@@ -100,7 +100,7 @@ describe('POST /events', () => {
       });
   });
 
-  xit('should return an object', done => {
+  it('should return an object', done => {
     api.put(`/api/events/${eventId}`)
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .send(eventUpdateData)
@@ -110,7 +110,7 @@ describe('POST /events', () => {
       });
   });
 
-  xit('should return the correct data', done => {
+  it('should return the correct data', done => {
     api.put(`/api/events/${eventId}`)
       //.set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .send(eventUpdateData)

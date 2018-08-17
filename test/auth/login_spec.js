@@ -56,7 +56,7 @@ describe('POST /api/login', () => {
     api.post('/api/login')
       .send(userLogin)
       .end((err, res) => {
-        console.log('jwt verify is', jwt.verify(res.body.token, secret));
+        // console.log('jwt verify is', jwt.verify(res.body.token, secret));
         expect(jwt.verify(res.body.token, secret)).to.ok;
         done();
       });

@@ -18,7 +18,7 @@ function login( req, res, next ){
 
       //queried DB and maybe found a user, check we have one and validate the password
       if(!user || !user.validatePassword(req.body.password)){
-        return res.status(401).json({ message: 'Unauthorised'});
+        return res.status(401).json({ message: 'Invalid password or username!'});
       }
       //user is authenticated
 
