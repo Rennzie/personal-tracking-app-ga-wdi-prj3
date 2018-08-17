@@ -3,7 +3,7 @@ const { port, dbURI } = require('./config/environment');
 
 //internal modules
 const bodyParser = require('body-parser');
-const router = require('./config/routes');
+const Router = require('./config/routes');
 const mongoose = require('mongoose');
 
 //MongoDB
@@ -27,7 +27,7 @@ app.use(express.static(`${__dirname}/public`));
 
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
-app.use('api', router);
+app.use('api', Router);
 
 app.listen(port, () => console.log(`Express is running on port ${port}`));
 
