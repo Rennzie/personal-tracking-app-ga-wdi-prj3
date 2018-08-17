@@ -30,5 +30,5 @@ angular.module('Resolut', [
   .controller('EventsShowCtrl', EventsShowCtrl)
   .controller('EventsNewCtrl', EventsNewCtrl)
   .controller('EventsEditCtrl', EventsEditCtrl)
-  .contoller('UsersShowCtrl', UsersShowCtrl)
+  .controller('UsersShowCtrl', UsersShowCtrl)
   .config(Router);
