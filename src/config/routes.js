@@ -22,12 +22,12 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: './views/events/show.html',
       url: '/events/:id', //id is now a parameter of the state
       controller: 'EventsShowCtrl'
+    })
+    .state('eventsNew', {
+      templateUrl: './views/events/new.html',
+      url: '/events/new',
+      controller: 'EventsNewCtrl'
     });
-    // .state('eventsNew', {
-    //   templateUrl: './views/events/new.html',
-    //   url: '/events/new',
-    //   controller: 'EventsNewCtrl'
-    // })
     // .state('eventsEdit', {
     //   templateUrl: './views/events/edit.html',
     //   url: '/events/:id/edit',

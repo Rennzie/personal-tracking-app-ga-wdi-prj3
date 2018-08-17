@@ -16,6 +16,7 @@ import Router from './config/routes';
 
 import EventsIndexCtrl from './controllers/events/index';
 import EventsShowCtrl from './controllers/events/show';
+import EventsNewCtrl from './controllers/events/new';
 
 //-------- ANGULAR MODULE -----------//
 
@@ -24,4 +25,5 @@ angular.module('Resolut', [
 ])
   .controller('EventsIndexCtrl', EventsIndexCtrl)
   .controller('EventsShowCtrl', EventsShowCtrl)
+  .controller('EventsNewCtrl', EventsNewCtrl)
   .config(Router);
