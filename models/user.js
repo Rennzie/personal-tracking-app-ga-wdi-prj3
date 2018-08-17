@@ -9,6 +9,7 @@ const userSchema = mongoose.Schema({
     lon: Number
   },
   isHost: { type: Boolean, default: false },
+  isAdmin: { type: Boolean, default: false },
   password: { type: String, required: true },
   surname: { type: String, required: true },
   username: { type: String, required: true }

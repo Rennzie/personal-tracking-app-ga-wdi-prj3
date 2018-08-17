@@ -5,6 +5,7 @@ const Router = express.Router();
 
 //Controllers
 const eventController = require('../controllers/eventController');
+const authController = require('../controllers/authController');
 
 
 //Secure Route Middleware
@@ -13,6 +14,8 @@ const eventController = require('../controllers/eventController');
 //=== ROUTES ===//
 
 // AUTH ROUTES
+Router.route('/login')
+  .post(authController.login);
 
 
 // EVENT ROUTES

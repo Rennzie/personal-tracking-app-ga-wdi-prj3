@@ -30,7 +30,8 @@ const userData = [
     password: 'pass',
     passwordConfirmation: 'pass',
     surname: 'Rennie',
-    username: 'Rennzie'
+    username: 'Rennzie',
+    isAdmin: true
   },{
     email: 'mooapples@gmail.com',
     firstName: 'Kristi',
@@ -54,7 +55,8 @@ const userData = [
     password: 'pass',
     passwordConfirmation: 'pass',
     surname: 'Cornish',
-    username: '???'
+    username: 'Scornish',
+    isAdmin: true
   },{
     email: 'trimhall@gmail.com',
     firstName: 'Tristan',
