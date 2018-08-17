@@ -4,6 +4,13 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const { secret } = require('../config/environment');
 
+function register( req, res, next ){
+  User
+    .create(req.body)
+    .then(() => res.status(201).json({ message: 'Created new user'}))
+    .catch(next);
+}
+
 function login( req, res, next ){
   User
     .findOne({email: req.body.email})
@@ -29,11 +36,12 @@ function login( req, res, next ){
       //more jwt options on jwt.io documentation page
 
       console.log('create token ', token);
-      return res.json({ message: `Welcome back ${user.firstName}!`, token});
+      return res.status(201).json({ message: `Welcome back ${user.firstName}!`, token});
     })
     .catch(next);
 }
 
 module.exports = {
-  login
+  login,
+  register
 };

@@ -14,6 +14,9 @@ const authController = require('../controllers/authController');
 //=== ROUTES ===//
 
 // AUTH ROUTES
+Router.route('/register')
+  .post(authController.register);
+
 Router.route('/login')
   .post(authController.login);
 
