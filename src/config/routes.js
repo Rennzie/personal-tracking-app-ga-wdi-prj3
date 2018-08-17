@@ -35,16 +35,16 @@ function Router($stateProvider, $urlRouterProvider) {
     })
 
     //-------- AUTH STATES ---------//
-    // .state('login', {
-    //   templateUrl: './views/auth/login.html',
-    //   url: '/login',
-    //   controller: 'AuthLoginCtrl'
-    // })
-    // .state('register', {
-    //   templateUrl: './views/auth/register.html',
-    //   url: '/register',
-    //   controller: 'AuthRegisterCtrl'
-    // })
+    .state('login', {
+      templateUrl: './views/auth/login.html',
+      url: '/login',
+      controller: 'AuthLoginCtrl'
+    })
+    .state('register', {
+      templateUrl: './views/auth/register.html',
+      url: '/register',
+      controller: 'AuthRegisterCtrl'
+    });
 
     //--------- USER STATES ---------//
     // .state('usersEdit', {
@@ -52,11 +52,11 @@ function Router($stateProvider, $urlRouterProvider) {
     //   url: '/users/:id/edit',
     //   controller: 'usersEditCtrl'
     // })
-    .state('usersShow', {
-      templateUrl: './views/users/show.html',
-      url: '/users/:id', //id is now a parameter of the state
-      controller: 'EventsShowCtrl'
-    });
+    // .state('usersShow', {
+    //   templateUrl: './views/users/show.html',
+    //   url: '/users/:id', //id is now a parameter of the state
+    //   controller: 'EventsShowCtrl'
+    // });
 
   $urlRouterProvider.otherwise('/');
 }

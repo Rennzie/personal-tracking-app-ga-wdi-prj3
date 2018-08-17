@@ -21,6 +21,9 @@ import EventsEditCtrl from './controllers/events/edit';
 
 import UsersShowCtrl from './controllers/users/show';
 
+import AuthLoginCtrl from './controllers/auth/login';
+import AuthRegisterCtrl from './controllers/auth/register';
+
 //-------- ANGULAR MODULE -----------//
 
 angular.module('Resolut', [
@@ -31,4 +34,10 @@ angular.module('Resolut', [
   .controller('EventsNewCtrl', EventsNewCtrl)
   .controller('EventsEditCtrl', EventsEditCtrl)
   .controller('UsersShowCtrl', UsersShowCtrl)
-  .config(Router);
+  .controller('AuthLoginCtrl', AuthLoginCtrl)
+  .controller('AuthRegisterCtrl', AuthRegisterCtrl)
+  .config(Router)
+  .config(function($authProvider) {
+    $authProvider.loginUrl = '/api/login';
+    $authProvider.signupUrl = '/api/register';
+  });
