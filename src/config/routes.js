@@ -27,12 +27,12 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: './views/events/new.html',
       url: '/events/new',
       controller: 'EventsNewCtrl'
+    })
+    .state('eventsEdit', {
+      templateUrl: './views/events/edit.html',
+      url: '/events/:id/edit',
+      controller: 'EventsEditCtrl'
     });
-    // .state('eventsEdit', {
-    //   templateUrl: './views/events/edit.html',
-    //   url: '/events/:id/edit',
-    //   controller: 'EventsEditCtrl'
-    // })
 
     //-------- AUTH STATES ---------//
     // .state('login', {
