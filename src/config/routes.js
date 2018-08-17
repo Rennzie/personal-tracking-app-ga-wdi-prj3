@@ -17,12 +17,12 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: './views/events/index.html',
       url: '/events',
       controller: 'EventsIndexCtrl'
+    })
+    .state('eventsShow', {
+      templateUrl: './views/events/show.html',
+      url: '/events/:id', //id is now a parameter of the state
+      controller: 'EventsShowCtrl'
     });
-    // .state('eventsShow', {
-    //   templateUrl: './views/events/show.html',
-    //   url: '/events/:id', //id is now a parameter of the state
-    //   controller: 'EventsShowCtrl'
-    // })
     // .state('eventsNew', {
     //   templateUrl: './views/events/new.html',
     //   url: '/events/new',
