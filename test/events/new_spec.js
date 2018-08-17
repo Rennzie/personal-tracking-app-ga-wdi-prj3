@@ -69,17 +69,17 @@ describe('POST /events', () => {
       });
   });
 
-  xit('should return an object', done => {
+  it('should return an object', done => {
     api.post('/api/events')
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .send(eventData)
       .end((err, res) => {
-        expect(res.body).to.be.an('object');
+        expect(res.body[0]).to.be.an('object');
         done();
       });
   });
 
-  xit('should return the correct data', done => {
+  it('should return the correct data', done => {
     api.post('/api/events')
       //.set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .send(eventData)

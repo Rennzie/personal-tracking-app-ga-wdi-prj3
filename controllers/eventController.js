@@ -33,9 +33,18 @@ function eventUpdate (req, res, next ){
     .catch(next);
 }
 
+function eventDelete( req, res, next ){
+  Event
+    .findById(req.params.id)
+    .then(event => event.remove())
+    .then(() => res.sendStatus(204)) //send 204 as we are not sending json
+    .catch(next);
+}
+
 module.exports = {
   show: eventShow,
   index: eventIndex,
   create: eventCreate,
-  update: eventUpdate
+  update: eventUpdate,
+  delete: eventDelete
 };
