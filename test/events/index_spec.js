@@ -110,7 +110,7 @@ describe('GET /events', () => {  //testing the event index route
 
           //expectations are
           expect(event.capacity).to.eq(testingEvent.capacity);
-          expect(event.duration).to.eq(testingEvent.duration);
+          expect(parseInt(event.duration)).to.eq(testingEvent.duration);
           expect(event.category).to.eq(testingEvent.category);
           expect(event.imageUrl).to.eq(testingEvent.imageUrl);
           expect(event.guests).to.be.an('array');
