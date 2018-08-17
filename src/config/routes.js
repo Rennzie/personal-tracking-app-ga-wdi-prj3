@@ -32,7 +32,7 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: './views/events/edit.html',
       url: '/events/:id/edit',
       controller: 'EventsEditCtrl'
-    });
+    })
 
     //-------- AUTH STATES ---------//
     // .state('login', {
@@ -52,11 +52,11 @@ function Router($stateProvider, $urlRouterProvider) {
     //   url: '/users/:id/edit',
     //   controller: 'usersEditCtrl'
     // })
-    // .state('usersShow', {
-    //   templateUrl: './views/users/show.html',
-    //   url: '/users/:id', //id is now a parameter of the state
-    //   controller: 'EventsShowCtrl'
-    // });
+    .state('usersShow', {
+      templateUrl: './views/users/show.html',
+      url: '/users/:id', //id is now a parameter of the state
+      controller: 'EventsShowCtrl'
+    });
 
   $urlRouterProvider.otherwise('/');
 }

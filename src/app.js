@@ -19,6 +19,8 @@ import EventsShowCtrl from './controllers/events/show';
 import EventsNewCtrl from './controllers/events/new';
 import EventsEditCtrl from './controllers/events/edit';
 
+import UsersShowCtrl from './controllers/users/show';
+
 //-------- ANGULAR MODULE -----------//
 
 angular.module('Resolut', [
@@ -28,4 +30,5 @@ angular.module('Resolut', [
   .controller('EventsShowCtrl', EventsShowCtrl)
   .controller('EventsNewCtrl', EventsNewCtrl)
   .controller('EventsEditCtrl', EventsEditCtrl)
+  .contoller('UsersShowCtrl', UsersShowCtrl)
   .config(Router);
