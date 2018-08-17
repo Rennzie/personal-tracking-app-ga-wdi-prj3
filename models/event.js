@@ -7,7 +7,7 @@ const eventSchema = mongoose.Schema({
   category: { type: String, required: true },
   capacity: Number,
   concluded: Boolean,
-  duration: { type: String, required: true },  // NOTE: might be best ot convert to millisecondss
+  duration: { type: String, required: true },  // NOTE: might be best to convert to millisecondss
   description: String,
   eventTitle: { type: String, required: true },
   eventDate: { type: Date, required: true },

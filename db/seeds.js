@@ -1,16 +1,23 @@
 const mongoose = require('mongoose');
+// User bluebird to make promises easier
 mongoose.Promise = require('bluebird');
+
+// connect to Mongo using our dbURI
 const { dbURI } = require('../config/environment');
 
+// Import all the models
 const User = require('../models/user');
 const Event = require('../models/event');
 const Goal = require('../models/goal');
 
 mongoose.connect(dbURI);
+
+// Clear out the collections before we add data again
 User.collection.drop();
 Event.collection.drop();
 Goal.collection.drop();
 
+// All our seed data in arrays
 const userData = [
   {
     email: 'rnnsea001@gmail.com',
@@ -168,7 +175,7 @@ const goalData = [
   }
 ];
 
-
+// data created, ready to start seeding
 User
   .create(userData)
   .then(users => {
@@ -192,13 +199,15 @@ User
 
     //add a user to any reviews inthe event reviews
 
+    // data populated with user id's, return to chain another .then()
     return Event.create(eventData);
   })
   .then(events => {
+    //events created in DB, log them
     console.log(`Create ${events.length} events`);
 
+    //create goals and return them so we can log them
     return Goal.create(goalData);
-
   })
   .then(goals => console.log(`Create ${goals.length} events`))
   .catch(err => console.log('Seeding error is', err))
