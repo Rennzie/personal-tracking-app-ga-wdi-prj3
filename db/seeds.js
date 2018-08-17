@@ -212,26 +212,3 @@ User
   .then(goals => console.log(`Create ${goals.length} events`))
   .catch(err => console.log('Seeding error is', err))
   .finally(() => mongoose.connection.close());
-
-
-
-
-
-
-
-
-
-///////////-WHISKEASE DATA-/////////
-// User
-//   .create(userData)
-//   .then(users => {
-//     console.log(`Created ${users.length} users.`);
-//     whiskeyData[0].createdBy = users[0].id;
-//     whiskeyData[1].createdBy = users[0].id;
-//     return Whiskey.create(whiskeyData);
-//   })
-//   .then(whiskeys => {
-//     console.log(`Created ${whiskeys.length} whiskeys.`);
-//   })
-//   .catch(err => console.log(err))
-//   .finally(() => mongoose.connection.close());
