@@ -10,7 +10,7 @@ function eventShow(req, res, next ){
 
 
 function eventIndex( req, res, next ){
-  console.log('Event index fired in controller');
+  // console.log('Event index fired in controller');
   Event
     .find()
     .then(events => res.json(events))
@@ -24,8 +24,18 @@ function eventCreate( req, res, next ){
     .catch(next);
 }
 
+function eventUpdate (req, res, next ){
+  Event
+    .findById(req.params.id)
+    .then(event => event.set(req.body) )
+    .then(event => event.save())
+    .then(event => res.status(201).json(event))
+    .catch(next);
+}
+
 module.exports = {
   show: eventShow,
   index: eventIndex,
-  create: eventCreate
+  create: eventCreate,
+  update: eventUpdate
 };

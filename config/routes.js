@@ -21,7 +21,8 @@ Router.route('/events')
   .post(eventController.create); // NOTE: we will secure this route
 
 Router.route('/events/:id')
-  .get(eventController.show);
+  .get(eventController.show)
+  .put(eventController.update);
 
 // GOAL ROUTES
 
