@@ -1,11 +1,36 @@
-<h1 class="title"> {{event.eventTitle}} </h1>
-<h2 class="subtitle">Aged {{ whiskey.age }} years</h2>
-<img ng-src="{{whiskey.imageUrl}}" alt="{{whiskey.name}}">
-<hr>
-<div class="map" ng-map></div>
-<div class="">
-  The current weather in {{ whiskey.originCountry }} is {{ weatherSummary }}
+<h1 class="title"> {{ event.eventTitle }} </h1>
+
+<img ng-src="{{event.imageUrl}}" alt="{{event.eventTitle}}">
+<p> {{ event.duration }}</p>
+<p>{{ event.capacity }}</p>
+<p> {{ event.eventDate }}</p>
+
+<div class="description">
+  <h3>ABOUT</h3>
+  <p> {{ event.description }}</p>
 </div>
+
+<div class="rating">
+  <p> rating goes here</p>
+</div>
+
+<div class="distance">
+  <p>distance goes here</p>
+</div>
+
+<div class="attending">
+  <p>attending goes here</p>
+  <button type="button" name="attending">ATTENDING</button>
+</div>
+
+<div class="comments">
+<p>commentname goes here</p>
+<p>comment text goes here</p>
+</div>
+
+<div class="map" ng-map></div>
+
+
 <hr>
 <div class="level">
   <div class="level-left">
