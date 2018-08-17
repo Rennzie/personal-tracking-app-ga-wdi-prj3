@@ -1,4 +1,4 @@
-/* globals describe, it, xit, api, expect, beforeEach */
+/* globals describe, it, api, expect, beforeEach */
 
 const eventData = [
   {                   //Calisthenics in the park
@@ -62,7 +62,7 @@ const Event = require('../../models/event');
 
 let eventId;
 
-describe('GET /events', () => {  //testing the event index route
+describe('GET /events/:id', () => {  //testing the event index route
   //load event data before each test
   beforeEach(done => {
     Event.remove({})

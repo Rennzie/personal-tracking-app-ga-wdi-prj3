@@ -14,11 +14,11 @@ const eventController = require('../controllers/eventController');
 
 // AUTH ROUTES
 
-console.log('Im in the router');
 
 // EVENT ROUTES
 Router.route('/events')
-  .get(eventController.index);
+  .get(eventController.index)
+  .post(eventController.create); // NOTE: we will secure this route
 
 Router.route('/events/:id')
   .get(eventController.show);

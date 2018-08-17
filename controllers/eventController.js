@@ -17,7 +17,15 @@ function eventIndex( req, res, next ){
     .catch(next);
 }
 
+function eventCreate( req, res, next ){
+  Event
+    .create(req.body)
+    .then(event => res.status(201).json(event))
+    .catch(next);
+}
+
 module.exports = {
   show: eventShow,
-  index: eventIndex
+  index: eventIndex,
+  create: eventCreate
 };
