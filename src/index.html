@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>WDI Project 3</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+<html ng-app="Resolut">
+<head>
+  <meta charset="utf-8">
+  <title>Resolut</title>
+</head>
+
+
+<body class="container" ng-controller="MainCtrl">
+
+    <nav class="is-light">
+        <div class="navbar-brand">
+    <a  ui-sref="home" class="navbar-item">Home</a>
+    <a  ui-sref="about" class="navbar-item">About</a>
+    <a  ui-sref="eventsIndex" class="navbar-item">Browse Events</a>
+    <a  ui-sref="login" class="navbar-item" >Log in</a>
+    <a  ui-sref="register" class="navbar-item" >Sign up</a>
+    <a  ng-click="logout()" class="navbar-item">Log out</a>
+  </nav>
+  </div>
+  <!-- this is where the UI router puts the view for the current state -->
+  <div ui-view></div>
+</body>
 </html>

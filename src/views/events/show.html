@@ -1,0 +1,18 @@
+<h1 class="title"> {{event.eventTitle}} </h1>
+<h2 class="subtitle">Aged {{ whiskey.age }} years</h2>
+<img ng-src="{{whiskey.imageUrl}}" alt="{{whiskey.name}}">
+<hr>
+<div class="map" ng-map></div>
+<div class="">
+  The current weather in {{ whiskey.originCountry }} is {{ weatherSummary }}
+</div>
+<hr>
+<div class="level">
+  <div class="level-left">
+    <a class="button is-info" ui-sref="whiskeysEdit({ id: whiskey._id })">Edit</a>
+  </div>
+  <div class="level-right">
+    <button class="button is-danger" ng-click="deleteWhiskey()">Delete</button>
+  </div>
+
+</div>
