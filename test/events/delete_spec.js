@@ -44,7 +44,7 @@ const eventData = [
 let token; //token is global
 let eventId;
 
-describe('DELETE /whiskeys/:id', () => {
+describe('DELETE /events/:id', () => {
   beforeEach(done =>{
     //Now create  the users
     User.remove({})
@@ -62,7 +62,7 @@ describe('DELETE /whiskeys/:id', () => {
 
 
   xit('should return a 401 without a token', done => {
-    api.delete(`/api/event/${eventId}`)
+    api.delete(`/api/events/${eventId}`)
       .end((err, res) => {
         expect(res.status).to.eq(401);
         done();
@@ -70,7 +70,7 @@ describe('DELETE /whiskeys/:id', () => {
   });
 
   xit('should return a 204 with a token', done => {
-    api.delete(`/api/event/${eventId}`)
+    api.delete(`/api/events/${eventId}`)
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .end((err, res) => {
         console.log('the event ID is ', eventId);
@@ -80,7 +80,7 @@ describe('DELETE /whiskeys/:id', () => {
   });
 
   xit('should delete the whiskey', done => {
-    api.delete(`/api/event/${eventId}`)
+    api.delete(`/api/events/${eventId}`)
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .then(() => Event.find())
       .then(events => {
