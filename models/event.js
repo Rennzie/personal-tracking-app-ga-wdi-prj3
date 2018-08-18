@@ -11,6 +11,7 @@ const eventSchema = mongoose.Schema({
   description: String,
   eventTitle: { type: String, required: true },
   eventDate: { type: Date, required: true },
+  eventStartTime: { type: Date },
   guests: [ { type: ObjectId } ], //to hold all users attending the event
   imageUrl: String,
   isIndoors: Boolean,
@@ -30,6 +31,11 @@ const eventSchema = mongoose.Schema({
 
 
 //VIRTUALS
+//encode the datE and time correctly
+//HTML5 gives a string in the date box which has time as well.
+//
+
+
 //  --> geocode the postcode to a latlon // IDEA: we can use postcode.io to do this
 
 //  --> convert the duration to milliseconds
@@ -38,6 +44,11 @@ const eventSchema = mongoose.Schema({
 
 //  --> drop all postcodes to lowercase and remove spaces
 
+//NICE ROCKS EXAMPLE VIRTUAL
+// reviewSchema.virtual('reviewedSubmitted')
+//   .get(function(){
+//     return this.createdAt.getFullYear();
+//   });
 
 
 module.exports = mongoose.model('Event', eventSchema);
