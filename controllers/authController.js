@@ -35,7 +35,7 @@ function login( req, res, next ){
       //^^^^^^^^^required args are (payload, secret, options)
       //more jwt options on jwt.io documentation page
 
-      console.log('create token ', token);
+      // console.log('create token ', token);
       return res.status(201).json({ message: `Welcome back ${user.firstName}!`, token});
     })
     .catch(next);

@@ -1,4 +1,4 @@
-/* globals describe, it, api, xit expect, beforeEach */
+/* globals describe, it, api expect, beforeEach */
 
 const User = require('../../models/user');
 const jwt = require('jsonwebtoken');
@@ -17,7 +17,7 @@ const userData = {
   username: 'Rennzie'
 };
 
-const eventData = [
+const eventData =
   {                   //Calisthenics in the park
     category: 'body',
     capacity: 3,
@@ -36,8 +36,7 @@ const eventData = [
       lat: 51.471337,
       lon: -0.184276          // should seed this initially
     }
-  }
-];
+  };
 
 let token; //token is global
 
@@ -51,7 +50,7 @@ describe('POST /events', () => {
       });
   });
 
-  xit('should return a 401 without a token', done => {
+  it('should return a 401 without a token', done => {
     api.post('/api/events')
       .end((err, res) => {
         expect(res.status).to.eq(401);
@@ -59,7 +58,7 @@ describe('POST /events', () => {
       });
   });
 
-  xit('should return a 201 with a token', done => {
+  it('should return a 201 with a token', done => {
     api.post('/api/events')
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .send(eventData)
@@ -74,18 +73,19 @@ describe('POST /events', () => {
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .send(eventData)
       .end((err, res) => {
-        expect(res.body[0]).to.be.an('object');
+        console.log('The response is', res.body);
+        expect(res.body).to.be.an('object');
         done();
       });
   });
 
   it('should return the correct data', done => {
     api.post('/api/events')
-      //.set('Authorization', `Bearer ${token}`) // creates an authorisation header
+      .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .send(eventData)
       .end((err, res) => {
         expect(res.body.eventTitle).to.eq(eventData.eventTitle);
-        expect(res.body.eventDate).to.eq(eventData.eventDate);
+        expect(res.body.concluded).to.eq(eventData.concluded);
         done();
       });
   });

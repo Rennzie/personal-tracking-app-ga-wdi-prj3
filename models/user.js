@@ -46,13 +46,13 @@ userSchema.pre('validation', function(next){
 
 //Pre save hooks
 userSchema.pre('save', function(next){
-  console.log('Pre save fired');
+  // console.log('Pre save fired');
   this.password = bcrypt.hashSync(this.password, 8);
   next();
 });
 
 userSchema.post('save', function(){
-  console.log('Password was hashed', this.password);
+  // console.log('Password was hashed', this.password);
 });
 
 

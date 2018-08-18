@@ -1,4 +1,4 @@
-/* globals describe, it, xit, api, expect, beforeEach */
+/* globals describe,it, api, expect, beforeEach */
 
 const User = require('../../models/user');
 const Event = require('../../models/event');
@@ -19,7 +19,7 @@ const userData = {
   username: 'Rennzie'
 };
 
-const eventData = [
+const eventData =
   {                   //Calisthenics in the park
     category: 'body',
     capacity: 3,
@@ -38,8 +38,7 @@ const eventData = [
       lat: 51.471337,
       lon: -0.184276          // should seed this initially
     }
-  }
-];
+  };
 
 let token; //token is global
 let eventId;
@@ -61,7 +60,7 @@ describe('DELETE /events/:id', () => {
   });
 
 
-  xit('should return a 401 without a token', done => {
+  it('should return a 401 without a token', done => {
     api.delete(`/api/events/${eventId}`)
       .end((err, res) => {
         expect(res.status).to.eq(401);
@@ -69,22 +68,22 @@ describe('DELETE /events/:id', () => {
       });
   });
 
-  xit('should return a 204 with a token', done => {
+  it('should return a 204 with a token', done => {
     api.delete(`/api/events/${eventId}`)
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .end((err, res) => {
-        console.log('the event ID is ', eventId);
+        // console.log('the event ID is ', eventId);
         expect(res.status).to.eq(204); //No content
         done();
       });
   });
 
-  xit('should delete the whiskey', done => {
+  it('should delete the whiskey', done => {
     api.delete(`/api/events/${eventId}`)
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .then(() => Event.find())
       .then(events => {
-        console.log('the events after deletion is ', events);
+        // console.log('the events after deletion is ', events);
         expect(events.length).to.eq(0);
         done();
       });
