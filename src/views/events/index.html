@@ -14,4 +14,5 @@
     </div>
   </div>
 
-  <a class="button" ui-sref="eventsNew"> + an event </a>
+<!-- // need to add isHost boolean reaction here -->
+  <a class="button" ui-sref="eventsNew" ng-if="isHost"> + an event </a>

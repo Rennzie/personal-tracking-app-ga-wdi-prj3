@@ -6,7 +6,7 @@ function EventsEditCtrl($scope, $http, $state) {
       url: `/api/events/${$state.params.id}`,
       data: $scope.event
     })
-      .then(() => $state.go('EventsShow', {id: $state.params.id}));
+      .then(() => $state.go('eventsShow', {id: $state.params.id}));
   };
   $http({
     method: 'GET',

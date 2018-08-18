@@ -14,6 +14,8 @@ import Router from './config/routes';
 
 //--------- CONTROLLERS -----------//
 
+import MainCtrl from './controllers/main';
+
 import EventsIndexCtrl from './controllers/events/index';
 import EventsShowCtrl from './controllers/events/show';
 import EventsNewCtrl from './controllers/events/new';
@@ -29,6 +31,7 @@ import AuthRegisterCtrl from './controllers/auth/register';
 angular.module('Resolut', [
   'ui.router', 'satellizer', 'ngMessages'
 ])
+  .controller('MainCtrl', MainCtrl)
   .controller('EventsIndexCtrl', EventsIndexCtrl)
   .controller('EventsShowCtrl', EventsShowCtrl)
   .controller('EventsNewCtrl', EventsNewCtrl)

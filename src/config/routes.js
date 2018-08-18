@@ -1,6 +1,18 @@
 // FRONT END ROUTER
 
 function Router($stateProvider, $urlRouterProvider) {
+  function secureState($q, $auth, $state, $rootScope) {
+    return new $q((resolve) => {
+      if($auth.isAuthenticated()) return resolve();
+      // User not logged in
+      // create a flash message!
+      $rootScope.$broadcast('flashMessage', {
+        type: 'warning',
+        content: 'Please log in'
+      });
+      $state.go('login');
+    });
+  }
 
   $stateProvider
     .state('about', {
@@ -16,7 +28,8 @@ function Router($stateProvider, $urlRouterProvider) {
     .state('eventsIndex', {
       templateUrl: './views/events/index.html',
       url: '/events',
-      controller: 'EventsIndexCtrl'
+      controller: 'EventsIndexCtrl',
+      resolve: { secureState }
     })
     .state('eventsShow', {
       templateUrl: './views/events/show.html',
@@ -46,17 +59,17 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: 'AuthRegisterCtrl'
     });
 
-    //--------- USER STATES ---------//
-    // .state('usersEdit', {
-    //   templateUrl: '.views/users/edit.html',
-    //   url: '/users/:id/edit',
-    //   controller: 'usersEditCtrl'
-    // })
-    // .state('usersShow', {
-    //   templateUrl: './views/users/show.html',
-    //   url: '/users/:id', //id is now a parameter of the state
-    //   controller: 'EventsShowCtrl'
-    // });
+  //--------- USER STATES ---------//
+  // .state('usersEdit', {
+  //   templateUrl: '.views/users/edit.html',
+  //   url: '/users/:id/edit',
+  //   controller: 'usersEditCtrl'
+  // })
+  // .state('usersShow', {
+  //   templateUrl: './views/users/show.html',
+  //   url: '/users/:id', //id is now a parameter of the state
+  //   controller: 'UsersShowCtrl'
+  // });
 
   $urlRouterProvider.otherwise('/');
 }
