@@ -23,7 +23,8 @@ Router.route('/login')
 
 // USER ROUTES
 Router.route('/users/:id')
-  .get(userController.show);
+  .get(userController.show)
+  .put(userController.update);
 
 // EVENT ROUTES
 Router.route('/events')
