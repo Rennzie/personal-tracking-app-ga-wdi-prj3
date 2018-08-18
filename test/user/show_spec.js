@@ -33,8 +33,6 @@ describe('GET /api/user/:id', () => {
       });
   });
 
-
-
   it('should return a 200 response', done => {
     api.get(`/api/user/${userId}`)
       .end((err, res) => {
@@ -52,7 +50,7 @@ describe('GET /api/user/:id', () => {
       });
   });
 
-  it('should return a object', done => {
+  it('should return an object', done => {
     api.put(`/api/events/${userId}`)
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .end((err, res) => {

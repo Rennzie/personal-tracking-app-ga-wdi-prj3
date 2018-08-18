@@ -6,6 +6,7 @@ const Router = express.Router();
 //Controllers
 const eventController = require('../controllers/eventController');
 const authController = require('../controllers/authController');
+const userController = require('../controllers/userController');
 
 
 //Secure Route Middleware
@@ -20,6 +21,9 @@ Router.route('/register')
 Router.route('/login')
   .post(authController.login);
 
+// USER ROUTES
+Router.route('/users/:id')
+  .get(userController.show);
 
 // EVENT ROUTES
 Router.route('/events')
@@ -34,7 +38,6 @@ Router.route('/events/:id')
 // GOAL ROUTES
 
 
-// USER ROUTES
 
 
 
