@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
-
+const moment = require('moment');
+moment().format();
 
 const eventSchema = mongoose.Schema({
   createdBy: {type: ObjectId, ref: 'User'}, //hosting user
@@ -10,8 +11,7 @@ const eventSchema = mongoose.Schema({
   duration: { type: String, required: true },  // NOTE: might be best to convert to millisecondss
   description: String,
   eventTitle: { type: String, required: true },
-  eventDate: { type: Date, required: true },
-  eventStartTime: { type: Date },
+  eventDateTime: { type: String, required: true },
   guests: [ { type: ObjectId } ], //to hold all users attending the event
   imageUrl: String,
   isIndoors: Boolean,
@@ -30,10 +30,28 @@ const eventSchema = mongoose.Schema({
 }, { timestamps: true });
 
 
+// make sure the virtuals get added
+eventSchema.set('toObject', { virtuals: true });
+eventSchema.set('toJSON', { virtuals: true });
+
+
 //VIRTUALS
 //encode the datE and time correctly
 //HTML5 gives a string in the date box which has time as well.
+//setting time on the same form adds it to the date string
 //
+//// NOTE: may need to set a new date when editing, make it required field
+//formats eventDateTime in a useable date
+eventSchema.virtual('formattedDate')
+  .get(function (){
+    const momentTimeObj = moment(this.eventDateTime);
+    return moment(momentTimeObj).format('dddd, MMMM Do YYYY');
+  });
+eventSchema.virtual('formattedTime')
+  .get(function (){
+    const momentTimeObj = moment(this.eventDateTime);
+    return moment(momentTimeObj).format('HH:mm');
+  });
 
 
 //  --> geocode the postcode to a latlon // IDEA: we can use postcode.io to do this

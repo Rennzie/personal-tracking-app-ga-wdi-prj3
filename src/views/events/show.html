@@ -3,7 +3,9 @@
 <img style="max-height: 300px" ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
 <p> {{ event.duration }}</p>
 <p>{{ event.capacity }}</p>
-<p> {{ event.eventDate }}</p>
+<p>Event Date and Time is: {{ event.eventDateTime }}</p>
+<p>Event formatted date is: {{ event.formattedDate }}</p>
+<p>Event formatted time is: {{ event.formattedTime }}</p> <!-- NOTE: having an issue with the virtual, but this will ultimately show a formatted time -->
 
 <div class="description">
   <h3>ABOUT</h3>
@@ -19,7 +21,7 @@
 </div>
 
 <div class="attending">
-  <p>attending goes here</p>
+  <p>attending goes here: {{ event.guests.length}}</p>
   <button type="button" name="attending">ATTENDING</button>
 </div>
 
@@ -29,7 +31,6 @@
 </div>
 
 <div class="map" ng-map></div>
-
 
 <hr>
 <div class="level">

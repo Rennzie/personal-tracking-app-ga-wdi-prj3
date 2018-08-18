@@ -89,7 +89,7 @@
     "@uirouter/core" "5.0.21"
     "@uirouter/rx" "0.5.0"
 
-"@uirouter/angularjs@^1.0.20":
+"@uirouter/angularjs@^1.0.18":
   version "1.0.20"
   resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.20.tgz#bd330544cb2f1c35987f610d8fc353071786c04e"
   dependencies:
@@ -3757,6 +3757,10 @@ mocha@^5.2.0:
     minimatch "3.0.4"
     mkdirp "0.5.1"
     supports-color "5.4.0"
+
+moment@^2.22.2:
+  version "2.22.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
 mongodb-core@3.1.0:
   version "3.1.0"
