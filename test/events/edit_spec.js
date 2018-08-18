@@ -1,4 +1,4 @@
-/* globals describe, it, api, xit, expect, beforeEach */
+/* globals describe, it, api, expect, beforeEach */
 
 const User = require('../../models/user');
 const Event = require('../../models/event');
@@ -18,7 +18,7 @@ const userData = {
   username: 'Rennzie'
 };
 
-const eventData = [
+const eventData =
   {                   //Calisthenics in the park
     category: 'body',
     capacity: 3,
@@ -37,10 +37,9 @@ const eventData = [
       lat: 51.471337,
       lon: -0.184276          // should seed this initially
     }
-  }
-];
+  };
 
-const eventUpdateData = [
+const eventUpdateData =
   {                   //Calisthenics in the park
     category: 'mind',
     capacity: 3,
@@ -59,8 +58,7 @@ const eventUpdateData = [
       lat: 51.471337,
       lon: -0.184276          // should seed this initially
     }
-  }
-];
+  };
 
 let token; //token is global
 let eventId; //to get a single event to edit
@@ -82,7 +80,7 @@ describe('POST /events', () => {
       });
   });
 
-  xit('should return a 401 without a token', done => {
+  it('should return a 401 without a token', done => {
     api.put(`/api/events/${eventId}`)
       .end((err, res) => {
         expect(res.status).to.eq(401);
@@ -90,7 +88,7 @@ describe('POST /events', () => {
       });
   });
 
-  xit('should return a 201 with a token', done => {
+  it('should return a 201 with a token', done => {
     api.put(`/api/events/${eventId}`)
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .send(eventUpdateData)
@@ -112,11 +110,11 @@ describe('POST /events', () => {
 
   it('should return the correct data', done => {
     api.put(`/api/events/${eventId}`)
-      //.set('Authorization', `Bearer ${token}`) // creates an authorisation header
+      .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .send(eventUpdateData)
       .end((err, res) => {
         expect(res.body.eventTitle).to.eq(eventUpdateData.eventTitle);
-        expect(res.body.eventDate).to.eq(eventUpdateData.eventDate);
+        expect(res.body.concluded).to.eq(eventUpdateData.concluded);
         done();
       });
   });

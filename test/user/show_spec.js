@@ -54,7 +54,7 @@ describe('GET /api/user/:id', () => {
     api.get(`/api/users/${userId}`)
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .end((err, res) => {
-        expect(res.body[0]).to.be.an('object');
+        expect(res.body).to.be.an('object');
         done();
       });
   });
