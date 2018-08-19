@@ -47,10 +47,10 @@
 <hr>
 <div class="level">
   <div class="level-left">
-    <a ng-if="get" ui-sref="eventsEdit({ id: event._id })" class="button is-info">Edit</a>
+    <a ng-if="checkCreatorIsUser()" ui-sref="eventsEdit({ id: event._id })" class="button is-info">Edit</a>
   </div>
   <div class="level-right">
-    <button ng-click="deleteEvent()" class="button is-danger" >Delete</button>
+    <button ng-click="deleteEvent()" ng-if="checkCreatorIsUser()" class="button is-danger" >Delete</button>
   </div>
 
 </div>

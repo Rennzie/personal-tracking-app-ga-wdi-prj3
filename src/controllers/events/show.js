@@ -8,6 +8,14 @@ function EventsShowCtrl($http, $state, $scope) {
       $scope.event = res.data;
     });
 
+  //check to see if the current user is the event owner
+  $scope.checkCreatorIsUser = function(){
+    if($scope.getPayload().sub === $scope.event.createdBy._id){
+      return true;
+    }
+    return false;
+  };
+
 
 
   $scope.attend = function(){
