@@ -1,13 +1,14 @@
 //BACK END eventController
 const Event = require('../models/event');
 
+
+//---------for all the event data --------///
 function eventShow(req, res, next ){
   Event
     .findById(req.params.id)
     .then( event => res.json(event))
     .catch(next);
 }
-
 
 function eventIndex( req, res, next ){
   // console.log('Event index fired in controller');
@@ -40,6 +41,10 @@ function eventDelete( req, res, next ){
     .then(() => res.sendStatus(204)) //send 204 as we are not sending json
     .catch(next);
 }
+
+//---------filtered route for the mind --------//
+
+
 
 module.exports = {
   show: eventShow,
