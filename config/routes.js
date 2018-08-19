@@ -47,7 +47,8 @@ Router.route('/users/:userId/goals')
   .post(goalController.create);
 
 Router.route('/users/:userId/goals/:goalId')
-  .get(goalController.show);
+  .get(goalController.show)
+  .put(goalController.update);
 
 
 

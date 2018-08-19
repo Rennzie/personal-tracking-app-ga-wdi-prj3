@@ -33,9 +33,19 @@ function goalCreate( req, res, next ){
     .catch(next);
 }
 
+function goalUpdate( req, res, next ){
+  Goal
+    .findById(req.params.goalId)
+    .then(goal => goal.set(req.body))
+    .then(goal => goal.save())
+    .then(goal => res.status(201).json(goal))
+    .catch(next);
+}
+
 
 module.exports = {
   index: goalIndex,
   show: goalShow,
-  create: goalCreate
+  create: goalCreate,
+  update: goalUpdate
 };
