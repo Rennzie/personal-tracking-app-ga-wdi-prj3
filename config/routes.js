@@ -7,6 +7,7 @@ const Router = express.Router();
 const eventController = require('../controllers/eventController');
 const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
+const goalController = require('../controllers/goalController');
 
 
 //Secure Route Middleware
@@ -41,7 +42,8 @@ Router.route('/events/:id')
   .delete( eventController.delete);  // NOTE: we will secure this route
 
 // GOAL ROUTES
-
+Router.route('/users/:userId/goals')
+  .get(goalController.index);
 
 
 
