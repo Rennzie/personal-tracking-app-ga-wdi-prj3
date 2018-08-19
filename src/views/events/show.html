@@ -3,9 +3,8 @@
 <h1 class="title"> {{ event.eventTitle }} </h1>
 
 <img style="max-height: 300px" ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
-<p> {{ event.duration }}</p>
-<p>{{ event.capacity }}</p>
-<p>Event Date and Time is: {{ event.eventDateTime }}</p>
+<p> duratione {{ event.duration }}mins</p>
+<p>capacity {{ event.capacity }}ppl</p>
 <p>Event formatted date is: {{ event.formattedDate }}</p>
 <p>Event formatted time is: {{ event.formattedTime }}</p> <!-- NOTE: having an issue with the virtual, but this will ultimately show a formatted time -->
 
@@ -22,14 +21,24 @@
   <p>distance goes here</p>
 </div>
 
+<!-- guest and attendance  -->
 <div class="attending">
+  <div class="attendees">
+    <div class="level" ng-repeat="guest in event.guests">
+      <a  ui-sref="usersShow({ id: guest._id })">
+        <img class="avatar" ng-src="{{ guest.imageUrl }}" style="max-height: 40px">
+        <p>{{ guest.username}}</p>
+      </a>
+    </div>
+  </div>
+
   <p>attending goes here: {{ event.guests.length}}</p>
   <button type="button" name="attending">ATTENDING</button>
 </div>
 
 <div class="comments">
-<p>commentname goes here</p>
-<p>comment text goes here</p>
+  <p>commentname goes here</p>
+  <p>comment text goes here</p>
 </div>
 
 <div class="map" ng-map></div>
