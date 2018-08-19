@@ -1,7 +1,7 @@
 //goals will only be shown to a a specific user
 //  they will see all their goals,
 //  goals should be soreted by discipline, model?
-// const User = require('../models/user');
+//  const User = require('../models/user');
 const Goal = require('../models/goal');
 
 function goalIndex( req, res, next ){
@@ -9,21 +9,25 @@ function goalIndex( req, res, next ){
     .find()
     // .pupulate('createdBy')
     .then(goals => {
-      console.log('The requesting user is ', req.params.userId);
-
-      // const stringyGoals = JSON.stringify(goals);
-      // we have the goals, need to filter for the users
+      // console.log('The requesting user is ', req.params.userId);
+      // we have the goals, need to filter by the users id
       const userGoals = goals.filter(goal => goal.createdBy.equals(req.params.userId));
-      // const goalResult = JSON.parse(userGoals);
-      // objectId1.equals(objectId2)
+
+      //return filtered goals to the requester
       res.json(userGoals);
     })
     .catch(next);
 }
 
+function goalShow( req, res ,next ){
+  Goal
+    .findById(req.params.goalId)
+    .then(goal => res.json(goal))
+    .catch(next);
+}
 
 
 module.exports = {
-  index: goalIndex
-  // show: goalShow
+  index: goalIndex,
+  show: goalShow
 };
