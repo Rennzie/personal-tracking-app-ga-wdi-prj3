@@ -43,7 +43,17 @@ function eventDelete( req, res, next ){
 }
 
 //---------filtered route for the mind --------//
-
+function eventMindIndex( req, res, next ){
+  Event
+    .find()
+    .then(events =>{
+      const mindEvent = events.filter(event => event.category === 'mind' );
+      console.log('the filtered events are ', mindEvent);
+      return mindEvent;
+    })
+    .then(mindEvents => res.json(mindEvents))
+    .catch(next);
+}
 
 
 module.exports = {
@@ -51,5 +61,6 @@ module.exports = {
   index: eventIndex,
   create: eventCreate,
   update: eventUpdate,
-  delete: eventDelete
+  delete: eventDelete,
+  mindIndex: eventMindIndex
 };
