@@ -8,12 +8,14 @@ const userSchema = mongoose.Schema({
     lat: Number,
     lon: Number
   },
+  hosterName: String,
+  hasHostName: { type: Boolean, default: false }, 
+  imageUrl: String,
   isHost: { type: Boolean, default: false },
   isAdmin: { type: Boolean, default: false },
   password: { type: String, required: true },
   surname: { type: String, required: true },
-  username: { type: String, required: true },
-  imageUrl: String
+  username: { type: String, required: true }
 }, { timestamps: true });
 
 

@@ -4,6 +4,15 @@
   <img ng-src="{{user.imageUrl}}" alt="{{user.username}}">
 </div>
 
+<div class="hosting">
+  <button ng-if="!user.isHost" ng-click="becomeAHost()" class="button is-text">I want to be a host</button>
+  <a ui-sref="eventsNew" ng-if="user.isHost" class="button is-text">Click here to create an event</a>
+  <form ng-submit="addHosterName()" ng-if="user.isHost && !user.hasHostName">
+    <input ng-model="user.hosterName" type="text" name="hosterName" placeholder="ParkCali201">
+    <button class="button is-info">Create HosterName</button>
+  </form>
+</div>
+
 <div class="targetsTracking">
   <p>TARGET HOURS</p>
   <ul>

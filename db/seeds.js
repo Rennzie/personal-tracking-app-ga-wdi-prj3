@@ -26,7 +26,7 @@ const userData = [
       lat: 51.471337,
       lon: -0.184276
     },
-    isHost: true,
+    isHost: false,
     imageUrl: 'https://i.stack.imgur.com/IHLNO.jpg',
     password: 'pass',
     passwordConfirmation: 'pass',
