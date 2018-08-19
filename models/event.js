@@ -53,12 +53,15 @@ eventSchema.virtual('formattedTime')
     return moment(momentTimeObj).format('HH:mm');
   });
 
+eventSchema.virtual('newGuest')
+  .set(function(newGuest){
+    this.guests.push(mongoose.Types.ObjectId(newGuest));
+  });
+
 
 //  --> geocode the postcode to a latlon // IDEA: we can use postcode.io to do this
 
 //  --> convert the duration to milliseconds
-
-//  --> convert the input event date to milliseconds
 
 //  --> drop all postcodes to lowercase and remove spaces
 

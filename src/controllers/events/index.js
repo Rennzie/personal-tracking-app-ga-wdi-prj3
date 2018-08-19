@@ -4,8 +4,8 @@ function EventsIndexCtrl($scope, $http, $state) {
     url: '/api/events'
   }) //Submit an HTTP request to /api/EventsIndexCtrl
     .then(res => {
-      console.log('the $state is ======> ', $state.current.name);
-      console.log('events are', res.data);
+      // console.log('the $state is ======> ', $state.current.name);
+      // console.log('events are', res.data);
       let events;
       switch($state.current.name){
         case 'eventsIndex':

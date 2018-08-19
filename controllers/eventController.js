@@ -30,7 +30,10 @@ function eventUpdate (req, res, next ){
   Event
     .findById(req.params.id)
     .then(event => event.set(req.body) )
-    .then(event => event.save())
+    .then(event =>{
+      // event.pupulate('guests');
+      return event.save();
+    } )
     .then(event => res.status(201).json(event))
     .catch(next);
 }
