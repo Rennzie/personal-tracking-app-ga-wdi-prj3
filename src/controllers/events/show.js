@@ -8,9 +8,25 @@ function EventsShowCtrl($http, $state, $scope) {
       $scope.event = res.data;
     });
 
-  //check to see if the current user is the event owner
-
   $scope.$watch('event', () => {
+    checkUser();
+    checkUserAttends();
+  } );
+
+
+  function checkUserAttends(){ // NOTE: this is a double function !!!??? must be a better pattern
+    if($scope.event){
+      $scope.checkUserIsAttending = function() {
+        const currentUser = $scope.getPayload().sub;
+        const filteredGuests = $scope.event.guests.filter(guest => guest._id === currentUser);
+        if(filteredGuests[0]) return true;
+        return false;
+      };
+    }
+  }
+
+  //check to see if the current user is the event owner
+  function checkUser(){
     if($scope.event){
       $scope.checkCreatorIsUser = function(){
         //check user is logged in
@@ -20,9 +36,8 @@ function EventsShowCtrl($http, $state, $scope) {
 
         return false;
       };
-
     }
-  });
+  }
 
   $scope.attend = function(){
     const updateData = $scope.event;
@@ -41,12 +56,11 @@ function EventsShowCtrl($http, $state, $scope) {
 export default EventsShowCtrl;
 
 
-
-
-
-
-
 //  PSUEDO CODE FOR UPDATING ATTENDEE LIST
 //make a put request to event update
 //send an update guest array
 //  --> this should include all required fields
+
+
+//  REMOVE/DISABLE BUTTON IF USER IS ATTENDING
+//  check if current users id is with the attending array

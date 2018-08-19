@@ -26,17 +26,18 @@
 
 <!-- guest and attendance  -->
 <div class="attending">
-  <div class="attendees">
-    <div class="level" ng-repeat="guest in event.guests">
-      <a  ui-sref="usersShow({ id: guest._id })">
+  <div class="attendees columns">
+    <div ng-repeat="guest in event.guests" class="column" >
+      <a  ui-sref="usersShow({ id: guest._id })" >
         <img class="avatar" ng-src="{{ guest.imageUrl }}" style="max-height: 40px">
         <p>{{ guest.username}}</p>
       </a>
     </div>
   </div>
 
-  <p>attending goes here: {{ event.guests.length}}</p>
-  <button ng-click="attend()" type="button is-info">ATTENDING</button>
+  <p>There are {{ event.guests.length}} signed up guest</p>
+  <button ng-if="checkUserAttends" ng-click="attend()" class="button is-info">ATTENDING</button>
+  <button ng-if="!checkUserAttends" ng-click="cancelAttend()" class="button is-text">Cant go anymore</button>
 </div>
 
 <hr>
