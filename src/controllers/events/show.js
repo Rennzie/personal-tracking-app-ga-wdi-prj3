@@ -8,6 +8,7 @@ function EventsShowCtrl($http, $state, $scope) {
       $scope.event = res.data;
     });
 
+  //wait for event to update before running function
   $scope.$watch('event', () => {
     checkCreatorIsUser();
     checkUserIsAttending();
@@ -31,11 +32,13 @@ function EventsShowCtrl($http, $state, $scope) {
         $scope.checkCreatorIsUser = false;
       }
     }
-
   }
+
+  //check to see if the current user is attending the event
   function checkUserIsAttending() {
     if($scope.event){
       const currentUser = $scope.getPayload().sub;
+      //filter agains current user, if length > 0 then user is attending
       const filteredGuests = $scope.event.guests.filter(guest => guest._id === currentUser);
 
       if(filteredGuests[0]){
@@ -46,11 +49,12 @@ function EventsShowCtrl($http, $state, $scope) {
     }
   }
 
+  //handle user wanting to attend an event
   $scope.attend = function(){
     const updateData = $scope.event;
     updateData.guests.push($scope.getPayload().sub);
 
-    $http({ // NOTE: this does not repopulate the guest array in backend
+    $http({ // NOTE: this does not repopulate the guest array in backend dynamically
       method: 'PUT',
       url: `/api/events/${$state.params.id}`,
       data: JSON.stringify(updateData)
@@ -59,14 +63,15 @@ function EventsShowCtrl($http, $state, $scope) {
     });
   };
 
+  //handle users wanting to cancel sign up
   $scope.cancelAttend = function(){
     console.log('the current user is: ', $scope.getPayload().sub);
     console.log('the data to update is: ', $scope.event);
     const newGuests = $scope.event.guests.filter(guest => guest._id !== $scope.getPayload().sub);
     $scope.event.guests = newGuests;
-    // console.log('the updated data is: ', $scope.event);
 
-    $http({ // NOTE: this does not repopulate the guest array in backend
+    //we have data to update, make call to backend
+    $http({
       method: 'PUT',
       url: `/api/events/${$state.params.id}`,
       data: JSON.stringify($scope.event)

@@ -25,7 +25,7 @@
 <hr>
 
 <!-- guest and attendance  -->
-<div class="attending">
+<div ng-if="isAuthenticated()" class="attending">
   <div class="attendees columns">
     <div ng-repeat="guest in event.guests" class="column" >
       <a  ui-sref="usersShow({ id: guest._id })" >
