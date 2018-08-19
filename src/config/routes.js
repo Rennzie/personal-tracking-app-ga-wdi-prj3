@@ -28,8 +28,8 @@ function Router($stateProvider, $urlRouterProvider) {
     .state('eventsIndex', {
       templateUrl: './views/events/index.html',
       url: '/events',
-      controller: 'EventsIndexCtrl',
-      resolve: { secureState }
+      controller: 'EventsIndexCtrl'
+      // resolve: { secureState }
     })
     .state('eventsShow', {
       templateUrl: './views/events/show.html',

@@ -9,12 +9,20 @@ function EventsShowCtrl($http, $state, $scope) {
     });
 
   //check to see if the current user is the event owner
-  $scope.checkCreatorIsUser = function(){
-    if($scope.getPayload().sub === $scope.event.createdBy._id){
-      return true;
+
+  $scope.$watch('event', () => {
+    if($scope.event){
+      $scope.checkCreatorIsUser = function(){
+        //check user is logged in
+        if(!$scope.isAuthenticated()) return false;
+        if(!$scope.event.createdBy._id)return false;
+        if($scope.getPayload().sub === $scope.event.createdBy._id) return true;
+
+        return false;
+      };
+
     }
-    return false;
-  };
+  });
 
 
 

@@ -3,7 +3,7 @@
 <h1 class="title"> {{ event.eventTitle }} </h1>
 
 <img style="max-height: 300px" ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
-<p class="has-text-weight-bold">hosted by: {{ event.createdBy.hosterName}}</p>
+<p  class="has-text-weight-bold">hosted by: {{ event.createdBy.hosterName || event.createdBy.username}}</p>
 <p> duration {{ event.duration }}mins</p>
 <p>capacity {{ event.capacity }}ppl</p>
 <p>Event formatted date is: {{ event.formattedDate }}</p>
@@ -22,6 +22,8 @@
   <p>distance goes here</p>
 </div>
 
+<hr>
+
 <!-- guest and attendance  -->
 <div class="attending">
   <div class="attendees">
@@ -36,6 +38,8 @@
   <p>attending goes here: {{ event.guests.length}}</p>
   <button ng-click="attend()" type="button is-info">ATTENDING</button>
 </div>
+
+<hr>
 
 <div class="comments">
   <p>commentname goes here</p>
