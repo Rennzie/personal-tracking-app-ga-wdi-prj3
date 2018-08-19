@@ -33,8 +33,8 @@ function goalCreate( req, res, next ){
     .then(goal => {
       goal.createdBy =  mongoose.Types.ObjectId(req.params.userId);
       // console.log('the ObjId goals userId is=====> ', goal.createdBy);
-      goal.save();
-      return goal.set(goal);
+      goal.set(goal);
+      return goal.save();
     })
     .then(goal => res.status(201).json({message: 'Created a new goal', goal}))
     .catch(next);

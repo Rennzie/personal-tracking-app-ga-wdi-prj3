@@ -1,6 +1,6 @@
 //BACK END eventController
 const Event = require('../models/event');
-
+const mongoose = require('mongoose');
 
 //---------for all the event data --------///
 function eventShow(req, res, next ){
@@ -22,6 +22,11 @@ function eventIndex( req, res, next ){
 function eventCreate( req, res, next ){
   Event
     .create(req.body)
+    .then(event => {
+      event.createdBy = mongoose.Types.ObjectId(req.params.id);
+      event.set(event);
+      return event.save();
+    })
     .then(event => res.status(201).json(event))
     .catch(next);
 }
