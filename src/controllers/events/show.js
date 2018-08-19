@@ -4,9 +4,11 @@ function EventsShowCtrl($http, $state, $scope) {
     url: `/api/events/${$state.params.id}`
   })
     .then(res => {
-      // console.log('Found an event', res.data);
+      console.log('Found an event', res.data);
       $scope.event = res.data;
     });
+
+
 
   $scope.attend = function(){
     const updateData = $scope.event;

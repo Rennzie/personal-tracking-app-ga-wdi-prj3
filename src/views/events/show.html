@@ -3,7 +3,8 @@
 <h1 class="title"> {{ event.eventTitle }} </h1>
 
 <img style="max-height: 300px" ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
-<p> duratione {{ event.duration }}mins</p>
+<p class="has-text-weight-bold">hosted by: {{ event.createdBy.hosterName}}</p>
+<p> duration {{ event.duration }}mins</p>
 <p>capacity {{ event.capacity }}ppl</p>
 <p>Event formatted date is: {{ event.formattedDate }}</p>
 <p>Event formatted time is: {{ event.formattedTime }}</p> <!-- NOTE: having an issue with the virtual, but this will ultimately show a formatted time -->
@@ -46,10 +47,10 @@
 <hr>
 <div class="level">
   <div class="level-left">
-    <a class="button is-info" ui-sref="eventsEdit({ id: event._id })">Edit</a>
+    <a ng-if="get" ui-sref="eventsEdit({ id: event._id })" class="button is-info">Edit</a>
   </div>
   <div class="level-right">
-    <button class="button is-danger" ng-click="deleteEvent()">Delete</button>
+    <button ng-click="deleteEvent()" class="button is-danger" >Delete</button>
   </div>
 
 </div>

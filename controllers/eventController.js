@@ -7,6 +7,7 @@ function eventShow(req, res, next ){
   Event
     .findById(req.params.id)
     .populate('guests')
+    .populate('createdBy')
     .then( event => res.json(event))
     .catch(next);
 }

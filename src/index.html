@@ -6,10 +6,10 @@
 </head>
 
 
-<body class="container" ng-controller="MainCtrl"> <!-- NOTE: need MainCtrl here to get its functions globally -->
+<body ng-controller="MainCtrl"> <!-- NOTE: need MainCtrl here to get its functions globally -->
 
-  <nav class="is-light">
-    <div class="navbar-brand">
+  <nav class="navbar is-light">
+    <div class="navbar-brand container">
       <a  ui-sref="home" class="navbar-item">Home</a>
       <a  ui-sref="about" class="navbar-item">About</a>
       <a  ui-sref="eventsIndex" class="navbar-item">Browse Events</a>
@@ -21,6 +21,13 @@
   </nav>
 
   <!-- this is where the UI router puts the view for the current state -->
-  <div ui-view></div>
+  <div class="container" ui-view></div>
+
+<div class="level"> </div>
+  <footer class="footer is-lighter">
+    <div class="content has-text-centered">
+      <p>Made by Sean & Sophie </p>
+    </div>
+  </footer>
 </body>
 </html>
