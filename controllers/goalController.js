@@ -26,8 +26,16 @@ function goalShow( req, res ,next ){
     .catch(next);
 }
 
+function goalCreate( req, res, next ){
+  Goal
+    .create(req.body)
+    .then(() => res.status(201).json({message: 'Created a new goal'}))
+    .catch(next);
+}
+
 
 module.exports = {
   index: goalIndex,
-  show: goalShow
+  show: goalShow,
+  create: goalCreate
 };
