@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const rp = require('request-promise'); //Make HTTP resuest on the back-end to external API's
+
 const bcrypt = require('bcrypt');
 
 const userSchema = mongoose.Schema({
@@ -9,11 +11,12 @@ const userSchema = mongoose.Schema({
     lon: Number
   },
   hosterName: String,
-  hasHostName: { type: Boolean, default: false }, 
+  hasHostName: { type: Boolean, default: false },
   imageUrl: String,
   isHost: { type: Boolean, default: false },
   isAdmin: { type: Boolean, default: false },
   password: { type: String, required: true },
+  homePostcode: String,
   surname: { type: String, required: true },
   username: { type: String, required: true }
 }, { timestamps: true });
@@ -36,6 +39,18 @@ userSchema.virtual('memberSince')
   .get(function(){
     return this.createdAt.getFullYear();
   });
+
+userSchema.virtual('homeLocation')
+  .set(function() {
+    const postcode = this.postcode.replace(/' '/g, '').toLowerCase();
+    rp({
+      method: 'GET',
+      url: `http://api.postcodes.io/postcodes/${postcode}`
+    })
+      .then(result => {
+        
+      });
+  })
 
 //Pre validation hooks
 userSchema.pre('validation', function(next){

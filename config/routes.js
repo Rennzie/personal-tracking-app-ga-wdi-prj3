@@ -9,6 +9,9 @@ const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
 const goalController = require('../controllers/goalController');
 
+// external API controllers
+const locationController = require('../controllers/locationController');
+
 
 //Secure Route Middleware
 const secureRoute = require('../lib/secureRoute');
@@ -54,7 +57,9 @@ Router.route('/users/:userId/goals/:goalId')
   .put(goalController.update)
   .delete(goalController.delete);
 
-
+//External APIs
+Router.route('/geolocation')
+  .get(locationController.encodePC);
 
 
 
