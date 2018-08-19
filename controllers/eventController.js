@@ -6,6 +6,7 @@ const Event = require('../models/event');
 function eventShow(req, res, next ){
   Event
     .findById(req.params.id)
+    .populate('guests')
     .then( event => res.json(event))
     .catch(next);
 }
@@ -42,18 +43,19 @@ function eventDelete( req, res, next ){
     .catch(next);
 }
 
-//---------filtered route for the mind --------//
-function eventMindIndex( req, res, next ){
-  Event
-    .find()
-    .then(events =>{
-      const mindEvent = events.filter(event => event.category === 'mind' );
-      console.log('the filtered events are ', mindEvent);
-      return mindEvent;
-    })
-    .then(mindEvents => res.json(mindEvents))
-    .catch(next);
-}
+// NOTE: we did this in the front end
+// //---------filtered route for the mind --------//
+// function eventMindIndex( req, res, next ){
+//   Event
+//     .find()
+//     .then(events =>{
+//       const mindEvent = events.filter(event => event.category === 'mind' );
+//       console.log('the filtered events are ', mindEvent);
+//       return mindEvent;
+//     })
+//     .then(mindEvents => res.json(mindEvents))
+//     .catch(next);
+// }
 
 
 module.exports = {
@@ -61,6 +63,5 @@ module.exports = {
   index: eventIndex,
   create: eventCreate,
   update: eventUpdate,
-  delete: eventDelete,
-  mindIndex: eventMindIndex
+  delete: eventDelete
 };

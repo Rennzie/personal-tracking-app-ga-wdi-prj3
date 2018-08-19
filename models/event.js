@@ -12,7 +12,7 @@ const eventSchema = mongoose.Schema({
   description: String,
   eventTitle: { type: String, required: true },
   eventDateTime: { type: String, required: true },
-  guests: [ { type: ObjectId } ], //to hold all users attending the event
+  guests: [ { type: ObjectId, ref: 'User'} ], //to hold all users attending the event
   imageUrl: String,
   isIndoors: Boolean,
   location: {     //sub document to hold event location

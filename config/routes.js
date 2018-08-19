@@ -40,9 +40,9 @@ Router.route('/events/:id')
   .get(eventController.show)
   .put( eventController.update)      // NOTE: we will secure this route
   .delete( eventController.delete);  // NOTE: we will secure this route
-  
-Router.route('/events/mind')
-  .get(eventController.mindIndex);
+
+// Router.route('/events/mind')
+//   .get(eventController.mindIndex);
 
 // GOAL ROUTES // NOTE: no need to secure as this is done by the userprofile controller
 Router.route('/users/:userId/goals')
