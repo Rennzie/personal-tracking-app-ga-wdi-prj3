@@ -48,7 +48,8 @@ Router.route('/users/:userId/goals')
 
 Router.route('/users/:userId/goals/:goalId')
   .get(goalController.show)
-  .put(goalController.update);
+  .put(goalController.update)
+  .delete(goalController.delete);
 
 
 
