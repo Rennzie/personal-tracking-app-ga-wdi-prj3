@@ -58,6 +58,22 @@ function EventsShowCtrl($http, $state, $scope) {
       console.log('The updated data is: ', result.data);
     });
   };
+
+  $scope.cancelAttend = function(){
+    console.log('the current user is: ', $scope.getPayload().sub);
+    console.log('the data to update is: ', $scope.event);
+    const newGuests = $scope.event.guests.filter(guest => guest._id !== $scope.getPayload().sub);
+    $scope.event.guests = newGuests;
+    // console.log('the updated data is: ', $scope.event);
+
+    $http({ // NOTE: this does not repopulate the guest array in backend
+      method: 'PUT',
+      url: `/api/events/${$state.params.id}`,
+      data: JSON.stringify($scope.event)
+    }).then(result => {
+      console.log('The updated data is: ', result.data);
+    });
+  };
 }
 
 
