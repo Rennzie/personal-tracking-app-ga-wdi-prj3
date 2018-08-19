@@ -24,8 +24,6 @@ function EventsShowCtrl($http, $state, $scope) {
     }
   });
 
-
-
   $scope.attend = function(){
     const updateData = $scope.event;
     updateData.guests.push($scope.getPayload().sub);
