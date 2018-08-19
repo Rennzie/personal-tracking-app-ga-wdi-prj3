@@ -27,6 +27,7 @@ const userData = [
       lon: -0.184276
     },
     isHost: true,
+    imageUrl: 'https://i.stack.imgur.com/IHLNO.jpg',
     password: 'pass',
     passwordConfirmation: 'pass',
     surname: 'Rennie',
@@ -40,6 +41,7 @@ const userData = [
       lon: -0.184276
     },
     isHost: true,
+    imageUrl: 'https://i.stack.imgur.com/IHLNO.jpg',
     password: 'pass',
     passwordConfirmation: 'pass',
     surname: 'Sayer',
@@ -52,6 +54,7 @@ const userData = [
       lon: -0.191837
     },
     isHost: true,
+    imageUrl: 'https://i.stack.imgur.com/IHLNO.jpg',
     password: 'pass',
     passwordConfirmation: 'pass',
     surname: 'Cornish',
@@ -65,6 +68,7 @@ const userData = [
       lon: -0.100976
     },
     isHost: false,
+    imageUrl: 'https://i.stack.imgur.com/IHLNO.jpg',
     password: 'pass',
     passwordConfirmation: 'pass',
     surname: 'Hall',
