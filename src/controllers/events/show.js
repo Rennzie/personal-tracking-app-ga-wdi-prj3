@@ -9,33 +9,40 @@ function EventsShowCtrl($http, $state, $scope) {
     });
 
   $scope.$watch('event', () => {
-    checkUser();
-    checkUserAttends();
+    checkCreatorIsUser();
+    checkUserIsAttending();
   } );
 
-
-  function checkUserAttends(){ // NOTE: this is a double function !!!??? must be a better pattern
-    if($scope.event){
-      $scope.checkUserIsAttending = function() {
-        const currentUser = $scope.getPayload().sub;
-        const filteredGuests = $scope.event.guests.filter(guest => guest._id === currentUser);
-        if(filteredGuests[0]) return true;
-        return false;
-      };
-    }
-  }
-
   //check to see if the current user is the event owner
-  function checkUser(){
+  function checkCreatorIsUser(){
     if($scope.event){
-      $scope.checkCreatorIsUser = function(){
-        //check user is logged in
-        if(!$scope.isAuthenticated()) return false;
-        if(!$scope.event.createdBy._id)return false;
-        if($scope.getPayload().sub === $scope.event.createdBy._id) return true;
+      //check user is logged in
+      if(!$scope.isAuthenticated()){
+        $scope.checkCreatorIsUser = false;
+      }
 
-        return false;
-      };
+      if(!$scope.event.createdBy._id){
+        $scope.checkCreatorIsUser = false;
+      }
+
+      if($scope.getPayload().sub === $scope.event.createdBy._id){
+        $scope.checkCreatorIsUser = true;
+      }else{
+        $scope.checkCreatorIsUser = false;
+      }
+    }
+
+  }
+  function checkUserIsAttending() {
+    if($scope.event){
+      const currentUser = $scope.getPayload().sub;
+      const filteredGuests = $scope.event.guests.filter(guest => guest._id === currentUser);
+
+      if(filteredGuests[0]){
+        $scope.userIsAttending = true;
+      }else {
+        $scope.userIsAttending = false;
+      }
     }
   }
 
@@ -52,6 +59,7 @@ function EventsShowCtrl($http, $state, $scope) {
     });
   };
 }
+
 
 export default EventsShowCtrl;
 
