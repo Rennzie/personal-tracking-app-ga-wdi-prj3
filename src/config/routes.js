@@ -46,6 +46,23 @@ function Router($stateProvider, $urlRouterProvider) {
       url: '/events/:id/edit',
       controller: 'EventsEditCtrl'
     })
+    //-event mind index
+    .state('eventsMindIndex', {
+      templateUrl: './views/events/index.html',
+      url: '/events/mind',
+      controller: 'EventsIndexCtrl'
+    })
+    .state('eventsBodyIndex', {
+      templateUrl: './views/events/index.html',
+      url: '/events/mind',
+      controller: 'EventsIndexCtrl'
+    })
+    .state('eventsSoulIndex', {
+      templateUrl: './views/events/index.html',
+      url: '/events/mind',
+      controller: 'EventsIndexCtrl'
+    })
+
 
     //-------- AUTH STATES ---------//
     .state('login', {

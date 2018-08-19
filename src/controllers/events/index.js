@@ -1,17 +1,28 @@
-function EventsIndexCtrl($scope, $http) {
+function EventsIndexCtrl($scope, $http, $state) {
   $http({
     method: 'GET',
     url: '/api/events'
   }) //Submit an HTTP request to /api/EventsIndexCtrl
     .then(res => {
+      console.log('the $state is ======> ', $state.current.name);
       console.log('events are', res.data);
-      $scope.events = res.data;
+      let events;
+      switch($state.current.name){
+        case 'eventsIndex':
+          events = res.data;
+          break;
+        case 'eventsMindIndex':
+          events = res.data.filter(event => event.category === 'mind');
+          break;
+        case 'eventsBodyIndex':
+          events = res.data.filter(event => event.category === 'body');
+          break;
+        case 'eventsSoulIndex':
+          events = res.data.filter(event => event.category === 'soul');
+          break;
+      }
 
-      ////----filter by catergory-----////
-      $scope.mindEvents = res.data.filter(event => event.category === 'mind');
-      $scope.soulEvents = res.data.filter(event => event.category === 'soul');
-      $scope.bodyEvents = res.data.filter(event => event.category === 'body');
-      // console.log('the mind events are ', $scope.mindEvents);
+      $scope.events = events;
     });
 }
 
