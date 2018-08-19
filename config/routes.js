@@ -22,6 +22,9 @@ Router.route('/login')
   .post(authController.login);
 
 // USER ROUTES
+Router.route('/users')
+  .get(userController.index);
+
 Router.route('/users/:id')
   // .all(secureRoute)
   .get(userController.show)

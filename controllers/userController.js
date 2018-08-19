@@ -18,7 +18,15 @@ function userUpdate(req, res, next ){
     .catch(next);
 }
 
+function userIndex( req, res, next ){
+  User
+    .find()
+    .then(users => res.json(users))
+    .catch(next);
+}
+
 module.exports = {
   show: userShow,
-  update: userUpdate
+  update: userUpdate,
+  index: userIndex //for getting a User id in insomnia
 };

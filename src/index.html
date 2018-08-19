@@ -6,19 +6,20 @@
 </head>
 
 
-<body class="container">
+<body class="container" ng-controller="MainCtrl"> <!-- NOTE: need MainCtrl here to get its functions globally -->
 
-    <nav class="is-light">
-        <div class="navbar-brand">
-    <a  ui-sref="home" class="navbar-item">Home</a>
-    <a  ui-sref="about" class="navbar-item">About</a>
-    <a  ui-sref="eventsIndex" class="navbar-item">Browse Events</a>
-    <a  ui-sref="usersShow" class="navbar-item">My Profile</a>
-    <a  ui-sref="login" class="navbar-item" ng-if="!isAuthenticated()">Log in</a>
-  <a  ui-sref="register" class="navbar-item" ng-if="!isAuthenticated()">Sign up</a>
-  <a  ng-click="logout()" class="navbar-item" ng-if="isAuthenticated()">Log out</a>
+  <nav class="is-light">
+    <div class="navbar-brand">
+      <a  ui-sref="home" class="navbar-item">Home</a>
+      <a  ui-sref="about" class="navbar-item">About</a>
+      <a  ui-sref="eventsIndex" class="navbar-item">Browse Events</a>
+      <a  ui-sref="usersShow" class="navbar-item">My Profile</a>
+      <a  ui-sref="login" class="navbar-item" ng-if="!isAuthenticated()">Log in</a>
+      <a  ui-sref="register" class="navbar-item" ng-if="!isAuthenticated()">Sign up</a>
+      <a  ng-click="logout()" class="navbar-item" ng-if="isAuthenticated()">Log out</a>
+    </div>
   </nav>
-  </div>
+
   <!-- this is where the UI router puts the view for the current state -->
   <div ui-view></div>
 </body>

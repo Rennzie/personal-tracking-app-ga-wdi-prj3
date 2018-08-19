@@ -57,7 +57,7 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: './views/auth/register.html',
       url: '/register',
       controller: 'AuthRegisterCtrl'
-    });
+    })
 
   //--------- USER STATES ---------//
   // .state('usersEdit', {
@@ -65,11 +65,11 @@ function Router($stateProvider, $urlRouterProvider) {
   //   url: '/users/:id/edit',
   //   controller: 'usersEditCtrl'
   // })
-  // .state('usersShow', {
-  //   templateUrl: './views/users/show.html',
-  //   url: '/users/:id', //id is now a parameter of the state
-  //   controller: 'UsersShowCtrl'
-  // });
+    .state('usersShow', {
+      templateUrl: './views/users/show.html',
+      url: '/users/:id', //id is now a parameter of the state // NOTE: this doesnt put id onto the state
+      controller: 'UsersShowCtrl'
+    });
 
   $urlRouterProvider.otherwise('/');
 }
