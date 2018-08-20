@@ -39,6 +39,21 @@ function UsersShowCtrl($http, $state, $scope) {
       } );
   };
 
+  $http({
+    method: 'GET',
+    url: `/api/users/${$state.params.id}/goals`
+  })
+    .then(res => {
+      console.log('Found a goal', res.data);
+      $scope.goals = res.data;
+    });
+
+
+  $scope.setTarget = function() {
+
+  };
+
+
 }
 
 export default UsersShowCtrl;

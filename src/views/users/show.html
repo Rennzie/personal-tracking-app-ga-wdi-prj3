@@ -26,33 +26,50 @@
       <option value="soul">SOUL</option>
   </select> -->
 
-<h2>Add your target hours below:</h2>
+<h2>Add your target hours for this month below:</h2>
 
 <form ng-submit="setTarget()" name="form">
   <div class="field">
     <label class="label" for="mindTarget">MIND</label>
-    <input ng-model="#" class="input" type="number" name="mindTarget" placeholder="">
+    <input ng-model="event.mindTarget" class="input" type="number" name="mindTarget" placeholder="">
   </div>
   <div class="field">
     <label class="label" for="bodyTarget">BODY</label>
-    <input ng-model="#" class="input" type="number" name="bodyTarget" placeholder="">
+    <input ng-model="event.bodyTarget" class="input" type="number" name="bodyTarget" placeholder="">
   </div>
   <div class="field">
     <label class="label" for="soulTarget">SOUL</label>
-    <input ng-model="#" class="input" type="number" name="soulTarget" placeholder="">
+    <input ng-model="event.soulTarget" class="input" type="number" name="soulTarget" placeholder="">
   </div>
 
+<hr>
   <p>COMPLETED HOURS</p>
   <ul>
-    <li>MIND: </li>
-    <li>BODY: </li>
-    <li>SOUL: </li>
+  <li ng-repeat = 'goal in goals'>{{ goal.discipline}}: {{ goal.completedHrs }} </li>
+  </ul>
+
+<hr>
+  <p>TARGET HOURS</p>
+  <ul>
+    <li ng-repeat = 'goal in goals'>{{ goal.discipline}}: {{ goal.targetHrs }} </li>
   </ul>
 </div>
 
+<hr>
+
+<p>REMAINING HOURS</p>
+<ul>
+  <li ng-repeat = 'goal in goals'>{{ goal.discipline}}: {{ goal.targetHrs - goal.completedHrs }} </li>
+</ul>
+</div>
+
+
+<hr>
 <div class="charts">
   <p>charts go here</p>
 </div>
+
+<hr>
 
 <div class="attended">
 <p>events attended goes here</p>
