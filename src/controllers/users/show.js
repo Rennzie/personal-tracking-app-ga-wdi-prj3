@@ -1,5 +1,6 @@
 function UsersShowCtrl($http, $state, $scope) {
   const userId = $scope.getPayload().sub;
+  
 
   $http({
     method: 'GET',

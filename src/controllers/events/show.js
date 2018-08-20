@@ -1,4 +1,13 @@
 function EventsShowCtrl($http, $state, $scope) {
+
+  $scope.deleteEvent = function() {
+    console.log("WHT R U DOIN");
+    $http({
+      method: 'DELETE',
+      url: `/api/events/${$state.params.id}`
+    })
+      .then(() => $state.go('eventsIndex'));
+  };
   $http({
     method: 'GET',
     url: `/api/events/${$state.params.id}`
