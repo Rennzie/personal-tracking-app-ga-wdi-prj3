@@ -76,6 +76,7 @@ function removeAGuest( req, res, next ){
   Event
     .findById(req.params.eventId)
     .then(event => event.removeGuest(req.params.guestId))
+    .then(event => Event.populate(event, { path: 'guests'}))
     .then(event => res.json(event))
     .catch(next);
 }

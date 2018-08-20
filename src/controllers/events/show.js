@@ -68,9 +68,8 @@ function EventsShowCtrl($http, $state, $scope) {
     const guestId = $scope.getPayload().sub;
     //we have data to update, make call to backend
     $http({
-      method: 'PUT',
-      url: `/api/events/${$state.params.id}/guests/${guestId}`,
-      data: JSON.stringify($scope.event)
+      method: 'DELETE',
+      url: `/api/events/${$state.params.id}/guests/${guestId}`
     }).then(result => {
       console.log('The updated data is: ', result.data);
       $scope.event = result.data;
