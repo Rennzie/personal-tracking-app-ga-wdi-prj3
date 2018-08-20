@@ -134,52 +134,52 @@ const eventData = [
   }
 ];
 
-const goalData = [
-  {
-    completedHrs: 10,
-    discipline: 'body',
-    goalMonth: 'august',
-    targetHrs: 100
-  },{
-    completedHrs: 30,
-    discipline: 'mind',
-    goalMonth: 'august',
-    targetHrs: 50
-  },{
-    discipline: 'soul',
-    goalMonth: 'august',
-    targetHrs: 100
-  },{
-    completedHrs: 10,
-    discipline: 'body',
-    goalMonth: 'august',
-    targetHrs: 300
-  },{
-    completedHrs: 10,
-    discipline: 'mind',
-    goalMonth: 'august',
-    targetHrs: 50
-  },{
-    completedHrs: 1,
-    discipline: 'soul',
-    goalMonth: 'august',
-    targetHrs: 20
-  },{
-    completedHrs: 10,
-    discipline: 'body',
-    goalMonth: 'august',
-    targetHrs: 100
-  },{
-    discipline: 'mind',
-    goalMonth: 'august',
-    targetHrs: 50
-  },{
-    completedHrs: 10,
-    discipline: 'soul',
-    goalMonth: 'august',
-    targetHrs: 20
-  }
-];
+  const goalData = [];
+//   {
+//     completedHrs: 10,
+//     discipline: 'body',
+//     goalMonth: 'august',
+//     targetHrs: 100
+//   },{
+//     completedHrs: 30,
+//     discipline: 'mind',
+//     goalMonth: 'august',
+//     targetHrs: 50
+//   },{
+//     discipline: 'soul',
+//     goalMonth: 'august',
+//     targetHrs: 100
+//   },{
+//     completedHrs: 10,
+//     discipline: 'body',
+//     goalMonth: 'august',
+//     targetHrs: 300
+//   },{
+//     completedHrs: 10,
+//     discipline: 'mind',
+//     goalMonth: 'august',
+//     targetHrs: 50
+//   },{
+//     completedHrs: 1,
+//     discipline: 'soul',
+//     goalMonth: 'august',
+//     targetHrs: 20
+//   },{
+//     completedHrs: 10,
+//     discipline: 'body',
+//     goalMonth: 'august',
+//     targetHrs: 100
+//   },{
+//     discipline: 'mind',
+//     goalMonth: 'august',
+//     targetHrs: 50
+//   },{
+//     completedHrs: 10,
+//     discipline: 'soul',
+//     goalMonth: 'august',
+//     targetHrs: 20
+//   }
+// ];
 
 // data created, ready to start seeding
 User
@@ -198,10 +198,10 @@ User
 
     //add a user to each of the created goals
 
-    goalData.forEach(goal => {
-      const randomIndex = Math.floor(Math.random() * users.length);
-      goal.createdBy = users[randomIndex];
-    });
+    // goalData.forEach(goal => {
+    //   const randomIndex = Math.floor(Math.random() * users.length);
+    //   goal.createdBy = users[randomIndex];
+    // });
 
     //add a user to any reviews inthe event reviews
 

@@ -12,10 +12,10 @@ function goalIndex( req, res, next ){
     .then(goals => {
       // console.log('The requesting user is ', req.params.userId);
       // we have the goals, need to filter by the users id
-      const userGoals = goals.filter(goal => goal.createdBy.equals(req.params.userId));
+      // const userGoals = goals.filter(goal => goal.createdBy.equals(req.params.userId));
 
       //return filtered goals to the requester
-      res.json(userGoals);
+      res.json(goals);
     })
     .catch(next);
 }
@@ -30,12 +30,12 @@ function goalShow( req, res ,next ){
 function goalCreate( req, res, next ){
   Goal
     .create(req.body)
-    .then(goal => {
-      goal.createdBy =  mongoose.Types.ObjectId(req.params.userId);
+    // .then(goal => {
+      // goal.createdBy =  mongoose.Types.ObjectId(req.params.userId);
       // console.log('the ObjId goals userId is=====> ', goal.createdBy);
-      goal.set(goal);
-      return goal.save();
-    })
+    //   goal.set(goal);
+    //   return goal.save();
+    // })
     .then(goal => res.status(201).json({message: 'Created a new goal', goal}))
     .catch(next);
 }
