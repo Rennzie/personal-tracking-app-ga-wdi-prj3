@@ -79,9 +79,7 @@ const eventData = [
     location: {     //sub document to hold event location
       streetNumber: 9,
       streetName: 'Greensward',
-      postcode: 'sw62tg',
-      lat: 51.471337,
-      lon: -0.184276          // should seed this initially
+      postcode: 'sw62tg'
     }
   }, {
     category: 'soul',
@@ -97,9 +95,7 @@ const eventData = [
     location: {     //sub document to hold event location
       streetNumber: 9,
       streetName: 'Greensward',
-      postcode: 'sw62tg',
-      lat: 51.023452,
-      lon: -0.184276          // should seed this initially
+      postcode: 'sw62tg'
     }
   }, {
     category: 'mind',
@@ -115,9 +111,7 @@ const eventData = [
     location: {
       streetNumber: 114,
       streetName: 'White Chapel High St',
-      postcode: 'E1 7PT',
-      lat: -0.072513,
-      lon: 51.515379          // should seed this initially
+      postcode: 'E1 7PT'        
     }
   }
 ];

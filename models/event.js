@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
+const rp = require('request-promise');
 const moment = require('moment');
 moment().format();
 
@@ -66,10 +67,29 @@ eventSchema.virtual('formattedTime')
     return moment(momentTimeObj).format('HH:mm');
   });
 
-// eventSchema.virtual('newGuest')
-//   .set(function(newGuest){
-//     this.guests.push(mongoose.Types.ObjectId(newGuest));
-//   });
+//  LIFECYCLE HOOKS
+
+eventSchema.pre('validate', function getLatLon(next){
+  console.log('Prevalidation hook fired');
+
+  // make sure not to try process no postCode
+  if(!this.location.postcode){
+    this.invalidate('postCode', 'No match found');
+  }
+
+  //make the postcode consistent
+  this.location.postcode = this.location.postcode.toLowerCase().replace(/\s/gi, '');
+  rp({
+    method: 'GET',
+    url: `http://api.postcodes.io/postcodes/${this.location.postcode}`,
+    json: true
+  }).then(response => {
+    console.log('the geocode response is====> ', response.result);
+    this.location.lat = response.result.latitude;
+    this.location.lon = response.result.longitude;
+    next();
+  });
+});
 
 
 
