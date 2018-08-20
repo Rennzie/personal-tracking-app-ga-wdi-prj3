@@ -1,3 +1,5 @@
+/*global L*/
+
 function Map($http) {
   return {
     restrict: 'A',
@@ -15,8 +17,6 @@ function Map($http) {
 
           const marker = L.marker([$scope.event.location.lat, $scope.event.location.lon]).addTo(map);
           marker.bindPopup(`<p>${$scope.event.eventTitle}</p>`);
-
-
         }
       });
     }
