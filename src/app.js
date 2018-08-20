@@ -11,6 +11,7 @@ import Router from './config/routes';
 
 //---------- CUSTOM DIRECTIVES -----//
 
+import Map from './directives/map';
 
 //--------- CONTROLLERS -----------//
 
@@ -31,6 +32,7 @@ import AuthRegisterCtrl from './controllers/auth/register';
 angular.module('Resolut', [
   'ui.router', 'satellizer', 'ngMessages'
 ])
+  .directive('ngMap', Map)
   .controller('MainCtrl', MainCtrl)
   .controller('EventsIndexCtrl', EventsIndexCtrl)
   .controller('EventsShowCtrl', EventsShowCtrl)

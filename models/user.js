@@ -4,12 +4,13 @@ const bcrypt = require('bcrypt');
 const userSchema = mongoose.Schema({
   email: { type: String, required: true },
   firstName: { type: String, required: true },
+  postcodeHome: String,
   homeLocation: {
     lat: Number,
     lon: Number
   },
   hosterName: String,
-  hasHostName: { type: Boolean, default: false }, 
+  hasHostName: { type: Boolean, default: false },
   imageUrl: String,
   isHost: { type: Boolean, default: false },
   isAdmin: { type: Boolean, default: false },

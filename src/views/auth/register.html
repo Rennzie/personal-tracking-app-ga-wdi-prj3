@@ -25,20 +25,25 @@
 </div>
 
 
-
   <!-- EMAIL -->
   <div class="field">
     <label class="label" for="email">Email</label>
     <input ng-model="user.email" class="input" type="email" name="email" placeholder="">
   </div>
 
-  <!-- POSTCODE -->
+  <!-- PROFILE PIC  -->
+
   <div class="field">
-  <label class="label" for="postcode">Postcode</label>
-  <input ng-model="user.postcode" class="input" type="text" name="postcode" placeholder="">
+    <label class="label" for="profilePic">Profile Picture</label>
+    <input ng-model="user.imageUrl" class="input" type="text" name="profilePic" placeholder="http:....">
   </div>
 
 
+  <!-- POSTCODE -->
+  <div class="field">
+  <label class="label" for="postcode">Postcode</label>
+  <input ng-model="user.postcodeHome" class="input" type="text" name="postcode" placeholder="">
+  </div>
 
 
     <!-- PASSWORD-->
@@ -55,6 +60,6 @@
 
   <!-- need to add a 'do you want to host' checkbox which toggles boolean on click -->
 
-  
+
   <button class="button">Sign up</button>
 </form>
