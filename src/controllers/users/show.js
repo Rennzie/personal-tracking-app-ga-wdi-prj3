@@ -1,13 +1,13 @@
 function UsersShowCtrl($http, $state, $scope) {
   const userId = $scope.getPayload().sub;
-  
+
 
   $http({
     method: 'GET',
     url: `/api/users/${$state.params.id}`
   })
     .then(res => {
-      console.log('Found a user', res.data);
+      // console.log('Found a user', res.data);
       $scope.user = res.data;
     });
 
@@ -50,7 +50,9 @@ function UsersShowCtrl($http, $state, $scope) {
     url: `/api/users/${$state.params.id}/goals`
   })
     .then(res => {
-      $scope.goals = res.data.filter(goal => goal.createdBy === userId );
+      const userGoals = res.data.filter(goal => goal.createdBy === userId );
+      console.log('the users goals are ', userGoals);
+      $scope.goals = userGoals;
     });
 
   $scope.setTarget = function() {
@@ -67,6 +69,14 @@ function UsersShowCtrl($http, $state, $scope) {
         console.log('the returned data is', response.data.goals);
         $scope.goals = response.data.goals;
       } );
+  };
+
+  $scope.addGoal = 'not-active';
+  $scope.activateAddGoal = function(){
+    if ($scope.addGoal === 'not-active')
+      $scope.addGoal = 'is-active';
+    else
+      $scope.addGoal = 'not-active';
   };
 
 
