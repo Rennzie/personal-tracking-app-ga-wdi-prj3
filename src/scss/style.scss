@@ -3,16 +3,32 @@
   width: 100vh;
 }
 
-body {
-  height: 150vh;
+section.home {
   background-color: rgb(52, 52, 49);
-}
+  a {
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: underline;
+    font-size: 36px;
+    padding: 100px;
+    .mind {
+      color: rgb(255,0,204);
+    }
+    .body {
+      color: rgb(204,255,0);
+    }
+    .soul {
+      color: rgb(0,204,255);
+    }
+  }
+  }
 
-nav {
-  postion: fixed;
-}
+  section.eventsIndex {
+      background-color: rgb(52, 52, 49);
+      font-family: 'Open Sans', sans-serif;
+    h1 {
+      color: white;
+      font-style: italic;
+      font-weight: bold;
+    }
 
-
-.home-title {
-  color: white;
-}
+  }
