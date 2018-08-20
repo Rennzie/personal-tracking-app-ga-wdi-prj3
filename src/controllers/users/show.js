@@ -26,7 +26,7 @@ function UsersShowCtrl($http, $state, $scope) {
       } );
   };
 
-  $scope.addHosterName = function(){ 
+  $scope.addHosterName = function(){
     const updateUserData = $scope.user;
     updateUserData.hasHostName = true;
 
@@ -50,10 +50,8 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.goals = res.data.filter(goal => goal.createdBy === userId );
     });
 
-
-
-
   $scope.setTarget = function() {
+    $scope.goal.createdBy = userId;
     const goalData = $scope.goal;
     console.log('Data to update is---->', goalData);
     $http({
