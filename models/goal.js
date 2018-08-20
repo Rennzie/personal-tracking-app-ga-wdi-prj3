@@ -3,11 +3,13 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const goalSchema = mongoose.Schema({
   createdBy: { type: ObjectId, ref: 'User' },
-  completedHrs: { type: Number, default: 0 }, //accumulation of events completed duration
-  discipline: { type: String, required: true }, //mind, body, soul
-  goalMonth: String, //if we user the current month then timestamps takes care of this
-  targetHrs: Number //supplied by user
-
+  month: String, //if we user the current month then timestamps takes care of this
+  mindTarget: { type: Number, default: 0 },
+  bodyTarget: { type: Number, default: 0 },
+  soulTarget: { type: Number, default: 0 },
+  mindCompleted: { type: Number, default: 0 },
+  bodyCompleted: { type: Number, default: 0 },
+  soulCompleted: { type: Number, default: 0 }
 }, { timestamps: true });
 
 //VIRTUALS

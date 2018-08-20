@@ -1,4 +1,5 @@
 function UsersShowCtrl($http, $state, $scope) {
+  const userId = $scope.getPayload().sub;
 
   $http({
     method: 'GET',
@@ -9,7 +10,7 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.user = res.data;
     });
 
-  $scope.$watch('goals', () => updateGoals())
+  // $scope.$watch('goals', () => updateGoals())
   $scope.becomeAHost = function() {
     const updateUserData = $scope.user;
     updateUserData.isHost = true;
@@ -25,7 +26,7 @@ function UsersShowCtrl($http, $state, $scope) {
       } );
   };
 
-  $scope.addHosterName = function(){ // NOTE: pull this down into a single function
+  $scope.addHosterName = function(){
     const updateUserData = $scope.user;
     updateUserData.hasHostName = true;
 
@@ -40,55 +41,31 @@ function UsersShowCtrl($http, $state, $scope) {
       } );
   };
 
-  function updateGoals() {
-    if($scope.goals) {
-      $http({
-        method: 'GET',
-        url: `/api/users/${$state.params.id}/goals`
-      })
-        .then(res => {
-          const currentUser = $scope.getPayload().sub;
-          // console.log('current user is', currentUser);
-          // console.log('Found a goal', res.data);
-          $scope.goals = res.data.filter(goal => goal.createdBy === currentUser );
-          // console.log('scope is now', $scope.goals);
-        });
 
-    }
-
-
-  }
-
+  //need to update teh scope once the setTarget is made
+  //fetch the users goals
+  $http({
+    method: 'GET',
+    url: `/api/users/${$state.params.id}/goals`
+  })
+    .then(res => {
+      $scope.goals = res.data.filter(goal => goal.createdBy === userId );
+    });
 
   $scope.setTarget = function() {
-    const userId = $scope.getPayload().sub;
-    const goalData = [
-      {
-        discipline: 'mind',
-        createdBy: userId,
-        targetHrs: $scope.goal.mindTarget
-      },{
-        discipline: 'body',
-        createdBy: userId,
-        targetHrs: $scope.goal.mindTarget
-
-      },{
-        discipline: 'soul',
-        createdBy: userId,
-        targetHrs: $scope.goal.mindTarget
-
-      }
-    ];
-    console.log('---->', goalData);
+    $scope.goal.createdBy = userId;
+    const goalData = $scope.goal;
+    console.log('Data to update is---->', goalData);
     $http({
       method: 'POST',
       url: `/api/users/${userId}/goals`,
       data: goalData
 
     })
-      .then(response => $scope.goals = response.data);
-
-
+      .then(response => {
+        console.log('the returned data is', response.data.goals);
+        $scope.goals = response.data.goals;
+      } );
   };
 
 

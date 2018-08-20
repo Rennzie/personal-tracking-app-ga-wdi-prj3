@@ -134,52 +134,27 @@ const eventData = [
   }
 ];
 
-  const goalData = [];
-//   {
-//     completedHrs: 10,
-//     discipline: 'body',
-//     goalMonth: 'august',
-//     targetHrs: 100
-//   },{
-//     completedHrs: 30,
-//     discipline: 'mind',
-//     goalMonth: 'august',
-//     targetHrs: 50
-//   },{
-//     discipline: 'soul',
-//     goalMonth: 'august',
-//     targetHrs: 100
-//   },{
-//     completedHrs: 10,
-//     discipline: 'body',
-//     goalMonth: 'august',
-//     targetHrs: 300
-//   },{
-//     completedHrs: 10,
-//     discipline: 'mind',
-//     goalMonth: 'august',
-//     targetHrs: 50
-//   },{
-//     completedHrs: 1,
-//     discipline: 'soul',
-//     goalMonth: 'august',
-//     targetHrs: 20
-//   },{
-//     completedHrs: 10,
-//     discipline: 'body',
-//     goalMonth: 'august',
-//     targetHrs: 100
-//   },{
-//     discipline: 'mind',
-//     goalMonth: 'august',
-//     targetHrs: 50
-//   },{
-//     completedHrs: 10,
-//     discipline: 'soul',
-//     goalMonth: 'august',
-//     targetHrs: 20
-//   }
-// ];
+const goalData = [
+  {
+    month: 'August', //if we user the current month then timestamps takes care of this
+    mindTarget: 100,
+    bodyTarget: 20,
+    soulTarget: 10
+  },{
+    month: 'August', //if we user the current month then timestamps takes care of this
+    mindTarget: 10,
+    bodyTarget: 200,
+    soulTarget: 50,
+    bodyCompleted: 100
+  },{
+    month: 'August', //if we user the current month then timestamps takes care of this
+    mindTarget: 54,
+    bodyTarget: 30,
+    soulTarget: 26,
+    mindCompleted: 100
+  }
+];
+
 
 // data created, ready to start seeding
 User
@@ -197,13 +172,9 @@ User
     users.forEach(user => eventData[2].guests.push(user.id));
 
     //add a user to each of the created goals
-
-    // goalData.forEach(goal => {
-    //   const randomIndex = Math.floor(Math.random() * users.length);
-    //   goal.createdBy = users[randomIndex];
-    // });
-
-    //add a user to any reviews inthe event reviews
+    goalData[0].createdBy = users[0].id;
+    goalData[1].createdBy = users[1].id;
+    goalData[2].createdBy = users[2].id;
 
     // data populated with user id's, return to chain another .then()
     return Event.create(eventData);
@@ -215,6 +186,6 @@ User
     //create goals and return them so we can log them
     return Goal.create(goalData);
   })
-  .then(goals => console.log(`Create ${goals.length} events`))
+  .then(goals => console.log(`Create ${goals.length} goals`))
   .catch(err => console.log('Seeding error is', err))
   .finally(() => mongoose.connection.close());
