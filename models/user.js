@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const rp = require('request-promise');
 
 const userSchema = mongoose.Schema({
   email: { type: String, required: true },
@@ -42,10 +43,30 @@ userSchema.virtual('memberSince')
 userSchema.pre('validation', function(next){
   console.log('Prevalidation hook fired');
   if(this.passwordConfirmation !== this.password){
-    console.log('Passwords did not match');
     this.invalidate('passwordConfirmation', 'Does not match');
   }
   next();
+});
+
+userSchema.pre('validate', function getLatLon(next){
+  console.log('Prevalidation hook fired');
+
+  // make sure not to try process no postCode
+  if(!this.postcodeHome){
+    this.invalidate('postCode', 'No match found');
+  }
+
+  //make the postcode consistent
+  this.postcodeHome = this.postcodeHome.toLowerCase().replace(/\s/gi, '');
+  rp({
+    method: 'GET',
+    url: `http://api.postcodes.io/postcodes/${this.postcodeHome}`,
+    json: true
+  }).then(response => {
+    this.homeLocation.lat = response.result.latitude;
+    this.homeLocation.lon = response.result.longitude;
+    next();
+  });
 });
 
 //Pre save hooks

@@ -22,11 +22,6 @@ function eventIndex( req, res, next ){
 function eventCreate( req, res, next ){
   Event
     .create(req.body)
-    .then(event => {
-      event.createdBy = mongoose.Types.ObjectId(req.params.id);
-      event.set(event);
-      return event.save();
-    })
     .then(event => res.status(201).json(event))
     .catch(next);
 }
@@ -47,20 +42,6 @@ function eventDelete( req, res, next ){
     .then(() => res.sendStatus(204)) //send 204 as we are not sending json
     .catch(next);
 }
-
-// NOTE: we did this in the front end
-// //---------filtered route for the mind --------//
-// function eventMindIndex( req, res, next ){
-//   Event
-//     .find()
-//     .then(events =>{
-//       const mindEvent = events.filter(event => event.category === 'mind' );
-//       console.log('the filtered events are ', mindEvent);
-//       return mindEvent;
-//     })
-//     .then(mindEvents => res.json(mindEvents))
-//     .catch(next);
-// }
 
 function eventAddGuest( req, res, next ){
   Event
