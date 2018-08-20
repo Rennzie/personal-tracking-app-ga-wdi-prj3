@@ -24,6 +24,20 @@ function Router($stateProvider, $urlRouterProvider) {
       url: '/'
     })
 
+
+    .state('mind', {
+      templateUrl: './views/mind.html',
+      url: '/mind'
+    })
+    .state('body', {
+      templateUrl: './views/body.html',
+      url: '/body'
+    })
+    .state('soul', {
+      templateUrl: './views/soul.html',
+      url: '/soul'
+    })
+
     //--------EVENTS STATES ----------//
     .state('eventsIndex', {
       templateUrl: './views/events/index.html',

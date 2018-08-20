@@ -17,12 +17,31 @@
 <hr>
 
 <div class="targetsTracking">
-  <p>TARGET HOURS</p>
-  <ul>
-    <li>MIND: </li>
-    <li>BODY: </li>
-    <li>SOUL: </li>
-  </ul>
+  <!-- <label for="discipline-select">Choose a discipline:</label>
+
+  <select id="discipline-select">
+      <option value="">--Please choose an option--</option>
+      <option value="mind">MIND</option>
+      <option value="body">BODY</option>
+      <option value="soul">SOUL</option>
+  </select> -->
+
+<h2>Add your target hours below:</h2>
+
+<form ng-submit="setTarget()" name="form">
+  <div class="field">
+    <label class="label" for="mindTarget">MIND</label>
+    <input ng-model="#" class="input" type="number" name="mindTarget" placeholder="">
+  </div>
+  <div class="field">
+    <label class="label" for="bodyTarget">BODY</label>
+    <input ng-model="#" class="input" type="number" name="bodyTarget" placeholder="">
+  </div>
+  <div class="field">
+    <label class="label" for="soulTarget">SOUL</label>
+    <input ng-model="#" class="input" type="number" name="soulTarget" placeholder="">
+  </div>
+
   <p>COMPLETED HOURS</p>
   <ul>
     <li>MIND: </li>
