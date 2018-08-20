@@ -35,8 +35,21 @@ eventSchema.set('toObject', { virtuals: true });
 eventSchema.set('toJSON', { virtuals: true });
 
 
+///Methods///
+eventSchema.methods.addGuest = function (userId) {
+  this.guests.push(userId.toString());
+  // this.populate('guests');
+  return this.save();
+};
+
+eventSchema.methods.removeGuest = function(userId){
+  const userIdObj = mongoose.Types.ObjectId(userId);
+  this.guests = this.guests.filter(guest => !userIdObj.equals(guest._id));
+  return this.save();
+};
+
 //VIRTUALS
-//encode the datE and time correctly
+//encode the date and time correctly
 //HTML5 gives a string in the date box which has time as well.
 //setting time on the same form adds it to the date string
 //
@@ -53,10 +66,12 @@ eventSchema.virtual('formattedTime')
     return moment(momentTimeObj).format('HH:mm');
   });
 
-eventSchema.virtual('newGuest')
-  .set(function(newGuest){
-    this.guests.push(mongoose.Types.ObjectId(newGuest));
-  });
+// eventSchema.virtual('newGuest')
+//   .set(function(newGuest){
+//     this.guests.push(mongoose.Types.ObjectId(newGuest));
+//   });
+
+
 
 
 //  --> geocode the postcode to a latlon // IDEA: we can use postcode.io to do this

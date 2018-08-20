@@ -199,7 +199,7 @@ User
     //add a user to each of the created goals
 
     goalData.forEach(goal => {
-      const randomIndex = Math.floor(Math.random() * users.length);
+      const randomIndex = Math.floor(Math.random() * users.length - 1);
       goal.createdBy = users[randomIndex];
     });
 

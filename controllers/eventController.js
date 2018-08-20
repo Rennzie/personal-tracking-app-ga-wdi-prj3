@@ -6,8 +6,7 @@ const mongoose = require('mongoose');
 function eventShow(req, res, next ){
   Event
     .findById(req.params.id)
-    .populate('guests')
-    .populate('createdBy')
+    .populate('guests createdBy')
     .then( event => res.json(event))
     .catch(next);
 }
@@ -36,10 +35,7 @@ function eventUpdate (req, res, next ){
   Event
     .findById(req.params.id)
     .then(event => event.set(req.body) )
-    .then(event =>{
-      // event.pupulate('guests');
-      return event.save();
-    } )
+    .then(event => event.save())
     .then(event => res.status(201).json(event))
     .catch(next);
 }
@@ -66,11 +62,30 @@ function eventDelete( req, res, next ){
 //     .catch(next);
 // }
 
+function eventAddGuest( req, res, next ){
+  Event
+    .findById(req.params.id)
+    // .populate('guests')
+    .then(event => event.addGuest(req.body.id))
+    .then(event => Event.populate(event, { path: 'guests'}))
+    .then(event => res.json(event) )
+    .catch(next);
+}
+
+function removeAGuest( req, res, next ){
+  Event
+    .findById(req.params.eventId)
+    .then(event => event.removeGuest(req.params.guestId))
+    .then(event => res.json(event))
+    .catch(next);
+}
 
 module.exports = {
   show: eventShow,
   index: eventIndex,
   create: eventCreate,
   update: eventUpdate,
-  delete: eventDelete
+  delete: eventDelete,
+  addNewGuest: eventAddGuest,
+  guestDelete: removeAGuest
 };
