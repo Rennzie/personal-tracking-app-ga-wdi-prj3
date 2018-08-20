@@ -22,10 +22,7 @@ const userData = [
   {
     email: 'rnnsea001@gmail.com',
     firstName: 'Sean',
-    homeLocation: {
-      lat: 51.471337,
-      lon: -0.184276
-    },
+    postcodeHome: 'sw62tg',
     isHost: false,
     imageUrl: 'https://i.stack.imgur.com/IHLNO.jpg',
     password: 'pass',
@@ -36,10 +33,7 @@ const userData = [
   },{
     email: 'mooapples@gmail.com',
     firstName: 'Kristi',
-    homeLocation: {
-      lat: 51.471337,
-      lon: -0.184276
-    },
+    postcodeHome: 'sw62tg',
     isHost: true,
     imageUrl: 'https://i.stack.imgur.com/IHLNO.jpg',
     password: 'pass',
@@ -49,10 +43,7 @@ const userData = [
   },{
     email: 'sophie.cornish@gmail.com',
     firstName: 'Sophie',
-    homeLocation: {
-      lat: 51.502972,
-      lon: -0.191837
-    },
+    postcodeHome: 'W8 4lf',
     isHost: true,
     imageUrl: 'https://i.stack.imgur.com/IHLNO.jpg',
     password: 'pass',
@@ -63,10 +54,7 @@ const userData = [
   },{
     email: 'trimhall@gmail.com',
     firstName: 'Tristan',
-    homeLocation: {
-      lat: 51.371835,
-      lon: -0.100976
-    },
+    postcodeHome: 'cr0 1fn',
     isHost: false,
     imageUrl: 'https://i.stack.imgur.com/IHLNO.jpg',
     password: 'pass',
