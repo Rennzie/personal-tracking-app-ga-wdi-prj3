@@ -17,68 +17,19 @@
 <hr>
 
 <div class="targetsTracking">
+  <h2>Add your target hours for this month below:</h2>
 
-  <label for="selectMonth">Which month are you tracking? :</label>
+  <hr>
+  <p> TARGET HOURS</p>
+  <ul>
+    <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.bodyTarget }} </li>
+  </ul>
 
-  <select id="selectMonth">
-  <option value="">--Please choose an option--</option>
-  <option value="jan">JAN</option>
-  <option value="feb">FEB</option>
-  <option value="mar">MAR</option>
-  <option value="apr">APR</option>
-  <option value="may">MAY</option>
-  <option value="jun">JUN</option>
-  <option value="jul">JUL</option>
-  <option value="aug">AUG</option>
-  <option value="sep">SEP</option>
-  <option value="oct">OCT</option>
-  <option value="nov">NOV</option>
-  <option value="dec">DEC</option>
-</select>
-
-<h2>Add your target hours for this month below:</h2>
-<form ng-submit="setTarget()" name="form">
-  <h2 class="title is-4">MIND</h2>
-  <div class="field">
-    <label class="label" for="mindTarget">MIND TARGET</label>
-    <input ng-model="goal.mindTarget" class="input" type="number" name="mindTarget" placeholder="">
-  </div>
-  <div class="field">
-    <label class="label" for="mindCompleted">MIND COMPLETED</label>
-    <input ng-model="goal.mindCompleted" class="input" type="number" name="mindCompleted" placeholder="">
-  </div>
-  <h2 class="title is-4">BODY</h2>
-  <div class="field">
-    <label class="label" for="bodyTarget">BODY TARGET</label>
-    <input ng-model="goal.bodyTarget" class="input" type="number" name="bodyTarget" placeholder="">
-  </div>
-  <div class="field">
-    <label class="label" for="bodyCompleted">BODY COMPLETED</label>
-    <input ng-model="goal.bodyCompleted" class="input" type="number" name="bodyCompleted" placeholder="">
-  </div>
-<h2 class="title is-4">SOUL</h2>
-  <div class="field">
-    <label class="label" for="soulTarget">SOUL TARGET</label>
-    <input ng-model="goal.soulTarget" class="input" type="number" name="soulTarget" placeholder="">
-  </div>
-  <div class="field">
-    <label class="label" for="soulCompleted">SOUL COMPLETED</label>
-    <input ng-model="goal.soulCompleted" class="input" type="number" name="soulCompleted" placeholder="">
-  </div>
-  <button class="button">Update Targets</button>
-</form>
-
-<hr>
-<p>COMPLETED HOURS</p>
-<ul>
-  <li ng-repeat = 'goal in goals'>{{ goal.discipline}}: {{ goal.completedHrs }} </li>
-</ul>
-
-<hr>
-<p>TARGET HOURS</p>
-<ul>
-  <li ng-repeat = 'goal in goals'>{{ goal.discipline}}: {{ goal.targetHrs }} </li>
-</ul>
+  <hr>
+  <p>COMPLETED HOURS</p>
+  <ul>
+    <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.bodyCompleted }} </li>
+  </ul>
 </div>
 
 <hr>
@@ -100,3 +51,54 @@
 <div class="attended">
   <p>events attended goes here</p>
 </div>
+
+<hr>
+<form ng-submit="setTarget()" name="form">
+
+  <label for="selectMonth">Which month are you tracking? :</label>
+
+  <select ng-model="goal.month" id="selectMonth">
+    <option value="">--Please choose an option--</option>
+    <option value="JAN">JAN</option>
+    <option value="FEB">FEB</option>
+    <option value="MAR">MAR</option>
+    <option value="APR">APR</option>
+    <option value="MAY">MAY</option>
+    <option value="JUN">JUN</option>
+    <option value="JUL">JUL</option>
+    <option value="AUG">AUG</option>
+    <option value="SEP">SEP</option>
+    <option value="OCT">OCT</option>
+    <option value="NOV">NOV</option>
+    <option value="DEC">DEC</option>
+  </select>
+
+  <h2 class="title is-4">MIND</h2>
+  <div class="field">
+    <label class="label" for="mindTarget">MIND TARGET</label>
+    <input ng-model="goal.mindTarget" class="input" type="number" name="mindTarget" placeholder="">
+  </div>
+  <div class="field">
+    <label class="label" for="mindCompleted">MIND COMPLETED</label>
+    <input ng-model="goal.mindCompleted" class="input" type="number" name="mindCompleted" placeholder="">
+  </div>
+  <h2 class="title is-4">BODY</h2>
+  <div class="field">
+    <label class="label" for="bodyTarget">BODY TARGET</label>
+    <input ng-model="goal.bodyTarget" class="input" type="number" name="bodyTarget" placeholder="">
+  </div>
+  <div class="field">
+    <label class="label" for="bodyCompleted">BODY COMPLETED</label>
+    <input ng-model="goal.bodyCompleted" class="input" type="number" name="bodyCompleted" placeholder="">
+  </div>
+  <h2 class="title is-4">SOUL</h2>
+  <div class="field">
+    <label class="label" for="soulTarget">SOUL TARGET</label>
+    <input ng-model="goal.soulTarget" class="input" type="number" name="soulTarget" placeholder="">
+  </div>
+  <div class="field">
+    <label class="label" for="soulCompleted">SOUL COMPLETED</label>
+    <input ng-model="goal.soulCompleted" class="input" type="number" name="soulCompleted" placeholder="">
+  </div>
+  <button class="button">Update Targets</button>
+</form>
