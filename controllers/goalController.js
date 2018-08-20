@@ -23,7 +23,8 @@ function goalShow( req, res ,next ){
 function goalCreate( req, res, next ){
   Goal
     .create(req.body)
-    .then(goal => res.status(201).json({message: 'Created a new goal', goal}))
+    .then(() => Goal.find())
+    .then(goals => res.status(201).json({message: 'Created a new goal', goals}))
     .catch(next);
 }
 

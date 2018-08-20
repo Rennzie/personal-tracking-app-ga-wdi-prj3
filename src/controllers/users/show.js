@@ -41,6 +41,8 @@ function UsersShowCtrl($http, $state, $scope) {
       } );
   };
 
+
+  //need to update teh scope once the setTarget is made
   //fetch the users goals
   $http({
     method: 'GET',
@@ -60,7 +62,10 @@ function UsersShowCtrl($http, $state, $scope) {
       data: goalData
 
     })
-      .then(response => $scope.goals = response.data);
+      .then(response => {
+        console.log('the returned data is', response.data.goals);
+        $scope.goals = response.data.goals;
+      } );
   };
 
 
