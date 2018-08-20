@@ -41,6 +41,13 @@ Router.route('/events/:id')
   .put( eventController.update)      // NOTE: we will secure this route
   .delete( eventController.delete);  // NOTE: we will secure this route
 
+Router.route('/events/:id/guests')
+  .all(secureRoute)
+  .post(eventController.addNewGuest);
+
+Router.route('/events/:eventId/guests/:guestId')
+  .delete(eventController.guestDelete); // NOTE: neeed to secure this
+
 // Router.route('/events/mind')
 //   .get(eventController.mindIndex);
 

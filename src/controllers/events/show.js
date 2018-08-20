@@ -51,32 +51,28 @@ function EventsShowCtrl($http, $state, $scope) {
 
   //handle user wanting to attend an event
   $scope.attend = function(){
-    const updateData = $scope.event;
-    updateData.guests.push($scope.getPayload().sub);
-
+    const data = {};
+    data.id = $scope.getPayload().sub;
     $http({ // NOTE: this does not repopulate the guest array in backend dynamically
-      method: 'PUT',
-      url: `/api/events/${$state.params.id}`,
-      data: JSON.stringify(updateData)
+      method: 'POST',
+      url: `/api/events/${$state.params.id}/guests`,
+      data: JSON.stringify(data)
     }).then(result => {
       console.log('The updated data is: ', result.data);
+      $scope.event = result.data;
     });
   };
 
   //handle users wanting to cancel sign up
   $scope.cancelAttend = function(){
-    console.log('the current user is: ', $scope.getPayload().sub);
-    console.log('the data to update is: ', $scope.event);
-    const newGuests = $scope.event.guests.filter(guest => guest._id !== $scope.getPayload().sub);
-    $scope.event.guests = newGuests;
-
+    const guestId = $scope.getPayload().sub;
     //we have data to update, make call to backend
     $http({
-      method: 'PUT',
-      url: `/api/events/${$state.params.id}`,
-      data: JSON.stringify($scope.event)
+      method: 'DELETE',
+      url: `/api/events/${$state.params.id}/guests/${guestId}`
     }).then(result => {
       console.log('The updated data is: ', result.data);
+      $scope.event = result.data;
     });
   };
 }
