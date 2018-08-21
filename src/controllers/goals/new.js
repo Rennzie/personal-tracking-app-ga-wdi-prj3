@@ -12,9 +12,15 @@ function GoalsNewCtrl($http, $scope){
       data: goalData
 
     })
-      .then(response => {
-        console.log('the returned data is', response.data.goals);
-        $scope.goals = response.data.goals;
+      .then(res => {
+        // console.log('the returned data is', response.data.goals);
+        // $scope.goals = response.data.goals;
+        const userGoals = res.data.goals.filter(goal => goal.createdBy === userId );
+
+        const currentMonthGoals = userGoals.filter(goal => goal.goalMonth === $scope.currentMonth);
+
+        console.log('the users goals are ', currentMonthGoals);
+        $scope.goals = currentMonthGoals;
       } );
   };
 }

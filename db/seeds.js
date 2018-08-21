@@ -111,7 +111,7 @@ const eventData = [
     location: {
       streetNumber: 114,
       streetName: 'White Chapel High St',
-      postcode: 'E1 7PT'        
+      postcode: 'E1 7PT'
     }
   }
 ];
@@ -154,9 +154,9 @@ User
     users.forEach(user => eventData[2].guests.push(user.id));
 
     //add a user to each of the created goals
-    goalData[0].createdBy = users[0].id;
-    goalData[1].createdBy = users[1].id;
-    goalData[2].createdBy = users[2].id;
+    // goalData[0].createdBy = users[0].id;
+    // goalData[1].createdBy = users[1].id;
+    // goalData[2].createdBy = users[2].id;
 
     // data populated with user id's, return to chain another .then()
     return Event.create(eventData);

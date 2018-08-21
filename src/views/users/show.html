@@ -31,73 +31,77 @@
           <div class="level">
             <h2 class="title has-text-white">Set your goals for {{ currentMonth }}</h2>
           </div>
-
           <!-- this will only appear if there are no goals for the month -->
           <button ng-click="activateAddGoal()" class="column is-centered button is-text">New Goal</button>
         </div>
-        <div class="level">
-          <!-- this month is on the MainCtrl -->
-          <h2 class="title has-text-white">Your goals for {{ currentMonth }}</h2>
-        </div>
-        <div class="has-text-white level">
-          <p>{{ daysRemainingInMonth }} days left in current cycle</p>
-        </div>
 
-        <!-- GOALS SHOW IS BELOW HERE -->
-        <div class="level">
-          <div id="goals"  class="columns">
+        <div ng-if="goals.length > 0">
 
-            <div id="mind" class="column  is-4">
-              <h2 class="title has-text-white">Mind</h2>
-              <div class="level">
-                <p>TARGET HOURS: {{ goals.mindTarget}}</p>
+
+          <div   class="level">
+            <!-- this month is on the MainCtrl -->
+            <h2 class="title has-text-white">Your goals for {{ currentMonth }}</h2>
+          </div>
+          <div class="has-text-white level">
+            <p>{{ daysRemainingInMonth }} days left in current cycle</p>
+          </div>
+
+          <!-- GOALS SHOW IS BELOW HERE -->
+          <div class="level">
+            <div id="goals"  class="columns">
+
+              <div id="mind" class="column  is-4">
+                <h2 class="title has-text-white">Mind</h2>
+                <div class="level">
+                  <p>TARGET HOURS: {{ goals[0].mindTarget}}</p>
+                </div>
+                <div class="level">
+                  <p>COMPLETED HOURS: {{ goals[0].mindCompleted}}</p>
+                </div>
+                <div class="level">
+                  <p>REMAINING HOURS: {{ goals[0].timeToMindGoal}}</p>
+                </div>
+                <div class="level">
+                  <button class="is-success button">Log Hours</button>
+                  <button class="is-info button">Edit Target</button>
+                </div>
               </div>
-              <div class="level">
-                <p>COMPLETED HOURS: {{ goals.mindCompleted}}</p>
+
+              <div id="body" class="column is-4">
+                <h2 class="title has-text-white">Body</h2>
+                <div class="level">
+                  <p>TARGET HOURS: {{ goals[0].bodyTarget}}</p>
+                </div>
+                <div class="level">
+                  <p>COMPLETED HOURS: {{ goals[0].bodyCompleted}}</p>
+                </div>
+                <div class="level">
+                  <p>REMAINING HOURS: {{ goals[0].timeToBodyGoal}}</p>
+                </div>
+                <div class="level">
+                  <button class="is-success button">Log Hours</button>
+                  <button class="is-info button">Edit Target</button>
+                </div>
               </div>
-              <div class="level">
-                <p>REMAINING HOURS: {{ goals.timeToMindGoal}}</p>
+
+              <div id="soul" class="column is-4">
+                <h2 class="title has-text-white">Soul</h2>
+                <div class="level">
+                  <p>TARGET HOURS: {{ goals[0].soulTarget}}</p>
+                </div>
+                <div class="level">
+                  <p>COMPLETED HOURS: {{ goals[0].soulCompleted}}</p>
+                </div>
+                <div class="level">
+                  <p>REMAINING HOURS: {{ goals[0].timeToSoulGoal}}</p>
+                </div>
+                <div class="level">
+                  <button class="is-success button">Log Hours</button>
+                  <button class="is-info button">Edit Target</button>
+                </div>
               </div>
-              <div class="level">
-                <button class="is-success button">Log Hours</button>
-                <button class="is-info button">Edit Target</button>
-              </div>
+
             </div>
-
-            <div id="body" class="column is-4">
-              <h2 class="title has-text-white">Body</h2>
-              <div class="level">
-                <p>TARGET HOURS: {{ goals.bodyTarget}}</p>
-              </div>
-              <div class="level">
-                <p>COMPLETED HOURS: {{ goals.bodyCompleted}}</p>
-              </div>
-              <div class="level">
-                <p>REMAINING HOURS: {{ goals.timeToBodyGoal}}</p>
-              </div>
-              <div class="level">
-                <button class="is-success button">Log Hours</button>
-                <button class="is-info button">Edit Target</button>
-              </div>
-            </div>
-
-            <div id="soul" class="column is-4">
-              <h2 class="title has-text-white">Soul</h2>
-              <div class="level">
-                <p>TARGET HOURS: {{ goals.soulTarget}}</p>
-              </div>
-              <div class="level">
-                <p>COMPLETED HOURS: {{ goals.soulCompleted}}</p>
-              </div>
-              <div class="level">
-                <p>REMAINING HOURS: {{ goals.timeToSoulGoal}}</p>
-              </div>
-              <div class="level">
-                <button class="is-success button">Log Hours</button>
-                <button class="is-info button">Edit Target</button>
-              </div>
-            </div>
-
           </div>
         </div>
 
@@ -114,11 +118,12 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
+
   <hr>
+
   <div class="level columns">
     <div class="column is-4">
       <p class="header has-text-centered">events attended goes here</p>
@@ -163,9 +168,9 @@
         </div>
 
         <hr>
-        <button class="button is-success">Update Targets</button>
+        <button ng-click="activateAddGoal()" class="button is-success">Set Goals</button>
         <!-- this is submitting as well -->
-        <button ng-click="activateAddGoal()" class="button is-info">Done</button>
+        <!-- <button  class="button is-info">Done</button> -->
       </form>
     </section>
   </div>
