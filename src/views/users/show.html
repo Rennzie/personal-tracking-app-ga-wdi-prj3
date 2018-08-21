@@ -1,117 +1,120 @@
 <div class="level"> </div>
-<div class="level">
-  <div class="columns">
-    <div class="column is-3">
-      <h1> Welcome back {{ user.username }}</h1>
+<div class="container">
 
-      <div class="profilePicture">
-        <img ng-src="{{user.imageUrl}}" alt="{{user.username}}">
+  <div class="level">
+    <div class="columns">
+      <div class="column is-3">
+        <h1> Welcome back {{ user.username }}</h1>
+
+        <div class="profilePicture">
+          <img ng-src="{{user.imageUrl}}" alt="{{user.username}}">
+        </div>
+
+        <div class="hosting">
+          <button ng-if="!user.isHost" ng-click="becomeAHost()" class="button is-text">I want to be a host</button>
+          <a ui-sref="eventsNew" ng-if="user.isHost" class="button is-text">Click here to create an event</a>
+          <form ng-submit="addHosterName()" ng-if="user.isHost && !user.hasHostName">
+            <input ng-model="user.hosterName" type="text" name="hosterName" placeholder="ParkCali201">
+            <button class="button is-info">Create HosterName</button>
+          </form>
+          <p ng-if="user.hasHostName">Your Host Name is: {{user.hosterName}}</p>
+        </div>
+
+        <!-- map needs height and with -->
+        <hr>
+        <div id="userProfileMap" ng-map> </div>
       </div>
 
-      <div class="hosting">
-        <button ng-if="!user.isHost" ng-click="becomeAHost()" class="button is-text">I want to be a host</button>
-        <a ui-sref="eventsNew" ng-if="user.isHost" class="button is-text">Click here to create an event</a>
-        <form ng-submit="addHosterName()" ng-if="user.isHost && !user.hasHostName">
-          <input ng-model="user.hosterName" type="text" name="hosterName" placeholder="ParkCali201">
-          <button class="button is-info">Create HosterName</button>
-        </form>
-        <p ng-if="user.hasHostName">Your Host Name is: {{user.hosterName}}</p>
-      </div>
+      <div class="column is-9 " ng-controller="GoalsShowCtrl">
+        <div class="level">
+          <h2 class="title">Your goals for [[ current Month ]]</h2>
+          <p>[[ days ]] left in current cycle</p>
+        </div>
 
-      <!-- map needs height and with -->
-      <hr>
-      <div id="userProfileMap" ng-map> </div>
+        <div id="goals"  class="level">
+          <div class="targetsTracking columns has-background-white">
+
+            <div id="mind" class="column is-4">
+              <h2 class="title">Mind</h2>
+              <div class="level">
+                <p>TARGET HOURS: {{ goals.mindTarget}}</p>
+              </div>
+              <div class="level">
+                <p>COMPLETED HOURS: {{ goals.mindCompleted}}</p>
+              </div>
+              <div class="level">
+                <p>REMAINING HOURS: {{ goals.timeToMindGoal}}</p>
+              </div>
+              <div class="level">
+                <button class="is-success button">Log Hours</button>
+                <button class="is-info button">Edit Target</button>
+              </div>
+            </div>
+
+            <div id="body" class="column is-4">
+              <h2 class="title">Body</h2>
+              <div class="level">
+                <p>TARGET HOURS: {{ goals.bodyTarget}}</p>
+              </div>
+              <div class="level">
+                <p>COMPLETED HOURS: {{ goals.bodyCompleted}}</p>
+              </div>
+              <div class="level">
+                <p>REMAINING HOURS: {{ goals.timeToBodyGoal}}</p>
+              </div>
+              <div class="level">
+                <button class="is-success button">Log Hours</button>
+                <button class="is-info button">Edit Target</button>
+              </div>
+            </div>
+
+            <div id="soul" class="column is-4">
+              <h2 class="title">Soul</h2>
+              <div class="level">
+                <p>TARGET HOURS: {{ goals.soulTarget}}</p>
+              </div>
+              <div class="level">
+                <p>COMPLETED HOURS: {{ goals.soulCompleted}}</p>
+              </div>
+              <div class="level">
+                <p>REMAINING HOURS: {{ goals.timeToSoulGoal}}</p>
+              </div>
+              <div class="level">
+                <button class="is-success button">Log Hours</button>
+                <button class="is-info button">Edit Target</button>
+              </div>
+            </div>
+
+          </div>
+          <!-- this will only appear if there are no goals for the month -->
+          <!-- <button ng-click="activateAddGoal()" class="button is-text">New Goal</button> -->
+        </div>
+        <div class="columns level">
+          <div class="column is-6">
+            <p class="header has-text-centered">events attending goes here</p>
+          </div>
+          <div class="column is-6">
+            <p class="header has-text-centered">events attending goes here</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="column is-9 " ng-controller="GoalsShowCtrl">
-      <div class="level">
-        <h2 class="title">Your goals for [[ current Month ]]</h2>
-        <p>[[ days ]] left in current cycle</p>
-      </div>
-
-      <div id="goals"  class="level">
-        <div class="targetsTracking columns has-background-white">
-
-          <div id="mind" class="column is-4">
-            <h2 class="title">Mind</h2>
-            <div class="level">
-              <p>TARGET HOURS: {{ goals.mindTarget}}</p>
-            </div>
-            <div class="level">
-              <p>COMPLETED HOURS: {{ goals.mindCompleted}}</p>
-            </div>
-            <div class="level">
-              <p>REMAINING HOURS: {{ goals.timeToMindGoal}}</p>
-            </div>
-            <div class="level">
-              <button class="is-success button">Log Hours</button>
-              <button class="is-info button">Edit Target</button>
-            </div>
-          </div>
-
-          <div id="body" class="column is-4">
-            <h2 class="title">Body</h2>
-            <div class="level">
-              <p>TARGET HOURS: {{ goals.bodyTarget}}</p>
-            </div>
-            <div class="level">
-              <p>COMPLETED HOURS: {{ goals.bodyCompleted}}</p>
-            </div>
-            <div class="level">
-              <p>REMAINING HOURS: {{ goals.timeToBodyGoal}}</p>
-            </div>
-            <div class="level">
-              <button class="is-success button">Log Hours</button>
-              <button class="is-info button">Edit Target</button>
-            </div>
-          </div>
-
-          <div id="soul" class="column is-4">
-            <h2 class="title">Soul</h2>
-            <div class="level">
-              <p>TARGET HOURS: {{ goals.soulTarget}}</p>
-            </div>
-            <div class="level">
-              <p>COMPLETED HOURS: {{ goals.soulCompleted}}</p>
-            </div>
-            <div class="level">
-              <p>REMAINING HOURS: {{ goals.timeToSoulGoal}}</p>
-            </div>
-            <div class="level">
-              <button class="is-success button">Log Hours</button>
-              <button class="is-info button">Edit Target</button>
-            </div>
-          </div>
-
-        </div>
-        <!-- this will only appear if there are no goals for the month -->
-        <!-- <button ng-click="activateAddGoal()" class="button is-text">New Goal</button> -->
-      </div>
-      <div class="columns level">
-        <div class="column is-6">
-          <p class="header has-text-centered">events attending goes here</p>
-        </div>
-        <div class="column is-6">
-          <p class="header has-text-centered">events attending goes here</p>
-        </div>
-      </div>
+  </div>
+  <hr>
+  <div class="level columns">
+    <div class="column is-4">
+      <p class="header has-text-centered">events attended goes here</p>
+    </div>
+    <div class="column is-4">
+      <p class="header has-text-centered">events attended goes here</p>
+    </div>
+    <div class="column is-4">
+      <p class="header has-text-centered">events attended goes here</p>
     </div>
   </div>
-</div>
-<hr>
-<div class="level columns">
-  <div class="column is-4">
-    <p class="header has-text-centered">events attended goes here</p>
-  </div>
-  <div class="column is-4">
-    <p class="header has-text-centered">events attended goes here</p>
-  </div>
-  <div class="column is-4">
-    <p class="header has-text-centered">events attended goes here</p>
-  </div>
-</div>
 
-<hr>
+  <hr>
+</div>
 
 <!-- to create a new set of goals -->
 <!-- MODAL FOR ADD A GOAL -->

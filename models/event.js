@@ -67,6 +67,11 @@ eventSchema.virtual('formattedTime')
     return moment(momentTimeObj).format('HH:mm');
   });
 
+eventSchema.virtual('placesRemaining')
+  .get(function(){
+    return this.capacity - this.guests.length;
+  });
+
 //  LIFECYCLE HOOKS
 
 eventSchema.pre('validate', function getLatLon(next){
