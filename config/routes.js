@@ -61,6 +61,10 @@ Router.route('/users/:userId/goals/:goalId')
   .put(goalController.update)
   .delete(goalController.delete);
 
+Router.route('/goals/:id/loghours')
+  .all(secureRoute)
+  .put(goalController.log);
+
 
 
 

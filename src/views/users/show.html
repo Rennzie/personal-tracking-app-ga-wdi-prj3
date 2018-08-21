@@ -25,18 +25,17 @@
         <div id="userProfileMap" ng-map> </div>
       </div>
 
-      <div class="column is-8" ng-controller="GoalsShowCtrl">
+      <div class="column is-8">
 
         <div ng-if="goals.length === 0">
           <div class="level">
             <h2 class="title has-text-white">Set your goals for {{ currentMonth }}</h2>
           </div>
           <!-- this will only appear if there are no goals for the month -->
-          <button ng-click="activateAddGoal()" class="column is-centered button is-text">New Goal</button>
+          <button ui-sref="goalsNew({ id: user._id })" class="button is-text">New Goal</button>
         </div>
 
         <div ng-if="goals.length > 0">
-
 
           <div   class="level">
             <!-- this month is on the MainCtrl -->
@@ -48,22 +47,18 @@
 
           <!-- GOALS SHOW IS BELOW HERE -->
           <div class="level">
-            <div id="goals"  class="columns">
+            <div id="goals"  class="columns is-multiline">
 
               <div id="mind" class="column  is-4">
                 <h2 class="title has-text-white">Mind</h2>
                 <div class="level">
-                  <p>TARGET HOURS: {{ goals[0].mindTarget}}</p>
+                  <p>TARGET HOURS: {{ pageGlobals.goals[0].mindTarget}}</p>
                 </div>
                 <div class="level">
-                  <p>COMPLETED HOURS: {{ goals[0].mindCompleted}}</p>
+                  <p>COMPLETED HOURS: {{ pageGlobals.goals[0].mindCompleted}}</p>
                 </div>
                 <div class="level">
-                  <p>REMAINING HOURS: {{ goals[0].timeToMindGoal}}</p>
-                </div>
-                <div class="level">
-                  <button class="is-success button">Log Hours</button>
-                  <button class="is-info button">Edit Target</button>
+                  <p>REMAINING HOURS: {{ pageGlobals.goals[0].timeToMindGoal}}</p>
                 </div>
               </div>
 
@@ -78,10 +73,6 @@
                 <div class="level">
                   <p>REMAINING HOURS: {{ goals[0].timeToBodyGoal}}</p>
                 </div>
-                <div class="level">
-                  <button class="is-success button">Log Hours</button>
-                  <button class="is-info button">Edit Target</button>
-                </div>
               </div>
 
               <div id="soul" class="column is-4">
@@ -95,9 +86,20 @@
                 <div class="level">
                   <p>REMAINING HOURS: {{ goals[0].timeToSoulGoal}}</p>
                 </div>
-                <div class="level">
-                  <button class="is-success button">Log Hours</button>
-                  <button class="is-info button">Edit Target</button>
+              </div>
+
+              <div class="level column is-12">
+                <div class="level-left">
+                  <div class="level-item">
+                    <button  class="is-success button">Log Hours</button>
+
+                  </div>
+                </div>
+                <div class="level-right">
+                  <div class="level-item">
+
+                    <button class="is-info button">Edit Target</button>
+                  </div>
                 </div>
               </div>
 
@@ -107,6 +109,7 @@
 
         <hr>
 
+        <!-- events user is attending  -->
         <div class="level">
           <div class="columns">
             <div class="column is-6">
@@ -118,12 +121,14 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
 
   <hr>
 
+<!-- events user has attended -->
   <div class="level columns">
     <div class="column is-4">
       <p class="header has-text-centered">events attended goes here</p>
@@ -141,12 +146,12 @@
 
 <!-- to create a new set of goals -->
 <!-- MODAL FOR ADD A GOAL -->
-<div ng-class="addGoal" ng-controller="GoalsNewCtrl" class="modal">
+<div ng-if="addGoal" class="modal is-active">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Set your target hours per discipline:</p>
-      <button ng-click="activateAddGoal()" class="delete" aria-label="close"></button>
+      <p class="modal-card-title">Set your goals for {{ currentMonth }}</p>
+      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
 
@@ -168,10 +173,45 @@
         </div>
 
         <hr>
-        <button ng-click="activateAddGoal()" class="button is-success">Set Goals</button>
+        <button  class="button is-success">Set Goals</button>
         <!-- this is submitting as well -->
         <!-- <button  class="button is-info">Done</button> -->
       </form>
     </section>
   </div>
 </div>
+
+<!-- to create a new set of goals -->
+<!-- MODAL FOR Log A GOAL Hours -->
+<!-- <div ng-class="logHours" ng-controller="GoalsEditCtrl" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Log your hours per discipline:</p>
+      <button ng-click="activateLogHours()" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form ng-submit="logHoursSubmit()" name="form">
+
+        <div class="field has-addons">
+          <label class="label" for="mindTarget">Mind</label>
+          <input ng-model="goalS.mindCompleted" class="input" type="number" name="mindCompleted" value="mindCompleted">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="bodyTarget">Body</label>
+          <input ng-model="goalS.bodyCompleted" class="input" type="number" name="bodyCompleted" value="bodyCompleted">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="soulTarget">Soul</label>
+          <input ng-model="goalS.soulCompleted" class="input" type="number" name="soulCompleted" value="soulCompleted">
+        </div>
+
+        <hr>
+        <button ng-click="activateLogHours()" class="button is-success">Log Hours</button>
+      </form>
+    </section>
+  </div>
+</div>  -->

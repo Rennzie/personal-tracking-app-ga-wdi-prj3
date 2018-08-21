@@ -25,7 +25,7 @@ import UsersShowCtrl from './controllers/users/show';
 
 import GoalsShowCtrl from './controllers/goals/show';
 import GoalsNewCtrl from './controllers/goals/new';
-import GoalsEditCtrl from './controllers/goals/new';
+import GoalsEditCtrl from './controllers/goals/edit';
 
 import AuthLoginCtrl from './controllers/auth/login';
 import AuthRegisterCtrl from './controllers/auth/register';
@@ -37,16 +37,21 @@ angular.module('Resolut', [
 ])
   .directive('ngMap', Map)
   .controller('MainCtrl', MainCtrl)
+
+  .controller('AuthLoginCtrl', AuthLoginCtrl)
+  .controller('AuthRegisterCtrl', AuthRegisterCtrl)
+
   .controller('EventsIndexCtrl', EventsIndexCtrl)
   .controller('EventsShowCtrl', EventsShowCtrl)
   .controller('EventsNewCtrl', EventsNewCtrl)
   .controller('EventsEditCtrl', EventsEditCtrl)
+
   .controller('UsersShowCtrl', UsersShowCtrl)
+
   .controller('GoalsShowCtrl', GoalsShowCtrl)
   .controller('GoalsNewCtrl', GoalsNewCtrl)
   .controller('GoalsEditCtrl', GoalsEditCtrl)
-  .controller('AuthLoginCtrl', AuthLoginCtrl)
-  .controller('AuthRegisterCtrl', AuthRegisterCtrl)
+
   .config(Router)
   .config(function($authProvider) {
     $authProvider.loginUrl = '/api/login';

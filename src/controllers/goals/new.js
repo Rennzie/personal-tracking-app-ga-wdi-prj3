@@ -1,7 +1,12 @@
-function GoalsNewCtrl($http, $scope){
+function GoalsNewCtrl($http, $scope, $state){
   const userId = $scope.getPayload().sub;
+  $scope.addGoal = true;
 
-  //need to update teh scope once the setTarget is made
+  $scope.goal = {};
+
+  // console.log('scope is: ', $scope);
+
+  console.log('current user is', userId);
   $scope.setTarget = function() {
     $scope.goal.createdBy = userId;
     const goalData = $scope.goal;
@@ -12,16 +17,7 @@ function GoalsNewCtrl($http, $scope){
       data: goalData
 
     })
-      .then(res => {
-        // console.log('the returned data is', response.data.goals);
-        // $scope.goals = response.data.goals;
-        const userGoals = res.data.goals.filter(goal => goal.createdBy === userId );
-
-        const currentMonthGoals = userGoals.filter(goal => goal.goalMonth === $scope.currentMonth);
-
-        console.log('the users goals are ', currentMonthGoals);
-        $scope.goals = currentMonthGoals;
-      } );
+      .then(() => $state.go('usersShow',{id: userId}));
   };
 }
 

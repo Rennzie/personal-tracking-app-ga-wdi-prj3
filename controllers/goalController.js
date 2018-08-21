@@ -23,8 +23,7 @@ function goalShow( req, res ,next ){
 function goalCreate( req, res, next ){
   Goal
     .create(req.body)
-    .then(() => Goal.find())
-    .then(goals => res.status(201).json({message: 'Created a new goal', goals}))
+    .then(() => res.status(201).json({message: 'Created a new goal'}))
     .catch(next);
 }
 
@@ -49,11 +48,21 @@ function goalDelete( req, res, next ){
     .catch(next);
 }
 
+function goalHoursLog( req, res, next ){
+  Goal
+    .findById(req.params.id)
+    .then(goal => goal.logHours(req.body))
+    .then(goal => goal.save())
+    .then(() => Goal.find())
+    .then(goals => res.status(201).json(goals))
+    .catch(next);
+}
 
 module.exports = {
   index: goalIndex,
   show: goalShow,
   create: goalCreate,
   update: goalUpdate,
-  delete: goalDelete
+  delete: goalDelete,
+  log: goalHoursLog
 };

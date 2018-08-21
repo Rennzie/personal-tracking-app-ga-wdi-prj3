@@ -25,18 +25,18 @@ function Router($stateProvider, $urlRouterProvider) {
     })
 
 
-    .state('mind', {
-      templateUrl: './views/mind.html',
-      url: '/mind'
-    })
-    .state('body', {
-      templateUrl: './views/body.html',
-      url: '/body'
-    })
-    .state('soul', {
-      templateUrl: './views/soul.html',
-      url: '/soul'
-    })
+    // .state('mind', {
+    //   templateUrl: './views/mind.html',
+    //   url: '/mind'
+    // })
+    // .state('body', {
+    //   templateUrl: './views/body.html',
+    //   url: '/body'
+    // })
+    // .state('soul', {
+    //   templateUrl: './views/soul.html',
+    //   url: '/soul'
+    // })
 
     //--------EVENTS STATES ----------//
     .state('eventsIndex', {
@@ -98,9 +98,17 @@ function Router($stateProvider, $urlRouterProvider) {
   // })
     .state('usersShow', {
       templateUrl: './views/users/show.html',
-      url: '/users/:id', //id is now a parameter of the state // NOTE: this doesnt put id onto the state
+      url: '/users/:id',
       controller: 'UsersShowCtrl'
+    })
+
+  //--------- USER STATES ---------//
+    .state('goalsNew', {
+      templateUrl: './views/users/show.html',
+      url: '/users/:id/goals',
+      controller: 'GoalsNewCtrl'
     });
+
 
   $urlRouterProvider.otherwise('/');
 }

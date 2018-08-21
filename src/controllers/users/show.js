@@ -2,18 +2,17 @@
 
 function UsersShowCtrl($http, $state, $scope) {
   const userId = $scope.getPayload().sub;
-
+  $scope.addGoal = false;
 
   $http({
     method: 'GET',
     url: `/api/users/${$state.params.id}`
   })
     .then(res => {
-      // console.log('Found a user', res.data);
+      console.log('Found a user', res.data);
       $scope.user = res.data;
     });
 
-  // $scope.$watch('goals', () => updateGoals())
   $scope.becomeAHost = function() {
     const updateUserData = $scope.user;
     updateUserData.isHost = true;
@@ -44,17 +43,38 @@ function UsersShowCtrl($http, $state, $scope) {
       } );
   };
 
+  //FETCH USERS GOALS AND ADD TO STATE
+  $http({
+    method: 'GET',
+    url: `/api/users/${$state.params.id}/goals`
+  })
+    .then(res => {
+      const userGoals = res.data.filter(goal => goal.createdBy === userId );
 
+      const currentMonthGoals = userGoals.filter(goal => goal.goalMonth === $scope.currentMonth);
 
-  // toggle addgoal modal
-  $scope.addGoal = 'not-active';
-  $scope.activateAddGoal = function(){
-    if ($scope.addGoal === 'not-active')
-      $scope.addGoal = 'is-active';
+      console.log('the users goals are ', currentMonthGoals);
+      $scope.goals = currentMonthGoals;
+    });
+
+  /////DELETE WHEN STATES ARE SET UP/////////
+  // // toggle addgoal modal
+  // $scope.addGoal = 'not-active';
+  // $scope.activateAddGoal = function(){
+  //   if ($scope.addGoal === 'not-active')
+  //     $scope.addGoal = 'is-active';
+  //   else
+  //     $scope.addGoal = 'not-active';
+  // };
+
+  $scope.logHours = 'not-active';
+  $scope.activateLogHours = function(){
+    console.log('activateLogHours is running');
+    if ($scope.logHours === 'not-active')
+      $scope.logHours = 'is-active';
     else
-      $scope.addGoal = 'not-active';
+      $scope.logHours = 'not-active';
   };
-
 
 }
 
