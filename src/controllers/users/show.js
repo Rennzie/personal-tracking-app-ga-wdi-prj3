@@ -76,6 +76,26 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.logHours = 'not-active';
   };
 
+
+  //---------users can view their past events -----///
+
+  $http({
+    method: 'GET',
+    url: '/api/events'
+  })
+    .then(res => {
+      const usersEvents = res.data.filter(event => event.guests.id === $scope.user.id);
+
+      const concludedEvents = usersEvents.filter(event => event.concluded === true);
+      const upcomingEvents = usersEvents.filter(event => event.concluded === false);
+      console.log('concluded events', concludedEvents);
+      console.log('upcoming events', upcomingEvents);
+      $scope.eventsAttended = concludedEvents;
+      $scope.upcomingEvents = upcomingEvents;
+    }
+    );
+
+
 }
 
 export default UsersShowCtrl;
