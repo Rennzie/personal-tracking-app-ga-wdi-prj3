@@ -3,7 +3,7 @@
 
   <div class="level">
     <div class="columns">
-      <div class="column is-3">
+      <div class="column is-4">
         <h1> Welcome back {{ user.username }}</h1>
 
         <div class="profilePicture">
@@ -25,14 +25,17 @@
         <div id="userProfileMap" ng-map> </div>
       </div>
 
-      <div class="column is-9 " ng-controller="GoalsShowCtrl">
+      <div class="column is-8" ng-controller="GoalsShowCtrl">
         <div class="level">
-          <h2 class="title">Your goals for [[ current Month ]]</h2>
+          <h2 class="title has-text-white">Your goals for [[ current Month ]]</h2>
+        </div>
+        <div class="has-text-white level">
           <p>[[ days ]] left in current cycle</p>
         </div>
 
-        <div id="goals"  class="level">
-          <div class="targetsTracking columns has-background-white">
+        <!-- GOALS SHOW IS BELOW HERE -->
+        <div class="level">
+          <div id="goals"  class="columns has-background-white">
 
             <div id="mind" class="column is-4">
               <h2 class="title">Mind</h2>
@@ -85,18 +88,25 @@
               </div>
             </div>
 
-          </div>
-          <!-- this will only appear if there are no goals for the month -->
-          <!-- <button ng-click="activateAddGoal()" class="button is-text">New Goal</button> -->
-        </div>
-        <div class="columns level">
-          <div class="column is-6">
-            <p class="header has-text-centered">events attending goes here</p>
-          </div>
-          <div class="column is-6">
-            <p class="header has-text-centered">events attending goes here</p>
+            <!-- <button ng-click="activateAddGoal()" class="column is-centered button is-text">New Goal</button> -->
+            <!-- this will only appear if there are no goals for the month -->
           </div>
         </div>
+
+        <hr>
+
+        <div class="level">
+          <div class="columns">
+            <div class="column is-6">
+              <p class="header has-text-centered">events attending goes here</p>
+            </div>
+
+            <div class="column is-6">
+              <p class="header has-text-centered">events attending goes here</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -122,68 +132,33 @@
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Add Your Target Goals</p>
+      <p class="modal-card-title">Set your target hours per discipline:</p>
       <button ng-click="activateAddGoal()" class="delete" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
 
       <form ng-submit="setTarget()" name="form">
 
-        <!-- <label for="month">Which month are you tracking? :</label> -->
+        <div class="field has-addons">
+          <label class="label" for="mindTarget">Mind</label>
+          <input ng-model="goal.mindTarget" class="input" type="number" name="mindTarget">
+        </div>
 
-        <select ng-model="goal.month" id="selectMonth" name="month">
-          <option value="">--CHOOSE MONTH--</option>
-          <option value="JAN">JAN</option>
-          <option value="FEB">FEB</option>
-          <option value="MAR">MAR</option>
-          <option value="APR">APR</option>
-          <option value="MAY">MAY</option>
-          <option value="JUN">JUN</option>
-          <option value="JUL">JUL</option>
-          <option value="AUG">AUG</option>
-          <option value="SEP">SEP</option>
-          <option value="OCT">OCT</option>
-          <option value="NOV">NOV</option>
-          <option value="DEC">DEC</option>
-        </select>
+        <div class="field has-addons">
+          <label class="label" for="bodyTarget">Body</label>
+          <input ng-model="goal.bodyTarget" class="input" type="number" name="bodyTarget" placeholder="">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="soulTarget">Soul</label>
+          <input ng-model="goal.soulTarget" class="input" type="number" name="soulTarget" placeholder="">
+        </div>
 
         <hr>
-        <div class="field has-addons">
-
-          <label class="label" for="mindTarget">Mind</label>
-          <input ng-model="goal.mindTarget" class="input" type="number" name="mindTarget" placeholder="">
-
-        </div>
-        <!-- <div class="field">
-        <label class="label" for="mindCompleted">COMPLETED</label>
-        <input ng-model="goal.mindCompleted" class="input" type="number" name="mindCompleted" placeholder="">
-      </div> -->
-
-
-      <div class="field">
-        <label class="label" for="bodyTarget">Body</label>
-        <input ng-model="goal.bodyTarget" class="input" type="number" name="bodyTarget" placeholder="">
-      </div>
-      <!-- <div class="field">
-      <label class="label" for="bodyCompleted">COMPLETED</label>
-      <input ng-model="goal.bodyCompleted" class="input" type="number" name="bodyCompleted" placeholder="">
-    </div> -->
-
-
-    <div class="field">
-      <label class="label" for="soulTarget">Soul</label>
-      <input ng-model="goal.soulTarget" class="input" type="number" name="soulTarget" placeholder="">
-    </div>
-    <!-- <div class="field">
-    <label class="label" for="soulCompleted">COMPLETED</label>
-    <input ng-model="goal.soulCompleted" class="input" type="number" name="soulCompleted" placeholder="">
-  </div> -->
-
-  <hr>
-
-  <button class="button is-success">Update Targets</button>
-  <button ng-click="activateAddGoal()" class="button is-info">Done</button>
-</form>
-</section>
-</div>
+        <button class="button is-success">Update Targets</button>
+        <!-- this is submitting as well -->
+        <button ng-click="activateAddGoal()" class="button is-info">Done</button>
+      </form>
+    </section>
+  </div>
 </div>
