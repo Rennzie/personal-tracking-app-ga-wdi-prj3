@@ -15,6 +15,28 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.user = res.data;
     });
 
+  $scope.$watch('event', checkProfileIsForUser() );
+
+  //check to see if the current user is the event owner
+  function checkProfileIsForUser(){
+    if($scope.user){
+      //check user is logged in
+      if(!$scope.isAuthenticated()){
+        $scope.checkProfileIsForUser = false;
+      }
+
+      if(!$scope.event.createdBy._id){
+        $scope.checkProfileIsForUser = false;
+      }
+
+      if($scope.getPayload().sub === $state.params.id){
+        $scope.checkProfileIsForUser = true;
+      }else{
+        $scope.checkProfileIsForUser = false;
+      }
+    }
+  }
+
   $scope.becomeAHost = function() {
     const updateUserData = $scope.user;
     updateUserData.isHost = true;

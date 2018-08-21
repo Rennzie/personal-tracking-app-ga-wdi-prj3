@@ -23,7 +23,6 @@ import EventsEditCtrl from './controllers/events/edit';
 
 import UsersShowCtrl from './controllers/users/show';
 
-import GoalsShowCtrl from './controllers/goals/show';
 import GoalsNewCtrl from './controllers/goals/new';
 import GoalsEditCtrl from './controllers/goals/edit';
 import GoalsLogCtrl from './controllers/goals/log';
@@ -49,7 +48,6 @@ angular.module('Resolut', [
 
   .controller('UsersShowCtrl', UsersShowCtrl)
 
-  .controller('GoalsShowCtrl', GoalsShowCtrl)
   .controller('GoalsNewCtrl', GoalsNewCtrl)
   .controller('GoalsEditCtrl', GoalsEditCtrl)
   .controller('GoalsLogCtrl', GoalsLogCtrl)

@@ -44,10 +44,7 @@
         <div ng-if="isAuthenticated()" class="attending">
           <div class="attendees columns is-multiline">
             <div ng-repeat="guest in event.guests" class="column is-4" >
-              <a  ui-sref="usersShow({ id: guest._id })" >
                 <img class="avatar" ng-src="{{ guest.imageUrl }}" style="max-height: 40px">
-                <!-- <p>{{ guest.username}}</p> -->
-              </a>
             </div>
           </div>
 
