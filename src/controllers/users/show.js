@@ -57,6 +57,22 @@ function UsersShowCtrl($http, $state, $scope) {
       console.log('the users goals are ', currentMonthGoals);
       $scope.goals = currentMonthGoals;
     });
+
+  $http({
+    method: 'GET',
+    url: '/api/events'
+  })
+    .then(res => {
+      const usersEvents = res.data.filter(event => event.guests.id === $scope.user.id);
+
+      const concludedEvents = usersEvents.filter(event => event.concluded === true);
+      const upcomingEvents = usersEvents.filter(event => event.concluded === false);
+      console.log('concluded events', concludedEvents);
+      console.log('upcoming events', upcomingEvents);
+      $scope.eventsAttended = concludedEvents;
+      $scope.upcomingEvents = upcomingEvents;
+    }
+    );
 }
 
 export default UsersShowCtrl;
