@@ -45,25 +45,8 @@ function UsersShowCtrl($http, $state, $scope) {
   };
 
 
-  //need to update teh scope once the setTarget is made
 
-
-  $scope.setTarget = function() {
-    $scope.goal.createdBy = userId;
-    const goalData = $scope.goal;
-    console.log('Data to update is---->', goalData);
-    $http({
-      method: 'POST',
-      url: `/api/users/${userId}/goals`,
-      data: goalData
-
-    })
-      .then(response => {
-        console.log('the returned data is', response.data.goals);
-        $scope.goals = response.data.goals;
-      } );
-  };
-
+  // toggle addgoal modal
   $scope.addGoal = 'not-active';
   $scope.activateAddGoal = function(){
     if ($scope.addGoal === 'not-active')
