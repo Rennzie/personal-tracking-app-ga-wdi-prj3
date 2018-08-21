@@ -17,10 +17,18 @@ const goalSchema = mongoose.Schema({
 goalSchema.set('toObject', { virtuals: true });
 goalSchema.set('toJSON', { virtuals: true });
 
-
-//VIRTUALS
+//METHODS
 //  --> updateAccumulatedHours
 
+goalSchema.methods.incrementHours = function(loggedHours){
+  this.mindCompleted += loggedHours.mindCompleted;
+  this.bodyCompleted += loggedHours.bodyCompleted;
+  this.soulCompleted += loggedHours.soulCompleted;
+
+  return this.save();
+};
+
+//VIRTUALS
 //  --> goalHoursRemaining
 
 goalSchema.virtual('timeToBodyGoal')

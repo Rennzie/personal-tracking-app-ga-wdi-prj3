@@ -49,6 +49,8 @@ eventSchema.methods.removeGuest = function(userId){
   return this.save();
 };
 
+
+
 //VIRTUALS
 //encode the date and time correctly
 //HTML5 gives a string in the date box which has time as well.

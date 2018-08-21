@@ -43,6 +43,7 @@
           </div>
           <div class="has-text-white level">
             <p>{{ daysRemainingInMonth }} days left in current cycle</p>
+            <p>The goal Id is: {{ goals[0].id}}</p>
           </div>
 
           <!-- GOALS SHOW IS BELOW HERE -->
@@ -52,13 +53,13 @@
               <div id="mind" class="column  is-4">
                 <h2 class="title has-text-white">Mind</h2>
                 <div class="level">
-                  <p>TARGET HOURS: {{ pageGlobals.goals[0].mindTarget}}</p>
+                  <p>TARGET HOURS: {{ goals[0].mindTarget}}</p>
                 </div>
                 <div class="level">
-                  <p>COMPLETED HOURS: {{ pageGlobals.goals[0].mindCompleted}}</p>
+                  <p>COMPLETED HOURS: {{ goals[0].mindCompleted}}</p>
                 </div>
                 <div class="level">
-                  <p>REMAINING HOURS: {{ pageGlobals.goals[0].timeToMindGoal}}</p>
+                  <p>REMAINING HOURS: {{ goals[0].timeToMindGoal}}</p>
                 </div>
               </div>
 
@@ -91,7 +92,7 @@
               <div class="level column is-12">
                 <div class="level-left">
                   <div class="level-item">
-                    <button  class="is-success button">Log Hours</button>
+                    <button ui-sref="goalsLogHours({userId: getPayload().sub, goalId: goals[0].id})" class="is-success button">Log Hours</button>
 
                   </div>
                 </div>
@@ -183,12 +184,12 @@
 
 <!-- to create a new set of goals -->
 <!-- MODAL FOR Log A GOAL Hours -->
-<!-- <div ng-class="logHours" ng-controller="GoalsEditCtrl" class="modal">
+<div ng-if="logHours" class="modal is-active">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Log your hours per discipline:</p>
-      <button ng-click="activateLogHours()" class="delete" aria-label="close"></button>
+      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
 
@@ -196,22 +197,22 @@
 
         <div class="field has-addons">
           <label class="label" for="mindTarget">Mind</label>
-          <input ng-model="goalS.mindCompleted" class="input" type="number" name="mindCompleted" value="mindCompleted">
+          <input ng-model="goal.mindCompleted" class="input" type="number" name="mindCompleted" value="mindCompleted">
         </div>
 
         <div class="field has-addons">
           <label class="label" for="bodyTarget">Body</label>
-          <input ng-model="goalS.bodyCompleted" class="input" type="number" name="bodyCompleted" value="bodyCompleted">
+          <input ng-model="goal.bodyCompleted" class="input" type="number" name="bodyCompleted" value="bodyCompleted">
         </div>
 
         <div class="field has-addons">
           <label class="label" for="soulTarget">Soul</label>
-          <input ng-model="goalS.soulCompleted" class="input" type="number" name="soulCompleted" value="soulCompleted">
+          <input ng-model="goal.soulCompleted" class="input" type="number" name="soulCompleted" value="soulCompleted">
         </div>
 
         <hr>
-        <button ng-click="activateLogHours()" class="button is-success">Log Hours</button>
+        <button class="button is-success">Log Hours</button>
       </form>
     </section>
   </div>
-</div>  -->
+</div>

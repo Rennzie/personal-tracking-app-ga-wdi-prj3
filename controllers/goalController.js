@@ -51,9 +51,8 @@ function goalDelete( req, res, next ){
 function goalHoursLog( req, res, next ){
   Goal
     .findById(req.params.id)
-    .then(goal => goal.logHours(req.body))
+    .then(goal => goal.incrementHours(req.body))
     .then(goal => goal.save())
-    .then(() => Goal.find())
     .then(goals => res.status(201).json(goals))
     .catch(next);
 }

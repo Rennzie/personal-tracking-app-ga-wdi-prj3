@@ -107,6 +107,11 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: './views/users/show.html',
       url: '/users/:id/goals',
       controller: 'GoalsNewCtrl'
+    })
+    .state('goalsLogHours', {
+      templateUrl: './views/users/show.html',
+      url: '/users/:userId/goals/:goalId/log',
+      controller: 'GoalsEditCtrl'
     });
 
 

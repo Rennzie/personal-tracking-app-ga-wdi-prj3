@@ -3,6 +3,7 @@
 function UsersShowCtrl($http, $state, $scope) {
   const userId = $scope.getPayload().sub;
   $scope.addGoal = false;
+  $scope.logHours = false;
 
   $http({
     method: 'GET',
@@ -56,26 +57,6 @@ function UsersShowCtrl($http, $state, $scope) {
       console.log('the users goals are ', currentMonthGoals);
       $scope.goals = currentMonthGoals;
     });
-
-  /////DELETE WHEN STATES ARE SET UP/////////
-  // // toggle addgoal modal
-  // $scope.addGoal = 'not-active';
-  // $scope.activateAddGoal = function(){
-  //   if ($scope.addGoal === 'not-active')
-  //     $scope.addGoal = 'is-active';
-  //   else
-  //     $scope.addGoal = 'not-active';
-  // };
-
-  $scope.logHours = 'not-active';
-  $scope.activateLogHours = function(){
-    console.log('activateLogHours is running');
-    if ($scope.logHours === 'not-active')
-      $scope.logHours = 'is-active';
-    else
-      $scope.logHours = 'not-active';
-  };
-
 }
 
 export default UsersShowCtrl;
