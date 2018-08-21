@@ -1,4 +1,5 @@
-<h1 class="title is-2">Check out over {{ events.length }} events near you</h1>
+<section class="eventsIndex">
+<h1 class="title is-2 has-text-centered">CHECK OUT OVER {{events.length}} NEAR YOU</h1>
 
   <div class="container columns is-multiline">
     <div class="column is-half box has-text-centered" ng-repeat="event in events">
@@ -16,3 +17,5 @@
 
 <!-- // need to add isHost boolean reaction here -->
   <a class="button" ui-sref="eventsNew" ng-if="isHost"> + an event </a>
+
+</section>
