@@ -31,7 +31,7 @@ function goalUpdate( req, res, next ){
   Goal
     .findById(req.params.goalId)
     //we have the goal to update
-    .then(goal => goal.set(req.body))
+    .then(goal => goal.updateTargets(req.body))
     .then(goal => goal.save())
     //goal is updated, send it back to user with 201 (created) status
     .then(goal => res.status(201).json(goal))

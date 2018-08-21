@@ -26,6 +26,7 @@ import UsersShowCtrl from './controllers/users/show';
 import GoalsShowCtrl from './controllers/goals/show';
 import GoalsNewCtrl from './controllers/goals/new';
 import GoalsEditCtrl from './controllers/goals/edit';
+import GoalsLogCtrl from './controllers/goals/log';
 
 import AuthLoginCtrl from './controllers/auth/login';
 import AuthRegisterCtrl from './controllers/auth/register';
@@ -51,6 +52,7 @@ angular.module('Resolut', [
   .controller('GoalsShowCtrl', GoalsShowCtrl)
   .controller('GoalsNewCtrl', GoalsNewCtrl)
   .controller('GoalsEditCtrl', GoalsEditCtrl)
+  .controller('GoalsLogCtrl', GoalsLogCtrl)
 
   .config(Router)
   .config(function($authProvider) {

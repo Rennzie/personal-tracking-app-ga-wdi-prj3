@@ -1,5 +1,5 @@
 function GoalsEditCtrl($http, $scope, $state){
-  $scope.editGoal = true;
+  $scope.logHours = true;
 
   $http({
     method: 'GET',
@@ -14,10 +14,10 @@ function GoalsEditCtrl($http, $scope, $state){
       $scope.goal = currentMonthGoals[0];
     });
 
-  $scope.editGoals = function() {
+  $scope.logHoursSubmit = function() {
     $http({
       method: 'PUT',
-      url: `/api/users/${$state.params.userId}/goals/${$state.params.goalId}`,
+      url: `/api/goals/${$state.params.goalId}/loghours`,
       data: $scope.goal
     })
       .then(res =>{

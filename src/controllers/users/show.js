@@ -4,6 +4,7 @@ function UsersShowCtrl($http, $state, $scope) {
   const userId = $scope.getPayload().sub;
   $scope.addGoal = false;
   $scope.logHours = false;
+  $scope.editGoal = false;
 
   $http({
     method: 'GET',
@@ -24,7 +25,7 @@ function UsersShowCtrl($http, $state, $scope) {
       data: JSON.stringify(updateUserData)
     })
       .then(res =>{
-        console.log('User is now host: ', res.data.isHost);
+        // console.log('User is now host: ', res.data.isHost);
         $scope.user = res.data;
       } );
   };
@@ -39,7 +40,7 @@ function UsersShowCtrl($http, $state, $scope) {
       data: JSON.stringify(updateUserData)
     })
       .then(res =>{
-        console.log('User host name is: ', res.data);
+        // console.log('User host name is: ', res.data);
         $scope.user = res.data;
       } );
   };
@@ -58,6 +59,7 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.goals = currentMonthGoals;
     });
 
+  //request to events an adds them on to scope
   $http({
     method: 'GET',
     url: '/api/events'
@@ -67,8 +69,8 @@ function UsersShowCtrl($http, $state, $scope) {
 
       const concludedEvents = usersEvents.filter(event => event.concluded === true);
       const upcomingEvents = usersEvents.filter(event => event.concluded === false);
-      console.log('concluded events', concludedEvents);
-      console.log('upcoming events', upcomingEvents);
+      // console.log('concluded events', concludedEvents);
+      // console.log('upcoming events', upcomingEvents);
       $scope.eventsAttended = concludedEvents;
       $scope.upcomingEvents = upcomingEvents;
     }

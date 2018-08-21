@@ -43,7 +43,6 @@
           </div>
           <div class="has-text-white level">
             <p>{{ daysRemainingInMonth }} days left in current cycle</p>
-            <p>The goal Id is: {{ goals[0].id}}</p>
           </div>
 
           <!-- GOALS SHOW IS BELOW HERE -->
@@ -99,7 +98,7 @@
                 <div class="level-right">
                   <div class="level-item">
 
-                    <button class="is-info button">Edit Target</button>
+                    <button ui-sref="goalsEdit({userId: getPayload().sub, goalId: goals[0].id})" class="is-info button">Edit Target</button>
                   </div>
                 </div>
               </div>
@@ -175,6 +174,43 @@
 
         <hr>
         <button  class="button is-success">Set Goals</button>
+        <!-- this is submitting as well -->
+        <!-- <button  class="button is-info">Done</button> -->
+      </form>
+    </section>
+  </div>
+</div>
+
+<!-- to create a new set of goals -->
+<!-- MODAL FOR UPDATE GOALS -->
+<div ng-if="editGoal" class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Update your goals for {{ currentMonth }}</p>
+      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form ng-submit="editGoals()" name="form">
+
+        <div class="field has-addons">
+          <label class="label" for="mindTarget">Mind</label>
+          <input ng-model="goal.mindTarget" class="input" type="number" name="mindTarget">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="bodyTarget">Body</label>
+          <input ng-model="goal.bodyTarget" class="input" type="number" name="bodyTarget" placeholder="">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="soulTarget">Soul</label>
+          <input ng-model="goal.soulTarget" class="input" type="number" name="soulTarget" placeholder="">
+        </div>
+
+        <hr>
+        <button  class="button is-success">Update Targets</button>
         <!-- this is submitting as well -->
         <!-- <button  class="button is-info">Done</button> -->
       </form>

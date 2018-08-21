@@ -28,6 +28,14 @@ goalSchema.methods.incrementHours = function(loggedHours){
   return this.save();
 };
 
+goalSchema.methods.updateTargets = function(newTargets){
+  this.mindTarget = newTargets.mindTarget;
+  this.bodyTarget = newTargets.bodyTarget;
+  this.soulTarget = newTargets.soulTarget;
+
+  return this.save();
+};
+
 //VIRTUALS
 //  --> goalHoursRemaining
 

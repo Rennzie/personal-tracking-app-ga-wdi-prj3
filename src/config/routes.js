@@ -24,20 +24,6 @@ function Router($stateProvider, $urlRouterProvider) {
       url: '/'
     })
 
-
-    // .state('mind', {
-    //   templateUrl: './views/mind.html',
-    //   url: '/mind'
-    // })
-    // .state('body', {
-    //   templateUrl: './views/body.html',
-    //   url: '/body'
-    // })
-    // .state('soul', {
-    //   templateUrl: './views/soul.html',
-    //   url: '/soul'
-    // })
-
     //--------EVENTS STATES ----------//
     .state('eventsIndex', {
       templateUrl: './views/events/index.html',
@@ -111,6 +97,11 @@ function Router($stateProvider, $urlRouterProvider) {
     .state('goalsLogHours', {
       templateUrl: './views/users/show.html',
       url: '/users/:userId/goals/:goalId/log',
+      controller: 'GoalsLogCtrl'
+    })
+    .state('goalsEdit', {
+      templateUrl: './views/users/show.html',
+      url: '/users/:userId/goals/:goalId',
       controller: 'GoalsEditCtrl'
     });
 
