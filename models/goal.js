@@ -36,9 +36,6 @@ goalSchema.virtual('timeToSoulGoal')
     return this.soulTarget - this.soulCompleted;
   });
 
-goalSchema.virtuals('goalMonth'){
-  return moment().format('MMMM')
-}
 
 // - save the goal month as the last day of the month
 // - return the month to the user to display on home page depending on the current month
