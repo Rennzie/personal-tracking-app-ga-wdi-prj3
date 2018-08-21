@@ -4,21 +4,20 @@ function EventsIndexCtrl($scope, $http, $state) {
     url: '/api/events'
   }) //Submit an HTTP request to /api/EventsIndexCtrl
     .then(res => {
-      // console.log('the $state is ======> ', $state.current.name);
-      // console.log('events are', res.data);
+      const upcomingEvents = res.data.filter(event => event.concluded === false);
       let events;
       switch($state.current.name){
         case 'eventsIndex':
-          events = res.data;
+          events = upcomingEvents;
           break;
         case 'eventsMindIndex':
-          events = res.data.filter(event => event.category === 'mind');
+          events = upcomingEvents.filter(event => event.category === 'mind');
           break;
         case 'eventsBodyIndex':
-          events = res.data.filter(event => event.category === 'body');
+          events = upcomingEvents.filter(event => event.category === 'body');
           break;
         case 'eventsSoulIndex':
-          events = res.data.filter(event => event.category === 'soul');
+          events = upcomingEvents.filter(event => event.category === 'soul');
           break;
       }
 
