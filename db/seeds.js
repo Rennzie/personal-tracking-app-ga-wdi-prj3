@@ -363,7 +363,7 @@ const eventData = [
     eventTitle: 'Molecular Gastronomy Techniques',
     eventDateTime: 'Monday September 3 2018 20:00:00 GMT+0100 (British Summer Time)',
     guests: [],
-    imageUrl: 'http://5x15.com/wp-content/uploads/2018/07/SLIDER_Putins-Russia-2.jpg',
+    imageUrl: 'https://eattreat.in/wp-content/uploads/2016/11/0c2246d1aaf2702e35aa39230f151a59-768x460.jpg',
     isIndoors: true,
     location: {
       streetNumber: 96,
