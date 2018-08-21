@@ -1,4 +1,4 @@
-//BACK END ROUER
+//BACK END ROUTER
 
 const express = require('express');
 const Router = express.Router();
@@ -11,6 +11,7 @@ const goalController = require('../controllers/goalController');
 
 //external API Controllers
 const weatherController = require('../controllers/externalApis/weatherController');
+const travelController = require('../controllers/externalApis/travelController');
 
 
 
@@ -66,9 +67,14 @@ Router.route('/goals/:id/loghours')
   .all(secureRoute)
   .put(goalController.log);
 
+//////===== EXTERNAL API'S =========/////////
 // WEATHER ROUTES
 Router.route('/forecast')
   .get(weatherController.forecast);
+
+//TRAVEL ROUTES
+Router.Route('/citymapper/traveltime')
+  .get(travelController.citymapper.travelTime)
 
 
 

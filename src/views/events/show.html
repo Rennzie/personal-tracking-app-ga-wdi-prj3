@@ -14,7 +14,10 @@
       <div class="column is-4">
         <img  ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
         <p>{{ event.category }}</p>
-        <p ng-if="weatherSummary">The expected weather is: {{ weatherSummary.summary }}</p>
+        <div ng-if="weatherSummary">
+          <p>The expected weather is: {{ weatherSummary.summary }}</p>
+          <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+        </div>
         <hr>
       </div>
 
