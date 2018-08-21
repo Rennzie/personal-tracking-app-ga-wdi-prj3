@@ -1,108 +1,125 @@
-<h1> {{ user.username }}</h1>
 
-<div class="profilePicture">
-  <img ng-src="{{user.imageUrl}}" alt="{{user.username}}">
-</div>
+<div class="level"> </div>
+<div class="columns">
+  <div class="column is-3">
+    <h1> {{ user.username }}</h1>
 
-<div class="hosting">
-  <button ng-if="!user.isHost" ng-click="becomeAHost()" class="button is-text">I want to be a host</button>
-  <a ui-sref="eventsNew" ng-if="user.isHost" class="button is-text">Click here to create an event</a>
-  <form ng-submit="addHosterName()" ng-if="user.isHost && !user.hasHostName">
-    <input ng-model="user.hosterName" type="text" name="hosterName" placeholder="ParkCali201">
-    <button class="button is-info">Create HosterName</button>
-  </form>
-  <p ng-if="user.hasHostName">Your Host Name is: {{user.hosterName}}</p>
-</div>
+    <div class="profilePicture">
+      <img ng-src="{{user.imageUrl}}" alt="{{user.username}}">
+    </div>
 
-<hr>
+    <div class="hosting">
+      <button ng-if="!user.isHost" ng-click="becomeAHost()" class="button is-text">I want to be a host</button>
+      <a ui-sref="eventsNew" ng-if="user.isHost" class="button is-text">Click here to create an event</a>
+      <form ng-submit="addHosterName()" ng-if="user.isHost && !user.hasHostName">
+        <input ng-model="user.hosterName" type="text" name="hosterName" placeholder="ParkCali201">
+        <button class="button is-info">Create HosterName</button>
+      </form>
+      <p ng-if="user.hasHostName">Your Host Name is: {{user.hosterName}}</p>
+    </div>
 
-
-<div class="targetsTracking columns has-background-white">
-  <div id="body" class="column is-4">
-    <h2 class="title">Body</h2>
-    <p>Target</p>
-    <ul>
-      <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.bodyTarget }} hrs </li>
-    </ul>
     <hr>
-    <p>Completed</p>
-    <ul>
-      <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.bodyCompleted }} hrs</li>
-    </ul>
-    <hr>
-    <p>Remaining</p>
-    <ul>
-      <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.timeToBodyGoal }} hrs</li>
-    </ul>
-    <hr>
-    <p>put graph here</p>
   </div>
 
-  <div id="mind" class="column is-4">
-    <h2 class="title">Mind</h2>
-    <p>Target</p>
-    <ul>
-      <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.mindTarget }} hrs</li>
-    </ul>
+  <div class="column is-9">
+
+  <div id="goals" ng-controller="GoalsShowCtrl">
+    <div class="targetsTracking columns has-background-white">
+      <div id="body" class="column is-4">
+        <h2 class="title">Body</h2>
+        <p>Target</p>
+        <ul>
+          <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.bodyTarget }} hrs </li>
+        </ul>
+        <hr>
+        <p>Completed</p>
+        <ul>
+          <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.bodyCompleted }} hrs</li>
+        </ul>
+        <hr>
+        <p>Remaining</p>
+        <ul>
+          <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.timeToBodyGoal }} hrs</li>
+        </ul>
+        <hr>
+        <p>put graph here</p>
+      </div>
+
+      <div id="mind" class="column is-4">
+        <h2 class="title">Mind</h2>
+        <p>Target</p>
+        <ul>
+          <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.mindTarget }} hrs</li>
+        </ul>
+        <hr>
+        <p>Completed</p>
+        <ul>
+          <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.mindCompleted }} hrs</li>
+        </ul>
+        <hr>
+        <p>Remaining</p>
+        <ul>
+          <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.timeToMindGoal }} hrs</li>
+        </ul>
+        <hr>
+        <p>put graph here</p>
+      </div>
+
+      <div id="soul" class="column is-4">
+        <h2 class="title">Soul</h2>
+        <p>Target</p>
+        <ul>
+          <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.soulTarget }} hrs</li>
+        </ul>
+        <hr>
+        <p>Completed</p>
+        <ul>
+          <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.soulCompleted }} hrs</li>
+        </ul>
+        <hr>
+        <p>Remaining</p>
+        <ul>
+          <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.timeToSoulGoal }} hrs</li>
+        </ul>
+        <hr>
+        <p>put graph here</p>
+
+      </div>
+
+    </div>
+
     <hr>
-    <p>Completed</p>
-    <ul>
-      <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.mindCompleted }} hrs</li>
-    </ul>
+
+    <div class="attended">
+      <p>events attended goes here</p>
+    </div>
+
     <hr>
-    <p>Remaining</p>
-    <ul>
-      <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.timeToMindGoal }} hrs</li>
-    </ul>
-    <hr>
-    <p>put graph here</p>
+    <button ng-click="activateAddGoal()" class="button is-text">New Goal</button>
+
   </div>
 
-  <div id="soul" class="column is-4">
-    <h2 class="title">Soul</h2>
-    <p>Target</p>
-    <ul>
-      <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.soulTarget }} hrs</li>
-    </ul>
-    <hr>
-    <p>Completed</p>
-    <ul>
-      <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.soulCompleted }} hrs</li>
-    </ul>
-    <hr>
-    <p>Remaining</p>
-    <ul>
-      <li ng-repeat = 'goal in goals'>{{ goal.month}}: {{ goal.timeToSoulGoal }} hrs</li>
-    </ul>
-    <hr>
-    <p>put graph here</p>
-
   </div>
 
+
+
 </div>
 
 
 
-<hr>
-<div class="charts">
-  <p>charts go here</p>
-</div>
 
-<hr>
 
-<div class="attended">
-  <p>events attended goes here</p>
-</div>
 
-<hr>
+
 
 <!-- to create a new set of goals -->
 
 
 <hr>
 
-<button ng-click="activateAddGoal()" class="button is-text">New Goal</button>
 
+
+<!-- MODAL FOR ADD A GOAL -->
 <div ng-class="addGoal" class="modal">
   <div class="modal-background"></div>
   <div class="modal-card">
@@ -172,9 +189,6 @@
 
           </div>
         </div>
-
-
-
         <button class="button is-success">Update Targets</button>
         <button ng-click="activateAddGoal()" class="button is-info">Done</button>
       </form>
