@@ -49,7 +49,16 @@
             </div>
           </div>
 
-          <p>{{ event.guests[0].username }}, {{event.guests[1].username}} & {{ event.guests.length - 2}} other guests are going</p>
+          <p ng-if="event.guests.length >= 2">
+            {{ event.guests[0].username }}, {{event.guests[1].username}} & {{ event.guests.length - 2}} other guests are going
+          </p>
+          <p ng-if="event.guests.length === 1">
+            One person has signed up so far
+          </p>
+          <p ng-if="!event.guests.length">
+            All places are available, grab a seat!
+          </p>
+
           <div class="level">
             <div class="level-item">
               <button ng-if="!userIsAttending" ng-click="attend()" class="button is-info">Attend</button>
@@ -62,7 +71,7 @@
         </div>
 
         <div ng-if="!isAuthenticated()">
-          <a ui-sref="#login" class="button is-text">Login to see attending users</a>
+          <a ui-sref="login" class="button is-text">Login to see attending users</a>
         </div>
       </div>
 
