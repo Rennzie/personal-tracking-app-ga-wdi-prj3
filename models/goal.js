@@ -35,6 +35,15 @@ goalSchema.virtual('timeToSoulGoal')
     return this.soulTarget - this.soulCompleted;
   });
 
+// - save the goal month as the last day of the month
+// - return the month to the user to display on home page depending on the current month
+// - virtual can calculate the diff btwn current data and end of month saved month
+// - display this as days to go to end of month
+
+// - only let user put new goals in if there are no goals for that MONTH
+// - alternately, let them edit the goals
+// - they should also be able to log time: this should be a seperate route handeled by editCTRL in the front end
+
 //convert month to a moment object
 //get differnce between todays date and end of month of give date
 // goalSchema.virtual('dayRemaining')

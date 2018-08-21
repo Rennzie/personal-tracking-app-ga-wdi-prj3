@@ -19,4 +19,6 @@ function GoalsNewCtrl($http, $scope){
   };
 }
 
+//month should auto populate to the current month
+
 export default GoalsNewCtrl;
