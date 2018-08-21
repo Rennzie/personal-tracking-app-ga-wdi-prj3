@@ -110,14 +110,16 @@
         <hr>
 
         <!-- events user is attending  -->
-        <div class="level">
+        <h1 class="title is-5">Upcoming Events</h1>
+        <div ng-repeat="event in upcomingEvents" class="level">
           <div class="columns">
             <div class="column is-6">
-              <p class="header has-text-centered">events attending goes here</p>
+              <img ng-src="{{event.imageUrl}}" alt="event.eventTitle">
             </div>
 
             <div class="column is-6">
-              <p class="header has-text-centered">events attending goes here</p>
+              <p class="header has-text-centered"> {{event.category}}</p>
+              <p> {{ event.eventDateTime}}</p>
             </div>
           </div>
         </div>
@@ -129,9 +131,10 @@
   <hr>
 
 <!-- events user has attended -->
-  <div class="level columns">
+  <h1 class="title is-5">Past Events</h1>
+  <div ng-repeat="event in concludedEvents" class="level columns">
     <div class="column is-4">
-      <p class="header has-text-centered">events attended goes here</p>
+      <img ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
     </div>
     <div class="column is-4">
       <p class="header has-text-centered">events attended goes here</p>
