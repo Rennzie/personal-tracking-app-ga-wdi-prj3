@@ -14,6 +14,7 @@
       <div class="column is-4">
         <img  ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
         <p>{{ event.category }}</p>
+        <p ng-if="weatherSummary">The expected weather is: {{ weatherSummary.summary }}</p>
         <hr>
       </div>
 

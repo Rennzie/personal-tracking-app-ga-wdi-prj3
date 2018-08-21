@@ -7,6 +7,7 @@ function EventsShowCtrl($http, $state, $scope) {
     })
       .then(() => $state.go('eventsIndex'));
   };
+
   $http({
     method: 'GET',
     url: `/api/events/${$state.params.id}`
@@ -20,6 +21,7 @@ function EventsShowCtrl($http, $state, $scope) {
   $scope.$watch('event', () => {
     checkCreatorIsUser();
     checkUserIsAttending();
+    getForecast();
   } );
 
   //check to see if the current user is the event owner
@@ -83,7 +85,28 @@ function EventsShowCtrl($http, $state, $scope) {
       $scope.event = result.data;
     });
   };
+
+  function getForecast(){
+    if($scope.event && !$scope.event.isIndoors){
+      const location = $scope.event.location;
+      $http({
+        method: 'GET',
+        url: '/api/forecast',
+        params: {
+          lat: location.lat,
+          lon: location.lon,
+          time: $scope.event.eventDateTime
+        }
+      })
+        .then(res => {
+          console.log('the weather forcast is: ', res.data);
+          $scope.weatherSummary = res.data;
+        });
+    }
+  }
+
 }
+
 
 
 export default EventsShowCtrl;

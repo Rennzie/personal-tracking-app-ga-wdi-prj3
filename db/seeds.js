@@ -381,9 +381,10 @@ User
   .then(users => {
     console.log(`Created ${users.length} users`);
     //add a user id to Event created by
-    eventData[0].createdBy = users[0].id;
-    eventData[1].createdBy = users[1].id;
-    eventData[2].createdBy = users[2].id;
+    eventData.forEach(event => {
+      const randomIndex = Math.floor(Math.random() * users.length);
+      event.createdBy = users[randomIndex].id;
+    });
 
     // push many users into the attending event array
     users.forEach(user => eventData[0].guests.push(user.id));
