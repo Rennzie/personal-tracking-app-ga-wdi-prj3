@@ -49,7 +49,7 @@ userSchema.pre('validation', function(next){
 });
 
 userSchema.pre('validate', function getLatLon(next){
-  console.log('Prevalidation hook fired');
+  console.log('user latlon Prevalidation hook fired');
 
   // make sure not to try process no postCode
   if(!this.postcodeHome){
@@ -65,6 +65,11 @@ userSchema.pre('validate', function getLatLon(next){
   }).then(response => {
     this.homeLocation.lat = response.result.latitude;
     this.homeLocation.lon = response.result.longitude;
+    next();
+  }).catch(() => {
+    // Postcode wasn't found
+    console.log('Failed on postcode', this.postcodeHome);
+    // this.invalidate('postCode', `Failed to look up postcode ${this.lpostcodeHome}`);
     next();
   });
 });

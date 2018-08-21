@@ -75,7 +75,7 @@ eventSchema.virtual('placesRemaining')
 //  LIFECYCLE HOOKS
 
 eventSchema.pre('validate', function getLatLon(next){
-  console.log('Prevalidation hook fired');
+  console.log('get LatLon Prevalidation hook fired');
 
   // make sure not to try process no postCode
   if(!this.location.postcode){
@@ -93,7 +93,13 @@ eventSchema.pre('validate', function getLatLon(next){
     this.location.lat = response.result.latitude;
     this.location.lon = response.result.longitude;
     next();
-  });
+  })
+    .catch(() => {
+      // Postcode wasn't found
+      console.log('Failed on postcode: ', this.location.postcode);
+      // this.invalidate('postCode', `Failed to look up postcode ${this.location.postcode}`);
+      next();
+    });
 });
 
 
