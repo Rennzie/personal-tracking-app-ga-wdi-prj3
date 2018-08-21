@@ -45,7 +45,7 @@ const userData = [
     firstName: 'Sophie',
     postcodeHome: 'W8 4lf',
     isHost: true,
-    imageUrl: 'https://media.licdn.com/dms/image/C4D03AQFaTtcqjpz0Hg/profile-displayphoto-shrink_200_200/0?e=1540425600&v=beta&t=XvcqY7U8E-QweIvqeX2bWeT28XhVZ_ja4DsW0OM1p-Y',
+    imageUrl: 'https://i.imgur.com/7w0bach.gif',
     password: 'pass',
     passwordConfirmation: 'pass',
     surname: 'Cornish',
