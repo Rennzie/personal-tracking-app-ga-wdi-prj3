@@ -54,144 +54,151 @@
                 chart-colors="targetCharColors"
                 >
               </canvas>
-              </div>
-
-              <div class="column is-6">
-                <canvas id="pie"
-                class="chart chart-pie"
-                chart-data="targetData"
-                chart-labels="targetLabels"
-                chart-colors="targetCharColors"
-                >
-              </canvas>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- GOALS SHOW IS BELOW HERE -->
-          <div class="level">
-            <div id="goals"  class="columns is-multiline">
-
-              <div id="mind" class="column  is-4">
-                <h2 class="title has-text-centered has-text-white">Mind</h2>
-                <canvas id="doughnut"
-                class="chart chart-doughnut"
-                chart-data="mindData"
-                chart-labels="labels"
-                chart-options="doNutCharOptions"
-                chart-colors="mindCharColors"
-                >
-              </canvas>
-                <div class="level">
-                  <p>TARGET HOURS: {{ goals[0].mindTarget}}</p>
-                </div>
-                <div class="level">
-                  <p>COMPLETED HOURS: {{ goals[0].mindCompleted}}</p>
-                </div>
-                <div class="level">
-                  <p>REMAINING HOURS: {{ goals[0].timeToMindGoal}}</p>
-                </div>
             </div>
 
-            <div id="body" class="column is-4">
-              <h2 class="title has-text-centered has-text-white">Body</h2>
-              <canvas id="doughnut"
-              class="chart chart-doughnut"
-              chart-data="bodyData"
-              chart-labels="labels"
-              chart-options="doNutCharOptions"
-              chart-colors="bodyCharColors"
-              > Some test text
+            <div class="column is-6">
+              <canvas id="pie"
+              class="chart chart-pie"
+              chart-data="targetData"
+              chart-labels="targetLabels"
+              chart-colors="targetCharColors"
+              >
             </canvas>
-              <div class="level">
-                <p>TARGET HOURS: {{ goals[0].bodyTarget}}</p>
-              </div>
-              <div class="level">
-                <p>COMPLETED HOURS: {{ goals[0].bodyCompleted}}</p>
-              </div>
-              <div class="level">
-                <p>REMAINING HOURS: {{ goals[0].timeToBodyGoal}}</p>
-              </div>
-          </div>
 
-          <div id="soul" class="column is-4">
-            <h2 class="title has-text-centered has-text-white">Soul</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- GOALS SHOW IS BELOW HERE -->
+      <div class="level">
+        <div id="goals"  class="columns is-multiline">
+
+          <div id="mind" class="column  is-4">
+            <h2 class="title has-text-centered has-text-white">Mind</h2>
             <canvas id="doughnut"
             class="chart chart-doughnut"
-            chart-data="soulData"
+            chart-data="mindData"
             chart-labels="labels"
             chart-options="doNutCharOptions"
-            chart-colors="soulCharColors"
+            chart-colors="mindCharColors"
             >
           </canvas>
-            <div class="level">
-              <p>TARGET HOURS: {{ goals[0].soulTarget}}</p>
-            </div>
-            <div class="level">
-              <p>COMPLETED HOURS: {{ goals[0].soulCompleted}}</p>
-            </div>
-            <div class="level">
-              <p>REMAINING HOURS: {{ goals[0].timeToSoulGoal}}</p>
-            </div>
+          <div class="level">
+            <p>TARGET HOURS: {{ goals[0].mindTarget}}</p>
+          </div>
+          <div class="level">
+            <p>COMPLETED HOURS: {{ goals[0].mindCompleted}}</p>
+          </div>
+          <div class="level">
+            <p>REMAINING HOURS: {{ goals[0].timeToMindGoal}}</p>
+          </div>
         </div>
 
-        <div class="level column is-12">
-          <div class="level-left">
-            <div class="level-item">
-              <button ui-sref="goalsLogHours({userId: getPayload().sub, goalId: goals[0].id})" class="is-success button">Log Hours</button>
+        <div id="body" class="column is-4">
+          <h2 class="title has-text-centered has-text-white">Body</h2>
+          <canvas id="doughnut"
+          class="chart chart-doughnut"
+          chart-data="bodyData"
+          chart-labels="labels"
+          chart-options="doNutCharOptions"
+          chart-colors="bodyCharColors"
+          > Some test text
+        </canvas>
+        <div class="level">
+          <p>TARGET HOURS: {{ goals[0].bodyTarget}}</p>
+        </div>
+        <div class="level">
+          <p>COMPLETED HOURS: {{ goals[0].bodyCompleted}}</p>
+        </div>
+        <div class="level">
+          <p>REMAINING HOURS: {{ goals[0].timeToBodyGoal}}</p>
+        </div>
+      </div>
 
-        <!-- events user is attending  -->
-        <h1 class="title is-5">Upcoming Events</h1>
-        <div ng-repeat="event in upcomingEvents" class="level">
-          <div class="columns">
-            <a ui-sref="eventsShow({ id: event._id })">
-            <div class="column is-6">
-              <img ng-src="{{event.imageUrl}}" alt="event.eventTitle">
+      <div id="soul" class="column is-4">
+        <h2 class="title has-text-centered has-text-white">Soul</h2>
+        <canvas id="doughnut"
+        class="chart chart-doughnut"
+        chart-data="soulData"
+        chart-labels="labels"
+        chart-options="doNutCharOptions"
+        chart-colors="soulCharColors"
+        >
+      </canvas>
+      <div class="level">
+        <p>TARGET HOURS: {{ goals[0].soulTarget}}</p>
+      </div>
+      <div class="level">
+        <p>COMPLETED HOURS: {{ goals[0].soulCompleted}}</p>
+      </div>
+      <div class="level">
+        <p>REMAINING HOURS: {{ goals[0].timeToSoulGoal}}</p>
+      </div>
+    </div>
+
+    <div class="level column is-12">
+      <div class="level-left">
+        <div class="level-item">
+          <button ui-sref="goalsLogHours({userId: getPayload().sub, goalId: goals[0].id})" class="is-success button">Log Hours</button>
+        </div>
+      </div>
+
+      <div class="level-right">
+        <div class="level-item">
+          <button ui-sref="goalsEdit({userId: getPayload().sub, goalId: goals[0].id})" class="is-info button">Edit Target</button>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+          <!-- events user is attending  -->
+          <!-- <h1 class="title is-5">Upcoming Events</h1>
+          <div ng-repeat="event in upcomingEvents" class="level">
+            <div class="columns">
+              <div class="column is-6">
+                <a ui-sref="eventsShow({ id: event._id })">
+                  <img ng-src="{{event.imageUrl}}" alt="event.eventTitle">
+                </a>
+              </div>
+
+
+
+              <div class="column is-6">
+                <p class="header has-text-centered">{{event.eventTitle}}</p>
+                <p class="header has-text-centered"> {{event.category}}</p>
+                <p class="header has-text-centered"> {{ event.formattedDate}}</p>
+              </div>
             </div>
           </div>
-          <div class="level-right">
-            <div class="level-item">
 
-
-              <button ui-sref="goalsEdit({userId: getPayload().sub, goalId: goals[0].id})" class="is-info button">Edit Target</button>
-
-
-            <div class="column is-6">
-              <p class="header has-text-centered">{{event.eventTitle}}</p>
-              <p class="header has-text-centered"> {{event.category}}</p>
-              <p class="header has-text-centered"> {{ event.formattedDate}}</p>
-
-            </div>
-          </div>
-          </a>
         </div>
 
       </div>
     </div>
+  </div> -->
+
+      <hr>
+
+      <!-- events user has attended -->
+      <h1 class="title is-5">Past Events</h1>
+      <div ng-repeat="event in concludedEvents" class="level columns">
+        <div class="column is-4">
+          <a ui-sref="eventsShow({ id: event._id })">
+            <img ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
+          </div>
+          <div class="column is-4">
+            <p class="header has-text-centered">{{event.eventTitle}}</p>
+          </div>
+          <div class="column is-4">
+            <p class="header has-text-centered"> {{ event.category}} </p>
+            <p class="header has-text-centered">HOURS: {{ event.duration}}</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
   </div>
-
-  <hr>
-
-<!-- events user has attended -->
-  <h1 class="title is-5">Past Events</h1>
-  <div ng-repeat="event in concludedEvents" class="level columns">
-    <div class="column is-4">
-      <a ui-sref="eventsShow({ id: event._id })">
-      <img ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
-    </div>
-    <div class="column is-4">
-      <p class="header has-text-centered">{{event.eventTitle}}</p>
-    </div>
-    <div class="column is-4">
-      <p class="header has-text-centered"> {{ event.category}} </p>
-      <p class="header has-text-centered">HOURS: {{ event.duration}}</p>
-    </div>
-  </a>
-  </div>
-
-</div>
-</div>
 </div>
 
 <hr>
