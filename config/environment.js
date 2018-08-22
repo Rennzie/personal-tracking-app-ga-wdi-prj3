@@ -6,5 +6,6 @@ const secret = process.env.SECRET || 'sean&sophie-resolut-app';
 //API KEYS
 const darkskyApiKey = process.env.DARKSKY_API_KEY;
 const cityMapperApiKey = process.env.CITY_MAPPER_API_KEY;
+// console.log('the city mapper key is', cityMapperApiKey);
 
 module.exports = { port, dbURI, secret, darkskyApiKey, cityMapperApiKey };
