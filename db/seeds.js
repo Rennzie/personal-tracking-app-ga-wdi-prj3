@@ -357,11 +357,11 @@ const eventData = [
   },{
     category: 'mind',
     capacity: 200,
-    concluded: true,
+    concluded: false,
     duration: 2,
     description: 'What is the point to attend to a cookery class just to follow a recipe? Hosted by David, the founder of Pencil & Fork Ltd ("Learning experiences through food"). Blend physics and chemistry to transform the taste and texture of food and learn the tricks of molecular gastronomy.',
     eventTitle: 'Molecular Gastronomy Techniques',
-    eventDateTime: 'Monday September 3 2018 20:00:00 GMT+0100 (British Summer Time)',
+    eventDateTime: 'Thursday September 27 2018 20:00:00 GMT+0100 (British Summer Time)',
     guests: [],
     imageUrl: 'https://eattreat.in/wp-content/uploads/2016/11/0c2246d1aaf2702e35aa39230f151a59-768x460.jpg',
     isIndoors: true,

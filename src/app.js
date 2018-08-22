@@ -4,6 +4,11 @@ import 'satellizer';
 import 'angular-messages';
 import 'bulma';
 import './scss/style.scss';
+
+//--- scroll to top on state change----//
+
+
+
 //--------- ROUTERS------------//
 import Router from './config/routes';
 
