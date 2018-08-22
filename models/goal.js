@@ -40,15 +40,21 @@ goalSchema.methods.updateTargets = function(newTargets){
 
 goalSchema.virtual('timeToBodyGoal')
   .get( function()  {
-    return this.bodyTarget - this.bodyCompleted;
+    const remaining = this.bodyTarget - this.bodyCompleted;
+    if(remaining >= 0) return remaining;
+    if(remaining <= 0) return 0;
   });
 goalSchema.virtual('timeToMindGoal')
   .get( function()  {
-    return this.mindTarget - this.mindCompleted;
+    const remaining = this.mindTarget - this.mindCompleted;
+    if(remaining >= 0) return remaining;
+    if(remaining <= 0) return 0;
   });
 goalSchema.virtual('timeToSoulGoal')
   .get( function()  {
-    return this.soulTarget - this.soulCompleted;
+    const remaining = this.soulTarget - this.soulCompleted;
+    if(remaining >= 0) return remaining;
+    if(remaining <= 0) return 0;
   });
 
 goalSchema.virtual('goalMonth')
