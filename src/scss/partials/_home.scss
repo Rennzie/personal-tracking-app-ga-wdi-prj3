@@ -1,5 +1,8 @@
 section.home {
   // background-color: rgb(52, 52, 49);
+  background-image: url(/assets/landing-page.jpg);
+   background-repeat: no-repeat center center fixed;
+     background-size: cover;
   img {
     max-width:400px;
   max-height:400px;
