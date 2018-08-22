@@ -113,15 +113,18 @@
         <h1 class="title is-5">Upcoming Events</h1>
         <div ng-repeat="event in upcomingEvents" class="level">
           <div class="columns">
+            <a ui-sref="eventsShow({ id: event._id })">
             <div class="column is-6">
               <img ng-src="{{event.imageUrl}}" alt="event.eventTitle">
             </div>
+
 
             <div class="column is-6">
               <p class="header has-text-centered"> {{event.category}}</p>
               <p> {{ event.eventDateTime}}</p>
             </div>
           </div>
+          </a>
         </div>
 
       </div>
@@ -134,6 +137,7 @@
   <h1 class="title is-5">Past Events</h1>
   <div ng-repeat="event in concludedEvents" class="level columns">
     <div class="column is-4">
+      <a ui-sref="eventsShow({ id: event._id })">
       <img ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
     </div>
     <div class="column is-4">
@@ -142,6 +146,7 @@
     <div class="column is-4">
       <p class="header has-text-centered">events attended goes here</p>
     </div>
+  </a>
   </div>
 
   <hr>
