@@ -166,6 +166,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-carousel@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/angular-carousel/-/angular-carousel-1.1.0.tgz#3e6940e68bd18a8f392fc431d97192ac348831d1"
+
 angular-chart.js@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/angular-chart.js/-/angular-chart.js-1.1.1.tgz#49f0e18d081762b6d4c9791e487aff2fbb30f5ae"
