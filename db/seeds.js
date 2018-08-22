@@ -155,13 +155,12 @@ const eventData = [
     eventTitle: 'Hatha at Home',
     eventDateTime: 'Thu Oct 11 2018 22:30:00 GMT+0100 (British Summer Time)',
     guests: [],
-    https://static1.squarespace.com/static/56576768e4b0c6e18e346bea/574b245bf699bbded7dcb642/574b24cfe32140af98e81e76/1464542417841/alan+grasshoppe.jpg?format=2500w
-    imageUrl:'https://static1.squarespace.com/static/56576768e4b0c6e18e346bea/574b245bf699bbded7dcb642/574b24cfe32140af98e81e76/1464542417841/alan+grasshoppe.jpg?format=2500w',
+    imageUrl: 'https://static1.squarespace.com/static/56576768e4b0c6e18e346bea/574b245bf699bbded7dcb642/574b24cfe32140af98e81e76/1464542417841/alan+grasshoppe.jpg',
     isIndoors: true,
     location: {     //sub document to hold event location
       streetNumber: 9,
       streetName: 'Greensward',
-      postcode: 'sw62tg'
+      postcode: 'sw7 2az'
     }
   }, {
     category: 'mind',
@@ -193,7 +192,7 @@ const eventData = [
     location: {
       streetNumber: 62,
       streetName: 'Porchester Rd',
-      postcode: 'E1 7PT'
+      postcode: 'W2 6ET'
     }
   }, {
     category: 'body',
@@ -209,7 +208,7 @@ const eventData = [
     location: {
       streetNumber: 16,
       streetName: 'Eccleston Yards',
-      postcode: 'E1 7PT'
+      postcode: 'SW1W 9NF'
     }
   }, {
     category: 'body',
@@ -225,7 +224,7 @@ const eventData = [
     location: {
       streetNumber: 4,
       streetName: 'Tower Street',
-      postcode: 'E1 7PT'
+      postcode: 'WC2H 9NP'
     }
   }, {
     category: 'body',
@@ -241,7 +240,7 @@ const eventData = [
     location: {
       streetNumber: 45,
       streetName: 'Philimore Walk',
-      postcode: 'E1 7PT'
+      postcode: 'W8 7RZ'
     }
   },{
     category: 'soul',
@@ -257,7 +256,7 @@ const eventData = [
     location: {
       streetNumber: 372,
       streetName: 'Kings Road',
-      postcode: 'E1 7PT'
+      postcode: 'sw3 5uz'
     }
   },{
     category: 'soul',
@@ -273,7 +272,7 @@ const eventData = [
     location: {
       streetNumber: 6,
       streetName: 'Fitzroy Square',
-      postcode: 'E1 7PT'
+      postcode: 'w1t 5dx'
     }
   },{
     category: 'soul',
@@ -289,7 +288,7 @@ const eventData = [
     location: {
       streetNumber: 64,
       streetName: 'Eaton Terrace',
-      postcode: 'E1 7PT'
+      postcode: 'SW1W 8TZ'
     }
   },{
     category: 'soul',
@@ -305,7 +304,7 @@ const eventData = [
     location: {
       streetNumber: 95,
       streetName: 'Rye Lane',
-      postcode: 'E1 7PT'
+      postcode: 'SE15 5BU'
     }
   },{
     category: 'mind',
@@ -321,7 +320,7 @@ const eventData = [
     location: {
       streetNumber: 3,
       streetName: 'Stamford Works',
-      postcode: 'E1 7PT'
+      postcode: 'N16 8JH'
     }
   },{
     category: 'mind',
@@ -337,7 +336,7 @@ const eventData = [
     location: {
       streetNumber: 11,
       streetName: 'Rathbone Place',
-      postcode: 'E1 7PT'
+      postcode: 'W1T 1JN'
     }
   },{
     category: 'mind',
@@ -353,7 +352,7 @@ const eventData = [
     location: {
       streetNumber: 14,
       streetName: 'Marsham Street',
-      postcode: 'E1 7PT'
+      postcode: 'SW1P 4DF'
     }
   },{
     category: 'mind',
@@ -369,7 +368,7 @@ const eventData = [
     location: {
       streetNumber: 12,
       streetName: 'Foley Street',
-      postcode: 'E1 7PT'
+      postcode: 'W1W 6DP'
     }
   }
 ];
