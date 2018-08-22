@@ -11,8 +11,9 @@ function AuthRegisterCtrl($scope, $auth, $state) {
   $scope.register = function() {
     $auth
       .signup($scope.user)
+      .then(() => $auth.login($scope.user))
       // .login($scope.user)
-      .then(()=> $state.go('login'));
+      .then(()=> $state.go('goalsNew', {id: $scope.getPayload().sub}));
   };
 
 }

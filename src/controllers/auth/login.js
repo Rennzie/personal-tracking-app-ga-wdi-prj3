@@ -1,11 +1,6 @@
 function AuthLoginCtrl($scope, $http, $state, $auth) {
   $scope.login = function() {
-    console.log('logging in');
-    // $http({  // NOTE: we dont need the $http request as satellizer takes care of that for us
-    //   method: 'POST',
-    //   url: '/api/login',
-    //   data: $scope.user
-    // });
+    // console.log('logging in');
     $auth.login($scope.user)
       .then(() => {
         // console.log('logging in results in: ', result);
