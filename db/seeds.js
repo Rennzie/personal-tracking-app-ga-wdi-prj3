@@ -390,6 +390,11 @@ User
     users.forEach(user => eventData[0].guests.push(user.id));
     users.forEach(user => eventData[1].guests.push(user.id));
     users.forEach(user => eventData[2].guests.push(user.id));
+    users.forEach(user => eventData[3].guests.push(user.id));
+    users.forEach(user => eventData[4].guests.push(user.id));
+    users.forEach(user => eventData[5].guests.push(user.id));
+    users.forEach(user => eventData[6].guests.push(user.id));
+    users.forEach(user => eventData[7].guests.push(user.id));
 
     //add a user to each of the created goals
     // goalData[0].createdBy = users[0].id;
@@ -406,6 +411,6 @@ User
     //create goals and return them so we can log them
     return Goal.create(goalData);
   })
-  .then(goals => console.log(`Create ${goals.length} goals`))
+  // .then(goals => console.log(`Create ${goals.length} goals`))
   .catch(err => console.log('Seeding error is', err))
   .finally(() => mongoose.connection.close());

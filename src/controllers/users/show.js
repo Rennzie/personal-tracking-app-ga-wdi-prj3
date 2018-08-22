@@ -11,14 +11,10 @@ function UsersShowCtrl($http, $state, $scope) {
     url: `/api/users/${$state.params.id}`
   })
     .then(res => {
-      console.log('Found a user', res.data);
+      // console.log('Found a user', res.data);
       $scope.user = res.data;
     });
 
-
-  // $scope.$watch('user', () =>{
-  //   checkProfileIsForUser();
-  // });
   $scope.$watch('goals', () =>{
     updateCharts();
   });
@@ -54,7 +50,7 @@ function UsersShowCtrl($http, $state, $scope) {
     circumference: 2 * Math.PI
   };
 
-  $scope.targetCharColors = ['rgb(255,0,204)', 'rgb(204,255,0)', 'rgb(0,204,255)'];
+  $scope.targetCharColors = ['rgba(255,0,204,0.3)', 'rgba(204,255,0,0.3)', 'rgba(0,204,255,0.3)'];
 
   $scope.mindCharColors = ['rgba(255,0,204,0.3)', 'rgb(255,0,204)'];
   $scope.bodyCharColors = ['rgba(204,255,0,0.3)', 'rgb(204,255,0)'];
@@ -128,10 +124,8 @@ function UsersShowCtrl($http, $state, $scope) {
   })
     .then(res => {
       const userGoals = res.data.filter(goal => goal.createdBy === userId );
-
       const currentMonthGoals = userGoals.filter(goal => goal.goalMonth === $scope.currentMonth);
-
-      console.log('the users goals are ', currentMonthGoals);
+      // console.log('the users goals are ', currentMonthGoals);
       $scope.goals = currentMonthGoals;
     });
 
@@ -141,15 +135,18 @@ function UsersShowCtrl($http, $state, $scope) {
     url: '/api/events'
   })
     .then(res => {
-      const usersEvents = res.data.filter(event => event.guests.id === $scope.user.id);
 
-      //WE NEED TO FILTER THESE FOR MOST RECENT FIRST
-      const attendedEvents = usersEvents.filter(event => event.concluded === true);
-      const upcomingEvents = usersEvents.filter(event => event.concluded === false);
-      console.log('concluded events', attendedEvents);
-      console.log('upcoming events', upcomingEvents);
-      $scope.attendedEvents = attendedEvents;
-      $scope.upcomingEvents = upcomingEvents;
+      // returns all the events the user has attended, past and present
+      const usersEvents = res.data.filter(event => {
+        return event.guests.some(guest => guest === $scope.user._id);
+      });
+
+      //returns all the events the user is not attending
+      $scope.userNotAttending = res.data.filter(event => {
+        return event.guests.some(guest => guest !== $scope.user._id);
+      });
+      $scope.attendedEvents = usersEvents.filter(event => event.concluded === true);
+      $scope.upcomingEvents = usersEvents.filter(event => event.concluded === false);
     }
     );
 

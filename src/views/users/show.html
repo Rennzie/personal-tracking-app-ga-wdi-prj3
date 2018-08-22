@@ -130,7 +130,10 @@
 
   <!-- UPCOMING EVENT, ONLY SHOW FIRST TWO -->
   <div class="level">
-    <div class="columns">
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <h2>You have {{upcomingEvents.length}} upcoming events</h2>
+      </div>
       <div class="column is-half">
             <img ng-src="{{upcomingEvents[0].imageUrl}}" >
             <h1>{{ upcomingEvents[0].eventTitle }}</h1>
@@ -139,12 +142,12 @@
               <p>{{upcomingEvents[0].duration}} Hrs</p>
             </div>
       </div>
-      <div class="column is-half">
-            <img ng-src="{{upcomingEvents[2].imageUrl}}" >
-            <h1>{{ upcomingEvents[2].eventTitle }}</h1>
+      <div  ng-if="upcomingEvents.length > 1" class="column is-half">
+            <img ng-src="{{upcomingEvents[1].imageUrl}}" >
+            <h1>{{ upcomingEvents[1].eventTitle }}</h1>
             <div class="level">
-              <p>{{upcomingEvents[2].category}}</p>
-              <p>{{upcomingEvents[2].duration}} Hrs</p>
+              <p>{{upcomingEvents[1].category}}</p>
+              <p>{{upcomingEvents[1].duration}} Hrs</p>
             </div>
       </div>
     </div>
@@ -152,12 +155,10 @@
 
   <hr>
 
-
-
   <!-- SELECTION OF RECOMMENDED EVENTS -->
   <div class="level">
     <div class="columns is-multiline">
-      <div ng-repeat="event in upcomingEvents" class="column is-4">
+      <div ng-repeat="event in userNotAttending" class="column is-4">
         <img ng-src="{{event.imageUrl}}" >
         <h1>{{ event.eventTitle }}</h1>
         <div class="level">
