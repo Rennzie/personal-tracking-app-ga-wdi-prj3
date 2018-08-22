@@ -39,10 +39,34 @@
 
           <div   class="level">
             <!-- this month is on the MainCtrl -->
-            <h2 class="title has-text-white">Your goals for {{ currentMonth }}</h2>
+            <h2 class="title has-text-cetered has-text-white">Your goals for {{ currentMonth }}</h2>
+          </div>
+          <div class="level has-text-cetered has-text-white">
+            <p>{{ daysRemainingInMonth }} days left in current cycle</p>
+
           </div>
           <div class="has-text-white level">
-            <p>{{ daysRemainingInMonth }} days left in current cycle</p>
+            <div class="columns">
+              <div class="column is-6">
+                <canvas id="pie"
+                class="chart chart-pie"
+                chart-data="multiData"
+                chart-colors="targetCharColors"
+                >
+              </canvas>
+              </div>
+
+              <div class="column is-6">
+                <canvas id="pie"
+                class="chart chart-pie"
+                chart-data="targetData"
+                chart-labels="targetLabels"
+                chart-colors="targetCharColors"
+                >
+              </canvas>
+
+              </div>
+            </div>
           </div>
 
           <!-- GOALS SHOW IS BELOW HERE -->
@@ -50,7 +74,15 @@
             <div id="goals"  class="columns is-multiline">
 
               <div id="mind" class="column  is-4">
-                <h2 class="title has-text-white">Mind</h2>
+                <h2 class="title has-text-centered has-text-white">Mind</h2>
+                <canvas id="doughnut"
+                class="chart chart-doughnut"
+                chart-data="mindData"
+                chart-labels="labels"
+                chart-options="doNutCharOptions"
+                chart-colors="mindCharColors"
+                >
+              </canvas>
                 <div class="level">
                   <p>TARGET HOURS: {{ goals[0].mindTarget}}</p>
                 </div>
@@ -60,18 +92,18 @@
                 <div class="level">
                   <p>REMAINING HOURS: {{ goals[0].timeToMindGoal}}</p>
                 </div>
-                <canvas id="doughnut"
-                class="chart chart-doughnut"
-                chart-data="mindData"
-                chart-labels="labels"
-                chart-options="charOptions"
-                chart-colors="mindCharColors"
-                >
-              </canvas>
             </div>
 
             <div id="body" class="column is-4">
-              <h2 class="title has-text-white">Body</h2>
+              <h2 class="title has-text-centered has-text-white">Body</h2>
+              <canvas id="doughnut"
+              class="chart chart-doughnut"
+              chart-data="bodyData"
+              chart-labels="labels"
+              chart-options="doNutCharOptions"
+              chart-colors="bodyCharColors"
+              > Some test text
+            </canvas>
               <div class="level">
                 <p>TARGET HOURS: {{ goals[0].bodyTarget}}</p>
               </div>
@@ -81,18 +113,18 @@
               <div class="level">
                 <p>REMAINING HOURS: {{ goals[0].timeToBodyGoal}}</p>
               </div>
-              <canvas id="doughnut"
-              class="chart chart-doughnut"
-              chart-data="bodyData"
-              chart-labels="labels"
-              chart-options="charOptions"
-              chart-colors="bodyCharColors"
-              >
-            </canvas>
           </div>
 
           <div id="soul" class="column is-4">
-            <h2 class="title has-text-white">Soul</h2>
+            <h2 class="title has-text-centered has-text-white">Soul</h2>
+            <canvas id="doughnut"
+            class="chart chart-doughnut"
+            chart-data="soulData"
+            chart-labels="labels"
+            chart-options="doNutCharOptions"
+            chart-colors="soulCharColors"
+            >
+          </canvas>
             <div class="level">
               <p>TARGET HOURS: {{ goals[0].soulTarget}}</p>
             </div>
@@ -102,14 +134,6 @@
             <div class="level">
               <p>REMAINING HOURS: {{ goals[0].timeToSoulGoal}}</p>
             </div>
-            <canvas id="doughnut"
-            class="chart chart-doughnut"
-            chart-data="soulData"
-            chart-labels="labels"
-            chart-options="charOptions"
-            chart-colors="soulCharColors"
-            >
-          </canvas>
         </div>
 
         <div class="level column is-12">

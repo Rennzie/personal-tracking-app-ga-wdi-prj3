@@ -44,25 +44,52 @@ function UsersShowCtrl($http, $state, $scope) {
   // }
 
   $scope.labels = ['Remaining', 'Completed'];
-  $scope.charOptions = {
+  $scope.targetLabels = ['Mind', 'Body', 'Soul'];
+
+  $scope.doNutCharOptions = {
     cutoutPercentage: 85,
     animation: {
       animateScale: true
-    }
+    },
+    circumference: 2 * Math.PI
   };
+
+  $scope.targetCharColors = ['rgb(255,0,204)', 'rgb(204,255,0)', 'rgb(0,204,255)'];
 
   $scope.mindCharColors = ['rgba(255,0,204,0.3)', 'rgb(255,0,204)'];
   $scope.bodyCharColors = ['rgba(204,255,0,0.3)', 'rgb(204,255,0)'];
   $scope.soulCharColors = ['rgba(0,204,255,0.3)', 'rgb(0,204,255)'];
+  $scope.multiCharColors = [
+    ['rgba(255,0,204,0.3)', 'rgb(255,0,204)'],
+    ['rgba(204,255,0,0.3)', 'rgb(204,255,0)'],
+    ['rgba(0,204,255,0.3)', 'rgb(0,204,255)']
+  ];
 
   function updateCharts(){
     if($scope.user){
       const goalData = $scope.goals[0];
+      $scope.targetData = [goalData.mindTarget, goalData.bodyTarget, goalData.soulTarget];
+
       $scope.mindData = [goalData.timeToMindGoal, goalData.mindCompleted];
       $scope.bodyData = [goalData.timeToBodyGoal, goalData.bodyCompleted];
       $scope.soulData = [goalData.timeToSoulGoal, goalData.soulCompleted];
+
+      $scope.multiData =  [
+        [goalData.timeToMindGoal, goalData.mindCompleted],
+        [goalData.timeToBodyGoal, goalData.bodyCompleted],
+        [goalData.timeToSoulGoal, goalData.soulCompleted]
+      ];
     }
   }
+
+
+  // {
+  //   datasets: [
+  //     {data: $scope.mindData},
+  //     {data: $scope.bodyData},
+  //     {data: $scope.soulData}
+  //   ]
+  // };
 
   $scope.becomeAHost = function() {
     const updateUserData = $scope.user;
