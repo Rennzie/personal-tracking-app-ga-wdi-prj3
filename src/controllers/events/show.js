@@ -22,6 +22,7 @@ function EventsShowCtrl($http, $state, $scope) {
     checkCreatorIsUser();
     checkUserIsAttending();
     getForecast();
+    getCityMapperTime();
   } );
 
   //check to see if the current user is the event owner
@@ -101,6 +102,33 @@ function EventsShowCtrl($http, $state, $scope) {
         .then(res => {
           console.log('the weather forcast is: ', res.data);
           $scope.weatherSummary = res.data;
+        });
+    }
+  }
+
+  function getCityMapperTime(){
+    if($scope.event){
+      $http({
+        method: 'GET',
+        url: `/api/users/${$scope.getPayload().sub}`
+      })
+        .then( res => {
+          if($scope.isAuthenticated && res.data.homeLocation.lat && $scope.event.location.lat){
+            $http({
+              method: 'GET',
+              url: '/api/citymapper/traveltime',
+              params: {
+                startLat: res.data.homeLocation.lat,
+                startLon: res.data.homeLocation.lon,
+                endLat: $scope.event.location.lat,
+                endLon: $scope.event.location.lon
+              }
+            })
+              .then(res => {
+                console.log('the travel time is: ', res.data);
+
+              });
+          }
         });
     }
   }

@@ -49,8 +49,6 @@ eventSchema.methods.removeGuest = function(userId){
   return this.save();
 };
 
-
-
 //VIRTUALS
 //encode the date and time correctly
 //HTML5 gives a string in the date box which has time as well.
@@ -63,6 +61,7 @@ eventSchema.virtual('formattedDate')
     const momentTimeObj = moment(this.eventDateTime);
     return moment(momentTimeObj).format('dddd, MMMM Do YYYY');
   });
+
 eventSchema.virtual('formattedTime')
   .get(function (){
     const momentTimeObj = moment(this.eventDateTime);
@@ -74,8 +73,12 @@ eventSchema.virtual('placesRemaining')
     return this.capacity - this.guests.length;
   });
 
-//  LIFECYCLE HOOKS
+// eventSchema.virtual('minutesToEvent')
+//   .get(function(){
+//
+//   });
 
+//  LIFECYCLE HOOKS
 eventSchema.pre('validate', function getLatLon(next){
   console.log('get LatLon Prevalidation hook fired');
 
@@ -103,21 +106,5 @@ eventSchema.pre('validate', function getLatLon(next){
       next();
     });
 });
-
-
-
-
-//  --> geocode the postcode to a latlon // IDEA: we can use postcode.io to do this
-
-//  --> convert the duration to milliseconds
-
-//  --> drop all postcodes to lowercase and remove spaces
-
-//NICE ROCKS EXAMPLE VIRTUAL
-// reviewSchema.virtual('reviewedSubmitted')
-//   .get(function(){
-//     return this.createdAt.getFullYear();
-//   });
-
 
 module.exports = mongoose.model('Event', eventSchema);
