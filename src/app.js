@@ -6,6 +6,7 @@ import 'bulma';
 import './scss/style.scss';
 import 'chart.js';
 import 'angular-chart.js';
+import './plugins/chartJS';
 
 
 //--------- ROUTERS------------//

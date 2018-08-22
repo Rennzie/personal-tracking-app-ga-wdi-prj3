@@ -39,31 +39,33 @@ function UsersShowCtrl($http, $state, $scope) {
   //   }
   // }
 
-  $scope.labels = ['Remaining', 'Completed'];
-  $scope.targetLabels = ['Mind', 'Body', 'Soul'];
-
-  $scope.doNutCharOptions = {
-    cutoutPercentage: 85,
-    animation: {
-      animateScale: true
-    },
-    circumference: 2 * Math.PI
-  };
-
-  $scope.targetCharColors = ['rgba(255,0,204,0.3)', 'rgba(204,255,0,0.3)', 'rgba(0,204,255,0.3)'];
-
-  $scope.mindCharColors = ['rgba(255,0,204,0.3)', 'rgb(255,0,204)'];
-  $scope.bodyCharColors = ['rgba(204,255,0,0.3)', 'rgb(204,255,0)'];
-  $scope.soulCharColors = ['rgba(0,204,255,0.3)', 'rgb(0,204,255)'];
-  $scope.multiCharColors = [
-    ['rgba(255,0,204,0.3)', 'rgb(255,0,204)'],
-    ['rgba(204,255,0,0.3)', 'rgb(204,255,0)'],
-    ['rgba(0,204,255,0.3)', 'rgb(0,204,255)']
-  ];
-
   function updateCharts(){
+    const mindColor = 'rgb(255,0,204)';
+    const bodyColor = 'rgb(204,255,0)';
+    const soulColor = 'rgb(0,204,255)';
+    const mindColorFade = 'rgba(255,0,204,0.3)';
+    const bodyColorFade = 'rgba(204,255,0,0.3)';
+    const soulColorFade = 'rgba(0,204,255,0.3)';
+
+    const cutOutPercentage = 85;
+
+    const goalData = $scope.goals[0];
+
+    $scope.labels = ['Remaining', 'Completed'];
+    $scope.targetLabels = ['Mind', 'Body', 'Soul'];
+
+    $scope.targetCharColors = [mindColorFade, bodyColorFade, soulColorFade];
+
+    $scope.mindCharColors = [mindColorFade, mindColor];
+    $scope.bodyCharColors = [bodyColorFade, bodyColor];
+    $scope.soulCharColors = [soulColorFade, soulColor];
+    $scope.multiCharColors = [
+      [mindColorFade, mindColor],
+      [bodyColorFade, bodyColor],
+      [soulColorFade, soulColor]
+    ];
+
     if($scope.user){
-      const goalData = $scope.goals[0];
       $scope.targetData = [goalData.mindTarget, goalData.bodyTarget, goalData.soulTarget];
 
       $scope.mindData = [goalData.timeToMindGoal, goalData.mindCompleted];
@@ -75,6 +77,73 @@ function UsersShowCtrl($http, $state, $scope) {
         [goalData.timeToBodyGoal, goalData.bodyCompleted],
         [goalData.timeToSoulGoal, goalData.soulCompleted]
       ];
+
+      $scope.mindCharOptions = {
+        title: {
+          display: true,
+          text: 'Mind',
+          fontSize: 30,
+          fontStyle: 'bold'
+        },
+        maintainAspectRatio: false,
+        cutoutPercentage: cutOutPercentage,
+        animation: {
+          animateScale: true
+        },
+        elements: {
+          center: {
+            text: `Target \n ${goalData.mindTarget} Hrs`,
+            color: mindColor, //Default black
+            fontStyle: 'Helvetica', //Default Arial
+            sidePadding: 15 //Default 20 (as a percentage)
+          }
+        }
+      };
+
+      $scope.bodyCharOptions = {
+        title: {
+          display: true,
+          text: 'Body',
+          fontSize: 30,
+          fontStyle: 'bold'
+        },
+        maintainAspectRatio: false,
+        cutoutPercentage: cutOutPercentage,
+        animation: {
+          animateScale: true
+        },
+        elements: {
+          center: {
+            text: `Target \n ${goalData.bodyTarget} Hrs`,
+            color: bodyColor, //Default black
+            fontStyle: 'Helvetica', //Default Arial
+            sidePadding: 15 //Default 20 (as a percentage)
+          }
+        }
+      };
+
+      $scope.soulCharOptions = {
+        title: {
+          display: true,
+          text: 'Soul',
+          fontSize: 30,
+          fontStyle: 'bold'
+        },
+        maintainAspectRatio: false,
+        cutoutPercentage: cutOutPercentage,
+        animation: {
+          animateScale: true
+        },
+        elements: {
+          center: {
+            text: `Target \n ${goalData.soulTarget} Hrs`,
+            color: soulColor, //Default black
+            fontStyle: 'Helvetica', //Default Arial
+            sidePadding: 15 //Default 20 (as a percentage)
+          }
+        }
+      };
+
     }
   }
 
