@@ -18,6 +18,9 @@
           <p>The expected weather is: {{ weatherSummary.summary }}</p>
           <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
         </div>
+        <div ng-if="homeTravelTime">
+          This event is only {{homeTravelTime}} minutes from your house
+        </div>
         <hr>
       </div>
 

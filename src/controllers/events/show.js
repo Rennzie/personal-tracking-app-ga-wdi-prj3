@@ -126,7 +126,7 @@ function EventsShowCtrl($http, $state, $scope) {
             })
               .then(res => {
                 console.log('the travel time is: ', res.data);
-    
+                $scope.homeTravelTime = res.data.travel_time_minutes;
 
               });
           }
