@@ -155,7 +155,8 @@ const eventData = [
     eventTitle: 'Hatha at Home',
     eventDateTime: 'Thu Oct 11 2018 22:30:00 GMT+0100 (British Summer Time)',
     guests: [],
-    imageUrl: 'https://images.fitnessmagazine.mdpcdn.com/sites/fitnessmagazine.com/files/yoga%20bloat.jpg',
+    https://static1.squarespace.com/static/56576768e4b0c6e18e346bea/574b245bf699bbded7dcb642/574b24cfe32140af98e81e76/1464542417841/alan+grasshoppe.jpg?format=2500w
+    imageUrl:'https://static1.squarespace.com/static/56576768e4b0c6e18e346bea/574b245bf699bbded7dcb642/574b24cfe32140af98e81e76/1464542417841/alan+grasshoppe.jpg?format=2500w',
     isIndoors: true,
     location: {     //sub document to hold event location
       streetNumber: 9,
@@ -251,7 +252,7 @@ const eventData = [
     eventTitle: 'Meditation + Mindfulness',
     eventDateTime: 'Saturday June 30 2018 11:00:00 GMT+0100 (British Summer Time)',
     guests: [],
-    imageUrl: 'https://www.abouttimemagazine.co.uk/wp-content/uploads/2016/07/CoreCollective2.jpg',
+    imageUrl: 'https://static1.squarespace.com/static/56576768e4b0c6e18e346bea/574b245bf699bbded7dcb642/574b24da27d4bdfe229ab693/1464542842272/sink+plants.jpg?format=2500w',
     isIndoors: true,
     location: {
       streetNumber: 372,
