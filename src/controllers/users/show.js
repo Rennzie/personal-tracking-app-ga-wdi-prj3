@@ -15,25 +15,52 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.user = res.data;
     });
 
-  $scope.$watch('event', checkProfileIsForUser() );
+
+  // $scope.$watch('user', () =>{
+  //   checkProfileIsForUser();
+  // });
+  $scope.$watch('goals', () =>{
+    updateCharts();
+  });
 
   //check to see if the current user is the event owner
-  function checkProfileIsForUser(){
+  // function checkProfileIsForUser(){
+  //   if($scope.user){
+  //     //check user is logged in
+  //     if(!$scope.isAuthenticated()){
+  //       $scope.checkProfileIsForUser = false;
+  //     }
+  //
+  //     if(!$scope.event.createdBy._id){
+  //       $scope.checkProfileIsForUser = false;
+  //     }
+  //
+  //     if($scope.getPayload().sub === $state.params.id){
+  //       $scope.checkProfileIsForUser = true;
+  //     }else{
+  //       $scope.checkProfileIsForUser = false;
+  //     }
+  //   }
+  // }
+
+  $scope.labels = ['Remaining', 'Completed'];
+  $scope.charOptions = {
+    cutoutPercentage: 85,
+    animation: {
+      animateScale: true
+    }
+  };
+
+  $scope.mindCharColors = ['rgba(255,0,204,0.3)', 'rgb(255,0,204)'];
+  $scope.bodyCharColors = ['rgba(204,255,0,0.3)', 'rgb(204,255,0)'];
+  $scope.soulCharColors = ['rgba(0,204,255,0.3)', 'rgb(0,204,255)'];
+
+  function updateCharts(){
     if($scope.user){
-      //check user is logged in
-      if(!$scope.isAuthenticated()){
-        $scope.checkProfileIsForUser = false;
-      }
-
-      if(!$scope.event.createdBy._id){
-        $scope.checkProfileIsForUser = false;
-      }
-
-      if($scope.getPayload().sub === $state.params.id){
-        $scope.checkProfileIsForUser = true;
-      }else{
-        $scope.checkProfileIsForUser = false;
-      }
+      const goalData = $scope.goals[0];
+      $scope.mindData = [goalData.timeToMindGoal, goalData.mindCompleted];
+      $scope.bodyData = [goalData.timeToBodyGoal, goalData.bodyCompleted];
+      $scope.soulData = [goalData.timeToSoulGoal, goalData.soulCompleted];
     }
   }
 
@@ -97,6 +124,8 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.upcomingEvents = upcomingEvents;
     }
     );
+
+
 }
 
 export default UsersShowCtrl;
