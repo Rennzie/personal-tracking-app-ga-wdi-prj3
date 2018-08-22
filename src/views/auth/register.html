@@ -1,8 +1,6 @@
 <p>Welcome to Resolut. (Already got an account? <a ui-sref="login">Login</a>)</p>
 <form ng-submit="register()" name="form" novalidate>
 
-  <pre>{{ form.postcodeHome | json }}</pre>
-
   <!-- FIRST NAME -->
   <div class="field">
     <label class="label" for="firstName">First name</label>
@@ -44,12 +42,13 @@
   <!-- POSTCODE -->
   <div class="field">
   <label class="label" for="postcodeHome">Postcode</label>
-  <input required ng-model="user.postcodeHome" class="input" type="text" name="postcodeHome" placeholder="SW7 2AF">
+  <input ng-model="user.postcodeHome" class="input" type="text" name="postcodeHome" placeholder="SW7 2AF" ng-pattern="/^[a-z]{1,2}[0-9][a-z0-9]?\s?[0-9][a-z]{2}$/i" required ng-minlength="5" ng-maxlength="8">
   </div>
 
-  <div ng-messages="form.postcodeHome.$error" ng-if="form.$touched || form.postcodeHome.$dirty">
-    <p> SOMETHING IS WRONG </p>
-  <small ng-message="required">Please enter postcode</small>
+  <div ng-messages="form.postcodeHome.$error" ng-if="form.$submitted || form.postcodeHome.$dirty">
+    <small ng-message="required">Please enter postcode</small>
+    <small ng-message="pattern">WTF?</small>
+  </div>
 </div>
 
 
