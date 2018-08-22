@@ -155,12 +155,12 @@ const eventData = [
     eventTitle: 'Hatha at Home',
     eventDateTime: 'Thu Oct 11 2018 22:30:00 GMT+0100 (British Summer Time)',
     guests: [],
-    imageUrl: 'https://images.fitnessmagazine.mdpcdn.com/sites/fitnessmagazine.com/files/yoga%20bloat.jpg',
+    imageUrl: 'https://static1.squarespace.com/static/56576768e4b0c6e18e346bea/574b245bf699bbded7dcb642/574b24cfe32140af98e81e76/1464542417841/alan+grasshoppe.jpg',
     isIndoors: true,
     location: {     //sub document to hold event location
       streetNumber: 9,
       streetName: 'Greensward',
-      postcode: 'sw62tg'
+      postcode: 'sw7 2az'
     }
   }, {
     category: 'mind',
@@ -192,7 +192,7 @@ const eventData = [
     location: {
       streetNumber: 62,
       streetName: 'Porchester Rd',
-      postcode: 'E1 7PT'
+      postcode: 'W2 6ET'
     }
   }, {
     category: 'body',
@@ -208,7 +208,7 @@ const eventData = [
     location: {
       streetNumber: 16,
       streetName: 'Eccleston Yards',
-      postcode: 'E1 7PT'
+      postcode: 'SW1W 9NF'
     }
   }, {
     category: 'body',
@@ -224,7 +224,7 @@ const eventData = [
     location: {
       streetNumber: 4,
       streetName: 'Tower Street',
-      postcode: 'E1 7PT'
+      postcode: 'WC2H 9NP'
     }
   }, {
     category: 'body',
@@ -240,7 +240,7 @@ const eventData = [
     location: {
       streetNumber: 45,
       streetName: 'Philimore Walk',
-      postcode: 'E1 7PT'
+      postcode: 'W8 7RZ'
     }
   },{
     category: 'soul',
@@ -251,12 +251,12 @@ const eventData = [
     eventTitle: 'Meditation + Mindfulness',
     eventDateTime: 'Saturday June 30 2018 11:00:00 GMT+0100 (British Summer Time)',
     guests: [],
-    imageUrl: 'https://www.abouttimemagazine.co.uk/wp-content/uploads/2016/07/CoreCollective2.jpg',
+    imageUrl: 'https://static1.squarespace.com/static/56576768e4b0c6e18e346bea/574b245bf699bbded7dcb642/574b24da27d4bdfe229ab693/1464542842272/sink+plants.jpg?format=2500w',
     isIndoors: true,
     location: {
       streetNumber: 372,
       streetName: 'Kings Road',
-      postcode: 'E1 7PT'
+      postcode: 'sw3 5uz'
     }
   },{
     category: 'soul',
@@ -272,7 +272,7 @@ const eventData = [
     location: {
       streetNumber: 6,
       streetName: 'Fitzroy Square',
-      postcode: 'E1 7PT'
+      postcode: 'w1t 5dx'
     }
   },{
     category: 'soul',
@@ -288,7 +288,7 @@ const eventData = [
     location: {
       streetNumber: 64,
       streetName: 'Eaton Terrace',
-      postcode: 'E1 7PT'
+      postcode: 'SW1W 8TZ'
     }
   },{
     category: 'soul',
@@ -304,7 +304,7 @@ const eventData = [
     location: {
       streetNumber: 95,
       streetName: 'Rye Lane',
-      postcode: 'E1 7PT'
+      postcode: 'SE15 5BU'
     }
   },{
     category: 'mind',
@@ -320,7 +320,7 @@ const eventData = [
     location: {
       streetNumber: 3,
       streetName: 'Stamford Works',
-      postcode: 'E1 7PT'
+      postcode: 'N16 8JH'
     }
   },{
     category: 'mind',
@@ -336,7 +336,7 @@ const eventData = [
     location: {
       streetNumber: 11,
       streetName: 'Rathbone Place',
-      postcode: 'E1 7PT'
+      postcode: 'W1T 1JN'
     }
   },{
     category: 'mind',
@@ -352,23 +352,23 @@ const eventData = [
     location: {
       streetNumber: 14,
       streetName: 'Marsham Street',
-      postcode: 'E1 7PT'
+      postcode: 'SW1P 4DF'
     }
   },{
     category: 'mind',
     capacity: 200,
-    concluded: true,
+    concluded: false,
     duration: 2,
     description: 'What is the point to attend to a cookery class just to follow a recipe? Hosted by David, the founder of Pencil & Fork Ltd ("Learning experiences through food"). Blend physics and chemistry to transform the taste and texture of food and learn the tricks of molecular gastronomy.',
     eventTitle: 'Molecular Gastronomy Techniques',
-    eventDateTime: 'Monday September 3 2018 20:00:00 GMT+0100 (British Summer Time)',
+    eventDateTime: 'Thursday September 27 2018 20:00:00 GMT+0100 (British Summer Time)',
     guests: [],
     imageUrl: 'https://eattreat.in/wp-content/uploads/2016/11/0c2246d1aaf2702e35aa39230f151a59-768x460.jpg',
     isIndoors: true,
     location: {
       streetNumber: 12,
       streetName: 'Foley Street',
-      postcode: 'E1 7PT'
+      postcode: 'W1W 6DP'
     }
   }
 ];

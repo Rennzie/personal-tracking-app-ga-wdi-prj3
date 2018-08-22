@@ -4,7 +4,6 @@ const moment = require('moment');
 
 const goalSchema = mongoose.Schema({
   createdBy: { type: ObjectId, ref: 'User' },
-  month: String,
   mindTarget: { type: Number, default: 0 },
   bodyTarget: { type: Number, default: 0 },
   soulTarget: { type: Number, default: 0 },

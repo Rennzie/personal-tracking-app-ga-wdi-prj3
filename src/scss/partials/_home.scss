@@ -1,9 +1,16 @@
 section.home {
   // background-color: rgb(52, 52, 49);
+  img {
+    max-width:400px;
+  max-height:400px;
+  width: auto;
+  height: auto;
+  }
   a {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Raleway', sans-serif;
     text-decoration: underline;
-    font-size: 36px;
+    font-style: italic;
+    font-size: 24px;
     padding: 100px;
     &.mind {
       color: rgb(255,0,204);

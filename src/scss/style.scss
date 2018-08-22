@@ -1,12 +1,21 @@
 body{
   color: white;
   background-color: rgb(52, 52, 49);
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
+}
+
+.navbar{
+  background-color: black;
+}
+
+.footer{
+  background-color: black;
 }
 
 
 // HOME //
 @import "./partials/_home.scss";
+@import "./partials/_about.scss";
 
 // EVENTS //
 @import "./partials/_eventsIndex.scss";
