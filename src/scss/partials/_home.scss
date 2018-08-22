@@ -14,7 +14,9 @@ section.home {
     text-decoration: underline;
     font-style: italic;
     font-size: 24px;
-    padding: 100px;
+    padding: 10px;
+    background-color: white;
+    border: 4px solid black;
     &.mind {
       color: rgb(255,0,204);
     }
@@ -25,8 +27,8 @@ section.home {
       color: rgb(0,204,255);
     }
     &.browse {
-      color: white;
-      padding-top: 100px;
+      color: black;
+      padding-top: 10px;
       font-style: italic;
       text-align: center;
       width: 100vh;

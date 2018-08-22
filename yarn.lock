@@ -173,6 +173,10 @@ angular-chart.js@^1.1.1:
     angular "1.x"
     chart.js "2.3.x"
 
+angular-chartjs@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/angular-chartjs/-/angular-chartjs-0.0.5.tgz#81bb9307552d411c63daa3785b0a4c7fe678e460"
+
 angular-filepicker@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/angular-filepicker/-/angular-filepicker-1.1.4.tgz#1293ad69087d1cb57767bcbad23c7e2d9a20adbc"

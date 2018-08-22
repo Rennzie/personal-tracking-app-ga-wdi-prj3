@@ -41,9 +41,15 @@
 
   <!-- POSTCODE -->
   <div class="field">
-  <label class="label" for="postcode">Postcode</label>
-  <input ng-model="user.postcodeHome" class="input" type="text" name="postcode" placeholder="">
+  <label class="label" for="postcodeHome">Postcode</label>
+  <input ng-model="user.postcodeHome" class="input" type="text" name="postcodeHome" placeholder="SW7 2AF" ng-pattern="/^[a-z]{1,2}[0-9][a-z0-9]?\s?[0-9][a-z]{2}$/i" required ng-minlength="5" ng-maxlength="8">
   </div>
+
+  <div ng-messages="form.postcodeHome.$error" ng-if="form.$submitted || form.postcodeHome.$dirty">
+    <small ng-message="required">Please enter postcode</small>
+    <small ng-message="pattern">WTF?</small>
+  </div>
+</div>
 
 
     <!-- PASSWORD-->
