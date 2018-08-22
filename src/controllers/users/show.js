@@ -91,9 +91,9 @@ function UsersShowCtrl($http, $state, $scope) {
 
       const concludedEvents = usersEvents.filter(event => event.concluded === true);
       const upcomingEvents = usersEvents.filter(event => event.concluded === false);
-      // console.log('concluded events', concludedEvents);
-      // console.log('upcoming events', upcomingEvents);
-      $scope.eventsAttended = concludedEvents;
+      console.log('concluded events', concludedEvents);
+      console.log('upcoming events', upcomingEvents);
+      $scope.concludedEvents = concludedEvents;
       $scope.upcomingEvents = upcomingEvents;
     }
     );

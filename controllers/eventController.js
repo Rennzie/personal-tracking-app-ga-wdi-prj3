@@ -1,6 +1,5 @@
 //BACK END eventController
 const Event = require('../models/event');
-const mongoose = require('mongoose');
 
 //---------for all the event data --------///
 function eventShow(req, res, next ){
@@ -46,7 +45,6 @@ function eventDelete( req, res, next ){
 function eventAddGuest( req, res, next ){
   Event
     .findById(req.params.id)
-    // .populate('guests')
     .then(event => event.addGuest(req.body.id))
     .then(event => Event.populate(event, { path: 'guests'}))
     .then(event => res.json(event) )

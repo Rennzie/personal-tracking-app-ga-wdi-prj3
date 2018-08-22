@@ -73,8 +73,8 @@ Router.route('/forecast')
   .get(weatherController.forecast);
 
 //TRAVEL ROUTES
-Router.Route('/citymapper/traveltime')
-  .get(travelController.citymapper.travelTime)
+Router.route('/citymapper/traveltime')
+  .get(travelController.citymapper.travelTime);
 
 
 
