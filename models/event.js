@@ -59,7 +59,7 @@ eventSchema.methods.removeGuest = function(userId){
 eventSchema.virtual('formattedDate')
   .get(function (){
     const momentTimeObj = moment(this.eventDateTime);
-    return moment(momentTimeObj).format('dddd, MMMM Do YYYY');
+    return moment(momentTimeObj).format('dddd, MMMM Do');
   });
 
 eventSchema.virtual('formattedTime')

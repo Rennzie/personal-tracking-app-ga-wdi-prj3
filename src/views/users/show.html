@@ -120,8 +120,9 @@
 
 
             <div class="column is-6">
+              <p class="header has-text-centered">{{event.eventTitle}}</p>
               <p class="header has-text-centered"> {{event.category}}</p>
-              <p> {{ event.eventDateTime}}</p>
+              <p class="header has-text-centered"> {{ event.formattedDate}}</p>
             </div>
           </div>
           </a>
@@ -141,10 +142,11 @@
       <img ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
     </div>
     <div class="column is-4">
-      <p class="header has-text-centered">events attended goes here</p>
+      <p class="header has-text-centered">{{event.eventTitle}}</p>
     </div>
     <div class="column is-4">
-      <p class="header has-text-centered">events attended goes here</p>
+      <p class="header has-text-centered"> {{ event.category}} </p>
+      <p class="header has-text-centered">HOURS: {{ event.duration}}</p>
     </div>
   </a>
   </div>
