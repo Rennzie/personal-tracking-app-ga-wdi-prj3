@@ -9,6 +9,10 @@ const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
 const goalController = require('../controllers/goalController');
 
+//external API Controllers
+const weatherController = require('../controllers/externalApis/weatherController');
+
+
 
 //Secure Route Middleware
 const secureRoute = require('../lib/secureRoute');
@@ -46,10 +50,7 @@ Router.route('/events/:id/guests')
   .post(eventController.addNewGuest);
 
 Router.route('/events/:eventId/guests/:guestId')
-  .delete(eventController.guestDelete); // NOTE: neeed to secure this
-
-// Router.route('/events/mind')
-//   .get(eventController.mindIndex);
+  .delete(eventController.guestDelete); // NOTE: need to secure this
 
 // GOAL ROUTES // NOTE: no need to secure as this is done by the userprofile controller
 Router.route('/users/:userId/goals')
@@ -65,7 +66,9 @@ Router.route('/goals/:id/loghours')
   .all(secureRoute)
   .put(goalController.log);
 
-
+// WEATHER ROUTES
+Router.route('/forecast')
+  .get(weatherController.forecast);
 
 
 
