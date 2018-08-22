@@ -74,7 +74,7 @@ Router.route('/forecast')
 
 //TRAVEL ROUTES
 Router.route('/citymapper/traveltime')
-  .get(travelController.travelTime);
+  .get(travelController.citymapper.travelTime);
 
 
 

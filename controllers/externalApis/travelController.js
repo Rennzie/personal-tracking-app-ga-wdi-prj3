@@ -14,7 +14,7 @@ function citymapTravelTime( req, res, next){
 }
 
 module.exports = {
-  // citymapper: {
+  citymapper: {
     travelTime: citymapTravelTime
-  // }
+  }
 };
