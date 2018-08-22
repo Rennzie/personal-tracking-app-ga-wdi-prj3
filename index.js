@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const Router = require('./config/routes');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const errorHandler = require('./lib/errorHandler');
 
 //MongoDB
 mongoose.Promise = require('bluebird');
@@ -33,6 +34,8 @@ app.use(express.static(`${__dirname}/public`));
 // console.log('the router is', Router);
 //comment
 app.use('/api', Router);
+
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Express is running on port ${port}`));
 
