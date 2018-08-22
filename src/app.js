@@ -11,6 +11,7 @@ import Router from './config/routes';
 //---------- CUSTOM DIRECTIVES -----//
 
 import Map from './directives/map';
+import Chart from './directives/chart';
 
 //--------- CONTROLLERS -----------//
 
@@ -36,6 +37,8 @@ angular.module('Resolut', [
   'ui.router', 'satellizer', 'ngMessages'
 ])
   .directive('ngMap', Map)
+  .directive('ngChart', Chart)
+
   .controller('MainCtrl', MainCtrl)
 
   .controller('AuthLoginCtrl', AuthLoginCtrl)
