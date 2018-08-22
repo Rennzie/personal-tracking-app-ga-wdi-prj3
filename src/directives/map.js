@@ -1,4 +1,4 @@
-/*global L*/
+/*global L, $http */
 
 function Map($http) {
   return {
@@ -17,6 +17,15 @@ function Map($http) {
 
           const marker = L.marker([$scope.event.location.lat, $scope.event.location.lon]).addTo(map);
           marker.bindPopup(`<p>${$scope.event.eventTitle}</p>`);
+        }
+      });
+      $scope.$watch('user', function() {
+        if($scope.user) {
+          console.log('this is user ---->', $scope.user);
+          map.setView([ $scope.user.homeLocation.lat, $scope.user.homeLocation.lon], 15);
+
+          const marker = L.marker([$scope.user.homeLocation.lat, $scope.user.homeLocation.lon]).addTo(map);
+          marker.bindPopup(`<p>${$scope.user.username}</p>`);
         }
       });
     }
