@@ -143,11 +143,12 @@ function UsersShowCtrl($http, $state, $scope) {
     .then(res => {
       const usersEvents = res.data.filter(event => event.guests.id === $scope.user.id);
 
-      const concludedEvents = usersEvents.filter(event => event.concluded === true);
+      //WE NEED TO FILTER THESE FOR MOST RECENT FIRST
+      const attendedEvents = usersEvents.filter(event => event.concluded === true);
       const upcomingEvents = usersEvents.filter(event => event.concluded === false);
-      console.log('concluded events', concludedEvents);
+      console.log('concluded events', attendedEvents);
       console.log('upcoming events', upcomingEvents);
-      $scope.concludedEvents = concludedEvents;
+      $scope.attendedEvents = attendedEvents;
       $scope.upcomingEvents = upcomingEvents;
     }
     );
