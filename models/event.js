@@ -13,6 +13,7 @@ const eventSchema = mongoose.Schema({
   description: String,
   eventTitle: { type: String, required: true },
   eventDateTime: { type: String, required: true },
+  eventDateUnix: Number,
   guests: [ { type: ObjectId, ref: 'User'} ], //to hold all users attending the event
   imageUrl: String,
   isIndoors: Boolean,
@@ -72,6 +73,11 @@ eventSchema.virtual('placesRemaining')
   .get(function(){
     return this.capacity - this.guests.length;
   });
+// 
+// eventSchema.virtual('eventDateUnix')
+//   .get(function(){
+//     return moment(this.eventDateTime).unix();
+//   });
 
 // eventSchema.virtual('minutesToEvent')
 //   .get(function(){
@@ -79,6 +85,11 @@ eventSchema.virtual('placesRemaining')
 //   });
 
 //  LIFECYCLE HOOKS
+eventSchema.pre('save', function setUnixDate(next){
+  this.eventDateUnix = moment(this.eventDateTime).unix();
+  next();
+});
+
 eventSchema.pre('validate', function getLatLon(next){
   console.log('get LatLon Prevalidation hook fired');
 
