@@ -15,27 +15,81 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.user = res.data;
     });
 
-  $scope.$watch('event', checkProfileIsForUser() );
+
+  // $scope.$watch('user', () =>{
+  //   checkProfileIsForUser();
+  // });
+  $scope.$watch('goals', () =>{
+    updateCharts();
+  });
 
   //check to see if the current user is the event owner
-  function checkProfileIsForUser(){
+  // function checkProfileIsForUser(){
+  //   if($scope.user){
+  //     //check user is logged in
+  //     if(!$scope.isAuthenticated()){
+  //       $scope.checkProfileIsForUser = false;
+  //     }
+  //
+  //     if(!$scope.event.createdBy._id){
+  //       $scope.checkProfileIsForUser = false;
+  //     }
+  //
+  //     if($scope.getPayload().sub === $state.params.id){
+  //       $scope.checkProfileIsForUser = true;
+  //     }else{
+  //       $scope.checkProfileIsForUser = false;
+  //     }
+  //   }
+  // }
+
+  $scope.labels = ['Remaining', 'Completed'];
+  $scope.targetLabels = ['Mind', 'Body', 'Soul'];
+
+  $scope.doNutCharOptions = {
+    cutoutPercentage: 85,
+    animation: {
+      animateScale: true
+    },
+    circumference: 2 * Math.PI
+  };
+
+  $scope.targetCharColors = ['rgb(255,0,204)', 'rgb(204,255,0)', 'rgb(0,204,255)'];
+
+  $scope.mindCharColors = ['rgba(255,0,204,0.3)', 'rgb(255,0,204)'];
+  $scope.bodyCharColors = ['rgba(204,255,0,0.3)', 'rgb(204,255,0)'];
+  $scope.soulCharColors = ['rgba(0,204,255,0.3)', 'rgb(0,204,255)'];
+  $scope.multiCharColors = [
+    ['rgba(255,0,204,0.3)', 'rgb(255,0,204)'],
+    ['rgba(204,255,0,0.3)', 'rgb(204,255,0)'],
+    ['rgba(0,204,255,0.3)', 'rgb(0,204,255)']
+  ];
+
+  function updateCharts(){
     if($scope.user){
-      //check user is logged in
-      if(!$scope.isAuthenticated()){
-        $scope.checkProfileIsForUser = false;
-      }
+      const goalData = $scope.goals[0];
+      $scope.targetData = [goalData.mindTarget, goalData.bodyTarget, goalData.soulTarget];
 
-      if(!$scope.event.createdBy._id){
-        $scope.checkProfileIsForUser = false;
-      }
+      $scope.mindData = [goalData.timeToMindGoal, goalData.mindCompleted];
+      $scope.bodyData = [goalData.timeToBodyGoal, goalData.bodyCompleted];
+      $scope.soulData = [goalData.timeToSoulGoal, goalData.soulCompleted];
 
-      if($scope.getPayload().sub === $state.params.id){
-        $scope.checkProfileIsForUser = true;
-      }else{
-        $scope.checkProfileIsForUser = false;
-      }
+      $scope.multiData =  [
+        [goalData.timeToMindGoal, goalData.mindCompleted],
+        [goalData.timeToBodyGoal, goalData.bodyCompleted],
+        [goalData.timeToSoulGoal, goalData.soulCompleted]
+      ];
     }
   }
+
+
+  // {
+  //   datasets: [
+  //     {data: $scope.mindData},
+  //     {data: $scope.bodyData},
+  //     {data: $scope.soulData}
+  //   ]
+  // };
 
   $scope.becomeAHost = function() {
     const updateUserData = $scope.user;
@@ -89,14 +143,17 @@ function UsersShowCtrl($http, $state, $scope) {
     .then(res => {
       const usersEvents = res.data.filter(event => event.guests.id === $scope.user.id);
 
-      const concludedEvents = usersEvents.filter(event => event.concluded === true);
+      //WE NEED TO FILTER THESE FOR MOST RECENT FIRST
+      const attendedEvents = usersEvents.filter(event => event.concluded === true);
       const upcomingEvents = usersEvents.filter(event => event.concluded === false);
-      console.log('concluded events', concludedEvents);
+      console.log('concluded events', attendedEvents);
       console.log('upcoming events', upcomingEvents);
-      $scope.concludedEvents = concludedEvents;
+      $scope.attendedEvents = attendedEvents;
       $scope.upcomingEvents = upcomingEvents;
     }
     );
+
+
 }
 
 export default UsersShowCtrl;

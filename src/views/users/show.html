@@ -1,18 +1,24 @@
 <div class="level"> </div>
+
 <div class="container">
 
   <div class="level">
     <div class="columns">
+
+      <!-- RIGHT HAND PANEL -->
       <div class="column is-4">
-        <h1> Welcome back {{ user.username }}</h1>
+        <h1 class="title is-2 has-text-white has-text-centered"> Welcome back {{ user.username }}</h1>
 
         <div class="profilePicture">
           <img ng-src="{{user.imageUrl}}" alt="{{user.username}}">
         </div>
 
+        <!-- IF USER IS NOT A HOST -->
         <div class="hosting">
           <button ng-if="!user.isHost" ng-click="becomeAHost()" class="button is-text">I want to be a host</button>
+
           <a ui-sref="eventsNew" ng-if="user.isHost" class="button is-text">Click here to create an event</a>
+
           <form ng-submit="addHosterName()" ng-if="user.isHost && !user.hasHostName">
             <input ng-model="user.hosterName" type="text" name="hosterName" placeholder="ParkCali201">
             <button class="button is-info">Create HosterName</button>
@@ -20,13 +26,16 @@
           <p ng-if="user.hasHostName">Your Host Name is: {{user.hosterName}}</p>
         </div>
 
-        <!-- map needs height and with -->
-        <hr>
-        <div id="userProfileMap" ng-map> </div>
+        <div class=" settings level">
+          <button ui-sref="goalsLogHours({userId: getPayload().sub, goalId: goals[0].id})" class="is-success button">Log Hours</button>
+          <button ui-sref="goalsEdit({userId: getPayload().sub, goalId: goals[0].id})" class="is-info button">Edit Target</button>
+        </div>
+
+
       </div>
 
       <div class="column is-8">
-
+        <!-- this will show if you have no goals -->
         <div ng-if="goals.length === 0 || checkProfileIsForUser">
           <div class="level">
             <h2 class="title has-text-white">Set your goals for {{ currentMonth }}</h2>
@@ -35,123 +44,145 @@
           <button ui-sref="goalsNew({ id: user._id })" class="button is-text">New Goal</button>
         </div>
 
-        <div ng-if="goals.length > 0 || checkCreatorIsUser">
+        <!-- this will show if there are goals -->
+        <div ng-if="goals.length > 0">
 
-          <div   class="level">
-            <!-- this month is on the MainCtrl -->
-            <h2 class="title has-text-white">Your goals for {{ currentMonth }}</h2>
-          </div>
+          <!-- this month is on the MainCtrl -->
+          <h2 class="title has-text-cetered has-text-white">Your goals for {{ currentMonth }}</h2>
+          <p>{{ daysRemainingInMonth }} days left in current cycle</p>
+
+          <!-- LRG MULTI CHARTS -->
           <div class="has-text-white level">
-            <p>{{ daysRemainingInMonth }} days left in current cycle</p>
+            <div class="columns">
+              <div class="column is-6">
+                <canvas id="pie"
+                class="chart chart-pie"
+                chart-data="multiData"
+                chart-colors="targetCharColors"
+                ></canvas>
+              </div>
+
+              <div class="column is-6">
+                <canvas id="pie"
+                class="chart chart-pie"
+                chart-data="targetData"
+                chart-labels="targetLabels"
+                chart-colors="targetCharColors"
+                ></canvas>
+              </div>
+            </div>
           </div>
 
           <!-- GOALS SHOW IS BELOW HERE -->
-          <div class="level">
-            <div id="goals"  class="columns is-multiline">
 
-              <div id="mind" class="column  is-4">
-                <h2 class="title has-text-white">Mind</h2>
-                <div class="level">
-                  <p>TARGET HOURS: {{ goals[0].mindTarget}}</p>
-                </div>
-                <div class="level">
-                  <p>COMPLETED HOURS: {{ goals[0].mindCompleted}}</p>
-                </div>
-                <div class="level">
-                  <p>REMAINING HOURS: {{ goals[0].timeToMindGoal}}</p>
-                </div>
-              </div>
-
-              <div id="body" class="column is-4">
-                <h2 class="title has-text-white">Body</h2>
-                <div class="level">
-                  <p>TARGET HOURS: {{ goals[0].bodyTarget}}</p>
-                </div>
-                <div class="level">
-                  <p>COMPLETED HOURS: {{ goals[0].bodyCompleted}}</p>
-                </div>
-                <div class="level">
-                  <p>REMAINING HOURS: {{ goals[0].timeToBodyGoal}}</p>
-                </div>
-              </div>
-
-              <div id="soul" class="column is-4">
-                <h2 class="title has-text-white">Soul</h2>
-                <div class="level">
-                  <p>TARGET HOURS: {{ goals[0].soulTarget}}</p>
-                </div>
-                <div class="level">
-                  <p>COMPLETED HOURS: {{ goals[0].soulCompleted}}</p>
-                </div>
-                <div class="level">
-                  <p>REMAINING HOURS: {{ goals[0].timeToSoulGoal}}</p>
-                </div>
-              </div>
-
-              <div class="level column is-12">
-                <div class="level-left">
-                  <div class="level-item">
-                    <button ui-sref="goalsLogHours({userId: getPayload().sub, goalId: goals[0].id})" class="is-success button">Log Hours</button>
-
-                  </div>
-                </div>
-                <div class="level-right">
-                  <div class="level-item">
-
-                    <button ui-sref="goalsEdit({userId: getPayload().sub, goalId: goals[0].id})" class="is-info button">Edit Target</button>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
         </div>
+      </div>
+    </div>
+  </div>
+ <hr>
+  <div class="level">
+    <div id="goals"  class="columns is-multiline">
 
-        <hr>
+      <div id="mind" class="column  is-4">
+        <h2 class="title has-text-centered has-text-white">Mind</h2>
+        <canvas id="doughnut"
+        class="chart chart-doughnut"
+        chart-data="mindData"
+        chart-labels="labels"
+        chart-options="doNutCharOptions"
+        chart-colors="mindCharColors"
+        > </canvas>
+      </div>
 
-        <!-- events user is attending  -->
-        <h1 class="title is-5">Upcoming Events</h1>
-        <div ng-repeat="event in upcomingEvents" class="level">
-          <div class="columns">
-            <a ui-sref="eventsShow({ id: event._id })">
-            <div class="column is-6">
-              <img ng-src="{{event.imageUrl}}" alt="event.eventTitle">
+      <div id="body" class="column is-4">
+        <h2 class="title has-text-centered has-text-white">Body</h2>
+        <canvas id="doughnut"
+        class="chart chart-doughnut"
+        chart-data="bodyData"
+        chart-labels="labels"
+        chart-options="doNutCharOptions"
+        chart-colors="bodyCharColors"
+        > </canvas>
+      </div>
+
+      <div id="soul" class="column is-4">
+        <h2 class="title has-text-centered has-text-white">Soul</h2>
+        <canvas id="doughnut"
+        class="chart chart-doughnut"
+        chart-data="soulData"
+        chart-labels="labels"
+        chart-options="doNutCharOptions"
+        chart-colors="soulCharColors"
+        > </canvas>
+      </div>
+
+
+    </div>
+  </div>
+  <hr>
+
+  <!-- MAP HERE -->
+  <div class="level">
+    <!-- map needs height and with -->
+    <div id="userProfileMap" ng-map> </div>
+  </div>
+  <hr>
+
+  <!-- UPCOMING EVENT, ONLY SHOW FIRST TWO -->
+  <div class="level">
+    <div class="columns">
+      <div class="column is-half">
+            <img ng-src="{{upcomingEvents[0].imageUrl}}" >
+            <h1>{{ upcomingEvents[0].eventTitle }}</h1>
+            <div class="level">
+              <p>{{upcomingEvents[0].category}}</p>
+              <p>{{upcomingEvents[0].duration}} Hrs</p>
             </div>
-
-
-            <div class="column is-6">
-              <p class="header has-text-centered">{{event.eventTitle}}</p>
-              <p class="header has-text-centered"> {{event.category}}</p>
-              <p class="header has-text-centered"> {{ event.formattedDate}}</p>
+      </div>
+      <div class="column is-half">
+            <img ng-src="{{upcomingEvents[2].imageUrl}}" >
+            <h1>{{ upcomingEvents[2].eventTitle }}</h1>
+            <div class="level">
+              <p>{{upcomingEvents[2].category}}</p>
+              <p>{{upcomingEvents[2].duration}} Hrs</p>
             </div>
-          </div>
-          </a>
-        </div>
-
       </div>
     </div>
   </div>
 
   <hr>
 
-<!-- events user has attended -->
-  <h1 class="title is-5">Past Events</h1>
-  <div ng-repeat="event in concludedEvents" class="level columns">
-    <div class="column is-4">
-      <a ui-sref="eventsShow({ id: event._id })">
-      <img ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
+
+
+  <!-- SELECTION OF RECOMMENDED EVENTS -->
+  <div class="level">
+    <div class="columns is-multiline">
+      <div ng-repeat="event in upcomingEvents" class="column is-4">
+        <img ng-src="{{event.imageUrl}}" >
+        <h1>{{ event.eventTitle }}</h1>
+        <div class="level">
+          <p>{{event.category}}</p>
+          <p>{{event.duration}} Hrs</p>
+        </div>
+      </div>
     </div>
-    <div class="column is-4">
-      <p class="header has-text-centered">{{event.eventTitle}}</p>
-    </div>
-    <div class="column is-4">
-      <p class="header has-text-centered"> {{ event.category}} </p>
-      <p class="header has-text-centered">HOURS: {{ event.duration}}</p>
-    </div>
-  </a>
   </div>
 
   <hr>
+
+  <div class="level">
+    <div class="columns is-multiline">
+      <div ng-repeat="event in attendedEvents" class="column is-4">
+        <img ng-src="{{event.imageUrl}}" >
+        <h1>{{ event.eventTitle }}</h1>
+        <div class="level">
+          <p>{{event.category}}</p>
+          <p>{{event.duration}} Hrs</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- to create a new set of goals -->

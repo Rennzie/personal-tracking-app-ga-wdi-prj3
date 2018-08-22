@@ -4,9 +4,8 @@ import 'satellizer';
 import 'angular-messages';
 import 'bulma';
 import './scss/style.scss';
-
-//--- scroll to top on state change----//
-
+import 'chart.js';
+import 'angular-chart.js';
 
 
 //--------- ROUTERS------------//
@@ -16,6 +15,7 @@ import Router from './config/routes';
 //---------- CUSTOM DIRECTIVES -----//
 
 import Map from './directives/map';
+// import Chart from './directives/chart';
 
 //--------- CONTROLLERS -----------//
 
@@ -38,9 +38,14 @@ import AuthRegisterCtrl from './controllers/auth/register';
 //-------- ANGULAR MODULE -----------//
 
 angular.module('Resolut', [
-  'ui.router', 'satellizer', 'ngMessages'
+  'ui.router',
+  'satellizer',
+  'ngMessages',
+  'chart.js'
 ])
   .directive('ngMap', Map)
+  // .directive('ngChart', Chart)
+
   .controller('MainCtrl', MainCtrl)
 
   .controller('AuthLoginCtrl', AuthLoginCtrl)
