@@ -78,6 +78,32 @@ function UsersShowCtrl($http, $state, $scope) {
         [goalData.timeToSoulGoal, goalData.soulCompleted]
       ];
 
+      $scope.multiCharOptions ={
+        title: {
+          display: true,
+          text: 'Your Progress Snapshot',
+          fontSize: 30,
+          fontStyle: 'bold'
+        },
+        maintainAspectRatio: false,
+        animation: {
+          animateScale: true
+        }
+      };
+
+      $scope.targetCharOptions ={
+        title: {
+          display: true,
+          text: 'How you prioritise your disciplines',
+          fontSize: 30,
+          fontStyle: 'bold'
+        },
+        maintainAspectRatio: false,
+        animation: {
+          animateScale: true
+        }
+      };
+
       $scope.mindCharOptions = {
         title: {
           display: true,
@@ -92,7 +118,7 @@ function UsersShowCtrl($http, $state, $scope) {
         },
         elements: {
           center: {
-            text: `Target \n ${goalData.mindTarget} Hrs`,
+            text: `Target: ${goalData.mindTarget} Hrs`,
             color: mindColor, //Default black
             fontStyle: 'Helvetica', //Default Arial
             sidePadding: 15 //Default 20 (as a percentage)
@@ -114,7 +140,7 @@ function UsersShowCtrl($http, $state, $scope) {
         },
         elements: {
           center: {
-            text: `Target \n ${goalData.bodyTarget} Hrs`,
+            text: `Target: ${goalData.bodyTarget} Hrs`,
             color: bodyColor, //Default black
             fontStyle: 'Helvetica', //Default Arial
             sidePadding: 15 //Default 20 (as a percentage)
@@ -136,7 +162,7 @@ function UsersShowCtrl($http, $state, $scope) {
         },
         elements: {
           center: {
-            text: `Target \n ${goalData.soulTarget} Hrs`,
+            text: `Target: ${goalData.soulTarget} Hrs`,
             color: soulColor, //Default black
             fontStyle: 'Helvetica', //Default Arial
             sidePadding: 15 //Default 20 (as a percentage)

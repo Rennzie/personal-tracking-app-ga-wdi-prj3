@@ -56,18 +56,21 @@
             <div class="columns">
               <div class="column is-6">
                 <canvas id="pie"
-                class="chart chart-pie"
+                class="multiDisciplineChart chart chart-pie"
                 chart-data="multiData"
+                chart-options="multiCharOptions"
                 chart-colors="targetCharColors"
+                chart-labels="targetLabels"
                 ></canvas>
               </div>
 
               <div class="column is-6">
                 <canvas id="pie"
-                class="chart chart-pie"
+                class="multiDisciplineChart chart chart-pie"
                 chart-data="targetData"
-                chart-labels="targetLabels"
+                chart-options="targetCharOptions"
                 chart-colors="targetCharColors"
+                chart-labels="targetLabels"
                 ></canvas>
               </div>
             </div>
@@ -83,7 +86,7 @@
   <div class="level">
     <div id="goals"  class="columns is-multiline">
 
-      <div id="mind" class="column  is-4">
+      <div id="mind" class="diciplineChart column  is-4">
         <canvas id="doughnut"
         class="chart chart-doughnut"
         chart-data="mindData"
@@ -93,7 +96,7 @@
         > </canvas>
       </div>
 
-      <div id="body" class="column is-4">
+      <div id="body" class="diciplineChart column is-4">
         <canvas id="doughnut"
         class="chart chart-doughnut"
         chart-data="bodyData"
@@ -103,7 +106,7 @@
         > </canvas>
       </div>
 
-      <div id="soul" class="column is-4">
+      <div id="soul" class="diciplineChart column is-4">
         <canvas id="doughnut"
         class="chart chart-doughnut"
         chart-data="soulData"
