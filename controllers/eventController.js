@@ -14,6 +14,7 @@ function eventIndex( req, res, next ){
   // console.log('Event index fired in controller');
   Event
     .find()
+    .sort('eventDateUnix')
     .then(events => res.json(events))
     .catch(next);
 }
