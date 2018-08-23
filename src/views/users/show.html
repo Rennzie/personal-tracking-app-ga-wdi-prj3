@@ -301,21 +301,26 @@
 
         <div class="field has-addons">
           <label class="label" for="mindTarget">Mind</label>
-          <input ng-model="goal.mindTarget" class="input" type="number" name="mindTarget">
+          <input ng-model="goal.mindTarget" class="input goalInput" type="number" name="mindTarget">
         </div>
 
         <div class="field has-addons">
           <label class="label" for="bodyTarget">Body</label>
-          <input ng-model="goal.bodyTarget" class="input" type="number" name="bodyTarget">
+          <input ng-model="goal.bodyTarget" class="input goalInput" type="number" name="bodyTarget">
         </div>
 
         <div class="field has-addons">
           <label class="label" for="soulTarget">Soul</label>
-          <input ng-model="goal.soulTarget" class="input" type="number" name="soulTarget">
+          <input ng-model="goal.soulTarget" class="input goalInput" type="number" name="soulTarget">
         </div>
 
         <hr>
-        <button  class="button is-success">Update Targets</button>
+        <div class="column is-full has-text-centered">
+        <button  class="button is-black">Update Targets</button>
+      </div>
+      <div class="column is-full has-text-centered">
+        <img class=" imageLogo is-3x2" src="./assets/resolut-favicon-black-small.png" alt="">
+      </div>
 
       </form>
     </section>
