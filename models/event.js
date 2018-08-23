@@ -8,7 +8,8 @@ const eventSchema = mongoose.Schema({
   createdBy: {type: ObjectId, ref: 'User'}, //hosting user
   category: { type: String, required: true },
   capacity: Number,
-  duration: { type: String, required: true },  // NOTE: might be best to convert to millisecondss
+  durationHrs: { type: String, default: 0 },  // NOTE: might be best to convert to millisecondss
+  durationMin: { type: String, default: 0 },  // NOTE: might be best to convert to millisecondss
   description: String,
   eventTitle: { type: String, required: true },
   eventDateTime: { type: String, required: true },
@@ -71,6 +72,21 @@ eventSchema.virtual('formattedTime')
 eventSchema.virtual('placesRemaining')
   .get(function(){
     return this.capacity - this.guests.length;
+  });
+
+eventSchema.virtual('duration')
+  .get(function(){
+    const formatHourSuffix = this.durationHrs > 1 ? 'Hrs' : 'Hr';
+    const formatMinuteSuffix = this.durationMin > 1 ? 'Mins' : 'Min';
+
+    if(!this.durationHrs && this.durationMin){
+      return `${this.durationMin} ${formatMinuteSuffix}`;
+
+    }else if(this.durationHrs && !this.durationMin === 0){
+      return `${this.durationHrs} ${formatHourSuffix}`;
+    }else{
+      return `${this.durationHrs} ${formatHourSuffix} & ${this.durationMin} ${formatMinuteSuffix}`;
+    }
   });
 
 eventSchema.virtual('concluded')

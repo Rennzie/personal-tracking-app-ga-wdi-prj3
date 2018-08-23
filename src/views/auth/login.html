@@ -1,12 +1,33 @@
-<p>Welcome back to Resolut. Please log in. (Not got an account? <a ui-sref="register">Sign up!</a>)</p>
-<form ng-submit="login()">
-  <div class="field">
-    <label class="label" for="email">Email</label>
-    <input ng-model="user.email" class="input" type="email" name="email" placeholder="">
+  <!-- INCLUDE THE HOME PAGE -->
+  <div ng-include="'views/home.html'"></div>
+
+  <!-- THE MODAL FOR LOGIN -->
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">
+          Welcome back to Resolut. Please log in. <br>
+          (Not got an account? <a ui-sref="register">Sign up!</a>)
+        </p>
+        <button ui-sref="home" class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+
+        <form >
+          <div class="field">
+            <label class="label" for="email">Email</label>
+            <input ng-model="user.email" class="input" type="email" name="email" placeholder="">
+          </div>
+          <div class="field">
+            <label class="label" for="password">Password</label>
+            <input ng-model="user.password" class="input" type="password" name="password" placeholder="">
+          </div>
+
+
+          <button ng-click="login()" class="button">Log in</button>
+        </form>
+      </section>
+      <footer class="modal-card-foot"> </footer>
+    </div>
   </div>
-  <div class="field">
-    <label class="label" for="password">Password</label>
-    <input ng-model="user.password" class="input" type="password" name="password" placeholder="">
-  </div>
-  <button class="button">Log in</button>
-</form>
