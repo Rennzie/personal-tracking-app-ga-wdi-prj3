@@ -1,0 +1,116 @@
+<div class="level"> </div>
+
+<div class="container">
+
+  <div class="columns is-multiline">
+    <div class="column is-full has-text-centered">
+      <img class="imageHeader" src="./assets/resolut-logo-full-black.png" alt="logo">
+    </div>
+
+    <div class="column is-full">
+      <h2 class="title is-5">WELCOME TO RESOLUT, YOUR PERSONAL DEVELOPMENT APP.</h2>
+      <p>Resolut empowers you to set goals across three different disciplines: MIND BODY & SOUL</p>
+      <p>LETS BEGIN...</p>
+
+    </div>
+  </div>
+  <!-- NOTE: take this out -->
+  <div class="level"> </div>
+  <form ng-submit="setTarget()" name="form">
+    <div class="level"> </div>
+
+    <div class="level columns">
+      <div class="column is-half">
+        <div class="content">
+
+          <div class="content-overlay content-overlay-circle"></div>
+          <img class="aboutPhoto content-image" src="https://cdn-images-1.medium.com/max/1600/1*Ro78KFTHkKVV0uaMwOtSbw.jpeg" alt="general assembly">
+          <div class="content-details fadeIn-bottom">
+            <h3 class="content-title">MIND</h3>
+          </div>
+        </div>
+      </div>
+      <div class="column is-half">
+        <h4 class="title is-4 has-text-centered"> MIND </h4>
+        <p>From French classes to coding bootcamps.</p>
+        <p>How many hours can you dedicate to your mind a month?</p>
+        <div class="level"> </div>
+
+        <div class="field goalInput level">
+          <label class="label" for="mindTarget"></label>
+          <input ng-model="goal.mindTarget" class="input goalInput" type="number" name="mindTarget">
+          <p>great, that this month done!</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="level"> </div>
+    <div class="level columns">
+      <div class="column is-half">
+        <h4 class="title is-4 has-text-centered"> BODY </h4>
+        <p>From barre, bootcamp, boxing to ballet. Check out our events to push you harder for longer to get you stronger</p>
+        <p>Remember, pain is just weakness leaving the body</p>
+        <p>Are you ready? Set your hours! Go!</p>
+        <div class="level"> </div>
+
+        <div class="field goalInput level">
+          <label class="label" for="bodyTarget"></label>
+          <input ng-model="goal.bodyTarget" class="input goalInput" type="number" name="bodyTarget">
+          <p>great, that this month done!</p>
+        </div>
+
+      </div>
+
+      <div class="column is-half">
+        <div class="content">
+
+          <div class="content-overlay content-overlay-circle"></div>
+          <img class="aboutPhoto content-image" src="https://lwithl.files.wordpress.com/2016/08/img_3449.jpg?w=940" alt="general assembly">
+          <div class="content-details fadeIn-bottom">
+            <h3 class="content-title">BODY</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="level"> </div>
+
+    <div class="level columns">
+      <div class="column is-half">
+        <div class="content">
+
+          <div class="content-overlay content-overlay-circle"></div>
+          <img class="aboutPhoto content-image" src="https://kittycowell.files.wordpress.com/2016/06/another_space_jms-020_test2-1250x467.jpg" alt="general assembly">
+          <div class="content-details fadeIn-bottom">
+            <h3 class="content-title">SOUL</h3>
+          </div>
+        </div>
+      </div>
+      <div class="column is-half">
+        <h4 class="title is-4 has-text-centered"> SOUL </h4>
+        <p>Check in with yourself, take a breather and reframe with gratitude. Check out a variety of mindfullness events around you, garuanteed to refresh your mind.</p>
+        <p>Stress less, sleep better, stay balanced!</p>
+        <p>How many hours can you dedicate to your soul a month?</p>
+        <div class="level"> </div>
+
+        <div class="field goalInput level">
+          <label class="label" for="soulTarget"></label>
+          <input ng-model="goal.soulTarget" class="input goalInput" type="number" name="soulTarget">
+          <p>great, that this month done!</p>
+        </div>
+
+      </div>
+    </div>
+    <div class="level"> </div>
+    <div class="level">
+      <div class="level-left">
+        <button class="button has-text-centered is-black">Set Goals</button>
+      </div>
+      <div class="level-right has-text-centered">
+        <img class=" imageLogo is-3x2" src="./assets/resolut-favicon-black-small.png" alt="">
+      </div>
+    </div>
+
+  </form>
+</div>
