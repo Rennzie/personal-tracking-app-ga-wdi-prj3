@@ -26,10 +26,9 @@
   <div class="columns is-multiline">
     <div ng-repeat="event in events" class="column is-half">
       <div class="eventIndexImage content ">
-        <a ui-sref="eventsShow({ id: event._id })">
           <div class="content-overlay"></div>
           <img class="content-image" style="max-height: 300px" ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
-        </a>
+        <a ui-sref="eventsShow({ id: event._id })">
         <div class="content-details fadeIn-bottom">
           <div class="columns is-multiline">
             <div class="column is-full">
@@ -49,6 +48,7 @@
             </div>
           </div>
         </div>
+      </a>
       </div>
     </div>
 
