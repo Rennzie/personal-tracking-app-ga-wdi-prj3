@@ -1,6 +1,6 @@
 body{
-  color: white;
-  background-color: rgb(52, 52, 49);
+  // color: white;
+  // background-color: rgb(52, 52, 49);
   font-family: 'Raleway', sans-serif;
 }
 
@@ -22,6 +22,16 @@ body{
   height: 400px
 }
 
+.formTitles{
+  font-family: 'Open Sans' sans-serif;
+}
+
+//forms
+@import "./partials/_forms.scss";
+
+
+//footer
+@import "./partials/_footer.scss";
 
 // HOME //
 @import "./partials/_home.scss";

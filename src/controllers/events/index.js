@@ -11,13 +11,13 @@ function EventsIndexCtrl($scope, $http, $state) {
           events = upcomingEvents;
           break;
         case 'eventsMindIndex':
-          events = upcomingEvents.filter(event => event.category === 'mind');
+          events = upcomingEvents.filter(event => event.category === 'Mind');
           break;
         case 'eventsBodyIndex':
-          events = upcomingEvents.filter(event => event.category === 'body');
+          events = upcomingEvents.filter(event => event.category === 'Body');
           break;
         case 'eventsSoulIndex':
-          events = upcomingEvents.filter(event => event.category === 'soul');
+          events = upcomingEvents.filter(event => event.category === 'Soul');
           break;
       }
 

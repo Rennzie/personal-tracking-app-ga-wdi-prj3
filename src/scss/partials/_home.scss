@@ -1,6 +1,6 @@
 section.home {
   // background-color: rgb(52, 52, 49);
-  background-image: url(/assets/landing-page.jpg);
+  background-image: url(/assets/background-image.png);
    background-repeat: no-repeat center center fixed;
      background-size: cover;
   img {
@@ -99,9 +99,6 @@ section.home {
     text-decoration: underline;
     font-style: italic;
     font-size: 24px;
-    padding: 10px;
-    background-color: white;
-    border: 4px solid black;
     &.mind {
       color: rgb(255,0,204);
     }

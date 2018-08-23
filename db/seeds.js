@@ -375,8 +375,6 @@ const eventData = [
   }
 ];
 
-const goalData = [];
-
 
 // data created, ready to start seeding
 User
