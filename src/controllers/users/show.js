@@ -38,11 +38,7 @@ function UsersShowCtrl($http, $state, $scope) {
     $scope.mindCharColors = [mindColorFade, mindColor];
     $scope.bodyCharColors = [bodyColorFade, bodyColor];
     $scope.soulCharColors = [soulColorFade, soulColor];
-    $scope.multiCharColors = [
-      [mindColorFade, mindColor],
-      [bodyColorFade, bodyColor],
-      [soulColorFade, soulColor]
-    ];
+
 
     if($scope.user){
       const goalData = $scope.goals[0];
@@ -57,6 +53,47 @@ function UsersShowCtrl($http, $state, $scope) {
         [goalData.timeToBodyGoal, goalData.bodyCompleted],
         [goalData.timeToSoulGoal, goalData.soulCompleted]
       ];
+
+      // $scope.multiCharColors = {
+      //   data: {
+      //     datasets: [{
+      //       backgroundColor: $scope.mindCharColors,
+      //       data: $scope.mindData
+      //     },{
+      //       backgroundColor: $scope.bodyCharColors,
+      //       data: $scope.bodyData
+      //     },{
+      //       backgroundColor: $scope.soulCharColors,
+      //       data: $scope.soulData
+      //     }]
+      //   }
+      // };
+
+      $scope.datasetOverride = [{
+        fill: true,
+        backgroundColor: [
+          mindColorFade,
+          mindColor
+        ],
+        borderColor: [ 'white'],
+        hoverBorderColor: ['white']
+      }, {
+        fill: true,
+        backgroundColor: [
+          bodyColorFade,
+          bodyColor
+        ],
+        borderColor: [ 'white'],
+        hoverBorderColor: ['white']
+      }, {
+        fill: true,
+        backgroundColor: [
+          soulColorFade,
+          soulColor
+        ],
+        borderColor: [ 'white'],
+        hoverBorderColor: ['white']
+      }];
 
       $scope.multiCharOptions = {
         cutoutPercentage: 70,
