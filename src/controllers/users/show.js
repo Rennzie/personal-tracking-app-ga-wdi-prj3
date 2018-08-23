@@ -79,9 +79,10 @@ function UsersShowCtrl($http, $state, $scope) {
       ];
 
       $scope.multiCharOptions = {
+        cutoutPercentage: 70,
         title: {
           display: true,
-          text: 'Your Progress Snapshot',
+          text: `${$scope.currentMonth} Summary`,
           fontSize: 30,
           fontStyle: 'bold'
         },
@@ -94,7 +95,7 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.targetCharOptions = {
         title: {
           display: true,
-          text: 'How you prioritise your disciplines',
+          text: 'Target Break',
           fontSize: 30,
           fontStyle: 'bold'
         },
