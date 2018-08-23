@@ -1,71 +1,87 @@
-<p>Welcome to Resolut. (Already got an account? <a ui-sref="login">Login</a>)</p>
-<form ng-submit="register()" name="form" novalidate>
+<!-- INCLUDE THE HOME PAGE -->
+<div ng-include="'views/home.html'"></div>
 
-  <!-- FIRST NAME -->
-  <div class="field">
-    <label class="label" for="firstName">First name</label>
-    <input required minlength="2" ng-model="user.firstName" class="input" type="text" name="firstName" placeholder="">
+<!-- THE MODAL FOR LOGIN -->
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">
+        Welcome to Resolut. Please sign up. <br>
+        (Got an account? <a ui-sref="login">Login!</a>)
+      </p>
+      <button ui-sref="home" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form ng-submit="register()" name="form" novalidate>
+
+        <!-- FIRST NAME -->
+        <div class="field">
+          <label class="label" for="firstName">First name</label>
+          <input required minlength="2" ng-model="user.firstName" class="input" type="text" name="firstName" placeholder="">
+        </div>
+
+        <div ng-messages="form.firstName.$error" ng-if="form.firstName.$dirty">
+          <small ng-message="required">Please add first name</small>
+          <small ng-message="minlength">That name is too short!</small>
+        </div>
+
+        <!-- LAST NAME -->
+        <div class="field">
+          <label class="label" for="surname">Last name</label>
+          <input ng-model="user.surname" class="input" type="text" name="surname" placeholder="">
+        </div>
+
+        <!-- USERNAME -->
+        <div class="field">
+          <label class="label" for="username">Username</label>
+          <input ng-model="user.username" class="input" type="text" name="username" placeholder="">
+        </div>
+
+        <!-- EMAIL -->
+        <div class="field">
+          <label class="label" for="email">Email</label>
+          <input ng-model="user.email" class="input" type="email" name="email" placeholder="">
+        </div>
+
+        <!-- PROFILE PIC  -->
+        <div class="field">
+          <label class="label" for="profilePic">Profile Picture</label>
+          <input ng-model="user.imageUrl" class="input" type="text" name="profilePic" placeholder="http:....">
+        </div>
+
+        <!-- POSTCODE -->
+        <div class="field">
+          <label class="label" for="postcodeHome">Postcode</label>
+          <input ng-model="user.postcodeHome" class="input" type="text" name="postcodeHome" placeholder="SW7 2AF" ng-pattern="/^[a-z]{1,2}[0-9][a-z0-9]?\s?[0-9][a-z]{2}$/i" required ng-minlength="5" ng-maxlength="8">
+        </div>
+
+        <div ng-messages="form.postcodeHome.$error" ng-if="form.$submitted || form.postcodeHome.$dirty">
+          <small ng-message="required">Please enter postcode</small>
+          <!-- <small ng-message="pattern">WTF?</small> -->
+        </div>
+
+
+        <!-- PASSWORD-->
+        <div class="field">
+          <label class="label" for="password">Password</label>
+          <input ng-model="user.password" class="input" type="password" name="password" placeholder="">
+        </div>
+
+        <!-- PASSWORD CONFIRMATION-->
+        <div class="field">
+          <label class="label" for="passwordConfirmation">Password Confirmation</label>
+          <input ng-model="user.passwordConfirmation" class="input" type="password" name="passwordConfirmation" placeholder="">
+        </div>
+
+        <!-- need to add a 'do you want to host' checkbox which toggles boolean on click -->
+
+
+        <button class="button">Sign up</button>
+      </form>
+
+    </section>
+    <footer class="modal-card-foot"> </footer>
   </div>
-
-  <div ng-messages="form.firstName.$error" ng-if="form.firstName.$dirty">
-    <small ng-message="required">Please add first name</small>
-    <small ng-message="minlength">That name is too short!</small>
-  </div>
-
-    <!-- LAST NAME -->
-  <div class="field">
-    <label class="label" for="surname">Last name</label>
-    <input ng-model="user.surname" class="input" type="text" name="surname" placeholder="">
-  </div>
-
-  <!-- USERNAME -->
-<div class="field">
-  <label class="label" for="username">Username</label>
-  <input ng-model="user.username" class="input" type="text" name="username" placeholder="">
 </div>
-
-
-  <!-- EMAIL -->
-  <div class="field">
-    <label class="label" for="email">Email</label>
-    <input ng-model="user.email" class="input" type="email" name="email" placeholder="">
-  </div>
-
-  <!-- PROFILE PIC  -->
-
-  <div class="field">
-    <label class="label" for="profilePic">Profile Picture</label>
-    <input ng-model="user.imageUrl" class="input" type="text" name="profilePic" placeholder="http:....">
-  </div>
-
-
-  <!-- POSTCODE -->
-  <div class="field">
-  <label class="label" for="postcodeHome">Postcode</label>
-  <input ng-model="user.postcodeHome" class="input" type="text" name="postcodeHome" placeholder="SW7 2AF" ng-pattern="/^[a-z]{1,2}[0-9][a-z0-9]?\s?[0-9][a-z]{2}$/i" required ng-minlength="5" ng-maxlength="8">
-  </div>
-
-  <div ng-messages="form.postcodeHome.$error" ng-if="form.$submitted || form.postcodeHome.$dirty">
-    <small ng-message="required">Please enter postcode</small>
-    <small ng-message="pattern">WTF?</small>
-  </div>
-</div>
-
-
-    <!-- PASSWORD-->
-  <div class="field">
-    <label class="label" for="password">Password</label>
-    <input ng-model="user.password" class="input" type="password" name="password" placeholder="">
-  </div>
-
-      <!-- PASSWORD CONFIRMATION-->
-  <div class="field">
-    <label class="label" for="passwordConfirmation">Password Confirmation</label>
-    <input ng-model="user.passwordConfirmation" class="input" type="password" name="passwordConfirmation" placeholder="">
-  </div>
-
-  <!-- need to add a 'do you want to host' checkbox which toggles boolean on click -->
-
-
-  <button class="button">Sign up</button>
-</form>
