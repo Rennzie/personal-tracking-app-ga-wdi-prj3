@@ -67,7 +67,8 @@
 
           <div class="level">
             <div class="level-item">
-              <button ng-if="!userIsAttending" ng-click="attend()" class="button is-info">Attend</button>
+              <button ng-if="!userIsAttending && event.placesRemaining > 0" ng-click="attend()" class="button is-info">Attend</button>
+              <button ng-if="event.placesRemaining < 1" disabled class="button is-text is-info">Event Full</button>
               <button ng-if="userIsAttending" ng-click="cancelAttend()" class="button is-text">Cant go anymore?</button>
             </div>
             <div class="level-item">
