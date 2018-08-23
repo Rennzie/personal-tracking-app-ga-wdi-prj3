@@ -399,6 +399,8 @@ User
 
     });
 
+
+    // NEED TO ADD A HOSTER
     // data populated with user id's, return to chain another .then()
     return Event.create(eventData);
   })
