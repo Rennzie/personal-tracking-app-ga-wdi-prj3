@@ -1,4 +1,4 @@
-category: 'SOUL',const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 // User bluebird to make promises easier
 mongoose.Promise = require('bluebird');
 
@@ -374,8 +374,6 @@ const eventData = [
     }
   }
 ];
-
-const goalData = [];
 
 
 // data created, ready to start seeding
