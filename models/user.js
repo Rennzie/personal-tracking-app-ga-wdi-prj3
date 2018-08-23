@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
   },
   hosterName: String,
   hasHostName: { type: Boolean, default: false },
-  imageUrl: String,
+  imageUrl: {type: String, default: 'https://www.fumcpahokee.org/wp-content/uploads/2016/12/staff-profile-placeholder.jpg'},
   isHost: { type: Boolean, default: false },
   isAdmin: { type: Boolean, default: false },
   password: { type: String, required: true },

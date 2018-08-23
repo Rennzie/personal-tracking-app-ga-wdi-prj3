@@ -8,14 +8,13 @@ const eventSchema = mongoose.Schema({
   createdBy: {type: ObjectId, ref: 'User'}, //hosting user
   category: { type: String, required: true },
   capacity: Number,
-  concluded: Boolean,
   duration: { type: String, required: true },  // NOTE: might be best to convert to millisecondss
   description: String,
   eventTitle: { type: String, required: true },
   eventDateTime: { type: String, required: true },
   eventDateUnix: Number,
   guests: [ { type: ObjectId, ref: 'User'} ], //to hold all users attending the event
-  imageUrl: String,
+  imageUrl: {type: String, default: 'https://waterstart.com/wp-content/uploads/2017/05/event-placeholder.jpg'},
   isIndoors: Boolean,
   location: {     //sub document to hold event location
     streetNumber: Number,
@@ -73,7 +72,17 @@ eventSchema.virtual('placesRemaining')
   .get(function(){
     return this.capacity - this.guests.length;
   });
-// 
+
+eventSchema.virtual('concluded')
+  .get(function(){
+    const todayUnix = moment().unix();
+    if(this.eventDateUnix > todayUnix){
+      return false;
+    }else{
+      return true;
+    }
+  });
+//
 // eventSchema.virtual('eventDateUnix')
 //   .get(function(){
 //     return moment(this.eventDateTime).unix();
