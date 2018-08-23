@@ -130,7 +130,6 @@ eventSchema.pre('validate', function getLatLon(next){
     url: `http://api.postcodes.io/postcodes/${this.location.postcode}`,
     json: true
   }).then(response => {
-    console.log('the geocode response is====> ', response.result);
     this.location.lat = response.result.latitude;
     this.location.lon = response.result.longitude;
     next();

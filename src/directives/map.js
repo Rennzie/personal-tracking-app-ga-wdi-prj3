@@ -21,7 +21,7 @@ function Map($http) {
       });
       $scope.$watch('user', function() {
         if($scope.user) {
-          console.log('this is user ---->', $scope.user);
+          // console.log('this is user ---->', $scope.user);
           map.setView([ $scope.user.homeLocation.lat, $scope.user.homeLocation.lon], 15);
 
           const marker = L.marker([$scope.user.homeLocation.lat, $scope.user.homeLocation.lon]).addTo(map);

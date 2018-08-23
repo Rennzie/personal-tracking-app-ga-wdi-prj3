@@ -4,7 +4,7 @@ function AuthLoginCtrl($scope, $http, $state, $auth) {
     $auth.login($scope.user)
       .then(() => {
         // console.log('logging in results in: ', result);
-        console.log('The login payload is', $auth.getPayload());
+        // console.log('The login payload is', $auth.getPayload());
         $state.go('eventsIndex');
       })
       .catch(err => console.log('there was an error', err));

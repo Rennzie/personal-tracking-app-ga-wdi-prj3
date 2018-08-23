@@ -11,7 +11,6 @@ function UsersShowCtrl($http, $state, $scope) {
     url: `/api/users/${$state.params.id}`
   })
     .then(res => {
-      // console.log('Found a user', res.data);
       $scope.user = res.data;
     });
 
@@ -53,21 +52,6 @@ function UsersShowCtrl($http, $state, $scope) {
         [goalData.timeToBodyGoal, goalData.bodyCompleted],
         [goalData.timeToSoulGoal, goalData.soulCompleted]
       ];
-
-      // $scope.multiCharColors = {
-      //   data: {
-      //     datasets: [{
-      //       backgroundColor: $scope.mindCharColors,
-      //       data: $scope.mindData
-      //     },{
-      //       backgroundColor: $scope.bodyCharColors,
-      //       data: $scope.bodyData
-      //     },{
-      //       backgroundColor: $scope.soulCharColors,
-      //       data: $scope.soulData
-      //     }]
-      //   }
-      // };
 
       $scope.datasetOverride = [{
         fill: true,
@@ -191,15 +175,6 @@ function UsersShowCtrl($http, $state, $scope) {
     }
   }
 
-
-  // {
-  //   datasets: [
-  //     {data: $scope.mindData},
-  //     {data: $scope.bodyData},
-  //     {data: $scope.soulData}
-  //   ]
-  // };
-
   $scope.becomeAHost = function() {
     const updateUserData = $scope.user;
     updateUserData.isHost = true;
@@ -258,7 +233,8 @@ function UsersShowCtrl($http, $state, $scope) {
       //returns all the events the user is not attending
       $scope.userNotAttending = res.data.filter(event => {
         return event.guests.some(guest => guest !== $scope.user._id);
-      });
+      }).filter(event => event.concluded === false);
+      
       $scope.attendedEvents = usersEvents.filter(event => event.concluded === true);
       $scope.upcomingEvents = usersEvents.filter(event => event.concluded === false);
     }
