@@ -22,9 +22,20 @@
           </a>
           <div class="content-details fadeIn-bottom">
             <h2 class="title is-5">{{ event.eventTitle}}</h2>
-            <p>DATE: {{ event.formattedDate}}</p>
-            <p>TIME: {{ event.formattedTime}}</p>
-            <p>{{ event.duration}}Hr</p>
+            <div class="columns">
+              <div class="column is-4">
+
+              </div>
+              <div class="column is-4">
+                <p>DATE: {{ event.formattedDate}}</p>
+
+              </div>
+              <div class="column is-4">
+                <p>TIME: {{ event.formattedTime}}</p>
+                <p>{{ event.duration}}Hr</p>
+
+              </div>
+            </div>
         </div>
         </div>
         <h3> {{ event.category }}</h3>
