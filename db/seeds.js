@@ -344,7 +344,7 @@ const eventData = [
     category: 'Mind',
     capacity: 200,
     concluded: true,
-    durationHr: 2,
+    durationHrs: 2,
     description: 'Oliver Bullough is a prize-winning journalist and author from Wales, who specialises in the former Soviet Union and corruption. His work appears in the Guardian, the New York Times, GQ magazine, Prospect and elsewhere, and he regularly appears on the BBC, Sky News, CNN and other media outlets. His latest book is Moneyland, about which John le Carré said: "If you want to know why international crooks and their eminently respectable financial advisors walk tall and only the little people pay taxes, this is the ideal book for you".' ,
     eventTitle: 'Dark Data, Dark Money & Putins Russia',
     eventDateTime: 'Tuesday September 25 2018 19:00:00 GMT+0100 (British Summer Time)',
@@ -408,7 +408,7 @@ User
     console.log(`Create ${events.length} events`);
 
     //create goals and return them so we can log them
-    return Goal.create(goalData);
+    // return Goal.create(goalData);
   })
   // .then(goals => console.log(`Create ${goals.length} goals`))
   .catch(err => console.log('Seeding error is', err))

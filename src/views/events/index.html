@@ -1,69 +1,57 @@
-<section class="hero ">
+<section class="hero home">
   <div class="hero-body">
     <div class="container has-text-centered">
+
+      <img class="eventHeaderImage" src="./assets/resolut-logo-full-black.png" alt="logo">
+
       <h1 class="title is-2 has-text-centered">CHECK OUT OVER {{events.length}} EVENTS NEAR YOU</h1>
-
-      <img src="./assets/resolut-logo2.png" alt="logo">
-
       <!-- put image here -->
+      <div class="columns is-multiline">
+        <div class="column is-4">
+          <a class="mind has-text-weight-bold" ui-sref-active="is-active" ui-sref="eventsMindIndex">MIND</a>
+        </div>
+        <div class="column is-4">
+          <a class="body has-text-weight-bold" ui-sref="eventsBodyIndex">BODY</a>
+        </div>
+        <div class="column is-4">
+          <a class="soul has-text-weight-bold" ui-sref="eventsSoulIndex">SOUL</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<div class="container">
-  <div class="columns is-6 is-multiline">
-    <div class="column is-12">
-
-      <div ng-repeat="event in events" class="level column columns has-background-grey-lighter">
-        <div class="eventIndexImage column is-half content ">
-          <a ui-sref="eventsShow({ id: event._id })">
-            <div class="content-overlay"></div>
-            <img class="content-image" style="max-height: 300px" ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
-          </a>
-          <div class="content-details fadeIn-bottom">
-          <h3> {{ event.category }}</h3>
-        </div>
-        </div>
-
-        <div  class="eventDetails column is-half ">
-          <div class="level">
-            <a ui-sref="eventsShow({ id: event._id })">
-              <h2 class="title is-5">{{ event.eventTitle}}</h2>
-            </a>
-          </div>
-          <div class="level">
-            <div class="level-item">
+<div class="add50pxTop container">
+  <div class="columns is-multiline">
+    <div ng-repeat="event in events" class="column is-half">
+      <div class="eventIndexImage content ">
+          <div class="content-overlay"></div>
+          <img class="content-image" style="max-height: 300px" ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
+        <a ui-sref="eventsShow({ id: event._id })">
+        <div class="content-details fadeIn-bottom">
+          <div class="columns is-multiline">
+            <div class="column is-full">
+              <h2 class="title is-3 has-text-white">{{ event.eventTitle}}</h2>
+            </div>
+            <div class="column is-4">
               <p>DATE: {{ event.formattedDate}}</p>
             </div>
-            <div class="level-item">
+            <div class="column is-4">
               <p>TIME: {{ event.formattedTime}}</p>
             </div>
-            <div class="level-item">
+            <div class="column is-4">
               <p>{{ event.duration}}Hr</p>
             </div>
-          </div>
-          <div class="level">
-            <p>{{ event.description}}</p>
+            <div class="column is-full">
+              <h3 class="title is-5 has-text-white"> {{ event.category }}</h3>
+            </div>
           </div>
         </div>
-        <hr>
-
+      </a>
       </div>
     </div>
+
   </div>
 
-
-  <!-- <div class="column is-half box has-text-centered" >
-
-  <div class="columns">
-  <div class="column">
-  <h3 class="title is-3">{{ event.eventTitle }}</h3>
 </div>
-</div>
-
-</div> -->
-</div>
-</div>
-
-<!-- // need to add isHost boolean reaction here -->
-<a class="button" ui-sref="eventsNew" ng-if="isHost"> + an event </a>

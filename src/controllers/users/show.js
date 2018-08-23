@@ -212,6 +212,7 @@ function UsersShowCtrl($http, $state, $scope) {
   })
     .then(res => {
 
+      // NEED TO GET RID OF PAST EVENTS
       // returns all the events the user has attended, past and present
       const usersEvents = res.data.filter(event => {
         return event.guests.some(guest => guest === $scope.user._id);
