@@ -372,6 +372,7 @@ const eventData = [
     }
   }
 ];
+
 const goalData = [];
 
 
@@ -386,20 +387,17 @@ User
       event.createdBy = users[randomIndex].id;
     });
 
-    // push many users into the attending event array
-    users.forEach(user => eventData[0].guests.push(user.id));
-    users.forEach(user => eventData[1].guests.push(user.id));
-    users.forEach(user => eventData[2].guests.push(user.id));
-    users.forEach(user => eventData[3].guests.push(user.id));
-    users.forEach(user => eventData[4].guests.push(user.id));
-    users.forEach(user => eventData[5].guests.push(user.id));
-    users.forEach(user => eventData[6].guests.push(user.id));
-    users.forEach(user => eventData[7].guests.push(user.id));
 
-    //add a user to each of the created goals
-    // goalData[0].createdBy = users[0].id;
-    // goalData[1].createdBy = users[1].id;
-    // goalData[2].createdBy = users[2].id;
+
+    // push many users into the attending event array
+    eventData.forEach(event => {
+      users.forEach(user => {
+        if(event.capacity > event.guests.length){
+          event.guests.push(user.id);
+        }
+      });
+
+    });
 
     // data populated with user id's, return to chain another .then()
     return Event.create(eventData);
