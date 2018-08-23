@@ -1,0 +1,115 @@
+<!-- EVENTS/SHOW -->
+<div class="container">
+
+  <div class="level"> </div>
+
+
+    <div class="level has-text-centered column is-12 ">
+      <h1 class="title"> {{ event.eventTitle }} </h1>
+      <p  class="has-text-weight-bold"> hosted by: {{ event.createdBy.hosterName || event.createdBy.username}}</p>
+      <hr>
+    </div>
+
+    <div class="level column columns">
+      <div class="content column is-two-thirds">
+        <div class="content-overlay"></div>
+        <img class="content-image"  ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
+        <div class="content-details fadeIn-bottom">
+        <h3>{{ event.category }}</h3>
+      </div>
+        <div ng-if="weatherSummary">
+          <p>The expected weather is: {{ weatherSummary.summary }}</p>
+          <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+        </div>
+        <div ng-if="homeTravelTime">
+          This event is only {{homeTravelTime}} minutes from your house
+        </div>
+        <hr>
+      </div>
+
+      <div class="column is-4">
+        <div class="level">
+          <div class="level-item">
+            <p>DATE: {{ event.formattedDate}}</p>
+          </div>
+          <div class="level-item">
+            <p>TIME: {{ event.formattedTime}}</p>
+          </div>
+          <div class="level-item">
+            <p>{{ event.duration}} Hr</p>
+          </div>
+        </div>
+        <div class="level">
+          <p>{{ event.description}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="level columns">
+
+      <!-- attending users here -->
+      <div class="column is-4">
+        <!-- guest and attendance  -->
+
+        <div ng-if="isAuthenticated()" class="attending">
+          <div class="attendees columns is-multiline">
+            <div ng-repeat="guest in event.guests" class="column is-4" >
+                <img class="avatar" ng-src="{{ guest.imageUrl }}">
+            </div>
+          </div>
+
+          <p ng-if="event.guests.length >= 2">
+            {{ event.guests[0].username }}, {{event.guests[1].username}} & {{ event.guests.length - 2}} other guests are going
+          </p>
+          <p ng-if="event.guests.length === 1">
+            One person has signed up so far
+          </p>
+          <p ng-if="!event.guests.length">
+            All places are available, grab a seat!
+          </p>
+
+          <div class="level">
+            <div class="level-item">
+              <button ng-if="!userIsAttending && event.placesRemaining > 0" ng-click="attend()" class="button is-info">Attend</button>
+              <button ng-if="event.placesRemaining < 1" disabled class="button is-text is-info">Event Full</button>
+              <button ng-if="userIsAttending" ng-click="cancelAttend()" class="button is-text">Cant go anymore?</button>
+            </div>
+            <div class="level-item">
+              <p>There are {{ event.placesRemaining }} places remaining</p>
+            </div>
+          </div>
+        </div>
+
+        <div ng-if="!isAuthenticated()">
+          <a ui-sref="login" class="button is-text">Login to see attending users</a>
+        </div>
+      </div>
+
+      <div class="column is-8">
+        <div class="map" ng-map></div>
+      </div>
+
+    </div>
+    <hr>
+    <div class=" level">
+      <p class="has-text-centered header">The host has no other events</p>
+    </div>
+
+
+
+    <hr>
+    <div class="level">
+      <div class="level-left">
+        <a ng-if="checkCreatorIsUser" ui-sref="eventsEdit({ id: event._id })" class="button is-info">Edit</a>
+      </div>
+      <div class="level-right">
+        <button ng-model="UsersShowCtrl" ng-click="deleteEvent()" ng-if="checkCreatorIsUser" class="button is-danger" >Delete</button>
+      </div>
+
+    </div>
+
+
+
+
+
+</div>

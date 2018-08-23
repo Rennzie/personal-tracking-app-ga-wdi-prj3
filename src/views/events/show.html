@@ -5,15 +5,18 @@
 
 
     <div class="level has-text-centered column is-12 ">
-      <h1 class="title has-text-white"> {{ event.eventTitle }} </h1>
-      <p  class="has-text-weight-bold has-text-white"> hosted by: {{ event.createdBy.hosterName || event.createdBy.username}}</p>
+      <h1 class="title"> {{ event.eventTitle }} </h1>
+      <p  class="has-text-weight-bold"> hosted by: {{ event.createdBy.hosterName || event.createdBy.username}}</p>
       <hr>
     </div>
 
     <div class="level column columns">
-      <div class="column is-4">
-        <img  ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
-        <p>{{ event.category }}</p>
+      <div class="content column is-two-thirds">
+        <div class="content-overlay"></div>
+        <img class="content-image"  ng-src="{{ event.imageUrl }}" alt="{{ event.eventTitle }}">
+        <div class="content-details fadeIn-bottom">
+        <h3>{{ event.category }}</h3>
+      </div>
         <div ng-if="weatherSummary">
           <p>The expected weather is: {{ weatherSummary.summary }}</p>
           <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
@@ -24,7 +27,7 @@
         <hr>
       </div>
 
-      <div class="column is-8">
+      <div class="column is-4">
         <div class="level">
           <div class="level-item">
             <p>DATE: {{ event.formattedDate}}</p>

@@ -1,0 +1,56 @@
+  <!-- USERS EDIT -->
+
+<section>
+    <form ng-submit="updateUser()">
+
+  <!-- FIRST NAME -->
+  <div class="field">
+    <label class="label" for="firstName">First name</label>
+    <input required minlength="2" ng-model="user.firstName" class="input" type="text" name="firstName" placeholder="">
+  </div>
+
+  <div ng-messages="form.firstName.$error" ng-if="form.firstName.$dirty">
+    <small ng-message="required">Please add first name</small>
+    <small ng-message="minlength">That name is too short!</small>
+  </div>
+
+    <!-- LAST NAME -->
+  <div class="field">
+    <label class="label" for="lastName">Last name</label>
+    <input ng-model="user.lastName" class="input" type="text" name="lastName" placeholder="">
+  </div>
+
+  <!-- USERNAME -->
+<div class="field">
+  <label class="label" for="username">Username</label>
+  <input ng-model="user.username" class="input" type="text" name="username" placeholder="">
+</div>
+
+
+
+  <!-- EMAIL -->
+  <div class="field">
+    <label class="label" for="email">Email</label>
+    <input ng-model="user.email" class="input" type="email" name="email" placeholder="">
+  </div>
+
+  <!-- POSTCODE -->
+  <div class="field">
+  <label class="label" for="homeLocation">Postcode</label>
+  <input ng-model="user.homeLocation" class="input" type="text" name="homeLocation" placeholder="">
+  </div>
+
+    <!-- PASSWORD-->
+  <div class="field">
+    <label class="label" for="password">Password</label>
+    <input ng-model="user.password" class="input" type="password" name="password" placeholder="">
+  </div>
+
+      <!-- PASSWORD CONFIRMATION-->
+  <div class="field">
+    <label class="label" for="passwordConfirmation">Password Confirmation</label>
+    <input ng-model="user.passwordConfirmation" class="input" type="password" name="passwordConfirmation" placeholder="">
+  </div>
+  <button class="button">Save Changes</button>
+</form>
+</section>

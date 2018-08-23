@@ -1,0 +1,69 @@
+<!-- EVENTS EDIT  -->
+<section>
+  <form ng-submit="updateEvent()">
+    <!--TITLE -->
+    <div class="field">
+      <label for="eventTitle">Title</label>
+      <input ng-model="event.eventTitle" class="input"type="text" name="name" placeholder="eg. Hatha Yoga">
+    </div>
+    <!-- CATEGORY -->
+    <div class="field">
+      <label for="category">Mind | Body | Soul </label>
+      <input ng-model="event.category" class="input"type="text" name="category" placeholder="Mind, Body or Soul?">
+    </div>
+    <!-- DATE -->
+    <div class="field">
+      <label for="date">Date</label>
+      <input ng-model="event.eventDate" class="input"type="date" name="date" placeholder="When are you holding your event?">
+    </div>
+    <!-- TIME -->
+    <div class="field">
+      <label for="time">Time</label>
+      <input ng-model="event.eventDate" class="input"type="time" name="time" placeholder="What time is your event?">
+    </div>
+    <!-- LOCATION -->
+    <p>Where is your event?</p>
+    <div class="field">
+      <label for="streetNumber">Street Number</label>
+      <input ng-model="event.streetNumber" class="input"type="number" name="streetNumber" placeholder="eg. 21">
+    </div>
+    <div class="field">
+      <label for="streetName">Street Name</label>
+      <input ng-model="event.streetName" class="input"type="text" name="streetName" placeholder="eg. Oxford Street">
+    </div>
+    <div class="field">
+      <label for="postcode">Postcode</label>
+      <input ng-model="event.postcode" class="input"type="text" name="postcode" placeholder="eg. EC1V 4PA">
+    </div>
+    <!-- CAPACITY-->
+    <div class="field">
+      <label for="capacity">Capacity</label>
+      <input ng-model="event.capacity" class="input"type="number" name="capacity" placeholder="eg. 12">
+    </div>
+    <!-- DURATION-->
+    <div class="field">
+      <label for="duration">Duration</label>
+      <input ng-model="event.duration" class="input"type="text" name="duration" placeholder="eg. 45 mins">
+    </div>
+    <!-- DESCRIPTION-->
+    <div class="field">
+      <label for="description">Description</label>
+      <input ng-model="event.description" class="input"type="text" name="description" placeholder="Tell us a little bit about your event...">
+    </div>
+    <!-- INDOOR/OUTDOOR-->
+    <div class="field">
+      <label for="outdoors">Is your event outdoors?</label>
+      <input ng-model="event.isIndoors" class="input"type="text" name="outdoors" placeholder="">
+    </div>
+    <!-- IMAGE URL -->
+    <div class="field">
+      <label for="imageUrl">Image(URL)</label>
+      <input ng-model="event.imageUrl" class="input"type="text" name="imageUrl" placeholder="http://.....">
+    </div>
+
+  <!-- BUTTON -->
+    <button class="button">Save changes</button>
+
+
+  </form>
+</section>

@@ -1,0 +1,368 @@
+<div class="level"> </div>
+
+<div class="container pageStart">
+
+  <div class="level">
+    <div class="columns is-multiline">
+
+      <div class="column is-full has-text-centered">
+        <img class="imageHeader" src="./assets/resolut-logo-full-black.png" alt="logo">
+        <h1 class=" add50pxTop title is-2  has-text-centered"> Welcome back {{ user.username }}</h1>
+      </div>
+      <div class="column is-full">
+
+      </div>
+
+      <!-- RIGHT HAND PANEL -->
+      <div class="column is-4">
+
+        <div class="level profilePicture">
+          <img ng-src="{{user.imageUrl}}" alt="{{user.username}}">
+        </div>
+
+        <!-- IF USER IS NOT A HOST -->
+        <div class="level columns">
+          <div class="column is-4">
+            <a ng-if="!user.isHost" ng-click="becomeAHost()" >
+              <i class="fas fa-3x fa-hospital-symbol"></i>
+            </a>
+            <a ui-sref="eventsNew" ng-if="user.isHost" >
+              <i class="has-text-color-black fal fa-3x fa-calendar"></i>
+            </a>
+          </div>
+          <div class="column is-4">
+            <a ui-sref="goalsLogHours({userId: getPayload().sub, goalId: goals[0].id})" >
+              <i class="far fa-3x fa-clock"></i>
+            </a>
+          </div>
+          <div class="column is-4">
+            <a ui-sref="goalsEdit({userId: getPayload().sub, goalId: goals[0].id})" >
+              <i class="fas fa-3x fa-bullseye"></i>
+            </a>
+          </div>
+        </div>
+
+
+        <div class=" settings level">
+        </div>
+
+
+      </div>
+
+      <div class="column is-8">
+
+        <div class="columns ">
+            <div ng-if="goals.length === 0 || checkProfileIsForUser" class="column is-full has-text-centered">
+                <h2 class="title ">Set your goals for {{ currentMonth }}</h2>
+              <!-- this will only appear if there are no goals for the month -->
+              <a ui-sref="goalsNew({ id: user._id })" >
+                <i class="fas fa-3x fa-plus-circle"></i>
+              </a>
+            </div>
+
+          <!-- this will show if you have no goals -->
+
+          <!-- this will show if there are goals -->
+          <div ng-if="goals.length > 0" class="column is-full columns">
+            <!-- LRG MULTI CHARTS -->
+                <div class="column is-6">
+                  <canvas id="pie"
+                  class="multiDisciplineChart chart chart-pie"
+                  chart-data="multiData"
+                  chart-options="multiCharOptions"
+                  chart-colors="multiCharColors"
+                  chart-labels="targetLabels"
+                  ></canvas>
+                </div>
+
+                <div class="column is-6">
+                  <canvas id="pie"
+                  class="multiDisciplineChart chart chart-pie"
+                  chart-data="targetData"
+                  chart-options="targetCharOptions"
+                  chart-colors="targetCharColors"
+                  chart-labels="targetLabels"
+                  ></canvas>
+                </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+ <hr>
+  <div class="level">
+    <div id="goals"  class="columns is-multiline">
+
+      <div id="mind" class="diciplineChart column  is-4">
+        <canvas id="doughnut"
+        class="chart chart-doughnut"
+        chart-data="mindData"
+        chart-labels="labels"
+        chart-options="mindCharOptions"
+        chart-colors="mindCharColors"
+        > </canvas>
+      </div>
+
+      <div id="body" class="diciplineChart column is-4">
+        <canvas id="doughnut"
+        class="chart chart-doughnut"
+        chart-data="bodyData"
+        chart-labels="labels"
+        chart-options="bodyCharOptions"
+        chart-colors="bodyCharColors"
+        > </canvas>
+      </div>
+
+      <div id="soul" class="diciplineChart column is-4">
+        <canvas id="doughnut"
+        class="chart chart-doughnut"
+        chart-data="soulData"
+        chart-labels="labels"
+        chart-options="soulCharOptions"
+        chart-colors="soulCharColors"
+        > </canvas>
+      </div>
+
+      <div class="column is-full">
+        <p>{{ daysRemainingInMonth }} days left in current cycle</p>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <!-- MAP HERE -->
+  <div class="level">
+    <!-- map needs height and with -->
+    <div id="userProfileMap" ng-map> </div>
+  </div>
+  <hr>
+
+  <!-- UPCOMING EVENT, ONLY SHOW FIRST TWO -->
+  <div class="columns is-multiline">
+    <div class="column is-12">
+      <h2>You have {{upcomingEvents.length}} upcoming events</h2>
+    </div>
+
+    <div class="column is-half content" ng-repeat="event in upcomingEvents | limitTo:2">
+      <a ui-sref="eventsShow({ id: event._id })">
+        <div class="content-overlay"></div>
+        <img class="content-image" ng-src="{{event.imageUrl}}" >
+        <div class="content-details fadeIn-bottom">
+          <h3>{{ event.eventTitle }}</h3>
+          <div class="columns">
+            <div class="column is-4 has-text-centered">
+              <p>{{event.category}}</p>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <p>{{event.formattedDate}}</p>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <p>{{event.duration}}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="columns is-multiline">
+    <div class="column is-4 content" ng-repeat="event in upcomingEvents | limitTo:(2 - upcomingEvents.length)">
+      <a ui-sref="eventsShow({ id: event._id })">
+        <div class="content-overlay"></div>
+        <img class="content-image" ng-src="{{event.imageUrl}}" >
+        <div class="content-details fadeIn-bottom">
+          <h3>{{ event.eventTitle }}</h3>
+          <div class="columns">
+            <div class="column is-4 has-text-centered">
+              <p>{{event.category}}</p>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <p>{{event.formattedDate}}</p>
+            </div>
+            <div class="column is-4 has-text-centered">
+              <p>{{event.duration}}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+
+  <!-- SELECTION OF RECOMMENDED EVENTS -->
+  <div class="level">
+    <div class="columns is-multiline">
+      <div class="column is-12">
+        <h2>A selection of recommended events</h2>
+      </div>
+      <div ng-repeat="event in userNotAttending | limitTo:4" class="column is-3 content">
+        <a ui-sref="eventsShow({ id: event._id })">
+          <div class="content-overlay"></div>
+          <img class="content-image" ng-src="{{event.imageUrl}}" >
+          <div class="content-details fadeIn-bottom">
+            <h3>{{ event.eventTitle }}</h3>
+            <div class="columns">
+              <div class="column is-4 has-text-centered">
+                <p>{{event.category}}</p>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p>{{event.formattedDate}}</p>
+              </div>
+              <div class="column is-4 has-text-centered">
+                <p>{{event.duration}}</p>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+<!-- ATTENTED EVENTS -->
+<div class="level">
+  <div class="columns is-multiline">
+    <div class="column is-12">
+      <h2>Your past events</h2>
+    </div>
+    <div ng-repeat="event in attendedEvents" class="column is-4 content">
+      <a ui-sref="eventsShow({ id: event._id })">
+        <div class="content-overlay"></div>
+        <img class="content-image" ng-src="{{event.imageUrl}}" >
+        <div class="content-details fadeIn-bottom">
+          <h3>{{ event.eventTitle }}</h3>
+          <div class="columns">
+            <div class="column is-half has-text-centered">
+              <p>{{event.category}}</p>
+            </div>
+            <div class="column is-half has-text-centered">
+              <p>{{event.duration}}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- to create a new set of goals -->
+<!-- MODAL FOR ADD A GOAL -->
+<div ng-if="addGoal" class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Set your goals for {{ currentMonth }}</p>
+      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form ng-submit="setTarget()" name="form">
+
+        <div class="field has-addons">
+          <label class="label" for="mindTarget">Mind</label>
+          <input ng-model="goal.mindTarget" class="input" type="number" name="mindTarget">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="bodyTarget">Body</label>
+          <input ng-model="goal.bodyTarget" class="input" type="number" name="bodyTarget" placeholder="">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="soulTarget">Soul</label>
+          <input ng-model="goal.soulTarget" class="input" type="number" name="soulTarget" placeholder="">
+        </div>
+
+        <hr>
+        <button  class="button is-success">Set Goals</button>
+      </form>
+    </section>
+    <footer class="modal-card-foot"> </footer>
+  </div>
+</div>
+
+<!-- to create a new set of goals -->
+<!-- MODAL FOR UPDATE GOALS -->
+<div ng-if="editGoal" class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Update your goals for {{ currentMonth }}</p>
+      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form ng-submit="editGoals()" name="form">
+
+        <div class="field has-addons">
+          <label class="label" for="mindTarget">Mind</label>
+          <input ng-model="goal.mindTarget" class="input" type="number" name="mindTarget">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="bodyTarget">Body</label>
+          <input ng-model="goal.bodyTarget" class="input" type="number" name="bodyTarget">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="soulTarget">Soul</label>
+          <input ng-model="goal.soulTarget" class="input" type="number" name="soulTarget">
+        </div>
+
+        <hr>
+        <button  class="button is-success">Update Targets</button>
+
+      </form>
+    </section>
+    <footer class="modal-card-foot"> </footer>
+  </div>
+</div>
+
+<!-- to create a new set of goals -->
+<!-- MODAL FOR Log A GOAL Hours -->
+<div ng-if="logHours" class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Log your hours per discipline:</p>
+      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form ng-submit="logHoursSubmit()" name="form">
+
+        <div class="field has-addons">
+          <label class="label" for="mindTarget">Mind</label>
+          <input ng-model="goal.mindCompleted" class="input" type="number" name="mindCompleted">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="bodyTarget">Body</label>
+          <input ng-model="goal.bodyCompleted" class="input" type="number" name="bodyCompleted">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="soulTarget">Soul</label>
+          <input ng-model="goal.soulCompleted" class="input" type="number" name="soulCompleted">
+        </div>
+
+        <hr>
+        <button class="button is-success">Log Hours</button>
+      </form>
+    </section>
+    <footer class="modal-card-foot"> </footer>
+
+  </div>
+</div>
+
+<!-- IF WE WANT TO ADD HOSTER NAME -->
+<!-- <form ng-submit="addHosterName()" ng-if="user.isHost && !user.hasHostName">
+  <input ng-model="user.hosterName" type="text" name="hosterName" placeholder="ParkCali201">
+  <button class="button is-info">Create HosterName</button>
+</form>
+<p ng-if="user.hasHostName">Your Host Name is: {{user.hosterName}}</p> -->

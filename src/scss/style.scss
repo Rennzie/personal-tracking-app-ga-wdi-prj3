@@ -97,9 +97,18 @@ body{
 .content {
   position: relative;
   width: 90%;
-  max-width: 400px;
+  // max-width: 400px;
   margin: auto;
   overflow: hidden;
+}
+
+.content-circle {
+    max-width: 400px;
+    position: relative;
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+
 }
 
 .content .content-overlay {
@@ -119,6 +128,7 @@ body{
 
 .content .content-overlay-circle {
   background: rgba(0,0,0,0.7);
+  max-width: 400px;
   position: absolute;
   height: 99%;
   width: 100%;
