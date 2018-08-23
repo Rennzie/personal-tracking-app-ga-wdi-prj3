@@ -135,6 +135,7 @@
         <h2>You have {{upcomingEvents.length}} upcoming events</h2>
       </div>
       <div class="column is-half content">
+        <a ui-sref="eventsShow({ id: upcomingEvents[0]._id })">
         <div class="content-overlay"></div>
         <img class="content-image" ng-src="{{upcomingEvents[0].imageUrl}}" >
         <div class="content-details fadeIn-bottom">
@@ -142,6 +143,7 @@
           <div class="level">
             <p>{{upcomingEvents[0].category}}</p>
             <p>{{upcomingEvents[0].duration}} Hrs</p>
+          </a>
           </div>
         </div>
       </div>
@@ -149,6 +151,7 @@
 
 
       <div  ng-if="upcomingEvents.length > 1" class="column is-half content">
+        <a ui-sref="eventsShow({ id: upcomingEvents[1]._id })">
         <div class="content-overlay"></div>
             <img class="content-image" ng-src="{{upcomingEvents[1].imageUrl}}" >
             <div class="content-details fadeIn-bottom">
@@ -158,6 +161,7 @@
               <p>{{upcomingEvents[1].duration}} Hrs</p>
             </div>
       </div>
+    </a>
     </div>
   </div>
 </div>
@@ -196,15 +200,16 @@
   <div class="level">
     <div class="columns is-multiline">
       <div ng-repeat="event in attendedEvents" class="column is-4 content">
+        <a ui-sref="eventsShow({ id: event._id })">
         <div class="content-overlay"></div>
         <img class="content-image" ng-src="{{event.imageUrl}}" >
         <div class="content-details fadeIn-bottom">
-
         <h3>{{ event.eventTitle }}</h3>
         <div class="level">
           <p>{{event.category}}</p>
           <p>{{event.duration}} Hrs</p>
         </div>
+      </a>
         </div>
       </div>
     </div>
