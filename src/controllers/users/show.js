@@ -49,7 +49,6 @@ function UsersShowCtrl($http, $state, $scope) {
 
     const cutOutPercentage = 85;
 
-    const goalData = $scope.goals[0];
 
     $scope.labels = ['Remaining', 'Completed'];
     $scope.targetLabels = ['Mind', 'Body', 'Soul'];
@@ -66,6 +65,7 @@ function UsersShowCtrl($http, $state, $scope) {
     ];
 
     if($scope.user){
+      const goalData = $scope.goals[0];
       $scope.targetData = [goalData.mindTarget, goalData.bodyTarget, goalData.soulTarget];
 
       $scope.mindData = [goalData.timeToMindGoal, goalData.mindCompleted];
@@ -78,7 +78,7 @@ function UsersShowCtrl($http, $state, $scope) {
         [goalData.timeToSoulGoal, goalData.soulCompleted]
       ];
 
-      $scope.multiCharOptions ={
+      $scope.multiCharOptions = {
         title: {
           display: true,
           text: 'Your Progress Snapshot',
@@ -91,7 +91,7 @@ function UsersShowCtrl($http, $state, $scope) {
         }
       };
 
-      $scope.targetCharOptions ={
+      $scope.targetCharOptions = {
         title: {
           display: true,
           text: 'How you prioritise your disciplines',

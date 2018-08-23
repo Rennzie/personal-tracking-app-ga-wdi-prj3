@@ -20,6 +20,7 @@
     "angular-chartjs": "^0.0.5",
     "angular-filepicker": "^1.1.4",
     "angular-messages": "^1.7.3",
+    "angular-touch": "^1.7.3",
     "bcrypt": "^2.0.1",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",

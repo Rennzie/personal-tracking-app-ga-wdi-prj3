@@ -2,10 +2,9 @@ import angular from 'angular';
 import '@uirouter/angularjs';
 import 'satellizer';
 import 'angular-messages';
+import 'angular-chart.js';
 import 'bulma';
 import './scss/style.scss';
-import 'chart.js';
-import 'angular-chart.js';
 import './plugins/chartJS';
 
 
