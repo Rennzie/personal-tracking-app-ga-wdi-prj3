@@ -13,7 +13,7 @@ function AuthRegisterCtrl($scope, $auth, $state) {
       .signup($scope.user)
       .then(() => $auth.login($scope.user))
       // .login($scope.user)
-      .then(()=> $state.go('goalsNew', {id: $scope.getPayload().sub}));
+      .then(()=> $state.go('goalsInitNew', {id: $scope.getPayload().sub}));
   };
 
 }

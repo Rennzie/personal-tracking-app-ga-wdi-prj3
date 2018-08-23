@@ -1,0 +1,45 @@
+<div class="container">
+
+  <p>Thank you for signing up to and welcome to Resolut, together we can help you keep those resolutions!</p>
+  <p>You need to set your Mind, Body and Soul development targets for the rest of this month below</p>
+
+  <form ng-submit="setTarget()" name="form">
+
+    <div class=" mind">
+      <h1 class="title">Mind</h1>
+      <p>Mind targets are specfic for Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p>How many hours do you aim to spend on mind activities?</p>
+      <div class="field has-addons">
+        <label class="label" for="mindTarget">Mind</label>
+        <input ng-model="goal.mindTarget" class="input" type="number" name="mindTarget">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="body">
+      <h1 class="title">Mind</h1>
+      <p>Body targets are specfic for Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p>How many hours do you aim to spend on body activities?</p>
+      <div class="field has-addons">
+        <label class="label" for="bodyTarget">Body</label>
+        <input ng-model="goal.bodyTarget" class="input" type="number" name="bodyTarget" placeholder="">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="soul">
+      <h1 class="title">Soul</h1>
+      <p>Mind targets are specfic for Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p>How many hours do you aim to spend on Soul activities</p>
+      <div class="field has-addons">
+        <label class="label" for="soulTarget">Soul</label>
+        <input ng-model="goal.soulTarget" class="input" type="number" name="soulTarget" placeholder="">
+      </div>
+    </div>
+
+    <hr>
+    <button  class="button is-success">Set Goals</button>
+  </form>
+</div>

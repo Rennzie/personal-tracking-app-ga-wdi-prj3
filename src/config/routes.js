@@ -77,18 +77,18 @@ function Router($stateProvider, $urlRouterProvider) {
     })
 
   //--------- USER STATES ---------//
-  // .state('usersEdit', {
-  //   templateUrl: '.views/users/edit.html',
-  //   url: '/users/:id/edit',
-  //   controller: 'usersEditCtrl'
-  // })
     .state('usersShow', {
       templateUrl: './views/users/show.html',
       url: '/users/:id',
       controller: 'UsersShowCtrl'
     })
 
-  //--------- USER STATES ---------//
+  //--------- GOAL STATES ---------//
+    .state('goalsInitNew', {
+      templateUrl: './views/goals/new-initial.html',
+      url: '/users/:id/goals',
+      controller: 'GoalsNewCtrl'
+    })
     .state('goalsNew', {
       templateUrl: './views/users/show.html',
       url: '/users/:id/goals',
