@@ -396,7 +396,6 @@ User
           event.guests.push(user.id);
         }
       });
-
     });
 
 
