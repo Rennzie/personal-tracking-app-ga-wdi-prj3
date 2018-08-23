@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+category: 'SOUL',const mongoose = require('mongoose');
 // User bluebird to make promises easier
 mongoose.Promise = require('bluebird');
 
@@ -131,7 +131,7 @@ const userData = [
 
 const eventData = [
   {                   //Calisthenics in the park
-    category: 'body',
+    category: 'BODY',
     capacity: 3,
     concluded: false,
     durationHrs: 1,
@@ -147,7 +147,7 @@ const eventData = [
       postcode: 'sw62tg'
     }
   }, {
-    category: 'soul',
+    category: 'SOUL',
     capacity: 5,
     concluded: false,
     durationHrs: 2,
@@ -163,7 +163,7 @@ const eventData = [
       postcode: 'sw7 2az'
     }
   }, {
-    category: 'mind',
+    category: 'MIND',
     capacity: 30,
     concluded: true,
     durationHrs: 1,
@@ -180,7 +180,7 @@ const eventData = [
       postcode: 'E1 7PT'
     }
   }, {
-    category: 'body',
+    category: 'BODY',
     capacity: 20,
     concluded: true,
     durationHrs: 1,
@@ -197,7 +197,7 @@ const eventData = [
       postcode: 'W2 6ET'
     }
   }, {
-    category: 'body',
+    category: 'BODY',
     capacity: 30,
     concluded: false,
     durationHrs: 1,
@@ -213,7 +213,7 @@ const eventData = [
       postcode: 'SW1W 9NF'
     }
   }, {
-    category: 'body',
+    category: 'BODY',
     capacity: 25,
     concluded: false,
     durationMin: 30,
@@ -229,7 +229,7 @@ const eventData = [
       postcode: 'WC2H 9NP'
     }
   }, {
-    category: 'body',
+    category: 'BODY',
     capacity: 15,
     concluded: true,
     durationHrs: 1,
@@ -245,7 +245,7 @@ const eventData = [
       postcode: 'W8 7RZ'
     }
   },{
-    category: 'soul',
+    category: 'SOUL',
     capacity: 8,
     concluded: true,
     durationHrs: 2,
@@ -261,7 +261,7 @@ const eventData = [
       postcode: 'sw3 5uz'
     }
   },{
-    category: 'soul',
+    category: 'SOUL',
     capacity: 14,
     concluded: false,
     durationHrs: 6,
@@ -277,7 +277,7 @@ const eventData = [
       postcode: 'w1t 5dx'
     }
   },{
-    category: 'soul',
+    category: 'SOUL',
     capacity: 12,
     concluded: true,
     durationHrs: 4,
@@ -293,7 +293,7 @@ const eventData = [
       postcode: 'SW1W 8TZ'
     }
   },{
-    category: 'soul',
+    category: 'SOUL',
     capacity: 15,
     concluded: false,
     durationHrs: 6,
@@ -301,7 +301,7 @@ const eventData = [
     eventTitle: 'Dru Yoga and Thai Yoga Massage',
     eventDateTime: 'Friday September 28 2018 10:00:00 GMT+0100 (British Summer Time)',
     guests: [],
-    imageUrl: 'https://kittycowell.files.wordpress.com/2016/06/another_space_jms-020_test2-1250x467.jpg',
+    imageUrl: 'https://static1.squarespace.com/static/56576768e4b0c6e18e346bea/574b245bf699bbded7dcb642/574b24c027d4bdfe229ab5f3/1464542402458/cactus.jpg?format=2500w',
     isIndoors: true,
     location: {
       streetNumber: 95,
@@ -309,7 +309,7 @@ const eventData = [
       postcode: 'SE15 5BU'
     }
   },{
-    category: 'mind',
+    category: 'MIND',
     capacity: 25,
     concluded: true,
     durationHrs: 8,
@@ -325,7 +325,7 @@ const eventData = [
       postcode: 'N16 8JH'
     }
   },{
-    category: 'mind',
+    category: 'MIND',
     capacity: 8,
     concluded: false,
     durationHrs: 2,
@@ -333,7 +333,7 @@ const eventData = [
     eventTitle: 'How science got women wrong',
     eventDateTime: 'Thursday August 30 2018 20:00:00 GMT+0100 (British Summer Time)',
     guests: [],
-    imageUrl: 'http://5x15.com/wp-content/uploads/2018/07/SLIDER_Angela-Saini_v2.jpg',
+    imageUrl: 'https://imgur.com/TaT6k3z',
     isIndoors: true,
     location: {
       streetNumber: 11,
@@ -341,7 +341,7 @@ const eventData = [
       postcode: 'W1T 1JN'
     }
   },{
-    category: 'mind',
+    category: 'MIND',
     capacity: 200,
     concluded: true,
     durationHrs: 2,
@@ -349,7 +349,7 @@ const eventData = [
     eventTitle: 'Dark Data, Dark Money & Putins Russia',
     eventDateTime: 'Tuesday September 25 2018 19:00:00 GMT+0100 (British Summer Time)',
     guests: [],
-    imageUrl: 'http://5x15.com/wp-content/uploads/2018/07/SLIDER_Putins-Russia-2.jpg',
+    imageUrl: 'https://imgur.com/XP5QLYP',
     isIndoors: true,
     location: {
       streetNumber: 14,
@@ -357,7 +357,7 @@ const eventData = [
       postcode: 'SW1P 4DF'
     }
   },{
-    category: 'mind',
+    category: 'MIND',
     capacity: 200,
     concluded: false,
     durationHrs: 2,
