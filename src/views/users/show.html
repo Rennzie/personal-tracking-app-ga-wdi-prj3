@@ -166,11 +166,10 @@
         </div>
       </a>
     </div>
-
   </div>
-  <hr>
+
   <div class="columns is-multiline">
-    <div class="column is-3 content" ng-repeat="event in upcomingEvents | limitTo:(2 - upcomingEvents.length)">
+    <div class="column is-4 content" ng-repeat="event in upcomingEvents | limitTo:(2 - upcomingEvents.length)">
       <a ui-sref="eventsShow({ id: event._id })">
         <div class="content-overlay"></div>
         <img class="content-image" ng-src="{{event.imageUrl}}" >
@@ -193,11 +192,13 @@
 
   </div>
 
-  <hr>
 
   <!-- SELECTION OF RECOMMENDED EVENTS -->
   <div class="level">
     <div class="columns is-multiline">
+      <div class="column is-12">
+        <h2>A selection of recommended events</h2>
+      </div>
       <div ng-repeat="event in userNotAttending | limitTo:4" class="column is-3 content">
         <a ui-sref="eventsShow({ id: event._id })">
           <div class="content-overlay"></div>
@@ -205,10 +206,13 @@
           <div class="content-details fadeIn-bottom">
             <h3>{{ event.eventTitle }}</h3>
             <div class="columns">
-              <div class="column is-half has-text-centered">
+              <div class="column is-4 has-text-centered">
                 <p>{{event.category}}</p>
               </div>
-              <div class="column is-half has-text-centered">
+              <div class="column is-4 has-text-centered">
+                <p>{{event.formattedDate}}</p>
+              </div>
+              <div class="column is-4 has-text-centered">
                 <p>{{event.duration}}</p>
               </div>
             </div>
@@ -218,12 +222,12 @@
     </div>
   </div>
 
-
-  <hr>
-
 <!-- ATTENTED EVENTS -->
 <div class="level">
   <div class="columns is-multiline">
+    <div class="column is-12">
+      <h2>Your past events</h2>
+    </div>
     <div ng-repeat="event in attendedEvents" class="column is-4 content">
       <a ui-sref="eventsShow({ id: event._id })">
         <div class="content-overlay"></div>
