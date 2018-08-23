@@ -1,4 +1,4 @@
-category: 'SOUL',const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 // User bluebird to make promises easier
 mongoose.Promise = require('bluebird');
 
@@ -131,7 +131,7 @@ const userData = [
 
 const eventData = [
   {                   //Calisthenics in the park
-    category: 'BODY',
+    category: 'Body',
     capacity: 3,
     concluded: false,
     durationHrs: 1,
@@ -147,7 +147,7 @@ const eventData = [
       postcode: 'sw62tg'
     }
   }, {
-    category: 'SOUL',
+    category: 'Soul',
     capacity: 5,
     concluded: false,
     durationHrs: 2,
@@ -163,7 +163,7 @@ const eventData = [
       postcode: 'sw7 2az'
     }
   }, {
-    category: 'MIND',
+    category: 'Mind',
     capacity: 30,
     concluded: true,
     durationHrs: 1,
@@ -180,7 +180,7 @@ const eventData = [
       postcode: 'E1 7PT'
     }
   }, {
-    category: 'BODY',
+    category: 'Body',
     capacity: 20,
     concluded: true,
     durationHrs: 1,
@@ -197,7 +197,7 @@ const eventData = [
       postcode: 'W2 6ET'
     }
   }, {
-    category: 'BODY',
+    category: 'Body',
     capacity: 30,
     concluded: false,
     durationHrs: 1,
@@ -213,7 +213,7 @@ const eventData = [
       postcode: 'SW1W 9NF'
     }
   }, {
-    category: 'BODY',
+    category: 'Body',
     capacity: 25,
     concluded: false,
     durationMin: 30,
@@ -229,7 +229,7 @@ const eventData = [
       postcode: 'WC2H 9NP'
     }
   }, {
-    category: 'BODY',
+    category: 'Body',
     capacity: 15,
     concluded: true,
     durationHrs: 1,
@@ -245,7 +245,7 @@ const eventData = [
       postcode: 'W8 7RZ'
     }
   },{
-    category: 'SOUL',
+    category: 'Soul',
     capacity: 8,
     concluded: true,
     durationHrs: 2,
@@ -261,7 +261,7 @@ const eventData = [
       postcode: 'sw3 5uz'
     }
   },{
-    category: 'SOUL',
+    category: 'Soul',
     capacity: 14,
     concluded: false,
     durationHrs: 6,
@@ -277,7 +277,7 @@ const eventData = [
       postcode: 'w1t 5dx'
     }
   },{
-    category: 'SOUL',
+    category: 'Soul',
     capacity: 12,
     concluded: true,
     durationHrs: 4,
@@ -293,7 +293,7 @@ const eventData = [
       postcode: 'SW1W 8TZ'
     }
   },{
-    category: 'SOUL',
+    category: 'Soul',
     capacity: 15,
     concluded: false,
     durationHrs: 6,
@@ -309,7 +309,7 @@ const eventData = [
       postcode: 'SE15 5BU'
     }
   },{
-    category: 'MIND',
+    category: 'Mind',
     capacity: 25,
     concluded: true,
     durationHrs: 8,
@@ -325,7 +325,7 @@ const eventData = [
       postcode: 'N16 8JH'
     }
   },{
-    category: 'MIND',
+    category: 'Mind',
     capacity: 8,
     concluded: false,
     durationHrs: 2,
@@ -333,7 +333,7 @@ const eventData = [
     eventTitle: 'How science got women wrong',
     eventDateTime: 'Thursday August 30 2018 20:00:00 GMT+0100 (British Summer Time)',
     guests: [],
-    imageUrl: 'https://imgur.com/TaT6k3z',
+    imageUrl: 'https://i.imgur.com/TaT6k3z.jpg',
     isIndoors: true,
     location: {
       streetNumber: 11,
@@ -341,15 +341,15 @@ const eventData = [
       postcode: 'W1T 1JN'
     }
   },{
-    category: 'MIND',
+    category: 'Mind',
     capacity: 200,
     concluded: true,
-    durationHrs: 2,
+    durationHr: 2,
     description: 'Oliver Bullough is a prize-winning journalist and author from Wales, who specialises in the former Soviet Union and corruption. His work appears in the Guardian, the New York Times, GQ magazine, Prospect and elsewhere, and he regularly appears on the BBC, Sky News, CNN and other media outlets. His latest book is Moneyland, about which John le Carré said: "If you want to know why international crooks and their eminently respectable financial advisors walk tall and only the little people pay taxes, this is the ideal book for you".' ,
     eventTitle: 'Dark Data, Dark Money & Putins Russia',
     eventDateTime: 'Tuesday September 25 2018 19:00:00 GMT+0100 (British Summer Time)',
     guests: [],
-    imageUrl: 'https://imgur.com/XP5QLYP',
+    imageUrl: 'https://i.imgur.com/XP5QLYP.jpg',
     isIndoors: true,
     location: {
       streetNumber: 14,
