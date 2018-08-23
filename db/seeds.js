@@ -408,7 +408,7 @@ User
     console.log(`Create ${events.length} events`);
 
     //create goals and return them so we can log them
-    return Goal.create(goalData);
+    // return Goal.create(goalData);
   })
   // .then(goals => console.log(`Create ${goals.length} goals`))
   .catch(err => console.log('Seeding error is', err))

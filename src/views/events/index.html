@@ -11,10 +11,9 @@
 </section>
 
 <div class="container">
-  <div class="columns is-6 is-multiline">
-    <div class="column is-12">
+  <div class="columns is-multiline">
 
-      <div ng-repeat="event in events" class="level column columns has-background-grey-lighter">
+      <div ng-repeat="event in events" class="column is-full columns has-background-grey-lighter">
         <div class="eventIndexImage column is-half content ">
           <a ui-sref="eventsShow({ id: event._id })">
             <div class="content-overlay"></div>
@@ -46,9 +45,7 @@
             <p>{{ event.description}}</p>
           </div>
         </div>
-        <hr>
 
-      </div>
     </div>
   </div>
 
