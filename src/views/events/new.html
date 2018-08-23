@@ -1,69 +1,96 @@
-<!-- EVENTS NEW  -->
-<section>
-  <form ng-submit="createEvent()">
-    <!--TITLE -->
-    <div class="field">
-      <label for="eventTitle">Title</label>
-      <input ng-model="event.eventTitle" class="input"type="text" name="name" placeholder="eg. Hatha Yoga">
-    </div>
-    <!-- CATEGORY -->
-    <div class="field">
-      <label for="category">Mind | Body | Soul </label>
-      <input ng-model="event.category" class="input"type="text" name="category" placeholder="Mind, Body or Soul?">
-    </div>
-    <!-- DATE -->
-    <div class="field">
-      <label for="date">Date</label>
-      <input ng-model="event.eventDateTime" class="input"type="date" name="date" placeholder="When are you holding your event?">
-    </div>
-    <!-- TIME -->
-    <div class="field">
-      <label for="time">Start Time</label>
-      <input ng-model="event.eventDateTime" class="input"type="time" name="time" placeholder="What time is your event?">
-    </div>
-    <!-- LOCATION -->
-    <p>Where is your event?</p>
-    <div class="field">
-      <label for="streetNumber">Street Number</label>
-      <input ng-model="event.location.streetNumber" class="input"type="number" name="streetNumber" placeholder="eg. 21">
-    </div>
-    <div class="field">
-      <label for="streetName">Street Name</label>
-      <input ng-model="event.location.streetName" class="input"type="text" name="streetName" placeholder="eg. Oxford Street">
-    </div>
-    <div class="field">
-      <label for="postcode">Postcode</label>
-      <input ng-model="event.location.postcode" class="input"type="text" name="postcode" placeholder="eg. EC1V 4PA">
-    </div>
-    <!-- CAPACITY-->
-    <div class="field">
-      <label for="capacity">Capacity</label>
-      <input ng-model="event.capacity" class="input"type="number" name="capacity" placeholder="eg. 12">
-    </div>
-    <!-- DURATION-->
-    <div class="field">
-      <label for="duration">Duration</label>
-      <input ng-model="event.duration" class="input"type="text" name="duration" placeholder="eg. 45 mins">
-    </div>
-    <!-- DESCRIPTION-->
-    <div class="field">
-      <label for="description">Description</label>
-      <input ng-model="event.description" class="input"type="text" name="description" placeholder="Tell us a little bit about your event...">
-    </div>
-    <!-- INDOOR/OUTDOOR-->
-    <div class="field">
-      <label for="outdoors">Is your event outdoors?</label>
-      <input ng-model="event.isIndoors" type="checkbox" name="outdoors" value="true">
-    </div>
-    <!-- IMAGE URL -->
-    <div class="field">
-      <label for="imageUrl">Image(URL)</label>
-      <input ng-model="event.imageUrl" class="input"type="text" name="imageUrl" placeholder="http://.....">
-    </div>
+<div  class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add a new event</p>
+      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
 
-  <!-- BUTTON -->
-    <button class="button">Add your event</button>
+      <form class="has-text-black" ng-submit="createEvent()">
+        <!--TITLE -->
+        <div class="field">
+          <label for="eventTitle">Title</label>
+          <input ng-model="event.eventTitle" class="input"type="text" name="name" placeholder="eg. Hatha Yoga">
+        </div>
+        <!-- CATEGORY -->
+        <div class="field">
+          <label for="category">Mind | Body | Soul </label>
+          <!-- <input ng-model="event.category" class="input"type="text" name="category" placeholder="Mind, Body or Soul?"> -->
+          <div class="select">
+            <select  ng-model=event.category>
+              <option value="">--Choose Discipline--</option>
+              <option value="Mind">Mind</option>
+              <option value="Body">Body</option>
+              <option value="Soul">Soul</option>
+            </select>
+          </div>
+        </div>
+        <!-- DATE -->
+        <div class="field">
+          <label for="date">Date</label>
+          <input ng-model="event.eventDateTime" class="input"type="date" name="date" placeholder="When are you holding your event?">
+        </div>
+        <!-- TIME -->
+        <div class="field">
+          <label for="time">Start Time</label>
+          <input ng-model="event.eventDateTime" class="input"type="time" name="time" placeholder="What time is your event?">
+        </div>
+        <!-- LOCATION -->
+        <p>Where is your event?</p>
+        <div class="field">
+          <label for="streetNumber">Street Number</label>
+          <input ng-model="event.location.streetNumber" class="input"type="number" name="streetNumber" placeholder="eg. 21">
+        </div>
+        <div class="field">
+          <label for="streetName">Street Name</label>
+          <input ng-model="event.location.streetName" class="input"type="text" name="streetName" placeholder="eg. Oxford Street">
+        </div>
+        <div class="field">
+          <label for="postcode">Postcode</label>
+          <input ng-model="event.location.postcode" class="input"type="text" name="postcode" placeholder="eg. EC1V 4PA">
+        </div>
+        <!-- CAPACITY-->
+        <div class="field">
+          <label for="capacity">Capacity</label>
+          <input ng-model="event.capacity" class="input"type="number" name="capacity" placeholder="eg. 12">
+        </div>
+        <!-- DURATION-->
+        <div class="columns">
+          <div class="column is-half">
+            <div class="field">
+              <label for="duration">Duration Hours </label>
+              <input ng-model="event.durationHrs" class="input"type="number" name="durationHrs" placeholder="eg. 1 ">
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="field">
+              <label for="duration">Duration Minutes </label>
+              <input ng-model="event.durationMin" class="input"type="number" name="durationMin" placeholder="eg. 30">
+            </div>
+          </div>
+        </div>
+        <!-- DESCRIPTION-->
+        <div class="field">
+          <label for="description">Description</label>
+          <input ng-model="event.description" class="input"type="text" name="description" placeholder="Tell us a little bit about your event...">
+        </div>
+        <!-- INDOOR/OUTDOOR-->
+        <div class="field">
+          <label for="outdoors">Is your event outdoors?</label>
+          <input ng-model="event.isIndoors" type="checkbox" name="outdoors" value="true">
+        </div>
+        <!-- IMAGE URL -->
+        <div class="field">
+          <label for="imageUrl">Image(URL)</label>
+          <input ng-model="event.imageUrl" class="input"type="text" name="imageUrl" placeholder="http://.....">
+        </div>
 
+        <!-- BUTTON -->
+        <button class="button">Add your event</button>
+      </form>
 
-  </form>
-</section>
+    </section>
+    <footer class="modal-card-foot"> </footer>
+  </div>
+</div>
