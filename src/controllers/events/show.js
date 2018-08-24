@@ -13,7 +13,7 @@ function EventsShowCtrl($http, $state, $scope) {
     url: `/api/events/${$state.params.id}`
   })
     .then(res => {
-      console.log('Found an event', res.data);
+      // console.log('Found an event', res.data);
       $scope.event = res.data;
     });
 
@@ -100,7 +100,7 @@ function EventsShowCtrl($http, $state, $scope) {
         }
       })
         .then(res => {
-          console.log('the weather forcast is: ', res.data);
+          // console.log('the weather forcast is: ', res.data);
           $scope.weatherSummary = res.data;
         });
     }
@@ -125,7 +125,7 @@ function EventsShowCtrl($http, $state, $scope) {
               }
             })
               .then(res => {
-                console.log('the travel time is: ', res.data);
+                // console.log('the travel time is: ', res.data);
                 $scope.homeTravelTime = res.data.travel_time_minutes;
 
               });
@@ -136,16 +136,4 @@ function EventsShowCtrl($http, $state, $scope) {
 
 }
 
-
-
 export default EventsShowCtrl;
-
-
-//  PSUEDO CODE FOR UPDATING ATTENDEE LIST
-//make a put request to event update
-//send an update guest array
-//  --> this should include all required fields
-
-
-//  REMOVE/DISABLE BUTTON IF USER IS ATTENDING
-//  check if current users id is with the attending array

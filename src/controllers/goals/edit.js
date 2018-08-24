@@ -10,7 +10,7 @@ function GoalsEditCtrl($http, $scope, $state){
 
       const currentMonthGoals = userGoals.filter(goal => goal.goalMonth === $scope.currentMonth);
 
-      console.log('the users goals are ', currentMonthGoals);
+      // console.log('the users goals are ', currentMonthGoals);
       $scope.goal = currentMonthGoals[0];
     });
 

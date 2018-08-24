@@ -32,29 +32,30 @@ Router.route('/users')
   .get(userController.index);
 
 Router.route('/users/:id')
-  // .all(secureRoute)
+  .all(secureRoute)
   .get(userController.show)
   .put(userController.update);
 
 // EVENT ROUTES
 Router.route('/events')
   .get(eventController.index)
-  .post( eventController.create);     // NOTE: we will secure this route
+  .post(secureRoute, eventController.create);     // NOTE: we will secure this route
 
 Router.route('/events/:id')
   .get(eventController.show)
-  .put( eventController.update)      // NOTE: we will secure this route
-  .delete( eventController.delete);  // NOTE: we will secure this route
+  .put(secureRoute, eventController.update)      // NOTE: we will secure this route
+  .delete(secureRoute, eventController.delete);  // NOTE: we will secure this route
 
 Router.route('/events/:id/guests')
   .all(secureRoute)
   .post(eventController.addNewGuest);
 
 Router.route('/events/:eventId/guests/:guestId')
-  .delete(eventController.guestDelete); // NOTE: need to secure this
+  .delete(secureRoute, eventController.guestDelete); // NOTE: need to secure this
 
 // GOAL ROUTES // NOTE: no need to secure as this is done by the userprofile controller
 Router.route('/users/:userId/goals')
+  .all(secureRoute)
   .get(goalController.index)
   .post(goalController.create);
 

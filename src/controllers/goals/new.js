@@ -6,11 +6,11 @@ function GoalsNewCtrl($http, $scope, $state){
 
   // console.log('scope is: ', $scope);
 
-  console.log('current user is', userId);
+  // console.log('current user is', userId);
   $scope.setTarget = function() {
     $scope.goal.createdBy = userId;
     const goalData = $scope.goal;
-    console.log('Data to update is---->', goalData);
+    // console.log('Data to update is---->', goalData);
     $http({
       method: 'POST',
       url: `/api/users/${userId}/goals`,

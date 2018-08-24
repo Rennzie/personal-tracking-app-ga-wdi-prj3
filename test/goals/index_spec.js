@@ -2,70 +2,29 @@
 
 const User = require('../../models/user');
 const Goal = require('../../models/goal');
+const jwt = require('jsonwebtoken');
+const { secret } = require('../../config/environment');
 
-const userData =
-  {
-    email: 'rnnsea001@gmail.com',
-    firstName: 'Sean',
-    homeLocation: {
-      lat: 51.471337,
-      lon: -0.184276
-    },
-    isHost: true,
-    password: 'pass',
-    passwordConfirmation: 'pass',
-    surname: 'Rennie',
-    username: 'Rennzie'
-  };
+const userData ={
+  email: 'rnnsea001@gmail.com',
+  firstName: 'Sean',
+  postcodeHome: 'Sw6 2tg',
+  password: 'pass',
+  surname: 'Rennie',
+  username: 'pass'
+};
 
-const goalData = [
-  {
-    completedHrs: 10,
-    discipline: 'body',
-    goalMonth: 'august',
-    targetHrs: 100
-  },{
-    completedHrs: 30,
-    discipline: 'mind',
-    goalMonth: 'august',
-    targetHrs: 50
-  },{
-    discipline: 'soul',
-    goalMonth: 'august',
-    targetHrs: 100
-  },{
-    completedHrs: 10,
-    discipline: 'body',
-    goalMonth: 'august',
-    targetHrs: 300
-  },{
-    completedHrs: 10,
-    discipline: 'mind',
-    goalMonth: 'august',
-    targetHrs: 50
-  },{
-    completedHrs: 1,
-    discipline: 'soul',
-    goalMonth: 'august',
-    targetHrs: 20
-  },{
-    completedHrs: 10,
-    discipline: 'body',
-    goalMonth: 'august',
-    targetHrs: 100
-  },{
-    discipline: 'mind',
-    goalMonth: 'august',
-    targetHrs: 50
-  },{
-    completedHrs: 10,
-    discipline: 'soul',
-    goalMonth: 'august',
-    targetHrs: 20
-  }
-];
+const goalData = {
+  mindTarget: 100,
+  bodyTarget: 100,
+  soulTarget: 100,
+  mindCompleted: 50,
+  bodyCompleted: 50,
+  soulCompleted: 50
+};
 
 let userId;
+let token;
 
 describe('GET /user/:id/goals', ()=> {
   //load user data and goal data before each
@@ -74,6 +33,7 @@ describe('GET /user/:id/goals', ()=> {
       .then(() => User.create(userData))
       .then(user => {
         userId = user.Id;
+        token = jwt.sign({sub: user.id}, secret, {expiresIn: '1hr'});
 
         goalData.forEach(goal => goal.createdBy = user.id);
 
@@ -83,24 +43,40 @@ describe('GET /user/:id/goals', ()=> {
       .then(() => done());
   });
 
-  xit('should return a 200 response status', done => {
+  it('should return a 401 response status without a token', done => {
     api.get(`/api/users/${userId}/goals`)
+      .end((err, res) => {
+        expect(res.status).to.eq(401);
+        done();
+      });
+  });
+
+  it('should return a 200 response status with a token', done => {
+    api.get(`/api/users/${userId}/goals`)
+      .set({Authorization: `Bearer ${token}`})
       .end((err, res) => {
         expect(res.status).to.eq(200);
         done();
       });
   });
 
-  xit('should return an array with object items', done => {
+  it('should return an object', done => {
     api.get(`/api/users/${userId}/goals`)
+      .set({Authorization: `Bearer ${token}`})
       .end((err, res) => {
-        expect(res.body).to.be.an('array');
-        res.body.forEach(goal => expect(goal).to.be.an('object'));
+        expect(res.body).to.be.an('object');
         done();
       });
   });
 
-  xit('should return the correct data');
+  it('should return the correct data', done => {
+    api.get(`/api/users/${userId}/goals`)
+      .set({Authorization: `Bearer ${token}`})
+      .end((err, res) => {
+        console.log('goaldata is =====> ', res.body);
+        done();
+      });
+  });
 
   xit('should only return data for the given users ID');
 });

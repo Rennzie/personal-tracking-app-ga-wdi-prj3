@@ -7,9 +7,7 @@ const Goal = require('../models/goal');
 function goalIndex( req, res, next ){
   Goal
     .find()
-    .then(goals => {
-      res.json(goals);
-    })
+    .then(goals => res.json(goals))
     .catch(next);
 }
 

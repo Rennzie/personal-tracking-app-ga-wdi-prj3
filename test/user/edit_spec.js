@@ -6,24 +6,19 @@ const { secret } = require('../../config/environment');
 const userData = {
   email: 'rnnsea001@gmail.com',
   firstName: 'Sean',
-  homeLocation: {
-    lat: 51.471337,
-    lon: -0.184276
-  },
-  isHost: true,
+  postcodeHome: 'Sw6 2tg',
   password: 'pass',
-  passwordConfirmation: 'pass',
   surname: 'Rennie',
-  username: 'Rennzie'
+  username: 'pass'
 };
 
 const updateUserData = {
   email: 'sean.rennie6@gmail.com',
-  firstName: 'Sean',
-  isHost: false,
+  firstName: 'SEAN',
+  postcodeHome: 'Sw6 2tg',
   password: 'pass',
-  passwordConfirmation: 'pass',
-  username: 'Rennzie'
+  surname: 'Jones',
+  username: 'pass'
 };
 
 
@@ -66,7 +61,7 @@ describe('PUT /api/user/:id', () => {
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .send(updateUserData)
       .end((err, res) => {
-        expect(res.body.isHost).to.eq(updateUserData.isHost);
+        expect(res.body.surname).to.eq(updateUserData.surname);
         expect(res.body.email).to.eq(updateUserData.email);
         done();
       });

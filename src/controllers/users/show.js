@@ -11,7 +11,6 @@ function UsersShowCtrl($http, $state, $scope) {
     url: `/api/users/${$state.params.id}`
   })
     .then(res => {
-      // console.log('Found a user', res.data);
       $scope.user = res.data;
     });
 
@@ -38,11 +37,7 @@ function UsersShowCtrl($http, $state, $scope) {
     $scope.mindCharColors = [mindColorFade, mindColor];
     $scope.bodyCharColors = [bodyColorFade, bodyColor];
     $scope.soulCharColors = [soulColorFade, soulColor];
-    $scope.multiCharColors = [
-      [mindColorFade, mindColor],
-      [bodyColorFade, bodyColor],
-      [soulColorFade, soulColor]
-    ];
+
 
     if($scope.user){
       const goalData = $scope.goals[0];
@@ -57,6 +52,32 @@ function UsersShowCtrl($http, $state, $scope) {
         [goalData.timeToBodyGoal, goalData.bodyCompleted],
         [goalData.timeToSoulGoal, goalData.soulCompleted]
       ];
+
+      $scope.datasetOverride = [{
+        fill: true,
+        backgroundColor: [
+          mindColorFade,
+          mindColor
+        ],
+        borderColor: [ 'white'],
+        hoverBorderColor: ['white']
+      }, {
+        fill: true,
+        backgroundColor: [
+          bodyColorFade,
+          bodyColor
+        ],
+        borderColor: [ 'white'],
+        hoverBorderColor: ['white']
+      }, {
+        fill: true,
+        backgroundColor: [
+          soulColorFade,
+          soulColor
+        ],
+        borderColor: [ 'white'],
+        hoverBorderColor: ['white']
+      }];
 
       $scope.multiCharOptions = {
         cutoutPercentage: 70,
@@ -154,15 +175,6 @@ function UsersShowCtrl($http, $state, $scope) {
     }
   }
 
-
-  // {
-  //   datasets: [
-  //     {data: $scope.mindData},
-  //     {data: $scope.bodyData},
-  //     {data: $scope.soulData}
-  //   ]
-  // };
-
   $scope.becomeAHost = function() {
     const updateUserData = $scope.user;
     updateUserData.isHost = true;
@@ -220,8 +232,9 @@ function UsersShowCtrl($http, $state, $scope) {
 
       //returns all the events the user is not attending
       $scope.userNotAttending = res.data.filter(event => {
-        return event.guests.some(guest => guest !== $scope.user._id);
-      });
+        return event.guests.includes(guest => guest !== $scope.user._id);
+      }).filter(event => event.concluded === false);
+
       $scope.attendedEvents = usersEvents.filter(event => event.concluded === true);
       $scope.upcomingEvents = usersEvents.filter(event => event.concluded === false);
     }

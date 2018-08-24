@@ -6,15 +6,10 @@ const { secret } = require('../../config/environment');
 const userData = {
   email: 'rnnsea001@gmail.com',
   firstName: 'Sean',
-  homeLocation: {
-    lat: 51.471337,
-    lon: -0.184276
-  },
-  isHost: true,
+  postcodeHome: 'Sw6 2tg',
   password: 'pass',
-  passwordConfirmation: 'pass',
   surname: 'Rennie',
-  username: 'Rennzie'
+  username: 'pass'
 };
 
 
@@ -64,7 +59,7 @@ describe('GET /api/user/:id', () => {
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .end((err, res) => {
         expect(res.body.email).to.eq(userData.email);
-        expect(res.body.isHost).to.eq(userData.isHost);
+        expect(res.body.postcodeHome).to.eq(userData.postcodeHome.toLowerCase().replace(/\s/gi, ''));
         expect(res.body.username).to.eq(userData.username);
         done();
       });
