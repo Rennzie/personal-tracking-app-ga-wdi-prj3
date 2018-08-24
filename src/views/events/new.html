@@ -12,7 +12,7 @@
       <form class="has-text-black" ng-submit="createEvent()">
         <!-- CATEGORY -->
         <div class="field">
-          <label for="category">Mind | Body | Soul </label>
+          <label for="category">Mind | Body | Soul <span class="has-text-danger">*</span> </label>
           <!-- <input ng-model="event.category" class="input"type="text" name="category" placeholder="Mind, Body or Soul?"> -->
           <div class="select">
             <select  ng-model=event.category>
@@ -26,7 +26,7 @@
 
         <!--TITLE -->
         <div class="field">
-          <label for="eventTitle">Title</label>
+          <label for="eventTitle">Title <span class="has-text-danger">*</span></label>
           <input ng-model="event.eventTitle" class="input"type="text" name="name" placeholder="eg. Hatha Yoga">
         </div>
 
@@ -34,14 +34,14 @@
           <div class="column is-half">
             <!-- DATE -->
             <div class="field">
-              <label for="date">Date</label>
+              <label for="date">Date <span class="has-text-danger">*</span></label>
               <input ng-model="event.eventDateTime" class="input"type="date" name="date" placeholder="When are you holding your event?">
             </div>
           </div>
           <div class="column is-half">
             <!-- TIME -->
             <div class="field">
-              <label for="time">Start Time</label>
+              <label for="time">Start Time <span class="has-text-danger">*</span></label>
               <input ng-model="event.eventDateTime" class="input"type="time" name="time" placeholder="What time is your event?">
             </div>
 
@@ -60,7 +60,7 @@
           <input ng-model="event.location.streetName" class="input"type="text" name="streetName" placeholder="eg. Oxford Street">
         </div>
         <div class="field">
-          <label for="postcode">Postcode</label>
+          <label for="postcode">Postcode <span class="has-text-danger">*</span></label>
           <input ng-model="event.location.postcode" class="input"type="text" name="postcode" placeholder="eg. EC1V 4PA">
         </div>
         <!-- CAPACITY-->
@@ -72,13 +72,13 @@
         <div class="columns">
           <div class="column is-half">
             <div class="field">
-              <label for="duration">Duration Hours </label>
+              <label for="duration">Duration Hours <span class="has-text-danger">*</span></label>
               <input ng-model="event.durationHrs" class="input"type="number" name="durationHrs" placeholder="eg. 1 ">
             </div>
           </div>
           <div class="column is-half">
             <div class="field">
-              <label for="duration">Duration Minutes </label>
+              <label for="duration">Duration Minutes <span class="has-text-danger">*</span></label>
               <input ng-model="event.durationMin" class="input"type="number" name="durationMin" placeholder="eg. 30">
             </div>
           </div>
@@ -104,8 +104,13 @@
           <input ng-model="event.imageUrl" class="input"type="text" name="imageUrl" placeholder="http://.....">
         </div>
 
-        <!-- BUTTON -->
-        <button class="button">Add your event</button>
+        <hr>
+        <div class="column is-full has-text-centered">
+          <button  class="button is-black">Create Event</button>
+        </div>
+        <div class="column is-full has-text-centered">
+          <img class=" imageLogo is-3x2" src="./assets/resolut-favicon-black-small.png" alt="">
+        </div>
       </form>
 
     </section>

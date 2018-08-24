@@ -1,0 +1,42 @@
+<!-- to create a new set of goals -->
+<!-- MODAL FOR Log A GOAL Hours -->
+<div ng-if="logHours" class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Log your completed hours per discipline</p>
+      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <p class="header">Overwrite your already completed hours</p>
+
+      <form ng-submit="logHoursSubmit()" name="form">
+
+        <div class="field has-addons">
+          <label class="label" for="mindCompleted">Mind</label>
+          <input ng-model="goal.mindCompleted" class="input goalInput" type="number" name="mindCompleted" value="0">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="bodyCompleted">Body</label>
+          <input ng-model="goal.bodyCompleted" class="input goalInput" type="number" name="bodyCompleted" value="0">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="soulCompleted">Soul</label>
+          <input ng-model="goal.soulCompleted" class="input goalInput" type="number" name="soulCompleted" value="0">
+        </div>
+
+        <hr>
+        <div class="column is-full has-text-centered">
+          <button  class="button is-black">Log Hours</button>
+        </div>
+        <div class="column is-full has-text-centered">
+          <img class=" imageLogo is-3x2" src="./assets/resolut-favicon-black-small.png" alt="">
+        </div>
+      </form>
+    </section>
+    <footer class="modal-card-foot"> </footer>
+
+  </div>
+</div>

@@ -23,6 +23,10 @@
 
   <div ng-include="'views/partials/_header.html'"> </div>
 
+  <div ng-class="{'is-hidden': !flashMessage}" class="notification is-{{flashMessage.type}}">
+    {{ flashMessage.content }}
+  </div>
+
   <!-- this is where the UI router puts the view for the current state -->
   <div ui-view autoscroll="true"></div>
 
