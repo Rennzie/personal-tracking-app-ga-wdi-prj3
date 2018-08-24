@@ -135,7 +135,7 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.targetCharOptions = {
         title: {
           display: true,
-          text: 'Target Break',
+          text: 'Target Breakdown',
           fontSize: 30,
           fontStyle: 'bold'
         },
