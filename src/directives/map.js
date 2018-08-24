@@ -47,12 +47,17 @@ function Map($http) {
         if ($scope.event) {
           // console.log('this is event', $scope.event);
           map.setView([ $scope.event.location.lat, $scope.event.location.lon], 15);
-
-          const marker = L.marker([$scope.event.location.lat, $scope.event.location.lon]).addTo(map);
-          marker.bindPopup(`<p>${$scope.event.eventTitle}</p>`);
-
+          if ($scope.event.category.toLowerCase() === 'mind'){
+            const marker = L.marker([$scope.event.location.lat, $scope.event.location.lon], { icon: mindIcon }).addTo(map);
+            marker.bindPopup(`<p>${$scope.event.eventTitle}</p>`);
+          } else if($scope.event.category.toLowerCase() === 'body'){
+            const marker = L.marker([$scope.event.location.lat, $scope.event.location.lon], { icon: bodyIcon }).addTo(map);
+            marker.bindPopup(`<p>${$scope.event.eventTitle}</p>`);
+        } else {
+            const marker = L.marker([$scope.event.location.lat, $scope.event.location.lon], { icon: soulIcon }).addTo(map);
+            marker.bindPopup(`<p>${$scope.event.eventTitle}</p>`);
         }
-      });
+      };
       $scope.$watch('user', function() {
         if($scope.user) {
           // console.log('this is user ---->', $scope.user);
