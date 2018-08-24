@@ -5,15 +5,20 @@
 
 
 
-      <a role="button" class="navbar-burger" ui-sref-active="is-active" aria-label="menu" aria-expanded="false">
+      <a role="button" ng-click="isClicked()" class="navbar-burger" ui-sref-active="is-active" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
-    <div ng-class="toggleMenuMobile" class="navbar-menu">
+
+    <div ng-class="{'is-active':  selected}" class="navbar-menu">
       <div class="navbar-start">
-        <a ui-sref="eventsIndex" ui-sref-active="is-active" class="navbar-item">Browse Events</a>
+        <a
+          ui-sref="eventsIndex" 
+          ui-sref-active="is-active"
+          class="navbar-item"
+          >Browse Events</a>
       </div>
 
       <div class="navbar-end">
@@ -23,9 +28,17 @@
           ui-sref="usersShow({ id: getPayload().sub })"
           ng-if="isAuthenticated()"
           ui-sref-active="is-active"
-          class="navbar-item"
+          class="navbar-item is-hidden-touch"
           >
           <img class="avatar" ng-src="{{userData.imageUrl}}">
+        </a>
+        <a
+          ui-sref="usersShow({ id: getPayload().sub })"
+          ng-if="isAuthenticated()"
+          ui-sref-active="is-active"
+          class="navbar-item is-hidden-desktop"
+          >
+          Profile
         </a>
 
         <a ui-sref="login" class="navbar-item" ng-if="!isAuthenticated()" ui-sref-active="is-active">Log in</a>
