@@ -6,13 +6,14 @@ function UsersShowCtrl($http, $state, $scope) {
   $scope.logHours = false;
   $scope.editGoal = false;
 
+  //////////--------REQUEST THE USERS INFO-------////////////
   $http({
     method: 'GET',
     url: `/api/users/${$state.params.id}`
   })
     .then(res => $scope.user = res.data);
 
-  //FETCH USERS GOALS AND ADD TO STATE
+  /////////----------FETCH USERS GOALS AND ADD TO STATE----------///////
   $http({
     method: 'GET',
     url: `/api/users/${$state.params.id}/goals`
@@ -24,7 +25,7 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.goals = currentMonthGoals;
     });
 
-  //request to events an adds them on to scope
+  /////////------REQUEST THE EVENTS----------///////
   $http({
     method: 'GET',
     url: '/api/events'
@@ -65,9 +66,7 @@ function UsersShowCtrl($http, $state, $scope) {
     const mindColorFade = 'rgba(255,0,204,0.3)';
     const bodyColorFade = 'rgba(204,255,0,0.3)';
     const soulColorFade = 'rgba(0,204,255,0.3)';
-
     const cutOutPercentage = 85;
-
 
     $scope.labels = ['Remaining', 'Completed'];
     $scope.targetLabels = ['Mind', 'Body', 'Soul'];
@@ -79,7 +78,7 @@ function UsersShowCtrl($http, $state, $scope) {
     $scope.soulCharColors = [soulColorFade, soulColor];
 
 
-    if($scope.user){
+    if($scope.goals){
       const goalData = $scope.goals[0];
       $scope.targetData = [goalData.mindTarget, goalData.bodyTarget, goalData.soulTarget];
 
