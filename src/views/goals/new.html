@@ -1,0 +1,35 @@
+<!-- to create a new set of goals -->
+<!-- MODAL FOR ADD A GOAL -->
+<div ng-if="addGoal" class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Set your goals for {{ currentMonth }}</p>
+      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <form ng-submit="setTarget()" name="form">
+
+        <div class="field has-addons">
+          <label class="label" for="mindTarget">Mind</label>
+          <input ng-model="goal.mindTarget" class="input" type="number" name="mindTarget">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="bodyTarget">Body</label>
+          <input ng-model="goal.bodyTarget" class="input" type="number" name="bodyTarget" placeholder="">
+        </div>
+
+        <div class="field has-addons">
+          <label class="label" for="soulTarget">Soul</label>
+          <input ng-model="goal.soulTarget" class="input" type="number" name="soulTarget" placeholder="">
+        </div>
+
+        <hr>
+        <button  class="button is-success">Set Goals</button>
+      </form>
+    </section>
+    <footer class="modal-card-foot"> </footer>
+  </div>
+</div>

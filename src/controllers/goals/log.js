@@ -1,4 +1,4 @@
-function GoalsEditCtrl($http, $scope, $state){
+function GoalsEditCtrl($http, $rootScope, $scope, $state){
   $scope.logHours = true;
 
   $http({
@@ -24,6 +24,11 @@ function GoalsEditCtrl($http, $scope, $state){
         $scope.goal = res.data;
         $state.go('usersShow', {id: $scope.getPayload().sub});
       });
+
+    $rootScope.$broadcast('flashMessage', {
+      type: 'success',
+      content: 'Well done for logging some hours!'
+    });
   };
 }
 

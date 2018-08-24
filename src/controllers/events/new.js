@@ -13,4 +13,5 @@ function EventsNewCtrl($scope, $http, $state) {
   };
 }
 
+// 'eventsShow', {id: event.id }
 export default EventsNewCtrl;

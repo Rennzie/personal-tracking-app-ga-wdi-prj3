@@ -41,7 +41,7 @@ function UsersShowCtrl($http, $state, $scope) {
 
   function updateEvents() {
     if($scope.events){
-      console.log('updateCharts fired', $scope.user._id);
+      // console.log('updateCharts fired', $scope.user._id);
       // NEED TO GET RID OF PAST EVENTS
       // returns all the events the user has attended, past and present
       const usersEvents = $scope.events.filter(event => {
@@ -54,8 +54,6 @@ function UsersShowCtrl($http, $state, $scope) {
       $scope.userNotAttending = $scope.events.filter(event => {
         return event.guests.every(guest => guest !== $scope.user._id);
       }).filter(event => event.concluded === false);
-
-
     }
   }
 

@@ -239,123 +239,13 @@
       </div>
     </div>
   </div>
-
 </div>
 
-<!-- to create a new set of goals -->
-<!-- MODAL FOR ADD A GOAL -->
-<div ng-if="addGoal" class="modal is-active">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Set your goals for {{ currentMonth }}</p>
-      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body">
+<div ng-include="'views/goals/new.html'"></div>
+<div ng-include="'views/goals/edit.html'"></div>
+<div ng-include="'views/goals/log.html'"></div>
 
-      <form ng-submit="setTarget()" name="form">
 
-        <div class="field has-addons">
-          <label class="label" for="mindTarget">Mind</label>
-          <input ng-model="goal.mindTarget" class="input" type="number" name="mindTarget">
-        </div>
-
-        <div class="field has-addons">
-          <label class="label" for="bodyTarget">Body</label>
-          <input ng-model="goal.bodyTarget" class="input" type="number" name="bodyTarget" placeholder="">
-        </div>
-
-        <div class="field has-addons">
-          <label class="label" for="soulTarget">Soul</label>
-          <input ng-model="goal.soulTarget" class="input" type="number" name="soulTarget" placeholder="">
-        </div>
-
-        <hr>
-        <button  class="button is-success">Set Goals</button>
-      </form>
-    </section>
-    <footer class="modal-card-foot"> </footer>
-  </div>
-</div>
-
-<!-- to create a new set of goals -->
-<!-- MODAL FOR UPDATE GOALS -->
-<div ng-if="editGoal" class="modal is-active">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Update your goals for {{ currentMonth }}</p>
-      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body">
-
-      <form ng-submit="editGoals()" name="form">
-
-        <div class="field has-addons">
-          <label class="label" for="mindTarget">Mind</label>
-          <input ng-model="goal.mindTarget" class="input goalInput" type="number" name="mindTarget">
-        </div>
-
-        <div class="field has-addons">
-          <label class="label" for="bodyTarget">Body</label>
-          <input ng-model="goal.bodyTarget" class="input goalInput" type="number" name="bodyTarget">
-        </div>
-
-        <div class="field has-addons">
-          <label class="label" for="soulTarget">Soul</label>
-          <input ng-model="goal.soulTarget" class="input goalInput" type="number" name="soulTarget">
-        </div>
-
-        <hr>
-        <div class="column is-full has-text-centered">
-          <button  class="button is-black">Update Targets</button>
-        </div>
-        <div class="column is-full has-text-centered">
-          <img class=" imageLogo is-3x2" src="./assets/resolut-favicon-black-small.png" alt="">
-        </div>
-
-      </form>
-    </section>
-    <footer class="modal-card-foot"> </footer>
-  </div>
-</div>
-
-<!-- to create a new set of goals -->
-<!-- MODAL FOR Log A GOAL Hours -->
-<div ng-if="logHours" class="modal is-active">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Log your hours per discipline:</p>
-      <button ui-sref="usersShow({id: getPayload().sub})" class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body">
-
-      <form ng-submit="logHoursSubmit()" name="form">
-
-        <div class="field has-addons">
-          <label class="label" for="mindTarget">Mind</label>
-          <input ng-model="goal.mindCompleted" class="input" type="number" name="mindCompleted">
-        </div>
-
-        <div class="field has-addons">
-          <label class="label" for="bodyTarget">Body</label>
-          <input ng-model="goal.bodyCompleted" class="input" type="number" name="bodyCompleted">
-        </div>
-
-        <div class="field has-addons">
-          <label class="label" for="soulTarget">Soul</label>
-          <input ng-model="goal.soulCompleted" class="input" type="number" name="soulCompleted">
-        </div>
-
-        <hr>
-        <button class="button is-success">Log Hours</button>
-      </form>
-    </section>
-    <footer class="modal-card-foot"> </footer>
-
-  </div>
-</div>
 
 <!-- IF WE WANT TO ADD HOSTER NAME -->
 <!-- <form ng-submit="addHosterName()" ng-if="user.isHost && !user.hasHostName">
