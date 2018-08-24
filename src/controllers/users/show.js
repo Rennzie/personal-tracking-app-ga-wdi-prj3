@@ -246,9 +246,6 @@ function UsersShowCtrl($http, $state, $scope) {
 
 
 
-
-
-
 }
 
 export default UsersShowCtrl;
