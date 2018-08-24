@@ -9,31 +9,29 @@ const userIcon = L.icon({
   popupAnchor: [-3, -76]
 });
 
-const mindIcon = L.icon({
-  iconUrl: './assets/pink-marker.png',
-  iconSize: [30, 30],
-  iconAnchor: [22, 94],
-  popupAnchor: [-3, -76]
-});
-
-const bodyIcon = L.icon({
-  iconUrl: './assets/green-marker.png',
-  iconSize: [30, 30],
-  iconAnchor: [22, 94],
-  popupAnchor: [-3, -76]
-});
-
-const soulIcon = L.icon({
-  iconUrl: './assets/blue-marker.png',
-  iconSize: [30, 30],
-  iconAnchor: [22, 94],
-  popupAnchor: [-3, -76]
-});
-
-
+const icons = {
+  mind: L.icon({
+    iconUrl: './assets/pink-marker.png',
+    iconSize: [30, 30],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+  }),
+  body: L.icon({
+    iconUrl: './assets/green-marker.png',
+    iconSize: [30, 30],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+  }),
+  soul: L.icon({
+    iconUrl: './assets/blue-marker.png',
+    iconSize: [30, 30],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+  })
+}
 
 
-function Map($http) {
+function Map() {
   return {
     restrict: 'A',
     link($scope, $element) {
@@ -45,51 +43,42 @@ function Map($http) {
       }).addTo(map);
       $scope.$watch('event', function() {
         if ($scope.event) {
-          // console.log('this is event', $scope.event);
-          map.setView([ $scope.event.location.lat, $scope.event.location.lon], 15);
-          if ($scope.event.category.toLowerCase() === 'mind'){
-            const marker = L.marker([$scope.event.location.lat, $scope.event.location.lon], { icon: mindIcon }).addTo(map);
-            marker.bindPopup(`<p>${$scope.event.eventTitle}</p>`);
-          } else if($scope.event.category.toLowerCase() === 'body'){
-            const marker = L.marker([$scope.event.location.lat, $scope.event.location.lon], { icon: bodyIcon }).addTo(map);
-            marker.bindPopup(`<p>${$scope.event.eventTitle}</p>`);
-        } else {
-            const marker = L.marker([$scope.event.location.lat, $scope.event.location.lon], { icon: soulIcon }).addTo(map);
-            marker.bindPopup(`<p>${$scope.event.eventTitle}</p>`);
+          eventMap();
         }
-      };
+      });
       $scope.$watch('user', function() {
         if($scope.user) {
           // console.log('this is user ---->', $scope.user);
-          map.setView([ $scope.user.homeLocation.lat, $scope.user.homeLocation.lon], 11);
-          const marker = L.marker([$scope.user.homeLocation.lat, $scope.user.homeLocation.lon],{icon: userIcon} ).addTo(map);
-          marker.bindPopup(`<img src=${$scope.user.imageUrl}>`);
-
-          $scope.$watch('upcomingEvents', function() {
-            if($scope.upcomingEvents) {
-              const mindEvent = $scope.upcomingEvents.filter(event => event.category.toLowerCase() === 'mind');
-              const bodyEvent = $scope.upcomingEvents.filter(event => event.category.toLowerCase() === 'body');
-              const soulEvent = $scope.upcomingEvents.filter(event => event.category.toLowerCase() === 'soul');
-              console.log('mind events are --->', mindEvent);
-              console.log('upcoming events --->', $scope.upcomingEvents);
-              mindEvent.forEach(event => {
-                const marker = L.marker([event.location.lat, event.location.lon], {icon: mindIcon} ).addTo(map);
-                marker.bindPopup(`<p>${event.eventTitle}</p>`);
-              });
-              bodyEvent.forEach(event => {
-                const marker = L.marker([event.location.lat, event.location.lon], {icon: bodyIcon} ).addTo(map);
-                marker.bindPopup(`<p>${event.eventTitle}</p>`);
-              });
-              soulEvent.forEach(event => {
-                const marker = L.marker([event.location.lat, event.location.lon], {icon: soulIcon} ).addTo(map);
-                marker.bindPopup(`<p>${event.eventTitle}</p>`);
-              });
-
-            }
-          });
-
+          userMap();
         }
       });
+
+      function userMap() {
+        map.setView([ $scope.user.homeLocation.lat, $scope.user.homeLocation.lon], 11);
+        const marker = L.marker([$scope.user.homeLocation.lat, $scope.user.homeLocation.lon],{icon: userIcon} ).addTo(map);
+        marker.bindPopup(`<img src=${$scope.user.imageUrl}>`);
+
+        $scope.$watch('upcomingEvents', function() {
+          if($scope.upcomingEvents) {
+            upcomingEventsMarkers();
+          }
+        });
+      }
+
+      function eventMap() {
+        map.setView([ $scope.event.location.lat, $scope.event.location.lon], 15);
+        const category = $scope.event.category.toLowerCase();
+        const marker = L.marker([$scope.event.location.lat, $scope.event.location.lon], { icon: icons[category] }).addTo(map);
+        marker.bindPopup(`<p>${$scope.event.eventTitle}</p>`);
+      }
+
+      function upcomingEventsMarkers() {
+        $scope.upcomingEvents.forEach(event => {
+          const category = event.category.toLowerCase();
+          const marker = L.marker([event.location.lat, event.location.lon], {icon: icons[category]} ).addTo(map);
+          marker.bindPopup(`<p>${event.eventTitle}</p>`);
+        });
+      }
     }
   };
 }

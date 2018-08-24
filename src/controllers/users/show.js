@@ -35,7 +35,8 @@ function UsersShowCtrl($http, $state, $scope) {
   $scope.$watch('goals', () =>{
     updateCharts();
   });
-  $scope.$watch('user', () =>{
+  
+  $scope.$watchGroup(['user', 'events'], () =>{
     updateEvents();
   });
 
