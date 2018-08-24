@@ -6,37 +6,28 @@ const { secret } = require('../../config/environment');
 const userData = {
   email: 'rnnsea001@gmail.com',
   firstName: 'Sean',
-  homeLocation: {
-    lat: 51.471337,
-    lon: -0.184276
-  },
-  isHost: true,
+  postcodeHome: 'Sw6 2tg',
   password: 'pass',
-  passwordConfirmation: 'pass',
   surname: 'Rennie',
-  username: 'Rennzie'
+  username: 'pass'
 };
 
-const eventData =
-  {                   //Calisthenics in the park
-    category: 'body',
-    capacity: 3,
-    concluded: false,
-    duration: 60,
-    description: 'Small group Calisthenics training focussed on intermediate athletes looking to get better at handstands and muscle ups',
-    eventTitle: 'Calisthenics in the Park',
-    eventDate: 1534978800000,
-    guests: [],
-    imageUrl: 'http://www.bjj-usa.com/wp-content/uploads/2017/08/calisthenics-benefits-6.jpg',
-    isIndoors: false,
-    location: {     //sub document to hold event location
-      streetNumber: 9,
-      streetName: 'Greensward',
-      postcode: 'sw62tg',
-      lat: 51.471337,
-      lon: -0.184276          // should seed this initially
-    }
-  };
+const eventData ={
+  category: 'Body',
+  capacity: 3,
+  durationHrs: 1,
+  description: 'Small group Calisthenics training focussed on intermediate athletes looking to get better at handstands and muscle ups',
+  eventTitle: 'Calisthenics in the Park',
+  eventDateTime: 'Thu Oct 11 2018 22:30:00 GMT+0100 (British Summer Time)',
+  guests: [],
+  imageUrl: 'https://athleticmuscle-aoukphiqubz0bq.netdna-ssl.com/wp-content/uploads/2018/01/Calisthenics-759x500.jpg',
+  isIndoors: false,
+  location: {     //sub document to hold event location
+    streetNumber: 9,
+    streetName: 'Greensward',
+    postcode: 'sw62tg'
+  }
+};
 
 let token; //token is global
 
@@ -73,7 +64,7 @@ describe('POST /events', () => {
       .set('Authorization', `Bearer ${token}`) // creates an authorisation header
       .send(eventData)
       .end((err, res) => {
-        console.log('The response is', res.body);
+        // console.log('The response is', res.body);
         expect(res.body).to.be.an('object');
         done();
       });
@@ -85,7 +76,7 @@ describe('POST /events', () => {
       .send(eventData)
       .end((err, res) => {
         expect(res.body.eventTitle).to.eq(eventData.eventTitle);
-        expect(res.body.concluded).to.eq(eventData.concluded);
+        expect(res.body.durationHrs).to.eq(eventData.durationHrs);
         done();
       });
   });

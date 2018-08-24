@@ -232,9 +232,9 @@ function UsersShowCtrl($http, $state, $scope) {
 
       //returns all the events the user is not attending
       $scope.userNotAttending = res.data.filter(event => {
-        return event.guests.some(guest => guest !== $scope.user._id);
+        return event.guests.includes(guest => guest !== $scope.user._id);
       }).filter(event => event.concluded === false);
-      
+
       $scope.attendedEvents = usersEvents.filter(event => event.concluded === true);
       $scope.upcomingEvents = usersEvents.filter(event => event.concluded === false);
     }

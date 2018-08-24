@@ -49,7 +49,7 @@ userSchema.pre('validation', function(next){
 });
 
 userSchema.pre('validate', function getLatLon(next){
-  console.log('user latlon Prevalidation hook fired');
+  // console.log('user latlon Prevalidation hook fired');
 
   // make sure not to try process no postCode
   if(!this.postcodeHome){

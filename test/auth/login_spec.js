@@ -9,21 +9,17 @@ const { secret } = require('../../config/environment');
 const userData = {
   email: 'rnnsea001@gmail.com',
   firstName: 'Sean',
-  homeLocation: {
-    lat: 51.471337,
-    lon: -0.184276
-  },
-  isHost: true,
+  postcodeHome: 'Sw6 2tg',
   password: 'pass',
-  passwordConfirmation: 'pass',
   surname: 'Rennie',
-  username: 'Rennzie'
+  username: 'pass'
 };
 
 const userLogin = {
   email: 'rnnsea001@gmail.com',
   password: 'pass'
 };
+
 
 describe('POST /api/login', () => {
   //before each test should create a new user to test without

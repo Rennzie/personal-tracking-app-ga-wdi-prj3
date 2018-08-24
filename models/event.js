@@ -8,8 +8,8 @@ const eventSchema = mongoose.Schema({
   createdBy: {type: ObjectId, ref: 'User'}, //hosting user
   category: { type: String, required: true },
   capacity: Number,
-  durationHrs: { type: String, default: 0 },  // NOTE: might be best to convert to millisecondss
-  durationMin: { type: String, default: 0 },  // NOTE: might be best to convert to millisecondss
+  durationHrs: { type: Number, default: 0 },  // NOTE: might be best to convert to millisecondss
+  durationMin: { type: Number, default: 0 },  // NOTE: might be best to convert to millisecondss
   description: String,
   eventTitle: { type: String, required: true },
   eventDateTime: { type: String, required: true },
@@ -98,25 +98,16 @@ eventSchema.virtual('concluded')
       return true;
     }
   });
-//
-// eventSchema.virtual('eventDateUnix')
-//   .get(function(){
-//     return moment(this.eventDateTime).unix();
-//   });
 
-// eventSchema.virtual('minutesToEvent')
-//   .get(function(){
-//
-//   });
 
 //  LIFECYCLE HOOKS
 eventSchema.pre('save', function setUnixDate(next){
-  this.eventDateUnix = moment(this.eventDateTime).unix();
+  this.eventDateUnix = moment(this.eventDateTime).unix(); //this.eventDateTime format could cause issues with moment in the future
   next();
 });
 
 eventSchema.pre('validate', function getLatLon(next){
-  console.log('get LatLon Prevalidation hook fired');
+  // console.log('get LatLon Prevalidation hook fired');
 
   // make sure not to try process no postCode
   if(!this.location.postcode){
