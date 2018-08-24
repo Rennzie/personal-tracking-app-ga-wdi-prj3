@@ -23,20 +23,20 @@
         <!-- IF USER IS NOT A HOST -->
         <div class="level columns is-mobile">
           <div class="column is-4">
-            <a ng-if="!user.isHost" ng-click="becomeAHost()" >
+            <a class="anchorIsBlack" ng-if="!user.isHost" ng-click="becomeAHost()" >
               <i class="fas fa-3x fa-hospital-symbol"></i>
             </a>
-            <a ui-sref="eventsNew" ng-if="user.isHost" >
+            <a class="anchorIsBlack" ui-sref="eventsNew" ng-if="user.isHost" >
               <i class="has-text-color-black fal fa-3x fa-calendar"></i>
             </a>
           </div>
           <div class="column is-4">
-            <a ui-sref="goalsLogHours({userId: getPayload().sub, goalId: goals[0].id})" >
+            <a class="anchorIsBlack" ui-sref="goalsLogHours({userId: getPayload().sub, goalId: goals[0].id})" >
               <i class="far fa-3x fa-clock"></i>
             </a>
           </div>
           <div class="column is-4">
-            <a ui-sref="goalsEdit({userId: getPayload().sub, goalId: goals[0].id})" >
+            <a class="anchorIsBlack" ui-sref="goalsEdit({userId: getPayload().sub, goalId: goals[0].id})" >
               <i class="fas fa-3x fa-bullseye"></i>
             </a>
           </div>
@@ -49,7 +49,7 @@
           <div ng-if="goals.length === 0 || checkProfileIsForUser" class="column is-full has-text-centered">
             <h2 class="title ">Set your goals for {{ currentMonth }}</h2>
             <!-- this will only appear if there are no goals for the month -->
-            <a ui-sref="goalsNew({ id: user._id })" >
+            <a class="anchorIsBlack" ui-sref="goalsNew({ id: user._id })" >
               <i class="fas fa-3x fa-plus-circle"></i>
             </a>
           </div>
@@ -125,7 +125,6 @@
       </div>
     </div>
   </div>
-  <hr>
 
   <!-- MAP HERE -->
   <div class="level">
