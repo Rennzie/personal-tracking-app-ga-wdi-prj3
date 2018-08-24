@@ -5,7 +5,6 @@
       <img class="eventHeaderImage" src="./assets/resolut-logo-full-black.png" alt="logo">
 
       <h1 class="title is-2 has-text-centered headerFont">CHECK OUT OVER {{events.length}} EVENTS NEAR YOU</h1>
-      <!-- put image here -->
       <div class="columns is-multiline">
         <div class="column is-4">
           <a class="mind has-text-weight-bold" ui-sref-active="is-active" ui-sref="eventsMindIndex">MIND</a>
@@ -21,6 +20,10 @@
     </div>
   </div>
 </section>
+
+<!-- <div ng-include="'views/home.html'"> -->
+
+</div>
 
 <div class="add50pxTop container">
   <div class="columns is-multiline">
@@ -41,7 +44,7 @@
               <p>TIME: {{ event.formattedTime}}</p>
             </div>
             <div class="column is-4">
-              <p>{{ event.duration}}Hr</p>
+              <p>{{ event.duration}}</p>
             </div>
             <div class="column is-full">
               <h3 class="title is-5 has-text-white"> {{ event.category }}</h3>

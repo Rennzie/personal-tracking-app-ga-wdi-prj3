@@ -79,10 +79,12 @@ eventSchema.virtual('duration')
     const formatHourSuffix = this.durationHrs > 1 ? 'Hrs' : 'Hr';
     const formatMinuteSuffix = this.durationMin > 1 ? 'Mins' : 'Min';
 
+
+
     if(!this.durationHrs && this.durationMin){
       return `${this.durationMin} ${formatMinuteSuffix}`;
 
-    }else if(this.durationHrs && !this.durationMin === 0){
+    }else if(this.durationHrs && !this.durationMin){
       return `${this.durationHrs} ${formatHourSuffix}`;
     }else{
       return `${this.durationHrs} ${formatHourSuffix} & ${this.durationMin} ${formatMinuteSuffix}`;
