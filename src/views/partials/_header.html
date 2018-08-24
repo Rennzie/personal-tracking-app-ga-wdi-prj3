@@ -19,7 +19,14 @@
       <div class="navbar-end">
 
         <!-- should show the users image here?? -->
-        <a ui-sref="usersShow({ id: getPayload().sub })" ng-if="isAuthenticated()" ui-sref-active="is-active" class="navbar-item">My Profile</a>
+        <a
+          ui-sref="usersShow({ id: getPayload().sub })"
+          ng-if="isAuthenticated()"
+          ui-sref-active="is-active"
+          class="navbar-item"
+          >
+          <img class="avatar" ng-src="{{userData.imageUrl}}">
+        </a>
 
         <a ui-sref="login" class="navbar-item" ng-if="!isAuthenticated()" ui-sref-active="is-active">Log in</a>
         <a ui-sref="register" class="navbar-item" ng-if="!isAuthenticated()" ui-sref-active="is-active">Sign up</a>
