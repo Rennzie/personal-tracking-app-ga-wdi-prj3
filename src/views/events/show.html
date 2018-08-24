@@ -5,7 +5,7 @@
 
 
   <div class="level has-text-centered column is-12 ">
-    <h1 class="title"> {{ event.eventTitle }} </h1>
+    <h1 class="title headerFont"> {{ event.eventTitle }} </h1>
     <p  class="has-text-weight-bold"> hosted by: {{ event.createdBy.hosterName || event.createdBy.username}}</p>
     <hr>
   </div>
@@ -27,9 +27,9 @@
     <div class="columns is-multiline column is-4">
       <div class="column is-full">
         <ul>
-          <li><p><span class="has-text-weight-bold">DATE:</span> {{ event.formattedDate}}</p></li>
-          <li><p><span class="has-text-weight-bold">TIME:</span> {{ event.formattedTime}}</p></li>
-          <li><p><span class="has-text-weight-bold">{{ event.duration}}</p></li>
+          <li><p><span class="has-text-weight-bold headerFont">DATE:</span> {{ event.formattedDate}}</p></li>
+          <li><p><span class="has-text-weight-bold headerFont">TIME:</span> {{ event.formattedTime}}</p></li>
+          <li><p><span class="has-text-weight-bold headerFont">{{ event.duration}}</p></li>
           </ul>
         </div>
 

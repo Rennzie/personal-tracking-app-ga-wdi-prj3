@@ -7,7 +7,7 @@
 
       <div class="column is-full has-text-centered">
         <img class="imageHeader" src="./assets/resolut-logo-full-black.png" alt="logo">
-        <h1 class=" add50pxTop title is-2  has-text-centered"> Welcome back {{ user.username }}</h1>
+        <h1 class=" add50pxTop title is-2  has-text-centered headerFont"> Welcome back, {{ user.username }}</h1>
       </div>
       <div class="column is-full">
 
@@ -143,7 +143,7 @@
   <!-- UPCOMING EVENT, ONLY SHOW FIRST TWO -->
   <div class="columns is-multiline">
     <div class="column is-12">
-      <h2>You have {{upcomingEvents.length}} upcoming events</h2>
+      <h1 class="headerFont">YOU HAVE {{upcomingEvents.length}} UPCOMING EVENTS</h1>
     </div>
 
     <div class="column is-half content" ng-repeat="event in upcomingEvents | limitTo:2">
@@ -197,7 +197,7 @@
   <div class="level">
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h2>A selection of recommended events</h2>
+        <h2 class="headerFont">EVENTS RECOMMENDED FOR YOU</h2>
       </div>
       <div ng-repeat="event in userNotAttending | limitTo:4" class="column is-3 content">
         <a ui-sref="eventsShow({ id: event._id })">
@@ -226,7 +226,7 @@
 <div class="level">
   <div class="columns is-multiline">
     <div class="column is-12">
-      <h2>Your past events</h2>
+      <h2 class="headerFont">YOUR PAST EVENTS</h2>
     </div>
     <div ng-repeat="event in attendedEvents" class="column is-4 content">
       <a ui-sref="eventsShow({ id: event._id })">
