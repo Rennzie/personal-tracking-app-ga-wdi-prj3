@@ -14,14 +14,14 @@
       </div>
 
       <!-- RIGHT HAND PANEL -->
-      <div class="column is-4">
+      <div class="column  is-4">
 
         <div class="level profilePicture">
           <img ng-src="{{user.imageUrl}}" alt="{{user.username}}">
         </div>
 
         <!-- IF USER IS NOT A HOST -->
-        <div class="level columns">
+        <div class="level columns is-mobile">
           <div class="column is-4">
             <a ng-if="!user.isHost" ng-click="becomeAHost()" >
               <i class="fas fa-3x fa-hospital-symbol"></i>
@@ -87,7 +87,7 @@
   </div>
 
   <hr>
-  <div class="level">
+  <div ng-if="goals.length > 0" class="level">
     <div id="goals"  class="columns is-multiline">
 
       <div id="mind" class="diciplineChart column  is-4">

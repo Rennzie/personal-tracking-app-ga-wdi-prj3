@@ -6,17 +6,58 @@ function UsersShowCtrl($http, $state, $scope) {
   $scope.logHours = false;
   $scope.editGoal = false;
 
+  //////////--------REQUEST THE USERS INFO-------////////////
   $http({
     method: 'GET',
     url: `/api/users/${$state.params.id}`
   })
+    .then(res => $scope.user = res.data);
+
+  /////////----------FETCH USERS GOALS AND ADD TO STATE----------///////
+  $http({
+    method: 'GET',
+    url: `/api/users/${$state.params.id}/goals`
+  })
     .then(res => {
-      $scope.user = res.data;
+      const userGoals = res.data.filter(goal => goal.createdBy === userId );
+      const currentMonthGoals = userGoals.filter(goal => goal.goalMonth === $scope.currentMonth);
+      // console.log('the users goals are ', currentMonthGoals);
+      $scope.goals = currentMonthGoals;
     });
+
+  /////////------REQUEST THE EVENTS----------///////
+  $http({
+    method: 'GET',
+    url: '/api/events'
+  })
+    .then(res => $scope.events = res.data);
 
   $scope.$watch('goals', () =>{
     updateCharts();
   });
+  $scope.$watch('user', () =>{
+    updateEvents();
+  });
+
+  function updateEvents() {
+    if($scope.events){
+      console.log('updateCharts fired', $scope.user._id);
+      // NEED TO GET RID OF PAST EVENTS
+      // returns all the events the user has attended, past and present
+      const usersEvents = $scope.events.filter(event => {
+        return event.guests.some(guest => guest === $scope.user._id);
+      });
+      $scope.attendedEvents = usersEvents.filter(event => event.concluded === true);
+      $scope.upcomingEvents = usersEvents.filter(event => event.concluded === false);
+
+      //returns all the events the user is not attending
+      $scope.userNotAttending = $scope.events.filter(event => {
+        return event.guests.every(guest => guest !== $scope.user._id);
+      }).filter(event => event.concluded === false);
+
+
+    }
+  }
 
   function updateCharts(){
     const mindColor = 'rgb(255,0,204)';
@@ -25,9 +66,7 @@ function UsersShowCtrl($http, $state, $scope) {
     const mindColorFade = 'rgba(255,0,204,0.3)';
     const bodyColorFade = 'rgba(204,255,0,0.3)';
     const soulColorFade = 'rgba(0,204,255,0.3)';
-
     const cutOutPercentage = 85;
-
 
     $scope.labels = ['Remaining', 'Completed'];
     $scope.targetLabels = ['Mind', 'Body', 'Soul'];
@@ -39,7 +78,7 @@ function UsersShowCtrl($http, $state, $scope) {
     $scope.soulCharColors = [soulColorFade, soulColor];
 
 
-    if($scope.user){
+    if($scope.goals){
       const goalData = $scope.goals[0];
       $scope.targetData = [goalData.mindTarget, goalData.bodyTarget, goalData.soulTarget];
 
@@ -205,40 +244,9 @@ function UsersShowCtrl($http, $state, $scope) {
       } );
   };
 
-  //FETCH USERS GOALS AND ADD TO STATE
-  $http({
-    method: 'GET',
-    url: `/api/users/${$state.params.id}/goals`
-  })
-    .then(res => {
-      const userGoals = res.data.filter(goal => goal.createdBy === userId );
-      const currentMonthGoals = userGoals.filter(goal => goal.goalMonth === $scope.currentMonth);
-      // console.log('the users goals are ', currentMonthGoals);
-      $scope.goals = currentMonthGoals;
-    });
 
-  //request to events an adds them on to scope
-  $http({
-    method: 'GET',
-    url: '/api/events'
-  })
-    .then(res => {
 
-      // NEED TO GET RID OF PAST EVENTS
-      // returns all the events the user has attended, past and present
-      const usersEvents = res.data.filter(event => {
-        return event.guests.some(guest => guest === $scope.user._id);
-      });
 
-      //returns all the events the user is not attending
-      $scope.userNotAttending = res.data.filter(event => {
-        return event.guests.includes(guest => guest !== $scope.user._id);
-      }).filter(event => event.concluded === false);
-
-      $scope.attendedEvents = usersEvents.filter(event => event.concluded === true);
-      $scope.upcomingEvents = usersEvents.filter(event => event.concluded === false);
-    }
-    );
 
 
 }
