@@ -8,6 +8,7 @@ body{
   font-family: 'Open Sans' sans-serif;
   font-weight: bold;
   font-style: italic;
+
 }
 
 .navbar{
@@ -134,10 +135,10 @@ body{
 
 .content .content-overlay-circle {
   background: rgba(0,0,0,0.7);
-  max-width: 400px;
+  max-width: 300px;
   position: absolute;
   height: 99%;
-  width: 100%;
+  // width: 100%;
   left: 0;
   top: 0;
   bottom: 0;
@@ -157,12 +158,31 @@ body{
   width: 100%;
 }
 
+
+
 .content-details {
   position: absolute;
   text-align: center;
   padding-left: 1em;
   padding-right: 1em;
   width: 100%;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.content-details-circle {
+  position: absolute;
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  max-width: 250px;
   top: 50%;
   left: 50%;
   opacity: 0;

@@ -1,11 +1,18 @@
 .map {
   height: 70vh;
   width: 100%;
-  filter: grayscale(100%);
+}
+
+.img.leaflet-marker-item {
+  color: rgb(255,0,204);
 }
 
 #userProfileMap{
   height: 400px;
   width: 100%;
-    filter: grayscale(100%);
+
+}
+
+.leaflet-tile-pane {
+  filter: grayscale(100%);
 }

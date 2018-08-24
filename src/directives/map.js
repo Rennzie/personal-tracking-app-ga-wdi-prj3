@@ -1,5 +1,17 @@
 /*global L, $http */
 
+
+//------map icons----- ///
+const userIcon = L.icon({
+  iconUrl: './assets/purple-marker.png',
+  iconSize: [25, 30],
+  iconAnchor: [22, 94],
+  popupAnchor: [-3, -76]
+});
+
+
+
+
 function Map($http) {
   return {
     restrict: 'A',
@@ -24,8 +36,9 @@ function Map($http) {
           // console.log('this is user ---->', $scope.user);
           map.setView([ $scope.user.homeLocation.lat, $scope.user.homeLocation.lon], 15);
 
-          const marker = L.marker([$scope.user.homeLocation.lat, $scope.user.homeLocation.lon]).addTo(map);
+          const marker = L.marker([$scope.user.homeLocation.lat, $scope.user.homeLocation.lon],{icon: userIcon} ).addTo(map);
           marker.bindPopup(`<p>${$scope.user.username}</p>`);
+
         }
       });
     }
