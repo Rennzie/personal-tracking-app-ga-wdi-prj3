@@ -86,15 +86,44 @@ Initially Sean worked on the back end, focussing on the models and the testing w
 <hr>
 
 ## <a name="challenges"></a>Challenges
+Being the first and most realistic web app that we have built so far on the course we faced many challenges. One in particular was updating the the number of hours a user has logged towards a specific goal. The challenge was to increment the number of hours logged rather than simply overwriting the existing total as this would require additional server requests which could be avoided. We solved this by using a Method which we called in the goal controller.
 
+Other challenges included showing the users event recommendations which they where not already signed up for, as well as showing them the events they had already attended and the ones they have signed up for. We did this with the use of the `.filter()` array method on the front end and mongoose virtual's in the event model on the back end. See the front end method below:
 
+```Javascript
+  function updateEvents() {
+    if($scope.events){
+      // returns all the events the user has attended, past and present
+      const usersEvents = $scope.events.filter(event => {
+        return event.guests.some(guest => guest === $scope.user._id);
+      });
+      $scope.attendedEvents = usersEvents.filter(event => event.concluded ===   true);
+      $scope.upcomingEvents = usersEvents.filter(event => event.concluded ===   false);
+
+      //returns all the events the user is not attending
+      $scope.userNotAttending = $scope.events.filter(event => {
+        return event.guests.every(guest => guest !== $scope.user._id);
+      }).filter(event => event.concluded === false);
+    }
+  }
+```
 
 <hr>
 
 ## <a name="wins"></a>Wins
+Wins came from all sides on this project once we found a good rythm. Solving the two challenges above where two of the biggest but incorporating the CityMapper travel time API to get the users travel time to an event from there home was a good one. As well as a few aesthetic wins like getting the event information to show over an image when hovered over. Given though, this method does not work so well for mobile and would need to be re-looked at as an immediate bug fix to improve the site responsiveness.
 
+Another win came in the form of controlling the event show page to only allow users to sign up if there was still space in the event. This also required conditionally showing different options depending if there was actually a user logged in and if they were weather they are attending the event or not.
 
 
 <hr>
 
 ## <a name="next"></a>Next up
+
+There where a number of features that we had to abbandon near the end of the project as awe ran out of time and chose making the app stable over being feature rich, a selection is listed below but see the team [Trello](https://trello.com/b/mdTpDMaI) board for a full list of abbandonned features.
+
+- Implement a file stacker like API for adding images directly
+- User should be able to get Uber travel times and costs
+- User should see travel times from their home location to events while browsing the events index
+-  Hosts should have their own profile page which shows their past events
+- Integrate with other event hosting sites like MeetUp.com etc so users have a wider selection of events to go towards their goals.
